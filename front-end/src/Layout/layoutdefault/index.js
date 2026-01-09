@@ -6,7 +6,7 @@ function LayoutDefault() {
             <div className="layout-default">
                 {/* HEADER */}
                 <header className="header">
-                    <div className="header-logo">CR7</div>
+                    <div className="header-logo">Toni Kroos</div>
                     <div className="menu">
                         <ul>
                             <li>
@@ -28,7 +28,7 @@ function LayoutDefault() {
 
                 {/* FOOTER */}
                 <footer className="layout-footer">
-                    copyright @ 205 by Minhxje
+                    copyright @ by Kien
                 </footer>
                 {/* END-FOOTER */}
             </div>
