@@ -1,16 +1,44 @@
 {
-  "name": "back-end",
+  "name": "back-end-course-2026",
   "version": "1.0.0",
-  "description": "Back-end for develop",
-  "main": "index.js",
+  "description": "��#\u0000 \u0000b\u0000a\u0000c\u0000k\u0000-\u0000e\u0000n\u0000d\u0000-\u0000c\u0000o\u0000u\u0000r\u0000s\u0000e\u0000-\u00002\u00000\u00002\u00006\u0000\r\u0000 \u0000",
+  "main": "dist/app.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon",
+    "dev": "nodemon"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts",
+    "ignore": [
+      "node_modules"
+    ],
+    "exec": "ts-node ./src/app.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tranduyfong/back-end-course-2026.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tranduyfong/back-end-course-2026/issues"
+  },
+  "homepage": "https://github.com/tranduyfong/back-end-course-2026#readme",
   "dependencies": {
-    "express": "^5.2.1",
-    "nodemon": "^3.1.11"
+    "dotenv": "16.4.7",
+    "ejs": "3.1.10",
+    "express": "5.0.1"
+  },
+  "devDependencies": {
+    "@types/ejs": "3.1.5",
+    "@types/express": "5.0.0",
+    "@types/node": "22.10.7",
+    "nodemon": "3.1.9",
+    "ts-node": "10.9.2",
+    "typescript": "5.7.3"
   }
 }
