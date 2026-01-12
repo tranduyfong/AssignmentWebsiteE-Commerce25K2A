@@ -2,8 +2,6 @@
 
 Đề tài: Trang Website Thương Mại Điện Tử - Bán Giày Thể Thao Chính Hãng 100%
 
-nnanh test
-
 I) Xác định phạm vi và đối tưởng sử dụng hệ thống
 
 1. Đối tượng sử dụng hệ thống
