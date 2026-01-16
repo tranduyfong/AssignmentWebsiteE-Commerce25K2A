@@ -58,6 +58,7 @@ công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và 
 
 **1.4 Hỗ trợ và đổi trả:**
 
+* Hệ thống quản lý bán giày thể thao chính hãng có chức năng lưu trữ và xử lý toàn bộ thông tin quan trọng phục vụ cho hoạt động kinh doanh hằng ngày, bao gồm dữ liệu về nhân viên, giày(size giày, mẫu mã, …), hóa đơn và các báo cáo thống kê. Việc quản lý thông tin đầy đủ và chính xác giúp cửa hàng hạn chế sai sót, tiết kiệm thời gian và tối ưu hiệu quả làm việc.
 * Liên hệ chat trực tuyến với nhân viên hỗ trợ.
 * Gửi yêu cầu và thông tin liên hệ để thực hiện đổi trả sản phẩm theo chính sách.
 
@@ -274,5 +275,81 @@ công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và 
 
 8. Mongoose
 
-- Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
-- Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a
+* Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
+* Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a
+  ### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
+
+**1. Các khái niệm cơ bản**
+
+**1.1. Hệ thống**
+
+Hệ thống là một tập hợp các phần tử có mối quan hệ ràng buộc và tương tác lẫn nhau\ nhằm thực hiện một mục tiêu chung. Các phần tử trong hệ thống không tồn tại độc lập mà chịu sự chi phối, tác động qua lại tạo nên tính toàn vẹn của hệ thống.
+
+Tiếp cận hệ thống là phương pháp khoa học và biện chứng được sử dụng phổ biến trong nghiên cứu và giải quyết các vấn đề quản lý, kinh tế – xã hội. Phương pháp này yêu cầu phải xem xét hệ thống trong tổng thể vốn có của nó, bao gồm các thành phần bên trong, các mối liên hệ giữa chúng cũng như mối quan hệ của hệ thống với môi trường bên ngoài.
+
+Trong phạm vi đề tài, **hệ thống quản lý bán giày thể thao chính hãng** được xem là một hệ thống quản lý bao gồm các phân hệ như: quản lý sản phẩm, quản lý kho, quản lý bán hàng, quản lý khách hàng và quản lý báo cáo – thống kê. Việc nghiên cứu và thiết kế hệ thống này cần tuân thủ chặt chẽ tư duy tiếp cận hệ thống để đảm bảo tính đồng bộ và hiệu quả trong quá trình vận hành.
+
+**1.2. Hệ thống thông tin**
+
+Hệ thống thông tin (HTTT) là một tập hợp có tổ chức của con người, dữ liệu, quy trình và các phương tiện kỹ thuật nhằm thu thập, xử lý, lưu trữ và cung cấp thông tin phục vụ cho hoạt động quản lý và ra quyết định của tổ chức.
+
+Hệ thống thông tin giữ vai trò nền tảng trong mọi hệ thống quản lý, từ cấp vi mô đến vĩ mô. Do đó, khi phân tích HTTT cần áp dụng cách tiếp cận hệ thống, tức là xem xét một cách toàn diện các thành phần và mối liên hệ của chúng. Việc tối ưu cục bộ một số phân hệ mà không xét đến các ràng buộc với các phân hệ khác sẽ không mang lại hiệu quả tối ưu cho toàn bộ hệ thống.
+
+❖ **Thông tin có các đặc điểm cơ bản sau:**
+
+* Tồn tại khách quan
+* Có thể được tạo ra, xử lý, truyền đạt và lưu trữ
+* Có thể bị sai lệch hoặc méo mó do nhiều tác động khác nhau
+* Có thể định lượng thông qua mức độ bất định của trạng thái hay hành vi
+
+Trong hệ thống quản lý bán giày thể thao, thông tin bao gồm các dữ liệu về sản phẩm, thương hiệu, giá bán, tồn kho, đơn hàng, khách hàng và doanh thu. Việc xử lý và quản lý chính xác các thông tin này là yếu tố quyết định đến hiệu quả kinh doanh của cửa hàng.
+
+**2.1.3. Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc**
+
+Phương pháp phân tích và thiết kế có cấu trúc là một phương pháp phổ biến trong xây dựng hệ thống thông tin, có tư duy logic chặt chẽ, dễ tiếp cận, dễ hiểu và dễ áp dụng trong thực tế. Phương pháp này đã chứng minh được hiệu quả cao trong việc giảm thiểu rủi ro và nâng cao khả năng thành công của các dự án phần mềm.
+
+❖ **Các đặc điểm nổi bật của phương pháp phân tích thiết kế có cấu trúc:**
+
+* Xuất phát từ phương pháp tiếp cận hệ thống, tiến hành phân tích theo hướng từ trên xuống dưới (Top–Down)
+* Các hoạt động phân tích được thực hiện theo một trình tự khoa học, có kế hoạch rõ ràng
+* Sử dụng các công cụ và mô hình như sơ đồ phân cấp chức năng, sơ đồ luồng dữ liệu, ma trận chức năng – dữ liệu
+* Tách biệt giữa mô hình logic và mô hình vật lý
+* Ghi nhận và nhấn mạnh vai trò của người sử dụng trong toàn bộ quá trình phát triển hệ thống
+* Cho phép thực hiện song song một số giai đoạn và hỗ trợ điều chỉnh, hoàn thiện liên tục
+* Giảm độ phức tạp trong phát triển nhờ các công cụ hỗ trợ phần cứng và phần mềm
+* Thiết kế kết hợp với các bản mẫu giúp người dùng sớm hình dung hệ thống tương lai
+
+Phương pháp này đặc biệt phù hợp với đề tài **quản lý bán giày thể thao chính hãng **do hệ thống có nhiều chức năng nghiệp vụ rõ ràng, luồng thông tin tương đối ổn định và yêu cầu cao về quản lý dữ liệu.
+
+**2.1.4. Quan điểm vòng đời (chu trình sống) của hệ thống thông tin**
+
+Vòng đời của một hệ thống thông tin bao gồm các giai đoạn từ hình thành, triển khai, vận hành cho đến suy thoái. Một hệ thống trở nên lỗi thời khi không còn đáp ứng được yêu cầu nghiệp vụ, chi phí vận hành cao hoặc công nghệ không còn phù hợp.
+
+❖ **Chu trình hệ thống thông tin được xem xét trên các phương diện:**
+
+* **Tài chính:** chi phí đầu tư, khấu hao, vận hành
+* **Công nghệ:** mức độ phù hợp của công nghệ đang sử dụng
+* **Vật lý:** tình trạng phần cứng, thiết bị
+* **Yêu cầu người dùng:** sự hài lòng và thay đổi nhu cầu sử dụng
+* **Tác động bên ngoài:** môi trường kinh doanh, đối tác, cạnh tranh
+
+❖ **Chu trình phát triển hệ thống thông tin gồm các giai đoạn:**
+
+* Ý tưởng
+* Nghiên cứu tính khả thi
+* Phân tích
+* Phát triển
+* Cài đặt và vận hành
+
+Việc tuân thủ chu trình phát triển giúp giảm thiểu rủi ro, kiểm soát tốt tiến độ, chi phí và đảm bảo hệ thống được hoàn thiện phù hợp với thực tế sử dụng.
+
+**2.1.5. Phương pháp mô hình hóa**
+
+Mô hình hóa là quá trình biểu diễn một hệ thống thực ở dạng trừu tượng thông qua các mô hình nhằm giúp con người dễ nhận thức, trao đổi và phân tích. Mô hình có thể được thể hiện dưới dạng sơ đồ, bảng biểu hoặc các biểu diễn đồ họa khác.
+
+❖ **Hai mức độ mô hình hóa chính:**
+
+* **Mức logic:** mô tả bản chất, mục tiêu và chức năng của hệ thống
+* **Mức vật lý:** mô tả cách thức triển khai, công nghệ và phương tiện thực hiện
+
+Trong phân tích thiết kế hệ thống quản lý bán giày, mô hình hóa giúp xác định rõ các chức năng như bán hàng, nhập kho, quản lý tồn kho và báo cáo, từ đó hỗ trợ quá trình thiết kế hệ thống chính xác và hiệu quả.
