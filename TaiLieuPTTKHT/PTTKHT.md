@@ -3,6 +3,7 @@
 Đề tài: Website Thương Mại Điện Tử - Bán Giày Thể Thao Chính Hãng 100%
 
 ## MỞ ĐẦU
+
 ### I. Tổng quan:
 
 Ngày nay, công nghệ phát triển mạnh mẽ và đã trở thành một phần không thể thiếu trong đời sống con người. Nhờ những tiến bộ này, chúng ta tiết kiệm được đáng kể nguyên liệu, nhiên liệu, thời gian và công sức trong các lĩnh vực sản xuất, vận chuyển, lưu thông và quản lý hàng hóa. Sự chuyên môn hóa và tự động hóa ở từng công đoạn đã góp phần nâng cao hiệu suất lao động và mở ra những phương thức kinh doanh mới đầy tiềm năng.
@@ -27,7 +28,6 @@ Với thực trạng hiện nay, nhu cầu mua sắm thời trang và giày th�
   thu, sản phẩm bán chạy được thống kê trực quan, giúp chủ cửa hàng nắm bắt xu hướng thị trường và đưa ra chiến lược kinh doanh kịp thời.
 * **Tối ưu hóa nguồn lực và Mở rộng thị trường:** Nhờ khả năng tự động hóa khâu tiếp nhận đơn hàng và thanh toán trực tuyến, website giúp giảm thiểu đáng kể khối lượng công việc cho nhân viên vận hành. Đồng thời, việc đưa cửa
   hàng lên môi trường internet giúp xóa bỏ rào cản địa lý, nâng cao năng suất bán hàng và tăng sức cạnh tranh trên thị trường.
-
 
 ### III. Xác định yêu cầu hệ thống:
 
@@ -269,3 +269,34 @@ Với thực trạng hiện nay, nhu cầu mua sắm thời trang và giày th�
 
 - Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
 - Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a
+
+## Phân tích thiết kế hệ thống
+
+1. Giải pháp
+
+- Từ những hạn chế và khó khăn của phương thức bán hàng truyền thống đã nêu ở phần trên, mục tiêu chính của website bán giày thể thao là xây dựng một hệ thống kinh doanh trực tuyến hiện đại nhằm phục vụ khách hàng một cách nhanh chóng, tiện lợi và chính xác nhất. Website giúp khách hàng dễ dàng tra cứu thông tin sản phẩm, lựa chọn mẫu mã, kích cỡ, đặt hàng và thanh toán trực tuyến mà không mất nhiều thời gian chờ đợi hay xảy ra sai sót trong quá trình mua bán. Bên cạnh đó, hệ thống còn hỗ trợ giảm tải khối lượng công việc cho nhân viên thông qua việc tự động hóa các khâu quản lý đơn hàng, khách hàng và tồn kho, đồng thời cho phép thống kê, lập hóa đơn và báo cáo doanh thu một cách nhanh chóng, chính xác và hiệu quả.
+- Giải pháp để thực hiện mục tiêu của hệ thống là xây dựng đầy đủ các chức năng quản lý việc nhập – xuất giày thể thao một cách chặt chẽ và hoàn thiện:
+
+  - Việc hoàn thiện các chức năng trong quá trình quản lý nhập kho, xuất kho và bán hàng sẽ giúp cho công tác quản lý của nhân viên cửa hàng trở nên dễ dàng và thuận tiện hơn. Nhân viên có thể nhanh chóng kiểm tra số lượng tồn kho, mẫu mã, kích cỡ giày và tư vấn cho khách hàng một cách chính xác.
+  - Bên cạnh đó, việc tra cứu thông tin đơn hàng cũng như lập hóa đơn điện tử một cách dễ dàng sẽ giúp cửa hàng nắm bắt tình hình kinh doanh nhanh chóng và chính xác. Công việc này có thể được thực hiện thường xuyên, mọi lúc mọi nơi, từ đó hỗ trợ hiệu quả cho việc điều chỉnh và xây dựng chiến lược kinh doanh phù hợp.
+- Với những chức năng trên, hầu hết các hạn chế của hệ thống cũ sẽ được khắc phục, đồng thời hệ thống mới mang lại các ưu điểm nổi bật sau:
+
+  - Nhanh chóng và thuận tiện.
+  - Chính xác và đầy đủ.
+  - Quản lý dễ dàng.
+  - Giảm tải khối lượng công việc cho nhân viên.
+
+2. Mô hình hóa
+   1. Mô hình Business Use-case
+   <img src="./images/business_uc.png">
+   2. Mô hình SUB_Quản lý giỏ hàng
+   <img src="./images/sub_quanlygiohang.png">
+   3. Mô hình SUB_Quản lý đơn hàng
+   <img src="./images/sub_quanlydonhang.png">
+   4. Mô hình SUB_Quản lý sản phẩm
+   <img src="./images/sub_quanlysanpham.png">
+   5. Mô hình SUB_Quản lý thông tin nhân viên
+   <img src="./images/sub_quanlythongtinnhanvien.png">
+   6. Mô hình SUB_Quản lý thông tin doanh thu
+   <img src="./images/sub_quanlythongtindoanhthu.png">
+  
