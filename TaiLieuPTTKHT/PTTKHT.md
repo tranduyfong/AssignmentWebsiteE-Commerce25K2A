@@ -497,14 +497,14 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
 
 2. Mô hình hóa
    1. Mô hình Business Use-case
-   <img src="./images/business_uc.png">
+   <img src="./images/business_uc.png"><br>
    2. Mô hình SUB_Quản lý giỏ hàng
-   <img src="./images/sub_quanlygiohang.png">
+   <img src="./images/sub_quanlygiohang.png"><br>
    3. Mô hình SUB_Quản lý đơn hàng
-   <img src="./images/sub_quanlydonhang.png">
+   <img src="./images/sub_quanlydonhang.png"><br>
    4. Mô hình SUB_Quản lý sản phẩm
-   <img src="./images/sub_quanlysanpham.png">
+   <img src="./images/sub_quanlysanpham.png"><br>
    5. Mô hình SUB_Quản lý thông tin nhân viên
-   <img src="./images/sub_quanlythongtinnhanvien.png">
+   <img src="./images/sub_quanlythongtinnhanvien.png"><br>
    6. Mô hình SUB_Quản lý thông tin doanh thu
-   <img src="./images/sub_quanlythongtindoanhthu.png">
+   <img src="./images/sub_quanlythongtindoanhthu.png"><br>
