@@ -3,6 +3,7 @@
 Đề tài: Website Thương Mại Điện Tử - Bán Giày Thể Thao Chính Hãng 100%
 
 ## MỞ ĐẦU
+
 ### I. Tổng quan:
 
 Ngày nay, công nghệ phát triển mạnh mẽ và đã trở thành một phần không thể thiếu trong đời sống con người. Nhờ những tiến bộ này, chúng ta tiết kiệm được đáng kể nguyên liệu, nhiên liệu, thời gian và công sức trong các lĩnh vực sản xuất, vận chuyển, lưu thông và quản lý hàng hóa. Sự chuyên môn hóa và tự động hóa ở từng công đoạn đã góp phần nâng cao hiệu suất lao động và mở ra những phương thức kinh doanh mới đầy tiềm năng.
@@ -27,7 +28,6 @@ Với thực trạng hiện nay, nhu cầu mua sắm thời trang và giày th�
   thu, sản phẩm bán chạy được thống kê trực quan, giúp chủ cửa hàng nắm bắt xu hướng thị trường và đưa ra chiến lược kinh doanh kịp thời.
 * **Tối ưu hóa nguồn lực và Mở rộng thị trường:** Nhờ khả năng tự động hóa khâu tiếp nhận đơn hàng và thanh toán trực tuyến, website giúp giảm thiểu đáng kể khối lượng công việc cho nhân viên vận hành. Đồng thời, việc đưa cửa
   hàng lên môi trường internet giúp xóa bỏ rào cản địa lý, nâng cao năng suất bán hàng và tăng sức cạnh tranh trên thị trường.
-
 
 ### III. Xác định yêu cầu hệ thống:
 
@@ -269,3 +269,126 @@ Với thực trạng hiện nay, nhu cầu mua sắm thời trang và giày th�
 
 - Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
 - Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a
+
+#### Các loại mô hình xử lý trong phương pháp phân tích thiết kế hướng đối tượng
+
+Phương pháp phân tích và thiết kế hệ thống hướng đối tượng (Object-Oriented Analysis and Design – OOAD) là phương pháp tiếp cận hiện đại, tập trung vào việc mô hình hóa hệ thống dựa trên các  đối tượng , hành vi và mối quan hệ giữa các đối tượng. Phương pháp này giúp mô tả hệ thống một cách trực quan, dễ hiểu, phù hợp với việc phát triển các hệ thống phần mềm phức tạp và dễ mở rộng.
+
+Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), để mô tả đầy đủ hoạt động của hệ thống website bán giày thể thao, chúng ta sử dụng ngôn ngữ mô hình hóa thống nhất (UML). Các mô hình này được chia thành hai nhóm chính: Mô hình xử lý (mô tả hành vi, nghiệp vụ) và Mô hình dữ liệu (mô tả cấu trúc lưu trữ).
+
+1. Mô hình xử lý trong phân tích thiết kế hướng đối tượng
+
+   Mô hình xử lý dùng để mô tả hành vi, chức năng nghiệp vụ và quá trình tương tác giữa các tác nhân với hệ thống cũng như giữa các đối tượng trong hệ thống.
+
+   1.1. Mô hình Business Usecase
+
+   Mô hình Business Use Case được sử dụng ở giai đoạn đầu của dự án để mô tả quy trình nghiệp vụ tổng thể của cửa hàng giày thể thao từ góc nhìn của tổ chức, độc lập với các giải pháp kỹ thuật cụ thể.
+   Mô hình này xác định các tác nhân tham gia vào hoạt động kinh doanh (Business Actors) và các quy trình nghiệp vụ chính (Business Use Cases) mà họ thực hiện
+
+   a. Các tác nhân (Actor) nghiệp vụ
+
+   Trong hệ thống bán giày thể thao trực tuyến, các actor nghiệp vụ bao gồm:
+
+   * Khách hàng: Người sử dụng hệ thống để xem, mua sản phẩm và tương tác với cửa hàng.
+   * Quản lý: Chủ cửa hàng hoặc người chịu trách nhiệm quản lý toàn bộ hoạt động kinh doanh, nhân sự và doanh thu.
+   * Nhân viên: Người hỗ trợ quản lý đơn hàng, chăm sóc khách hàng và xử lý nghiệp vụ hàng ngày.
+
+   b. Các Business Usecase chính:
+
+   * Xem sản phẩm
+   * Mua sản phẩm
+   * Quản lý giỏ hàng
+   * Quản lý đơn hàng
+   * Liên hệ, chat hỗ trợ
+   * Đăng ký tài khoản
+   * Đăng nhập hệ thống
+   * Quản lý sản phẩm
+   * Quản lý thông tin nhân viên
+   * Quản lý doanh thu
+
+   Ý nghĩa của Business Usecase:
+
+   * Mô tả tổng thể các hoạt động kinh doanh của hệ thống.
+   * Xác định phạm vi nghiệp vụ cần phân tích.
+   * Là cơ sở cho việc xây dựng Use Case hệ thống chi tiết hơn.
+
+   1.2. Mô hình Use case
+
+   Use Case Diagram mô tả sự tương tác giữa các actor và hệ thống, thể hiện rõ các chức năng mà hệ thống cung cấp cho từng loại người dùng.
+
+   Biểu đồ Use Case chỉ ra "ai" (Actor) làm "cái gì" (Use Case) trên hệ thống website.
+
+   Phân rã chức năng theo Actor cho dự án:
+
+   * Actor: Khách hàng
+     * Xem sản phẩm: Tìm kiếm giày theo thương hiệu, size, màu sắc, giá tiền.
+     * Mua sản phẩm: Thêm vào giỏ hàng, tiến hành đặt hàng (Checkout).
+     * Quản lý giỏ hàng: Cập nhật số lượng, xóa sản phẩm khỏi giỏ.
+     * Đăng ký / Đăng nhập: Tạo tài khoản thành viên để theo dõi đơn hàng.
+     * Liên hệ, chat: Gửi tin nhắn hỗ trợ tới cửa hàng.
+   * Actor: Nhân viên
+     * Đăng nhập: Truy cập vào trang quản trị viên.
+     * Quản lý đơn hàng: Xem danh sách đơn đặt, cập nhật trạng thái đơn hàng (Đang xử lý, Đang giao, Đã giao).
+     * Phản hồi chat: Trả lời tin nhắn của khách hàng.
+   * Actor: Quản lý (Admin)
+     * Bao gồm tất cả quyền của Nhân viên.
+     * Quản lý sản phẩm (CRUD): Thêm mẫu giày mới, cập nhật giá, tồn kho, xóa sản phẩm.
+     * Quản lý thông tin nhân viên: Thêm tài khoản nhân viên mới, phân quyền.
+     * Quản lý doanh thu: Xem báo cáo thống kê doanh thu theo ngày, tháng, quý.
+
+   Ý nghĩa của Use Case :
+
+   * Làm rõ yêu cầu chức năng của hệ thống.
+   * Giúp người dùng và nhà phát triển thống nhất về chức năng.
+   * Là cơ sở để xây dựng các mô hình chi tiết như Sequence và Activity.
+
+   1.3. Mô hình Sequence
+
+   Sequence Diagram mô tả trình tự tương tác theo thời gian giữa các đối tượng trong hệ thống khi thực hiện một chức năng cụ thể.
+
+   Biểu đồ này thể hiện chi tiết luồng xử lý logic bên trong hệ thống (từ Giao diện **$\rightarrow$** Controller **$\rightarrow$** Database).
+
+   Ý nghĩa của Sequence:
+
+   * Thể hiện rõ thứ tự gọi phương thức giữa các đối tượng.
+   * Giúp làm rõ logic xử lý của hệ thống.
+   * Hỗ trợ việc thiết kế chi tiết và lập trình.
+
+   1.4. Mô hình Activity
+
+   Activity Diagram dùng để mô tả luồng công việc hoặc quy trình xử lý nghiệp vụ trong hệ thống, thể hiện các bước xử lý, điều kiện rẽ nhánh và các trạng thái song song.
+
+   Tương tự như lưu đồ thuật toán, nó mô tả trình tự các bước thực hiện từ điểm bắt đầu đến điểm kết thúc.
+
+   Ý nghĩa của Activity:
+
+   * Mô tả rõ ràng quy trình nghiệp vụ.
+   * Giúp phát hiện các điểm nghẽn trong xử lý.
+   * Hỗ trợ tối ưu hóa quy trình hệ thống.
+2. Mô hình dữ liệu trong phương pháp phân tích thiết kế hướng đối tượng
+
+   Mô hình dữ liệu dùng để mô tả cấu trúc dữ liệu , thuộc tính và mối quan hệ giữa các đối tượng trong hệ thống.
+
+   2.1. Mô hình Class
+
+   Class Diagram mô tả các lớp (Class) trong hệ thống, bao gồm:
+
+   * Thuộc tính của lớp
+   * Phương thức của lớp
+   * Quan hệ giữa các lớp (kế thừa, kết hợp, liên kết)
+
+   Ý nghĩa của Class:
+
+   * Là nền tảng cho thiết kế hướng đối tượng
+   * Hỗ trợ lập trình và bảo trì hệ thống
+   * Đảm bảo tính nhất quán giữa phân tích và cài đặt
+
+   2.2. Mô hình ER (Entity – Relationship)
+
+   Mô hình ER dùng để mô tả dữ liệu ở mức khái niệm, tập trung vào:
+
+   * Các thực thể
+   * Thuộc tính
+   * Mối quan hệ giữa các thực thể
+
+   Mô hình ER trong hệ thống bán giày thể thao hỗ trợ thiết kế cơ sở dữ liệu, đảm bảo dữ liệu được tổ chức hợp lý, tránh dư thừa và đảm bảo toàn vẹn.
