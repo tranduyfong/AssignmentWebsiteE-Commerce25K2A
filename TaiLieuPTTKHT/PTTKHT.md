@@ -31,92 +31,104 @@ Với thực trạng hiện nay, nhu cầu mua sắm thời trang và giày th�
 
 ### III. Xác định yêu cầu hệ thống:
 
-1. **Yêu cầu chức năng:**
+**I.Yêu cầu chức năng:**
 
-   Hệ thống quản lý bán giày thể thao chính hãng có chức năng lưu trữ và xử lý toàn bộ thông tin quan trọng phục vụ cho hoạt động kinh doanh hằng ngày, bao gồm dữ liệu về nhân viên, giày(size giày, mẫu mã, …), hóa đơn và các báo cáo thống kê. Việc quản lý thông tin đầy đủ và chính xác giúp cửa hàng hạn chế sai sót, tiết kiệm thời gian và tối ưu hiệu quả làm việc.
+Hệ thống website bán giày thể thao đóng vai trò là kênh bán hàng trực tuyến và quản lý vận hành tập trung. Hệ thống hỗ trợ người dùng từ khâu tìm kiếm, lựa chọn sản phẩm đến thanh toán, đồng thời cung cấp
+công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và tương tác khách hàng.
 
-   **1.1 Quản lý nhập giày**
 
-   •**1.1.1**. Thêm mới giày: Hệ thống cho phép thêm mới thông tin giày (tên, mã, hãng, giá nhập,size số, năm sản xuất, nhà cung cấp…).
+**1.Quản lý dành cho người dùng (user/khách hàng)**
 
-   •**1.1.2**. Sửa thông tin giày: Hệ thống cho phép chỉnh sửa thông tin giày khi có sự thay đổi (giá cả, nhà cung cấp, hết size …).
+* Tài khoản:  Hệ thống cho phép khách hàng đăng ký tài khoản mới và đăng nhập để sử dụng các tính năng cá nhân hóa.
 
-   •**1.1.3**. Xóa giày: Hệ thống cho phép xóa giày khỏi kho trong trường hợp ngừng kinh doanh, hết size hoặc nhập sai dữ liệu.
+**1.1 Mua sắm và giỏ hàng:**
 
-   • **1.1.4**. Lập đơn mua: Hệ thống hỗ trợ lập đơn đặt hàng từ nhà cung cấp dựa trên nhu cầu tồn kho.
+* Xem danh sách và chi tiết sản phẩm (hình ảnh, mô tả, giá, bảng size).
+* Thêm sản phẩm vào giỏ hàng, cập nhật số lượng hoặc xóa sản phẩm.
+* Xem danh sách giỏ hàng hiện tại trước khi tiến hành thanh toán.
 
-   •**1.1.5**. Lập phiếu nhập: Khi nhận giày từ nhà cung cấp, hệ thống cho phép lập phiếu nhập để cập nhật số lượng, giá nhập và tình trạng hàng vào kho.
+**1.2 Thanh toán:**
 
-   **1.2. Quản lý xuất giày**
+* Hỗ trợ đa dạng phương thức thanh toán bao gồm: Thanh toán qua cổng **VNPay** và thanh toán khi nhận hàng ( **Tiền mặt** ).
 
-   •**1.2.1** Kiểm tra yêu cầu: Hệ thống tiếp nhận và kiểm tra yêu cầu mua giày từ khách hàng.
+**1.3 Theo dõi đơn hàng:**
 
-   •**1.2.2**. Nhận đơn đặt hàng: Hệ thống ghi nhận đơn đặt hàng, lưu thông tin khách hàng, loại giày, size giày, số lượng và hình thức thanh toán.
+* Xem lịch sử mua hàng cá nhân.
+* Theo dõi tình trạng đơn hàng thời gian thực (Chờ xác nhận, Đang giao, Đã giao, Đã hủy).
 
-   •**1.2.3**. Đối chiếu đơn: Hệ thống cho phép nhân viên kiểm tra, đối chiếu đơn hàng với tồn kho, xem giày có còn size hay mẫu mã có còn kinh doanh để đảm bảo chính xác.
+**1.4 Hỗ trợ và đổi trả:**
 
-   •**1.2.4**. Hóa đơn: Hệ thống hỗ trợ lập hóa đơn bán giày cho khách hàng, cập nhật số lượng giày trong kho và doanh thu.
+* Hệ thống quản lý bán giày thể thao chính hãng có chức năng lưu trữ và xử lý toàn bộ thông tin quan trọng phục vụ cho hoạt động kinh doanh hằng ngày, bao gồm dữ liệu về nhân viên, giày(size giày, mẫu mã, …), hóa đơn và các báo cáo thống kê. Việc quản lý thông tin đầy đủ và chính xác giúp cửa hàng hạn chế sai sót, tiết kiệm thời gian và tối ưu hiệu quả làm việc.
+* Liên hệ chat trực tuyến với nhân viên hỗ trợ.
+* Gửi yêu cầu và thông tin liên hệ để thực hiện đổi trả sản phẩm theo chính sách.
 
-   **1.3. Quản lý nhân viên**
 
-   •**1.3.1**. Thêm mới nhân viên: Quản trị viên có thể thêm thông tin nhân viên mới (họ tên, tài khoản, chức vụ, liên hệ…).
+**2.Quản lý dành cho Quản trị viên (Admin/Service)**
 
-   •**1.3.2**. Sửa thông tin: Cho phép chỉnh sửa thông tin nhân viên khi có thay đổi.
+**2.1.Quản lý sản phẩm (CRUD) :** 
 
-   •**1.3.3**. Xóa nhân viên: Hệ thống cho phép xóa tài khoản nhân viên khi nghỉ việc hoặc vi phạm.
+* Thêm mới, chỉnh sửa, xóa và hiển thị thông tin các mẫu giày.
 
-   **1.4. Báo cáo**
+**2.2.Quản lý kho hàng chuyên sâu:** 
 
-   •**1.4.1**. Báo cáo doanh thu: Hệ thống thống kê doanh thu theo ngày, tháng, năm hoặc theo nhân viên bán hàng.
+* Hệ thống phải hiển thị chi tiết trạng thái còn hàng/hết hàng theo từng **Size** cụ thể của từng mã sản phẩm.
 
-   •**1.4.2**. Báo cáo tồn kho: Thống kê số lượng giày còn lại trong kho, giày tồn k còn nguyên vẹn(ố màu, hỏng keo, rách,…), mẫu giày bán chạy/chậm.
+**2.3.Quản lý đơn hàng**: 
 
-   •**1.4.3**. Báo cáo khách hàng: Thống kê số lượng khách hàng mua hàng, lịch sử giao dịch và các thông tin liên quan.
+* Tiếp nhận đơn hàng từ khách hàng, cập nhật trạng thái xử lý và vận chuyển.
 
-   •**1.4.4**. Báo cáo danh sách nhà cung cấp: Hệ thống cho phép xem báo cáo về các nhà cung cấp, bao gồm số lần nhập, giá trị nhập, mức độ uy tín.
-2. **Yêu cầu phi chức năng**:
+**2.4.Tương tác với khách hàng:** 
 
-   **2.1. Hiệu năng**
+* Tiếp nhận và phản hồi tin nhắn từ khung chatbox để hỗ trợ khách hàng kịp thời.
 
-- Hệ thống phải đảm bảo tốc độ xử lý nhanh chóng, ổn định để đáp ứng nhu cầu phục vụ khách hàng.Mỗi giao dịch bán giày (từ lúc nhập thông tin đến khi in/xuất hóa đơn) cần được xử lý trong vòng < 10 giây, đảm bảo không gây gián đoạn cho nhân viên và khách hàng.
-- Hệ thống có khả năng phục vụ đồng thời 50-100 người dùng trong cùng một thời điểm, bao gồm nhân viên bán hàng, nhân viên kho và quản lý, mà không bị treo máy, giật lag hay mất dữ liệu.
-- Các thao tác tìm kiếm giày, tra cứu báo cáo và thống kê phải được trả kết quả ngay lập tức (thời gian phản hồi dưới 2 giây với truy vấn thông thường).
+**2.5.Báo cáo và thống kê:**
 
-  **2.2. Bảo mật**
-- Bảo mật thông tin là yếu tố then chốt của hệ thống quản lý bán giày thể thao.
-- Người dùng bắt buộc phải đăng nhập bằng tài khoản và mật khẩu, có thể kết hợp với cơ chế OTP (One-Time Password) để thêm được mẫu giày vào giỏ hàng, thanh toán và bảo mật thông tin...
-- Dữ liệu nhạy cảm như thông tin khách hàng, đơn mua giày hoặc dữ liệu kinh doanh phải được mã hóa trong cơ sở dữ liệu và trong quá trình truyền tải để tránh rò rỉ thông tin.
-- Hệ thống cần có cơ chế phân quyền truy cập dữ liệu, đảm bảo mỗi nhân viên chỉ được phép truy cập vào phạm vi dữ liệu cần thiết cho công việc của mình.
-- Cung cấp chức năng sao lưu dữ liệu tự động theo chu kỳ (hàng ngày/tuần/tháng) để phòng ngừa trường hợp mất mát hoặc hỏng hóc dữ liệu.
+* Thống kê doanh thu: Tổng hợp số tiền thu được theo ngày, tháng, năm.
+* Thống kê sản lượng: Báo cáo số lượng giày bán ra theo các mốc thời gian (Tuần, Tháng, Năm) để đánh giá xu hướng thị trường.
 
-  **2.3. Độ tin cậy & Khả dụng**
-- Hệ thống phải luôn trong trạng thái sẵn sàng phục vụ.
-- Yêu cầu hoạt động 24/7 với độ sẵn sàng ≥ 99,9%, hạn chế tối đa tình trạng ngừng dịch vụ.
-- Có cơ chế dự phòng và khôi phục dữ liệu sau sự cố, bao gồm chức năng backup – restore nhanh chóng, giúp đảm bảo không mất dữ liệu quan trọng trong trường hợp lỗi hệ thống hoặc sự cố phần cứng.
-- Hệ thống phải chịu được các tình huống bất thường như mất điện, mạng chập chờn mà không gây hỏng cơ sở dữ liệu.
 
-  **2.4. Khả năng mở rộng**
-- Phần mềm phải được thiết kế theo hướng linh hoạt và dễ mở rộng.
-- Có thể nâng cấp để quản lý cùng lúc nhiều chi nhánh cửa hàng và đồng bộ dữ liệu về một hệ thống trung tâm.
-- Dễ dàng tích hợp với các phần mềm kế toán, quản lý nhân sự, hệ thống ngân hàng( trong trường hợp khách hàng mua trả góp) và các cổng thanh toán trực tuyến.
-- Hỗ trợ khả năng mở rộng về cơ sở dữ liệu, có thể quản lý hàng triệu bản ghi khi quy mô cửa hàng phát triển.
+**II.Yêu cầu phi chức năng.**
 
-  **2.5. Khả năng sử dụng**
-- Hệ thống phải thân thiện, dễ dùng đối với nhân viên ở nhiều trình độ khác nhau.
-- Giao diện đơn giản, trực quan, các chức năng được sắp xếp hợp lý để người dùng có thể thao tác nhanh mà không cần đào tạo quá nhiều.
-- Hỗ trợ tìm kiếm mẫu giày nhanh theo mã, tên, hãng,...
-- Có chức năng gợi ý tên giày tự động khi người dùng nhập từ khóa, giúp giảm sai sót khi nhập dữ liệu.
-- Có khả năng hỗ trợ đa ngôn ngữ (tiếng Việt, tiếng Anh…) trong trường hợp cửa hàng có nhu cầu mở rộng hoặc phục vụ khách hàng quốc tế.
+1. **Hiệu năng:**
 
-  **2.6. Bảo trì & Nâng cấp**
-- Hệ thống cần dễ dàng bảo trì, sửa lỗi và cập nhật khi có yêu cầu mới.
-- Cho phép cập nhật danh mục giày mới thường xuyên mà không làm gián đoạn hoạt động kinh doanh.
-- Có khả năng nâng cấp lên phiên bản cao hơn của cơ sở dữ liệu, framework hoặc hệ điều hành mà không ảnh hưởng đến dữ liệu hiện tại.
-- Hỗ trợ bảo trì từ xa, giúp đội ngũ kỹ thuật dễ dàng xử lý sự cố mà không mất nhiều thời gian.
+* Tốc độ xử lý: Các thao tác cơ bản (tìm kiếm giày, thêm vào giỏ hàng) phải phản hồi trong vòng < 2 giây.
+* Giao dịch thanh toán: Quá trình xử lý đơn hàng và chuyển hướng sang cổng VNPay không quá 5 giây (tùy thuộc vào tốc độ API bên thứ ba).
+* Khả năng chịu tải: Đáp ứng tốt tối thiểu 50 người dùng hoạt động cùng lúc mà không xảy ra hiện tượng mất dữ liệu giỏ hàng hoặc sai lệch tồn kho.
+* Tối ưu hóa hình ảnh: Hình ảnh sản phẩm (giày thường có độ phân giải cao) phải được nén hoặc xử lý lazy-loading để không làm chậm tốc độ tải trang trên thiết bị di động
 
-  **2.7. Tuân thủ pháp lý**
-- Hệ thống phải đảm bảo tuân thủ đầy đủ các quy định pháp luật liên quan đến lĩnh vực kinh doanh( đóng thuế doanh nghiệp, hàng nhập rõ nguồn gốc,…)
-- Cam kết mẫu mã bán ra đều là hàng chính hãng và có bảo hành trong trường hợp khách hàng phát hiện giày fake.
+2. **Bảo mật:**
+
+* Toàn bộ thông tin tài khoản và mật khẩu khách hàng phải được mã hóa (hashing).
+* Các giao dịch qua cổng VNPay phải đảm bảo tuân thủ tiêu chuẩn bảo mật tài chính, đảm bảo không rò rỉ dữ liệu thẻ của khách hàng.
+* Phân quyền chặt chẽ: Nhân viên tư vấn chỉ có quyền chat và xem đơn hàng, trong khi quản trị viên cao cấp mới có quyền can thiệp vào dữ liệu doanh thu và xóa sản phẩm.
+
+3. **Độ tin cậy & khả dụng:**
+
+* Hệ thống hoạt động 24/7 để khách hàng có thể đặt hàng bất cứ lúc nào. Độ sẵn sàng đạt 99.9%
+* Dữ liệu đơn hàng và thông tin khách hàng phải được sao lưu tự động hàng ngày để đảm bảo có thể khôi phục ngay khi gặp sự cố máy chủ.
+* Đảm bảo tính nhất quán dữ liệu: Khi khách hàng thanh toán thành công, số lượng hàng trong kho (theo size) phải được trừ đi tương ứng ngay lập tức.
+
+4. **Khả năng mở rộng**
+
+* Cấu trúc mã nguồn linh hoạt, dễ dàng tích hợp thêm các đơn vị vận chuyển (GHTK, GHN...) hoặc các ví điện tử khác trong tương lai.
+* Khả năng mở rộng danh mục sang các phụ kiện thể thao khác mà không cần thay đổi cấu trúc nền tảng.
+
+5. **Khả năng sử dụng:**
+
+* Giao diện người dùng (UI) hiện đại, trẻ trung, phù hợp với phong cách thời trang thể thao.
+* Trải nghiệm người dùng (UX) tối ưu trên cả thiết bị di động (Responsive Design) vì phần lớn khách hàng mua sắm qua điện thoại.
+* Chức năng lọc sản phẩm (theo giá, size, màu sắc) và tìm kiếm thông minh giúp người dùng tìm thấy đôi giày mong muốn nhanh nhất.
+
+6. **Bảo trì & Nâng cấp:**
+
+* Hệ thống được thiết kế theo module để dễ dàng cập nhật các tính năng mới (ví dụ: hệ thống tích điểm thành viên) mà không ảnh hưởng đến các chức năng hiện có.
+* Hỗ trợ công cụ quản lý log để phát hiện và xử lý lỗi phát sinh từ phía người dùng một cách nhanh chóng.
+
+7. **Tuân thủ pháp lý:**
+
+* Tuân thủ các quy định về thương mại điện tử của Nhà nước (đăng ký với Bộ Công Thương).
+* Đảm bảo chính sách bảo mật thông tin cá nhân khách hàng theo quy định pháp luật.
+* Hiển thị rõ ràng các thông tin về giá, chính sách đổi trả và bảo hành sản phẩm.
 
 ### IV. Ý nghĩa của đề tài: Website Thương mại điện tử - Hệ thống bán giày thể thao chính hãng 100%
 
@@ -263,8 +275,16 @@ Với thực trạng hiện nay, nhu cầu mua sắm thời trang và giày th�
 
 8. Mongoose
 
+<<<<<<< HEAD
 * Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
 * Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
+=======
+- Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
+- Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a
+
+  
+### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
+>>>>>>> b76ca42a9efd72acabca24f41dbc2464859865cf
 
 **1. Các khái niệm cơ bản**
 
@@ -340,3 +360,156 @@ Mô hình hóa là quá trình biểu diễn một hệ thống thực ở dạn
 * **Mức vật lý:** mô tả cách thức triển khai, công nghệ và phương tiện thực hiện
 
 Trong phân tích thiết kế hệ thống quản lý bán giày, mô hình hóa giúp xác định rõ các chức năng như bán hàng, nhập kho, quản lý tồn kho và báo cáo, từ đó hỗ trợ quá trình thiết kế hệ thống chính xác và hiệu quả.
+
+### VIII. Các loại mô hình xử lý trong phương pháp phân tích thiết kế hướng đối tượng
+
+Phương pháp phân tích và thiết kế hệ thống hướng đối tượng (Object-Oriented Analysis and Design – OOAD) là phương pháp tiếp cận hiện đại, tập trung vào việc mô hình hóa hệ thống dựa trên các  đối tượng , hành vi và mối quan hệ giữa các đối tượng. Phương pháp này giúp mô tả hệ thống một cách trực quan, dễ hiểu, phù hợp với việc phát triển các hệ thống phần mềm phức tạp và dễ mở rộng.
+
+Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), để mô tả đầy đủ hoạt động của hệ thống website bán giày thể thao, chúng ta sử dụng ngôn ngữ mô hình hóa thống nhất (UML). Các mô hình này được chia thành hai nhóm chính: Mô hình xử lý (mô tả hành vi, nghiệp vụ) và Mô hình dữ liệu (mô tả cấu trúc lưu trữ).
+
+1. Mô hình xử lý trong phân tích thiết kế hướng đối tượng
+
+   Mô hình xử lý dùng để mô tả hành vi, chức năng nghiệp vụ và quá trình tương tác giữa các tác nhân với hệ thống cũng như giữa các đối tượng trong hệ thống.
+
+   1.1. Mô hình Business Usecase
+
+   Mô hình Business Use Case được sử dụng ở giai đoạn đầu của dự án để mô tả quy trình nghiệp vụ tổng thể của cửa hàng giày thể thao từ góc nhìn của tổ chức, độc lập với các giải pháp kỹ thuật cụ thể.
+   Mô hình này xác định các tác nhân tham gia vào hoạt động kinh doanh (Business Actors) và các quy trình nghiệp vụ chính (Business Use Cases) mà họ thực hiện
+
+   a. Các tác nhân (Actor) nghiệp vụ
+
+   Trong hệ thống bán giày thể thao trực tuyến, các actor nghiệp vụ bao gồm:
+
+   * Khách hàng: Người sử dụng hệ thống để xem, mua sản phẩm và tương tác với cửa hàng.
+   * Quản lý: Chủ cửa hàng hoặc người chịu trách nhiệm quản lý toàn bộ hoạt động kinh doanh, nhân sự và doanh thu.
+   * Nhân viên: Người hỗ trợ quản lý đơn hàng, chăm sóc khách hàng và xử lý nghiệp vụ hàng ngày.
+
+   b. Các Business Usecase chính:
+
+   * Xem sản phẩm
+   * Mua sản phẩm
+   * Quản lý giỏ hàng
+   * Quản lý đơn hàng
+   * Liên hệ, chat hỗ trợ
+   * Đăng ký tài khoản
+   * Đăng nhập hệ thống
+   * Quản lý sản phẩm
+   * Quản lý thông tin nhân viên
+   * Quản lý doanh thu
+
+   Ý nghĩa của Business Usecase:
+
+   * Mô tả tổng thể các hoạt động kinh doanh của hệ thống.
+   * Xác định phạm vi nghiệp vụ cần phân tích.
+   * Là cơ sở cho việc xây dựng Use Case hệ thống chi tiết hơn.
+
+   1.2. Mô hình Use case
+
+   Use Case Diagram mô tả sự tương tác giữa các actor và hệ thống, thể hiện rõ các chức năng mà hệ thống cung cấp cho từng loại người dùng.
+
+   Biểu đồ Use Case chỉ ra "ai" (Actor) làm "cái gì" (Use Case) trên hệ thống website.
+
+   Phân rã chức năng theo Actor cho dự án:
+
+   * Actor: Khách hàng
+     * Xem sản phẩm: Tìm kiếm giày theo thương hiệu, size, màu sắc, giá tiền.
+     * Mua sản phẩm: Thêm vào giỏ hàng, tiến hành đặt hàng (Checkout).
+     * Quản lý giỏ hàng: Cập nhật số lượng, xóa sản phẩm khỏi giỏ.
+     * Đăng ký / Đăng nhập: Tạo tài khoản thành viên để theo dõi đơn hàng.
+     * Liên hệ, chat: Gửi tin nhắn hỗ trợ tới cửa hàng.
+   * Actor: Nhân viên
+     * Đăng nhập: Truy cập vào trang quản trị viên.
+     * Quản lý đơn hàng: Xem danh sách đơn đặt, cập nhật trạng thái đơn hàng (Đang xử lý, Đang giao, Đã giao).
+     * Phản hồi chat: Trả lời tin nhắn của khách hàng.
+   * Actor: Quản lý (Admin)
+     * Bao gồm tất cả quyền của Nhân viên.
+     * Quản lý sản phẩm (CRUD): Thêm mẫu giày mới, cập nhật giá, tồn kho, xóa sản phẩm.
+     * Quản lý thông tin nhân viên: Thêm tài khoản nhân viên mới, phân quyền.
+     * Quản lý doanh thu: Xem báo cáo thống kê doanh thu theo ngày, tháng, quý.
+
+   Ý nghĩa của Use Case :
+
+   * Làm rõ yêu cầu chức năng của hệ thống.
+   * Giúp người dùng và nhà phát triển thống nhất về chức năng.
+   * Là cơ sở để xây dựng các mô hình chi tiết như Sequence và Activity.
+
+   1.3. Mô hình Sequence
+
+   Sequence Diagram mô tả trình tự tương tác theo thời gian giữa các đối tượng trong hệ thống khi thực hiện một chức năng cụ thể.
+
+   Biểu đồ này thể hiện chi tiết luồng xử lý logic bên trong hệ thống (từ Giao diện **$\rightarrow$** Controller **$\rightarrow$** Database).
+
+   Ý nghĩa của Sequence:
+
+   * Thể hiện rõ thứ tự gọi phương thức giữa các đối tượng.
+   * Giúp làm rõ logic xử lý của hệ thống.
+   * Hỗ trợ việc thiết kế chi tiết và lập trình.
+
+   1.4. Mô hình Activity
+
+   Activity Diagram dùng để mô tả luồng công việc hoặc quy trình xử lý nghiệp vụ trong hệ thống, thể hiện các bước xử lý, điều kiện rẽ nhánh và các trạng thái song song.
+
+   Tương tự như lưu đồ thuật toán, nó mô tả trình tự các bước thực hiện từ điểm bắt đầu đến điểm kết thúc.
+
+   Ý nghĩa của Activity:
+
+   * Mô tả rõ ràng quy trình nghiệp vụ.
+   * Giúp phát hiện các điểm nghẽn trong xử lý.
+   * Hỗ trợ tối ưu hóa quy trình hệ thống.
+2. Mô hình dữ liệu trong phương pháp phân tích thiết kế hướng đối tượng
+
+   Mô hình dữ liệu dùng để mô tả cấu trúc dữ liệu , thuộc tính và mối quan hệ giữa các đối tượng trong hệ thống.
+
+   2.1. Mô hình Class
+
+   Class Diagram mô tả các lớp (Class) trong hệ thống, bao gồm:
+
+   * Thuộc tính của lớp
+   * Phương thức của lớp
+   * Quan hệ giữa các lớp (kế thừa, kết hợp, liên kết)
+
+   Ý nghĩa của Class:
+
+   * Là nền tảng cho thiết kế hướng đối tượng
+   * Hỗ trợ lập trình và bảo trì hệ thống
+   * Đảm bảo tính nhất quán giữa phân tích và cài đặt
+
+   2.2. Mô hình ER (Entity – Relationship)
+
+   Mô hình ER dùng để mô tả dữ liệu ở mức khái niệm, tập trung vào:
+
+   * Các thực thể
+   * Thuộc tính
+   * Mối quan hệ giữa các thực thể
+
+   Mô hình ER trong hệ thống bán giày thể thao hỗ trợ thiết kế cơ sở dữ liệu, đảm bảo dữ liệu được tổ chức hợp lý, tránh dư thừa và đảm bảo toàn vẹn.
+   
+### IX. Phân tích thiết kế hệ thống
+
+1. Giải pháp
+
+- Từ những hạn chế và khó khăn của phương thức bán hàng truyền thống đã nêu ở phần trên, mục tiêu chính của website bán giày thể thao là xây dựng một hệ thống kinh doanh trực tuyến hiện đại nhằm phục vụ khách hàng một cách nhanh chóng, tiện lợi và chính xác nhất. Website giúp khách hàng dễ dàng tra cứu thông tin sản phẩm, lựa chọn mẫu mã, kích cỡ, đặt hàng và thanh toán trực tuyến mà không mất nhiều thời gian chờ đợi hay xảy ra sai sót trong quá trình mua bán. Bên cạnh đó, hệ thống còn hỗ trợ giảm tải khối lượng công việc cho nhân viên thông qua việc tự động hóa các khâu quản lý đơn hàng, khách hàng và tồn kho, đồng thời cho phép thống kê, lập hóa đơn và báo cáo doanh thu một cách nhanh chóng, chính xác và hiệu quả.
+- Giải pháp để thực hiện mục tiêu của hệ thống là xây dựng đầy đủ các chức năng quản lý việc nhập – xuất giày thể thao một cách chặt chẽ và hoàn thiện:
+
+  - Việc hoàn thiện các chức năng trong quá trình quản lý nhập kho, xuất kho và bán hàng sẽ giúp cho công tác quản lý của nhân viên cửa hàng trở nên dễ dàng và thuận tiện hơn. Nhân viên có thể nhanh chóng kiểm tra số lượng tồn kho, mẫu mã, kích cỡ giày và tư vấn cho khách hàng một cách chính xác.
+  - Bên cạnh đó, việc tra cứu thông tin đơn hàng cũng như lập hóa đơn điện tử một cách dễ dàng sẽ giúp cửa hàng nắm bắt tình hình kinh doanh nhanh chóng và chính xác. Công việc này có thể được thực hiện thường xuyên, mọi lúc mọi nơi, từ đó hỗ trợ hiệu quả cho việc điều chỉnh và xây dựng chiến lược kinh doanh phù hợp.
+- Với những chức năng trên, hầu hết các hạn chế của hệ thống cũ sẽ được khắc phục, đồng thời hệ thống mới mang lại các ưu điểm nổi bật sau:
+
+  - Nhanh chóng và thuận tiện.
+  - Chính xác và đầy đủ.
+  - Quản lý dễ dàng.
+  - Giảm tải khối lượng công việc cho nhân viên.
+
+2. Mô hình hóa
+   1. Mô hình Business Use-case
+   <img src="./images/business_uc.png"><br>
+   2. Mô hình SUB_Quản lý giỏ hàng
+   <img src="./images/sub_quanlygiohang.png"><br>
+   3. Mô hình SUB_Quản lý đơn hàng
+   <img src="./images/sub_quanlydonhang.png"><br>
+   4. Mô hình SUB_Quản lý sản phẩm
+   <img src="./images/sub_quanlysanpham.png"><br>
+   5. Mô hình SUB_Quản lý thông tin nhân viên
+   <img src="./images/sub_quanlythongtinnhanvien.png"><br>
+   6. Mô hình SUB_Quản lý thông tin doanh thu
+   <img src="./images/sub_quanlythongtindoanhthu.png"><br>
