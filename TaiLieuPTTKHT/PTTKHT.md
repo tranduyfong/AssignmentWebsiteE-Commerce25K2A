@@ -264,8 +264,7 @@ Với thực trạng hiện nay, nhu cầu mua sắm thời trang và giày th�
 8. Mongoose
 
 * Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
-* Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a
-  ### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
+* Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
 
 **1. Các khái niệm cơ bản**
 
