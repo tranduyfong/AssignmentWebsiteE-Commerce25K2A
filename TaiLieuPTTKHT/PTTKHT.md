@@ -36,7 +36,6 @@ Với thực trạng hiện nay, nhu cầu mua sắm thời trang và giày th�
 Hệ thống website bán giày thể thao đóng vai trò là kênh bán hàng trực tuyến và quản lý vận hành tập trung. Hệ thống hỗ trợ người dùng từ khâu tìm kiếm, lựa chọn sản phẩm đến thanh toán, đồng thời cung cấp
 công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và tương tác khách hàng.
 
-
 **1.Quản lý dành cho người dùng (user/khách hàng)**
 
 * Tài khoản:  Hệ thống cho phép khách hàng đăng ký tài khoản mới và đăng nhập để sử dụng các tính năng cá nhân hóa.
@@ -62,22 +61,21 @@ công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và 
 * Liên hệ chat trực tuyến với nhân viên hỗ trợ.
 * Gửi yêu cầu và thông tin liên hệ để thực hiện đổi trả sản phẩm theo chính sách.
 
-
 **2.Quản lý dành cho Quản trị viên (Admin/Service)**
 
-**2.1.Quản lý sản phẩm (CRUD) :** 
+**2.1.Quản lý sản phẩm (CRUD) :**
 
 * Thêm mới, chỉnh sửa, xóa và hiển thị thông tin các mẫu giày.
 
-**2.2.Quản lý kho hàng chuyên sâu:** 
+**2.2.Quản lý kho hàng chuyên sâu:**
 
 * Hệ thống phải hiển thị chi tiết trạng thái còn hàng/hết hàng theo từng **Size** cụ thể của từng mã sản phẩm.
 
-**2.3.Quản lý đơn hàng**: 
+**2.3.Quản lý đơn hàng**:
 
 * Tiếp nhận đơn hàng từ khách hàng, cập nhật trạng thái xử lý và vận chuyển.
 
-**2.4.Tương tác với khách hàng:** 
+**2.4.Tương tác với khách hàng:**
 
 * Tiếp nhận và phản hồi tin nhắn từ khung chatbox để hỗ trợ khách hàng kịp thời.
 
@@ -85,7 +83,6 @@ công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và 
 
 * Thống kê doanh thu: Tổng hợp số tiền thu được theo ngày, tháng, năm.
 * Thống kê sản lượng: Báo cáo số lượng giày bán ra theo các mốc thời gian (Tuần, Tháng, Năm) để đánh giá xu hướng thị trường.
-
 
 **II.Yêu cầu phi chức năng.**
 
@@ -278,7 +275,6 @@ công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và 
 - Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
 - Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a
 
-  
 ### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
 
 **1. Các khái niệm cơ bản**
@@ -478,7 +474,7 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
    * Mối quan hệ giữa các thực thể
 
    Mô hình ER trong hệ thống bán giày thể thao hỗ trợ thiết kế cơ sở dữ liệu, đảm bảo dữ liệu được tổ chức hợp lý, tránh dư thừa và đảm bảo toàn vẹn.
-   
+
 ### IX. Phân tích thiết kế hệ thống
 
 1. Giải pháp
@@ -497,14 +493,28 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
 
 2. Mô hình hóa
    1. Mô hình Business Use-case
-   <img src="./images/business_uc.png"><br>
+      `<img src="./images/business_uc.png"><br>`
    2. Mô hình SUB_Quản lý giỏ hàng
-   <img src="./images/sub_quanlygiohang.png"><br>
+      `<img src="./images/sub_quanlygiohang.png"><br>`
    3. Mô hình SUB_Quản lý đơn hàng
-   <img src="./images/sub_quanlydonhang.png"><br>
+      `<img src="./images/sub_quanlydonhang.png"><br>`
    4. Mô hình SUB_Quản lý sản phẩm
-   <img src="./images/sub_quanlysanpham.png"><br>
+      `<img src="./images/sub_quanlysanpham.png"><br>`
    5. Mô hình SUB_Quản lý thông tin nhân viên
-   <img src="./images/sub_quanlythongtinnhanvien.png"><br>
+      `<img src="./images/sub_quanlythongtinnhanvien.png"><br>`
    6. Mô hình SUB_Quản lý thông tin doanh thu
-   <img src="./images/sub_quanlythongtindoanhthu.png"><br>
+      `<img src="./images/sub_quanlythongtindoanhthu.png"><br>`
+
+
+Sơ đồ Chỉnh sửa thông tin cá nhân
+`<img src="/TaiLieuPTTKHT/images/AC_CSTTCN.png"><br>`
+`<img src="/TaiLieuPTTKHT/images/SE_CSTTCN.png"><br>`
+Sơ đồ Lịch sử mua hàng
+`<img src="/TaiLieuPTTKHT/images/AC_LSMH."><br>`
+`<img src="/TaiLieuPTTKHT/images/SE_LSMH."><br>`
+Sơ đồ Tìm kiếm sản phẩm
+`<img src="/TaiLieuPTTKHT/images/AC_TKSP."><br>`
+`<img src="/TaiLieuPTTKHT/images/SE_TKSP."><br>`
+Sơ đồ Tình trạng đơn hàng
+`<img src="/TaiLieuPTTKHT/images/AC_TTĐH."><br>`
+`<img src="/TaiLieuPTTKHT/images/SE_TTĐH."><br>`
