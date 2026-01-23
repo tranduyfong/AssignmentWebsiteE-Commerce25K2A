@@ -273,14 +273,23 @@ công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và 
 8. Mongoose
 
 <<<<<<< HEAD
+
 * Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
 * Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
-=======
+  =======
+
 - Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
 - Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a
 
 ### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
+
 >>>>>>> b76ca42a9efd72acabca24f41dbc2464859865cf
+>>>>>>>
+>>>>>>
+>>>>>
+>>>>
+>>>
+>>
 
 **1. Các khái niệm cơ bản**
 
@@ -499,80 +508,146 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
 2. Mô hình hóa
 
    1. Mô hình Business Use-case
-      <img src="./images/business_uc.png"><br>
+      `<img src="./images/business_uc.png"><br>`
    2. Mô hình SUB_Quản lý giỏ hàng
-      <img src="./images/sub_quanlygiohang.png"><br>
+      `<img src="./images/sub_quanlygiohang.png"><br>`
    3. Mô hình SUB_Quản lý đơn hàng
-      <img src="./images/sub_quanlydonhang.png"><br>
+      `<img src="./images/sub_quanlydonhang.png"><br>`
    4. Mô hình SUB_Quản lý sản phẩm
-      <img src="./images/sub_quanlysanpham.png"><br>
+      `<img src="./images/sub_quanlysanpham.png"><br>`
    5. Mô hình SUB_Quản lý thông tin nhân viên
-      <img src="./images/sub_quanlythongtinnhanvien.png"><br>
+      `<img src="./images/sub_quanlythongtinnhanvien.png"><br>`
    6. Mô hình SUB_Quản lý thông tin doanh thu
-      <img src="./images/sub_quanlythongtindoanhthu.png"><br>
-
+      `<img src="./images/sub_quanlythongtindoanhthu.png"><br>`
 3. Mô hình hóa Thanh toán
 
    1. Biểu đồ thanh toán trực tiếp (Tiền mặt):
       1. Biểu đồ Activity:
-      <img src="./images/ac_thanhtoantienmat.png"><br>
+         `<img src="./images/ac_thanhtoantienmat.png"><br>`
       2. Biểu đồ Sequence:
-      <img src="./images/se_thanhtoantienmat.png"><br>
+         `<img src="./images/se_thanhtoantienmat.png"><br>`
+      3. Đặc tả chức năng thanh toán tiền mặt:
+         1. Mục đích: Chức năng thanh toán tiền mặt cho phép khách hàng thanh toán đơn hàng trực tiếp bằng tiền mặt khi nhận hàng hoặc tại quầy, đồng thời giúp nhân viên xác nhận và cập nhật trạng thái thanh toán trên hệ thống.
+         2. Tác nhân tham gia:
+            * Khách hàng
+            * Nhân viên
+            * Hệ thống
+         3. Luồng hoạt động chính:
+            1. Khách hàng lựa chọn hình thức Thanh toán tiền mặt khi đặt hàng.
+            2. Hệ thống ghi nhận hình thức thanh toán tiền mặt cho đơn hàng.
+            3. Nhân viên giao hàng hoặc nhân viên tại quầy nhận tiền mặt từ khách hàng.
+            4. Nhân viên đăng nhập hệ thống và mở thông tin đơn hàng tương ứng.
+            5. Nhân viên xác nhận đã nhận đủ tiền từ khách hàng.
+            6. Hệ thống cập nhật trạng thái đơn hàng sang  Đã thanh toán .
+            7. Hệ thống lưu thông tin thanh toán và thời gian xác nhận.
+            8. Kết thúc quá trình thanh toán tiền mặt.
+         4. Luồng hoạt động thay thế: Nếu khách hàng chưa thanh toán đủ tiền, nhân viên cập nhật trạng thái Chưa thanh toán và thông báo cho khách hàng.
+         5. Kết quả:
+            * Đơn hàng được cập nhật trạng thái thanh toán.
+            * Thông tin thanh toán được lưu trữ trên hệ thống.Thông tin thanh toán được lưu trữ trên hệ thống.
    2. Biểu đồ thanh toán online (VNPay):
       1. Biểu đồ Activity:
-      <img src="./images/ac_thanhtoanvnpay.png"><br>
+         `<img src="./images/ac_thanhtoanvnpay.png"><br>`
       2. Biểu đồ Sequence:
-      <img src="./images/se_thanhtoanvnpay.png"><br>
+         `<img src="./images/se_thanhtoanvnpay.png"><br>`
+      3. Đặc tả chức năng thanh toán online:
+
+         1. Mục đích: Chức năng thanh toán qua VNPAY cho phép khách hàng thanh toán đơn hàng trực tuyến thông qua cổng thanh toán VNPAY một cách nhanh chóng, an toàn và tiện lợi.
+         2. Tác nhân tham gia:
+
+            * Khách hàng
+            * Hệ thống
+            * Cổng thanh toán VNPAY
+         3. Luồng hoạt động chính:
+
+            1. Khách hàng lựa chọn hình thức Thanh toán qua VNPAY khi đặt hàng.
+            2. Hệ thống tạo yêu cầu thanh toán và chuyển hướng khách hàng đến cổng VNPAY.
+            3. Khách hàng nhập thông tin thanh toán theo yêu cầu của VNPAY.
+            4. VNPAY xử lý giao dịch và gửi kết quả thanh toán về hệ thống.
+            5. Hệ thống nhận kết quả thanh toán từ VNPAY.
+            6. Nếu thanh toán  thành công , hệ thống cập nhật trạng thái đơn hàng sang  Đã thanh toán .
+            7. Hệ thống lưu thông tin giao dịch VNPAY (mã giao dịch, thời gian, số tiền).
+            8. Hệ thống hiển thị thông báo thanh toán thành công cho khách hàng.
+            9. Kết thúc quá trình thanh toán qua VNPAY.
+         4. Luồng hoạt động thay thế:
+
+            Trường hợp thanh toán thất bại
+
+            1. VNPAY trả về trạng thái thanh toán không thành công.
+            2. Hệ thống hiển thị thông báo thất bại và cho phép khách hàng thực hiện thanh toán lại hoặc chọn hình thức thanh toán khác.
+         5. Kết quả:
+
+            1. Đơn hàng được cập nhật trạng thái thanh toán tương ứng.
+            2. Thông tin giao dịch được lưu trữ để phục vụ đối soát.
 4. Mô hình hóa chức năng Chăm sóc khách hàng (Chat-Reatime):
 
    1. Biểu đồ Activity:
-   <img src="./images/ac_chamsockhachhang.png"><br>
+      `<img src="./images/ac_chamsockhachhang.png"><br>`
    2. Biểu đồ Sequence:
-   <img src="./images/se_chamsockhachang.png"><br>
+      `<img src="./images/se_chamsockhachang.png"><br>`
+   3. Đặc tả chức năng chăm sóc khách hàng:
+      1. Mục đích: Chức năng Chăm sóc khách hàng cho phép hệ thống tiếp nhận, xử lý và phản hồi các yêu cầu, thắc mắc hoặc khiếu nại của khách hàng nhằm đảm bảo quyền lợi và nâng cao chất lượng dịch vụ.
+      2. Tác nhân tham gia:
 
+         * Khách hàng
+         * Nhân viên chăm sóc khách hàng
+      3. Mô tả luồng hoạt động chính
 
+         1. Nhân viên bắt đầu thao tác trên hệ thống.
+         2. Nhân viên chọn chức năng Chat trong hệ thống chăm sóc khách hàng.
+         3. Hệ thống hiển thị màn hình chat cho nhân viên.
+         4. Nhân viên lựa chọnđối tượng cần chat (khách hàng hoặc người dùng liên quan).
+         5. Hệ thống hiển thị thông tin tin nhắn và lịch sử trò chuyện giữa nhân viên và đối tượng đã chọn.
+         6. Nhân viên nhập nội dung tin nhắn cần gửi.
+         7. Nhân viên thực hiện thao tác chọn gửi tin nhắn
+         8. Hệ thống gửi tin nhắn đến đối tượng nhận và cập nhật tin nhắn mới vào lịch sử trò chuyện.
+         9. Hệ thống kiểm tra trạng thái cuộc trò chuyện.
+         10. Nếu cuộc trò chuyện  chưa hoàn tất , hệ thống cho phép nhân viên tiếp tục nhập và gửi tin nhắn mới (quay lại bước nhập nội dung tin nhắn).
+         11. Nếu cuộc trò chuyện  đã hoàn tất , hệ thống kết thúc phiên chat.
+         12. Kết thúc luồng hoạt động.
 5. Mô hình hóa chức năng khách hàng
-    1. Sơ đồ Chỉnh sửa thông tin cá nhân
-    <img src="../TaiLieuPTTKHT/images/AC_CSTTCN.png"><br>
-    <img src="../TaiLieuPTTKHT/images/SE_CSTTCN.png"><br>
-    2. Sơ đồ Lịch sử mua hàng
-    <img src="../TaiLieuPTTKHT/images/AC_LSMH.png"><br>
-    <img src="../TaiLieuPTTKHT/images/SE_LSMH.png"><br>
-    3. Sơ đồ Tìm kiếm sản phẩm
-    <img src="../TaiLieuPTTKHT/images/AC_TKSP.png"><br>
-    <img src="../TaiLieuPTTKHT/images/SE_TKSP.png"><br>
-    4. Sơ đồ Tình trạng đơn hàng
-    <img src="../TaiLieuPTTKHT/images/AC_TTĐH.png"><br>
-    <img src="../TaiLieuPTTKHT/images/SE_TTĐH.png"><br>
-    5. Sơ đồ đăng nhập/ đăng ký
-    <img src="./image/PTTKHT/AC_KhachHang_DangNhap.png"><br>
-    <img src="./image/PTTKHT/AC_KhachHang_DangKy.png"><br>
-    <img src="./image/PTTKHT/SQ_KhachHang_DangNhap.png"><br>
-    <img src="./image/PTTKHT/SQ_KhachHang_DangKy.png"><br>
-    6. Sơ đồ Quên mật khẩu
-    <img src="./image/PTTKHT/AC_KhachHang_QuenMK.png"><br>
-    <img src="./image/PTTKHT/SQ_KhachHang_QuenMK.png"><br>
-    7. Sơ đồ Thêm/ Xóa sản phẩm giỏ hàng
-    <img src="./images/AD_ThemVaoGioHang.png"><br>
-    <img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>
-    <img src="./images/AD_XoaSanPhamTrongGioHang.png"><br>
-    <img src="./images/XoaSanPhamTrongGioHang.png"><br>
-    8. Sơ đồ mua hàng
-    <img src="./images/AD_MuaSanPham.png"><br>
-    <img src="./images/SD_MuaHang.png"><br>
 
+   1. Sơ đồ Chỉnh sửa thông tin cá nhân
+      `<img src="../TaiLieuPTTKHT/images/AC_CSTTCN.png"><br>`
+      `<img src="../TaiLieuPTTKHT/images/SE_CSTTCN.png"><br>`
+   2. Sơ đồ Lịch sử mua hàng
+      `<img src="../TaiLieuPTTKHT/images/AC_LSMH.png"><br>`
+      `<img src="../TaiLieuPTTKHT/images/SE_LSMH.png"><br>`
+   3. Sơ đồ Tìm kiếm sản phẩm
+      `<img src="../TaiLieuPTTKHT/images/AC_TKSP.png"><br>`
+      `<img src="../TaiLieuPTTKHT/images/SE_TKSP.png"><br>`
+   4. Sơ đồ Tình trạng đơn hàng
+      `<img src="../TaiLieuPTTKHT/images/AC_TTĐH.png"><br>`
+      `<img src="../TaiLieuPTTKHT/images/SE_TTĐH.png"><br>`
+   5. Sơ đồ đăng nhập/ đăng ký
+      `<img src="./image/PTTKHT/AC_KhachHang_DangNhap.png"><br>`
+      `<img src="./image/PTTKHT/AC_KhachHang_DangKy.png"><br>`
+      `<img src="./image/PTTKHT/SQ_KhachHang_DangNhap.png"><br>`
+      `<img src="./image/PTTKHT/SQ_KhachHang_DangKy.png"><br>`
+   6. Sơ đồ Quên mật khẩu
+      `<img src="./image/PTTKHT/AC_KhachHang_QuenMK.png"><br>`
+      `<img src="./image/PTTKHT/SQ_KhachHang_QuenMK.png"><br>`
+   7. Sơ đồ Thêm/ Xóa sản phẩm giỏ hàng
+      `<img src="./images/AD_ThemVaoGioHang.png"><br>`
+      `<img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>`
+      `<img src="./images/AD_XoaSanPhamTrongGioHang.png"><br>`
+      `<img src="./images/XoaSanPhamTrongGioHang.png"><br>`
+   8. Sơ đồ mua hàng
+      `<img src="./images/AD_MuaSanPham.png"><br>`
+      `<img src="./images/SD_MuaHang.png"><br>`
 6. Mô hình hóa chức năng của Admin
-    1. Sơ đồ Thêm sản phẩm
-    <img src="./images/AC_ThemSanPham.png"><br>
-    <img src="./images/SE_ThemSanPham.png"><br>
-    2. Sơ đồ xóa sản phẩm
-    <img src="./images/AC_XoaSanPham.png"><br>
-    <img src="./images/SE_XoaSanPham.png"><br>
-    3. Biểu đồ sửa sản phẩm
-    <img src="./images/AC_SuaSanPham.png"><br>
-    <img src="./images/SE_SuaSanPham.png"><br>
-    4. Thêm tài khoản nhân viên
-    <img src="./images/AC_ThemMoiTaiKhoanNhanVien.png"><br>
-    <img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>
-    5. Sơ đồ hiển thị thống kê
-    <img src="./images/AC_HienThiThongKe.png"><br>
+
+   1. Sơ đồ Thêm sản phẩm
+      `<img src="./images/AC_ThemSanPham.png"><br>`
+      `<img src="./images/SE_ThemSanPham.png"><br>`
+   2. Sơ đồ xóa sản phẩm
+      `<img src="./images/AC_XoaSanPham.png"><br>`
+      `<img src="./images/SE_XoaSanPham.png"><br>`
+   3. Biểu đồ sửa sản phẩm
+      `<img src="./images/AC_SuaSanPham.png"><br>`
+      `<img src="./images/SE_SuaSanPham.png"><br>`
+   4. Thêm tài khoản nhân viên
+      `<img src="./images/AC_ThemMoiTaiKhoanNhanVien.png"><br>`
+      `<img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>`
+   5. Sơ đồ hiển thị thống kê
+      `<img src="./images/AC_HienThiThongKe.png"><br>`
