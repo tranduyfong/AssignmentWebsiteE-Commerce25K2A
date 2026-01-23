@@ -273,14 +273,23 @@ công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và 
 8. Mongoose
 
 <<<<<<< HEAD
+
 * Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
 * Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
-=======
+  =======
+
 - Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
 - Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a
 
 ### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
+
 >>>>>>> b76ca42a9efd72acabca24f41dbc2464859865cf
+>>>>>>>
+>>>>>>
+>>>>>
+>>>>
+>>>
+>>
 
 **1. Các khái niệm cơ bản**
 
@@ -499,80 +508,144 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
 2. Mô hình hóa
 
    1. Mô hình Business Use-case
-      <img src="./images/business_uc.png"><br>
+      `<img src="./images/business_uc.png"><br>`
    2. Mô hình SUB_Quản lý giỏ hàng
-      <img src="./images/sub_quanlygiohang.png"><br>
+      `<img src="./images/sub_quanlygiohang.png"><br>`
    3. Mô hình SUB_Quản lý đơn hàng
-      <img src="./images/sub_quanlydonhang.png"><br>
+      `<img src="./images/sub_quanlydonhang.png"><br>`
    4. Mô hình SUB_Quản lý sản phẩm
-      <img src="./images/sub_quanlysanpham.png"><br>
+      `<img src="./images/sub_quanlysanpham.png"><br>`
    5. Mô hình SUB_Quản lý thông tin nhân viên
-      <img src="./images/sub_quanlythongtinnhanvien.png"><br>
+      `<img src="./images/sub_quanlythongtinnhanvien.png"><br>`
    6. Mô hình SUB_Quản lý thông tin doanh thu
-      <img src="./images/sub_quanlythongtindoanhthu.png"><br>
-
+      `<img src="./images/sub_quanlythongtindoanhthu.png"><br>`
 3. Mô hình hóa Thanh toán
 
    1. Biểu đồ thanh toán trực tiếp (Tiền mặt):
       1. Biểu đồ Activity:
-      <img src="./images/ac_thanhtoantienmat.png"><br>
+         `<img src="./images/ac_thanhtoantienmat.png"><br>`
       2. Biểu đồ Sequence:
-      <img src="./images/se_thanhtoantienmat.png"><br>
+         `<img src="./images/se_thanhtoantienmat.png"><br>`
    2. Biểu đồ thanh toán online (VNPay):
       1. Biểu đồ Activity:
-      <img src="./images/ac_thanhtoanvnpay.png"><br>
+         `<img src="./images/ac_thanhtoanvnpay.png"><br>`
       2. Biểu đồ Sequence:
-      <img src="./images/se_thanhtoanvnpay.png"><br>
+         `<img src="./images/se_thanhtoanvnpay.png"><br>`
 4. Mô hình hóa chức năng Chăm sóc khách hàng (Chat-Reatime):
 
    1. Biểu đồ Activity:
-   <img src="./images/ac_chamsockhachhang.png"><br>
+      `<img src="./images/ac_chamsockhachhang.png"><br>`
    2. Biểu đồ Sequence:
-   <img src="./images/se_chamsockhachang.png"><br>
-
-
+      `<img src="./images/se_chamsockhachang.png"><br>`
 5. Mô hình hóa chức năng khách hàng
-    1. Sơ đồ Chỉnh sửa thông tin cá nhân
-    <img src="../TaiLieuPTTKHT/images/AC_CSTTCN.png"><br>
-    <img src="../TaiLieuPTTKHT/images/SE_CSTTCN.png"><br>
-    2. Sơ đồ Lịch sử mua hàng
-    <img src="../TaiLieuPTTKHT/images/AC_LSMH.png"><br>
-    <img src="../TaiLieuPTTKHT/images/SE_LSMH.png"><br>
-    3. Sơ đồ Tìm kiếm sản phẩm
-    <img src="../TaiLieuPTTKHT/images/AC_TKSP.png"><br>
-    <img src="../TaiLieuPTTKHT/images/SE_TKSP.png"><br>
-    4. Sơ đồ Tình trạng đơn hàng
-    <img src="../TaiLieuPTTKHT/images/AC_TTĐH.png"><br>
-    <img src="../TaiLieuPTTKHT/images/SE_TTĐH.png"><br>
-    5. Sơ đồ đăng nhập/ đăng ký
-    <img src="./image/PTTKHT/AC_KhachHang_DangNhap.png"><br>
-    <img src="./image/PTTKHT/AC_KhachHang_DangKy.png"><br>
-    <img src="./image/PTTKHT/SQ_KhachHang_DangNhap.png"><br>
-    <img src="./image/PTTKHT/SQ_KhachHang_DangKy.png"><br>
-    6. Sơ đồ Quên mật khẩu
-    <img src="./image/PTTKHT/AC_KhachHang_QuenMK.png"><br>
-    <img src="./image/PTTKHT/SQ_KhachHang_QuenMK.png"><br>
-    7. Sơ đồ Thêm/ Xóa sản phẩm giỏ hàng
-    <img src="./images/AD_ThemVaoGioHang.png"><br>
-    <img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>
-    <img src="./images/AD_XoaSanPhamTrongGioHang.png"><br>
-    <img src="./images/XoaSanPhamTrongGioHang.png"><br>
-    8. Sơ đồ mua hàng
-    <img src="./images/AD_MuaSanPham.png"><br>
-    <img src="./images/SD_MuaHang.png"><br>
 
+   1. Sơ đồ Chỉnh sửa thông tin cá nhân
+      `<img src="../TaiLieuPTTKHT/images/AC_CSTTCN.png"><br>`
+      `<img src="../TaiLieuPTTKHT/images/SE_CSTTCN.png"><br>`
+   2. Sơ đồ Lịch sử mua hàng
+      `<img src="../TaiLieuPTTKHT/images/AC_LSMH.png"><br>`
+      `<img src="../TaiLieuPTTKHT/images/SE_LSMH.png"><br>`
+   3. Sơ đồ Tìm kiếm sản phẩm
+      `<img src="../TaiLieuPTTKHT/images/AC_TKSP.png"><br>`
+      `<img src="../TaiLieuPTTKHT/images/SE_TKSP.png"><br>`
+   4. Sơ đồ Tình trạng đơn hàng
+      `<img src="../TaiLieuPTTKHT/images/AC_TTĐH.png"><br>`
+      `<img src="../TaiLieuPTTKHT/images/SE_TTĐH.png"><br>`
+   5. Sơ đồ đăng nhập/ đăng ký
+      `<img src="./image/PTTKHT/AC_KhachHang_DangNhap.png"><br>`
+      `<img src="./image/PTTKHT/AC_KhachHang_DangKy.png"><br>`
+      `<img src="./image/PTTKHT/SQ_KhachHang_DangNhap.png"><br>`
+      `<img src="./image/PTTKHT/SQ_KhachHang_DangKy.png"><br>`
+   6. Sơ đồ Quên mật khẩu
+      `<img src="./image/PTTKHT/AC_KhachHang_QuenMK.png"><br>`
+      `<img src="./image/PTTKHT/SQ_KhachHang_QuenMK.png"><br>`
+   7. Sơ đồ Thêm/ Xóa sản phẩm giỏ hàng
+      `<img src="./images/AD_ThemVaoGioHang.png"><br>`
+      `<img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>`
+      `<img src="./images/AD_XoaSanPhamTrongGioHang.png"><br>`
+      `<img src="./images/XoaSanPhamTrongGioHang.png"><br>`
+   8. Sơ đồ mua hàng
+      `<img src="./images/AD_MuaSanPham.png"><br>`
+      `<img src="./images/SD_MuaHang.png"><br>`
 6. Mô hình hóa chức năng của Admin
-    1. Sơ đồ Thêm sản phẩm
-    <img src="./images/AC_ThemSanPham.png"><br>
-    <img src="./images/SE_ThemSanPham.png"><br>
-    2. Sơ đồ xóa sản phẩm
-    <img src="./images/AC_XoaSanPham.png"><br>
-    <img src="./images/SE_XoaSanPham.png"><br>
-    3. Biểu đồ sửa sản phẩm
-    <img src="./images/AC_SuaSanPham.png"><br>
-    <img src="./images/SE_SuaSanPham.png"><br>
-    4. Thêm tài khoản nhân viên
-    <img src="./images/AC_ThemMoiTaiKhoanNhanVien.png"><br>
-    <img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>
-    5. Sơ đồ hiển thị thống kê
-    <img src="./images/AC_HienThiThongKe.png"><br>
+
+   1. Sơ đồ Thêm sản phẩm
+      `<img src="./images/AC_ThemSanPham.png"><br>`
+      `<img src="./images/SE_ThemSanPham.png"><br>`
+   2. Sơ đồ xóa sản phẩm
+      `<img src="./images/AC_XoaSanPham.png"><br>`
+      `<img src="./images/SE_XoaSanPham.png"><br>`
+   3. Biểu đồ sửa sản phẩm
+      `<img src="./images/AC_SuaSanPham.png"><br>`
+      `<img src="./images/SE_SuaSanPham.png"><br>`
+   4. Thêm tài khoản nhân viên
+      `<img src="./images/AC_ThemMoiTaiKhoanNhanVien.png"><br>`
+      `<img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>`
+   5. Sơ đồ hiển thị thống kê
+      `<img src="./images/AC_HienThiThongKe.png"><br>`
+
+
+Đặc tả thông tin cho phần chức năng ADmin
+
+1. Chức năng: Thêm mới sản phẩm
+
+   * Mô tả: Chức năng cho phép Admin nhập thông tin và thêm một mẫu giày mới vào hệ thống.
+   * Tác nhân: Admin.
+   * Luồng sự kiên chính:
+     1. Admin chọn chức năng thêm mới sản phẩm trên giao diện quản lý.
+     2. Hệ thống hiển thị giao diện nhập thông tin sản phẩm mới.
+     3. Admin nhập các thông tin sản phẩm mới.
+     4. Admin nhấn nút nút lưu.
+     5. Hệ thống thực hiện kiểm tra dữ liệu.
+     6. Nếu dữ liệu hợp lệ và chưa tồn tại, hệ thống lưu thông tin vào Cơ sở dữ liệu.
+     7. Hệ thống hiển thị thông báo thêm mới sản phẩm thành công.
+   * Luồng ngoại lệ:
+     + Tại bước 5, nếu định dạng dữ liệu không hợp lệ hoặc sản phẩm đã tồn tại: Hệ thống hiển thị thông báo lỗi và yêu cầu Admin nhập lại thông tin.
+2. Chức năng: Xóa sản phẩm
+
+   * Mô tả: Chức năng cho phép Admin xóa sản phẩm khỏi hệ thống.
+   * Tác nhân: Admin.
+   * Luồng sự kiện chính:
+     1. Admin chọn chức năng xóa sản phẩm trên giao diện quản lý.
+     2. Hệ thống hiển thị giao diện xác nhận xóa.
+     3. Admin xác nhận xóa sản phẩm.
+     4. Hệ thống kiểm tra thông tin sản phẩm.
+     5. Hệ thống xóa sản phẩm khỏi Cơ sở dữ liệu.
+     6. Hệ thống thông báo xóa thành công.
+   * Luồng ngoại lệ:
+     + Nếu sản phẩm không tồn tại hoặc không thể xóa, hệ thống thông báo lỗi.
+3. Chức năng: Sửa sản phẩm
+
+   * Mô tả: Chức năng cho phép Admin cập nhật lại thông tin của một sản phẩm đã có.
+   * Tác nhân: Admin.
+   * Luồng sự kiện chính:
+     1. Admin chọn sản phẩm cần sửa và nhấn chức năng sửa sản phẩm.
+     2. Hệ thống hiển thị màn hình sửa với thông tin hiện tại của sản phẩm.
+     3. Admin nhập/chỉnh sửa các thông tin mới.
+     4. Admin bấm nút lưu.
+     5. Hệ thống kiểm tra định dạng dữ liệu mới nhập.
+     6. Nếu dữ liệu hợp lệ, hệ thống cập nhật thông tin mới vào Cơ sở dữ liệu.
+     7. Hệ thống hiển thị thông báo sửa sản phẩm thành công.
+   * Luồng ngoại lệ:
+     + Nếu dữ liệu nhập vào sai định dạng, hệ thống báo lỗi và yêu cầu nhập lại.
+4. Chức năng: Thêm tài khoản nhân viên
+
+   * Mô tả: Chức năng cho phép Admin cấp tài khoản mới cho nhân viên để truy cập hệ thống.
+   * Tác nhân: Admin.
+   * Luồng sự kiện chính:
+     1. Admin chọn chức năng thêm mới tài khoản nhân viên.
+     2. Hệ thống hiển thị giao diện nhập liệu.
+     3. Admin nhập thông tin tài khoản.
+     4. Admin nhấn nút xác nhận thêm.
+     5. Hệ thống kiểm tra tài khoản có tồn tại hoặc trùng lặp không.
+     6. Nếu thỏa mãn các điều kiện, hệ thống lưu tài khoản mới.
+     7. Hệ thống hiển thị thông báo thêm mới tài khoản thành công.
+5. Chức năng: Xem thống kê
+
+   * Mô tả: Chức năng cho phép Admin xem các thống kế của website.
+   * Tác nhân: Admin.
+   * Luồng sự kiện chính:
+     1. Admin chọn chức năng xem thống kê.
+     2. Hệ thống hiển thị giao diện thống kê.
+     3. Hệ thống xử lý và tổng hợp dữ liệu.
+     4. Hệ thống hiển thị kết quả thống kê
