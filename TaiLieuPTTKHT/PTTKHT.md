@@ -272,10 +272,15 @@ công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và 
 
 8. Mongoose
 
+<<<<<<< HEAD
+* Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
+* Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
+=======
 - Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
 - Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a
 
 ### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
+>>>>>>> b76ca42a9efd72acabca24f41dbc2464859865cf
 
 **1. Các khái niệm cơ bản**
 
@@ -492,16 +497,82 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
   - Giảm tải khối lượng công việc cho nhân viên.
 
 2. Mô hình hóa
+
    1. Mô hình Business Use-case
-      `<img src="./images/business_uc.png"><br>`
+      <img src="./images/business_uc.png"><br>
    2. Mô hình SUB_Quản lý giỏ hàng
-      `<img src="./images/sub_quanlygiohang.png"><br>`
+      <img src="./images/sub_quanlygiohang.png"><br>
    3. Mô hình SUB_Quản lý đơn hàng
-      `<img src="./images/sub_quanlydonhang.png"><br>`
+      <img src="./images/sub_quanlydonhang.png"><br>
    4. Mô hình SUB_Quản lý sản phẩm
-      `<img src="./images/sub_quanlysanpham.png"><br>`
+      <img src="./images/sub_quanlysanpham.png"><br>
    5. Mô hình SUB_Quản lý thông tin nhân viên
-      `<img src="./images/sub_quanlythongtinnhanvien.png"><br>`
+      <img src="./images/sub_quanlythongtinnhanvien.png"><br>
    6. Mô hình SUB_Quản lý thông tin doanh thu
-      `<img src="./images/sub_quanlythongtindoanhthu.png"><br>`
-3. Mô hình hóa
+      <img src="./images/sub_quanlythongtindoanhthu.png"><br>
+
+3. Mô hình hóa Thanh toán
+
+   1. Biểu đồ thanh toán trực tiếp (Tiền mặt):
+      1. Biểu đồ Activity:
+      <img src="./images/ac_thanhtoantienmat.png"><br>
+      2. Biểu đồ Sequence:
+      <img src="./images/se_thanhtoantienmat.png"><br>
+   2. Biểu đồ thanh toán online (VNPay):
+      1. Biểu đồ Activity:
+      <img src="./images/ac_thanhtoanvnpay.png"><br>
+      2. Biểu đồ Sequence:
+      <img src="./images/se_thanhtoanvnpay.png"><br>
+4. Mô hình hóa chức năng Chăm sóc khách hàng (Chat-Reatime):
+
+   1. Biểu đồ Activity:
+   <img src="./images/ac_chamsockhachhang.png"><br>
+   2. Biểu đồ Sequence:
+   <img src="./images/se_chamsockhachang.png"><br>
+
+
+5. Mô hình hóa chức năng khách hàng
+    1. Sơ đồ Chỉnh sửa thông tin cá nhân
+    <img src="../TaiLieuPTTKHT/images/AC_CSTTCN.png"><br>
+    <img src="../TaiLieuPTTKHT/images/SE_CSTTCN.png"><br>
+    2. Sơ đồ Lịch sử mua hàng
+    <img src="../TaiLieuPTTKHT/images/AC_LSMH.png"><br>
+    <img src="../TaiLieuPTTKHT/images/SE_LSMH.png"><br>
+    3. Sơ đồ Tìm kiếm sản phẩm
+    <img src="../TaiLieuPTTKHT/images/AC_TKSP.png"><br>
+    <img src="../TaiLieuPTTKHT/images/SE_TKSP.png"><br>
+    4. Sơ đồ Tình trạng đơn hàng
+    <img src="../TaiLieuPTTKHT/images/AC_TTĐH.png"><br>
+    <img src="../TaiLieuPTTKHT/images/SE_TTĐH.png"><br>
+    5. Sơ đồ đăng nhập/ đăng ký
+    <img src="./image/PTTKHT/AC_KhachHang_DangNhap.png"><br>
+    <img src="./image/PTTKHT/AC_KhachHang_DangKy.png"><br>
+    <img src="./image/PTTKHT/SQ_KhachHang_DangNhap.png"><br>
+    <img src="./image/PTTKHT/SQ_KhachHang_DangKy.png"><br>
+    6. Sơ đồ Quên mật khẩu
+    <img src="./image/PTTKHT/AC_KhachHang_QuenMK.png"><br>
+    <img src="./image/PTTKHT/SQ_KhachHang_QuenMK.png"><br>
+    7. Sơ đồ Thêm/ Xóa sản phẩm giỏ hàng
+    <img src="./images/AD_ThemVaoGioHang.png"><br>
+    <img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>
+    <img src="./images/AD_XoaSanPhamTrongGioHang.png"><br>
+    <img src="./images/XoaSanPhamTrongGioHang.png"><br>
+    8. Sơ đồ mua hàng
+    <img src="./images/AD_MuaSanPham.png"><br>
+    <img src="./images/SD_MuaHang.png"><br>
+
+6. Mô hình hóa chức năng của Admin
+    1. Sơ đồ Thêm sản phẩm
+    <img src="./images/AC_ThemSanPham.png"><br>
+    <img src="./images/SE_ThemSanPham.png"><br>
+    2. Sơ đồ xóa sản phẩm
+    <img src="./images/AC_XoaSanPham.png"><br>
+    <img src="./images/SE_XoaSanPham.png"><br>
+    3. Biểu đồ sửa sản phẩm
+    <img src="./images/AC_SuaSanPham.png"><br>
+    <img src="./images/SE_SuaSanPham.png"><br>
+    4. Thêm tài khoản nhân viên
+    <img src="./images/AC_ThemMoiTaiKhoanNhanVien.png"><br>
+    <img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>
+    5. Sơ đồ hiển thị thống kê
+    <img src="./images/AC_HienThiThongKe.png"><br>
