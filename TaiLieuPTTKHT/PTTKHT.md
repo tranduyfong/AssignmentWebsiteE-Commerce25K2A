@@ -505,6 +505,7 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
       `<img src="./images/sub_quanlythongtinnhanvien.png"><br>`
    6. Mô hình SUB_Quản lý thông tin doanh thu
       `<img src="./images/sub_quanlythongtindoanhthu.png"><br>`
+
 3. Mô hình hóa Thanh toán
 
    1. Biểu đồ thanh toán trực tiếp (Tiền mặt):
@@ -523,3 +524,17 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
    <img src="./images/ac_chamsockhachhang.png"><br>
    2. Biểu đồ Sequence:
    <img src="./images/se_chamsockhachang.png"><br>
+
+5. Mô hình hóa các chức năng khách hàng
+    1. Sơ đồ Chỉnh sửa thông tin cá nhân
+    `<img src="/TaiLieuPTTKHT/images/AC_CSTTCN.png"><br>`
+    `<img src="/TaiLieuPTTKHT/images/SE_CSTTCN.png"><br>`
+    2. Sơ đồ Lịch sử mua hàng
+    `<img src="/TaiLieuPTTKHT/images/AC_LSMH."><br>`
+    `<img src="/TaiLieuPTTKHT/images/SE_LSMH."><br>`
+    3. Sơ đồ Tìm kiếm sản phẩm
+    `<img src="/TaiLieuPTTKHT/images/AC_TKSP."><br>`
+    `<img src="/TaiLieuPTTKHT/images/SE_TKSP."><br>`
+    4. Sơ đồ Tình trạng đơn hàng
+    `<img src="/TaiLieuPTTKHT/images/AC_TTĐH."><br>`
+    `<img src="/TaiLieuPTTKHT/images/SE_TTĐH."><br>`
