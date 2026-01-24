@@ -923,3 +923,27 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
          3. Quan hệ:
             1. quản lý 1..* NhanVien
             2. quản lý 1..* GiayTheThao
+
+### KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN
+
+Để xây dựng được một hệ thống website bán giày hoàn chỉnh và hiệu quả, bước đầu tiên cần thực hiện là khảo sát và phân tích quy trình kinh doanh thực tế của cửa hàng, bao gồm các hoạt động như quản lý sản phẩm, tồn kho, đơn hàng và chăm sóc khách hàng. Công tác khảo sát đóng vai trò quan trọng, giúp thu thập thông tin đầy đủ và chính xác, từ đó làm cơ sở thiết kế hệ thống phù hợp với nhu cầu quản lý và bán hàng trực tuyến. <br><br>
+
+Trong quá trình xây dựng hệ thống, thiết kế cơ sở dữ liệu được xem là nền tảng cốt lõi. Mặc dù hệ thống ở giai đoạn đầu chưa thể đạt mức tối ưu cao nhất, nhưng với cấu trúc dữ liệu rõ ràng, hợp lý và có khả năng mở rộng, website vẫn có thể vận hành ổn định trong thời gian dài, đảm bảo tính linh hoạt trong việc quản lý sản phẩm giày, size, màu sắc, tồn kho và thông tin khách hàng.<br><br>
+
+Bên cạnh đó, việc phân tích và tổ chức dữ liệu một cách khoa học giúp xây dựng các chức năng quản lý và bán hàng trực quan, dễ sử dụng. Điều này không chỉ nâng cao hiệu quả khai thác và điều khiển hệ thống của người quản trị, mà còn mang lại trải nghiệm mua sắm thân thiện, thuận tiện cho khách hàng.<br><br>
+
+Trong tương lai, website bán giày có thể được mở rộng và phát triển theo nhiều hướng, nhằm nâng cao hiệu quả kinh doanh và đáp ứng nhu cầu ngày càng cao của người dùng, cụ thể:<br><br>
+
+   - Tích hợp trực tuyến nâng cao: Phát triển ứng dụng mobile cho phép khách hàng có thể quản lý ứng dụng nhanh gọn và tiện ích.<br>
+
+   - Mở rộng quy mô kinh doanh: Xây dựng chức năng quản lý nhiều cửa hàng hoặc chi nhánh với dữ liệu tập trung và đồng bộ.<br>
+
+   - Thanh toán điện tử: Tích hợp các cổng thanh toán phổ biến như ví điện tử, thẻ ngân hàng, chuyển khoản nhằm đa dạng hóa phương thức thanh toán.<br>
+
+   - Trí tuệ nhân tạo (AI): Ứng dụng AI để gợi ý sản phẩm phù hợp với sở thích khách hàng, dự đoán nhu cầu nhập hàng, hoặc phân tích xu hướng mua sắm.<br>
+
+   - Quản lý tồn kho thông minh: Theo dõi số lượng giày theo từng size, màu sắc và tự động cảnh báo khi sắp hết hàng.<br>
+
+   - Bảo mật dữ liệu: Nâng cao mức độ bảo mật thông tin người dùng, bổ sung các cơ chế xác thực, sao lưu và khôi phục dữ liệu.<br><br>
+
+Với những định hướng phát triển trên, website bán giày không chỉ đáp ứng tốt nhu cầu kinh doanh hiện tại mà còn có khả năng mở rộng, thích nghi với xu hướng thương mại điện tử và chuyển đổi số trong tương lai.
