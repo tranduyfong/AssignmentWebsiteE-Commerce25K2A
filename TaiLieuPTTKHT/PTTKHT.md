@@ -272,24 +272,10 @@ công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và 
 
 8. Mongoose
 
-<<<<<<< HEAD
-
-* Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
-* Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
-  =======
-
 - Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
 - Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a
 
 ### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
-
->>>>>>> b76ca42a9efd72acabca24f41dbc2464859865cf
->>>>>>>
->>>>>>
->>>>>
->>>>
->>>
->>
 
 **1. Các khái niệm cơ bản**
 
@@ -542,7 +528,7 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
    1. Sơ đồ Chỉnh sửa thông tin cá nhân
       `<img src="../TaiLieuPTTKHT/images/AC_CSTTCN.png"><br>`
       `<img src="../TaiLieuPTTKHT/images/SE_CSTTCN.png"><br>`
-
+      
       - Khi khách hàng đăng nhập thành công và chọn chức năng  “Chỉnh sửa thông tin cá nhân” , hệ thống hiển thị thông tin hiện tại của khách hàng
       - Khi  khách hàng chỉnh sửa thông tin và bấm “Lưu” , hệ thống kiểm tra tính hợp lệ của dữ liệu
       - Nếu dữ liệu hợp lệ, hệ thống cập nhật thông tin vào cơ sở dữ liệu và hiển thị thông báo cập nhật thành công
@@ -550,7 +536,7 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
    2. Sơ đồ Lịch sử mua hàng
       `<img src="../TaiLieuPTTKHT/images/AC_LSMH.png"><br>`
       `<img src="../TaiLieuPTTKHT/images/SE_LSMH.png"><br>`
-
+      
       - Khi  khách hàng chọn chức năng “Lịch sử mua hàng” , hệ thống truy vấn danh sách các đơn hàng của khách hàng
       - Hệ thống hiển thị danh sách đơn hàng đã mua
       - Khi  khách hàng chọn một đơn hàng , hệ thống hiển thị chi tiết đơn hàng
@@ -622,15 +608,108 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
 
    1. Sơ đồ Thêm sản phẩm
       `<img src="./images/AC_ThemSanPham.png"><br>`
-   2. `<img src="./images/SE_ThemSanPham.png"><br>`
-   3. Sơ đồ xóa sản phẩm
+      `<img src="./images/SE_ThemSanPham.png"><br>`
+   2. Sơ đồ xóa sản phẩm
       `<img src="./images/AC_XoaSanPham.png"><br>`
       `<img src="./images/SE_XoaSanPham.png"><br>`
-   4. Biểu đồ sửa sản phẩm
+   3. Biểu đồ sửa sản phẩm
       `<img src="./images/AC_SuaSanPham.png"><br>`
       `<img src="./images/SE_SuaSanPham.png"><br>`
-   5. Thêm tài khoản nhân viên
+   4. Thêm tài khoản nhân viên
       `<img src="./images/AC_ThemMoiTaiKhoanNhanVien.png"><br>`
       `<img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>`
-   6. Sơ đồ hiển thị thống kê
+   5. Sơ đồ hiển thị thống kê
       `<img src="./images/AC_HienThiThongKe.png"><br>`
+      `<img src="./images/SE_ThemSanPham.png"><br>`
+7. Phân tích đặc tả Class Diagram
+
+   1. Sơ đồ Class Diagram
+   2. Mô tả hệ thống
+      1. Hệ thống quản lý bán giày thể thao gồm:
+
+         1. Khách hàng mua sản, chỉnh sửa đơn hàng và thanh toán.
+         2. Giỏ hàng lưu các sản phẩm trước khi đặt mua.
+         3. Đơn hàng gồm nhiều dòng chi tiết.
+         4. Nhân viên chăm sóc khách hàng.
+         5. Admin quản lý nhân viên và sản phẩm.
+   3. Đặc tả từng lớp
+      1. KhachHang
+         1. Thuộc tính:
+            1. maKH
+            2. tenKH
+            3. sdt
+            4. email
+            5. diaChi
+         2. Phương thức:
+            1. thanhToan()
+            2. muaHang()
+            3. chinhSuaDH()
+         3. Quan hệ
+            1. 1 KhachHang — 1 GioHang (composition)
+            2. 1 KhachHang — 0..* DonHang (composition)
+      2. GioHang
+         1. Thuộc tính:
+            1. maGH
+            2. dsGioHang
+         2. Phương thức:
+            1. themSP()
+            2. xoaSP()
+         3. Quan hệ:
+            1. thuộc về 1 KhachHang
+      3. DonHang
+         1. Thuộc tính:
+            1. maDH
+            2. tenDH
+            3. soLuongDH
+            4. tongTien
+            5. dsChiTiet
+         2. Phương thức:
+            1. taoDH()
+            2. huyDH()
+         3. Quan hệ
+            1. thuộc 1 KhachHang
+            2. gồm 1..* ChiTietDonHang
+      4. ChiTietDonHang
+         1. Thuộc tính:
+            1. soLuong
+            2. donGia
+            3. thanhTien
+         2. Quan hệ:
+            1. thuộc 1 DonHang
+            2. tham chiếu 1 GiayTheThao
+      5. GiayTheThao
+         1. Thuộc tính:
+            1. maSP
+            2. tenSP
+            3. soLuong
+            4. xuatXu
+            5. giaBan
+         2. Phương thức:
+            1. tangSoLuong()
+            2. giamSoLuong()
+         3. Quan hệ
+            1. xuất hiện trong nhiều ChiTietDonHang
+            2. được Admin quản lý
+      6. NhanVien
+         1. Thuộc tính
+            1. maNV
+            2. tenNV
+            3. sdt
+            4. email
+         2. Phương thức:
+            1. chamSocKH()
+         3. Quan hệ:
+            1. do Admin quản lý
+      7. Admin
+         1. Thuộc tính:
+            1. maAd
+            2. tenAd
+         2. Phương thức:
+            1. hienThiThongKe()
+            2. suaSP()
+            3. themMoiTKNV()
+            4. themSP()
+            5. xoaSP()
+         3. Quan hệ:
+            1. quản lý 1..* NhanVien
+            2. quản lý 1..* GiayTheThao
