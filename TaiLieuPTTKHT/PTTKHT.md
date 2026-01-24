@@ -2,9 +2,7 @@
 
 Đề tài: Website Thương Mại Điện Tử - Bán Giày Thể Thao Chính Hãng 100%
 
-## MỞ ĐẦU
-
-### I. Tổng quan:
+## I. Tổng quan:
 
 Ngày nay, công nghệ phát triển mạnh mẽ và đã trở thành một phần không thể thiếu trong đời sống con người. Nhờ những tiến bộ này, chúng ta tiết kiệm được đáng kể nguyên liệu, nhiên liệu, thời gian và công sức trong các lĩnh vực sản xuất, vận chuyển, lưu thông và quản lý hàng hóa. Sự chuyên môn hóa và tự động hóa ở từng công đoạn đã góp phần nâng cao hiệu suất lao động và mở ra những phương thức kinh doanh mới đầy tiềm năng.
 
@@ -14,11 +12,11 @@ Xuất phát từ nhu cầu mua sắm ngày càng cao và sự đa dạng về m
 
 Dựa trên yêu cầu ngày một cao hơn và sâu hơn của các cửa hàng kinh doanh thời trang, chúng em xin thực hiện đề tài cho môn Kỹ thuật phần mềm là thiết kế một hệ thống quản lý và kinh doanh trực tuyến, mà cụ thể ở đây là  ***Website bán giày thể thao** .*
 
-### II. Mục tiêu đề tài.
+## II. Mục tiêu đề tài.
 
 Với thực trạng hiện nay, nhu cầu mua sắm thời trang và giày thể thao trực tuyến ngày càng tăng cao. Tuy nhiên, nhiều cửa hàng vẫn quản lý đơn hàng qua tin nhắn, sổ sách hoặc các hệ thống rời rạc, dẫn đến việc khó kiểm soát tồn kho theo size/màu và bỏ lỡ khách hàng tiềm năng. Website **“*Kinh doanh giày thể thao trực tuyến*”** ra đời nhằm mục đích số hóa toàn bộ quy trình bán hàng, từ khâu trưng bày sản phẩm trên nền tảng web đến khâu đặt hàng và quản lý vận chuyển, giúp công việc kinh doanh trở nên chuyên nghiệp, tự độngvà tiếp cận được tệp khách hàng rộng lớn hơn.
 
-#### Mục tiêu của đề tài website kinh doanh giày thể thao trực tuyến là:
+### Mục tiêu của đề tài website kinh doanh giày thể thao trực tuyến là:
 
 * **Nhanh chóng và Tiện lợi:** Khách hàng có thể dễ dàng tìm kiếm, lựa chọn và đặt mua các mẫu giày yêu thích mọi lúc, mọi nơi chỉ với vài thao tác click chuột. Hệ thống phản hồi tức thì về tình trạng hàng hóa, giúp rút ngắn tối đa thời
   gian mua sắm so với việc phải đến trực tiếp cửa hàng hoặc chờ đợi nhân viên tư vấn thủ công.
@@ -29,7 +27,7 @@ Với thực trạng hiện nay, nhu cầu mua sắm thời trang và giày th�
 * **Tối ưu hóa nguồn lực và Mở rộng thị trường:** Nhờ khả năng tự động hóa khâu tiếp nhận đơn hàng và thanh toán trực tuyến, website giúp giảm thiểu đáng kể khối lượng công việc cho nhân viên vận hành. Đồng thời, việc đưa cửa
   hàng lên môi trường internet giúp xóa bỏ rào cản địa lý, nâng cao năng suất bán hàng và tăng sức cạnh tranh trên thị trường.
 
-### III. Xác định yêu cầu hệ thống:
+## III. Xác định yêu cầu hệ thống:
 
 **I.Yêu cầu chức năng:**
 
@@ -127,7 +125,7 @@ công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và 
 * Đảm bảo chính sách bảo mật thông tin cá nhân khách hàng theo quy định pháp luật.
 * Hiển thị rõ ràng các thông tin về giá, chính sách đổi trả và bảo hành sản phẩm.
 
-### IV. Ý nghĩa của đề tài: Website Thương mại điện tử - Hệ thống bán giày thể thao chính hãng 100%
+## IV. Ý nghĩa của đề tài: Website Thương mại điện tử - Hệ thống bán giày thể thao chính hãng 100%
 
 1. Ý nghĩa thực tiễn
 
@@ -152,7 +150,7 @@ công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và 
    * Ứng dụng ký thuật Real-Time: Nghiên cứu và triển khai công nghệ WebSocket để xây dựng tính năng Chat trực tuyến, một yêu cầu quan trọng của các hệ thống web hiện đại.
    * Reàn luyện tư duy Phân tích thiết kế thuật hệ thống: Nâng cao kỹ năng phân tích yêu cầu, mô hình hóa dữ liệu, thiết kế sơ đồ luồng dữ liệu (DFD) và sơ đồ thực thể liên kết (ERD) để đảm bảo hệ thống hoạt động logic và ổn định.
 
-### V. Xác định phạm vi và đối tưởng sử dụng hệ thống
+## V. Xác định phạm vi và đối tưởng sử dụng hệ thống
 
 1. Đối tượng sử dụng hệ thống
    a, Nhóm khách hàng
@@ -227,7 +225,7 @@ công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và 
      - Người dùng truy cập thông qua trình duyệt Internet.
      - Phạm vi phục vụ chủ yếu trong lãnh thổ Việt Nam
 
-### VI. Các công nghệ sử dụng cho chương trình website
+## VI. Các công nghệ sử dụng cho chương trình website
 
 1. React.js
 
@@ -273,9 +271,9 @@ công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và 
 8. Mongoose
 
 * Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
-* Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a### 
+* Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a##
 
-### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
+## VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
 
 **1. Các khái niệm cơ bản**
 
@@ -352,7 +350,7 @@ Mô hình hóa là quá trình biểu diễn một hệ thống thực ở dạn
 
 Trong phân tích thiết kế hệ thống quản lý bán giày, mô hình hóa giúp xác định rõ các chức năng như bán hàng, nhập kho, quản lý tồn kho và báo cáo, từ đó hỗ trợ quá trình thiết kế hệ thống chính xác và hiệu quả.
 
-### VIII. Các loại mô hình xử lý trong phương pháp phân tích thiết kế hướng đối tượng
+## VIII. Các loại mô hình xử lý trong phương pháp phân tích thiết kế hướng đối tượng
 
 Phương pháp phân tích và thiết kế hệ thống hướng đối tượng (Object-Oriented Analysis and Design – OOAD) là phương pháp tiếp cận hiện đại, tập trung vào việc mô hình hóa hệ thống dựa trên các  đối tượng , hành vi và mối quan hệ giữa các đối tượng. Phương pháp này giúp mô tả hệ thống một cách trực quan, dễ hiểu, phù hợp với việc phát triển các hệ thống phần mềm phức tạp và dễ mở rộng.
 
@@ -475,7 +473,7 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
 
    Mô hình ER trong hệ thống bán giày thể thao hỗ trợ thiết kế cơ sở dữ liệu, đảm bảo dữ liệu được tổ chức hợp lý, tránh dư thừa và đảm bảo toàn vẹn.
 
-### IX. Phân tích thiết kế hệ thống
+## IX. Phân tích thiết kế hệ thống
 
 1. Giải pháp
 
@@ -502,11 +500,11 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
       <img src="./images/sub_quanlygiohang.png"><br>
       <strong>Mô tả:</strong><br>
       - Biểu đồ Sub Use Case – Quản lý giỏ hàng mô tả các chức năng mà khách hàng có thể thực hiện trong quá trình lựa chọn và quản lý các sản phẩm trước khi tiến hành đặt hàng. Đây là một biểu đồ con trong hệ thống thương mại điện tử, giúp thể hiện rõ cách người dùng tương tác với giỏ hàng.
-      - Tác nhân: `<strong>`Khách hàng `</strong>`: Là người sử dụng hệ thống để lựa chọn, quản lý các sản phẩm mong muốn mua thông qua giỏ hàng.
+      - Tác nhân: <strong>Khách hàng </strong>: Là người sử dụng hệ thống để lựa chọn, quản lý các sản phẩm mong muốn mua thông qua giỏ hàng.
       - Các Use Case chính:
         - Thêm sản phẩm vào giỏ hàng: Use Case này cho phép khách hàng thêm một hoặc nhiều sản phẩm vào giỏ hàng từ danh sách hoặc trang chi tiết sản phẩm.
-          - Khi khách hàng chọn sản phẩm và thực hiện thao tác thêm vào giỏ, hệ thống sẽ:`<br>`
-            * Kiểm tra tình trạng tồn kho của sản phẩm `<br>`
+          - Khi khách hàng chọn sản phẩm và thực hiện thao tác thêm vào giỏ, hệ thống sẽ:<br>
+            * Kiểm tra tình trạng tồn kho của sản phẩm <br>
             * Thêm sản phẩm vào giỏ hàng với số lượng mặc định hoặc số lượng do khách hàng lựa chọn
             * Cập nhật lại tổng số sản phẩm và tổng giá trị của giỏ hàng
    3. Mô hình SUB_Quản lý đơn hàng
@@ -529,7 +527,7 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
    4. Mô hình SUB_Quản lý sản phẩm
       <img src="./images/sub_quanlysanpham.png"><br>
       - Biểu đồ Use Case Quản lý sản phẩm mô tả các chức năng chính liên quan đến việc quản lý thông tin sản phẩm trong hệ thống. Biểu đồ này là một biểu đồ con (Sub Use Case), thuộc phạm vi quản lý của hệ thống và tập trung vào các thao tác cơ bản đối với sản phẩm.
-      - Tác nhân: `<strong>`Quản trị viên (Admin):`</strong>` Là người có quyền truy cập và thực hiện các chức năng quản lý sản phẩm trong hệ thống.
+      - Tác nhân: <strong>Quản trị viên (Admin):</strong> Là người có quyền truy cập và thực hiện các chức năng quản lý sản phẩm trong hệ thống.
       - Các Use Case chính:
         - Thêm sản phẩm: Cho phép quản trị viên thêm mới một sản phẩm vào hệ thống. Quản trị viên cần nhập đầy đủ các thông tin cần thiết như tên sản phẩm, giá, mô tả, hình ảnh, số lượng,… Sau khi xác nhận, sản phẩm sẽ được lưu vào cơ sở dữ liệu và hiển thị trên hệ thống.
         - Xóa sản phẩm:  Cho phép quản trị viên xóa một sản phẩm không còn kinh doanh hoặc không hợp lệ khỏi hệ thống. Khi thực hiện chức năng này, hệ thống sẽ loại bỏ sản phẩm khỏi cơ sở dữ liệu hoặc chuyển sang trạng thái ngừng hoạt động (tùy theo thiết kế).
@@ -539,7 +537,7 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
       <img src="./images/sub_quanlythongtinnhanvien.png"><br>
       <strong>Mô tả:</strong>
       - Biểu đồ Sub Use Case – Quản lý thông tin nhân viên mô tả các chức năng mà Admin có thể thực hiện nhằm quản lý tài khoản và thông tin của nhân viên trong hệ thống. Biểu đồ này đóng vai trò quan trọng trong việc phân quyền, kiểm soát người dùng nội bộ và đảm bảo hệ thống vận hành hiệu quả.
-      - Tác nhân: `<strong>`Quản trị viên (Admin):`</strong>` Là người có quyền truy cập và thực hiện các chức năng quản lý thông tin trong hệ thống.
+      - Tác nhân: <strong>Quản trị viên (Admin):</strong> Là người có quyền truy cập và thực hiện các chức năng quản lý thông tin trong hệ thống.
       - Các Use Case chính:
         - Thêm tài khoản nhân viên: Use Case này cho phép Admin tạo mới một tài khoản nhân viên để cấp quyền truy cập vào hệ thống.Khi thực hiện chức năng này, Admin sẽ:
           - Nhập các thông tin cần thiết của nhân viên như: họ tên, email, tên đăng nhập, mật khẩu, vai trò/quyền hạn
@@ -666,7 +664,7 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
    1. Sơ đồ Chỉnh sửa thông tin cá nhân
       <img src="../TaiLieuPTTKHT/images/AC_CSTTCN.png"><br>
       <img src="../TaiLieuPTTKHT/images/SE_CSTTCN.png"><br>
-      
+
       - Khi khách hàng đăng nhập thành công và chọn chức năng  “Chỉnh sửa thông tin cá nhân” , hệ thống hiển thị thông tin hiện tại của khách hàng
       - Khi  khách hàng chỉnh sửa thông tin và bấm “Lưu” , hệ thống kiểm tra tính hợp lệ của dữ liệu
       - Nếu dữ liệu hợp lệ, hệ thống cập nhật thông tin vào cơ sở dữ liệu và hiển thị thông báo cập nhật thành công
@@ -674,7 +672,7 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
    2. Sơ đồ Lịch sử mua hàng
       <img src="../TaiLieuPTTKHT/images/AC_LSMH.png"><br>
       <img src="../TaiLieuPTTKHT/images/SE_LSMH.png"><br>
-      
+
       - Khi  khách hàng chọn chức năng “Lịch sử mua hàng” , hệ thống truy vấn danh sách các đơn hàng của khách hàng
       - Hệ thống hiển thị danh sách đơn hàng đã mua
       - Khi  khách hàng chọn một đơn hàng , hệ thống hiển thị chi tiết đơn hàng
@@ -749,68 +747,67 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
       <img src="./images/SE_ThemSanPham.png"><br>
       * Mô tả: Chức năng cho phép Admin nhập thông tin và thêm một mẫu giày mới vào hệ thống.
       * Tác nhân: Admin.
-       * Luồng sự kiên chính:
-         1. Admin chọn chức năng thêm mới sản phẩm trên giao diện quản lý.
-         2. Hệ thống hiển thị giao diện nhập thông tin sản phẩm mới.
-         3. Admin nhập các thông tin sản phẩm mới.
-         4. Admin nhấn nút nút lưu.
-         5. Hệ thống thực hiện kiểm tra dữ liệu.
-         6. Nếu dữ liệu hợp lệ và chưa tồn tại, hệ thống lưu thông tin vào Cơ sở dữ liệu.
-         7. Hệ thống hiển thị thông báo thêm mới sản phẩm thành công.
-       * Luồng ngoại lệ:
-         + Tại bước 5, nếu định dạng dữ liệu không hợp lệ hoặc sản phẩm đã tồn tại: Hệ thống hiển thị thông báo lỗi và yêu cầu Admin nhập lại thông tin.
+      * Luồng sự kiên chính:
+        1. Admin chọn chức năng thêm mới sản phẩm trên giao diện quản lý.
+        2. Hệ thống hiển thị giao diện nhập thông tin sản phẩm mới.
+        3. Admin nhập các thông tin sản phẩm mới.
+        4. Admin nhấn nút nút lưu.
+        5. Hệ thống thực hiện kiểm tra dữ liệu.
+        6. Nếu dữ liệu hợp lệ và chưa tồn tại, hệ thống lưu thông tin vào Cơ sở dữ liệu.
+        7. Hệ thống hiển thị thông báo thêm mới sản phẩm thành công.
+      * Luồng ngoại lệ:
+        + Tại bước 5, nếu định dạng dữ liệu không hợp lệ hoặc sản phẩm đã tồn tại: Hệ thống hiển thị thông báo lỗi và yêu cầu Admin nhập lại thông tin.
    2. Sơ đồ xóa sản phẩm
       <img src="./images/AC_XoaSanPham.png"><br>
       <img src="./images/SE_XoaSanPham.png"><br>
-       * Mô tả: Chức năng cho phép Admin xóa sản phẩm khỏi hệ thống.
-        * Tác nhân: Admin.
-         * Luồng sự kiện chính:
-           1. Admin chọn chức năng xóa sản phẩm trên giao diện quản lý.
-           2. Hệ thống hiển thị giao diện xác nhận xóa.
-           3. Admin xác nhận xóa sản phẩm.
-           4. Hệ thống kiểm tra thông tin sản phẩm.
-           5. Hệ thống xóa sản phẩm khỏi Cơ sở dữ liệu.
-           6. Hệ thống thông báo xóa thành công.
-         * Luồng ngoại lệ:
-           + Nếu sản phẩm không tồn tại hoặc không thể xóa, hệ thống thông báo lỗi. 
+      * Mô tả: Chức năng cho phép Admin xóa sản phẩm khỏi hệ thống.
+      * Tác nhân: Admin.
+      * Luồng sự kiện chính:
+        1. Admin chọn chức năng xóa sản phẩm trên giao diện quản lý.
+        2. Hệ thống hiển thị giao diện xác nhận xóa.
+        3. Admin xác nhận xóa sản phẩm.
+        4. Hệ thống kiểm tra thông tin sản phẩm.
+        5. Hệ thống xóa sản phẩm khỏi Cơ sở dữ liệu.
+        6. Hệ thống thông báo xóa thành công.
+      * Luồng ngoại lệ:
+        + Nếu sản phẩm không tồn tại hoặc không thể xóa, hệ thống thông báo lỗi.
    3. Biểu đồ sửa sản phẩm
       <img src="./images/AC_SuaSanPham.png"><br>
       <img src="./images/SE_SuaSanPham.png"><br>
-       * Mô tả: Chức năng cho phép Admin cập nhật lại thông tin của một sản phẩm đã có.
-       * Tác nhân: Admin.
-       * Luồng sự kiện chính:
-         1. Admin chọn sản phẩm cần sửa và nhấn chức năng sửa sản phẩm.
-         2. Hệ thống hiển thị màn hình sửa với thông tin hiện tại của sản phẩm.
-         3. Admin nhập/chỉnh sửa các thông tin mới.
-         4. Admin bấm nút lưu.
-         5. Hệ thống kiểm tra định dạng dữ liệu mới nhập.
-         6. Nếu dữ liệu hợp lệ, hệ thống cập nhật thông tin mới vào Cơ sở dữ liệu.
-         7. Hệ thống hiển thị thông báo sửa sản phẩm thành công.
-       * Luồng ngoại lệ:
-         + Nếu dữ liệu nhập vào sai định dạng, hệ thống báo lỗi và yêu cầu nhập lại.
+      * Mô tả: Chức năng cho phép Admin cập nhật lại thông tin của một sản phẩm đã có.
+      * Tác nhân: Admin.
+      * Luồng sự kiện chính:
+        1. Admin chọn sản phẩm cần sửa và nhấn chức năng sửa sản phẩm.
+        2. Hệ thống hiển thị màn hình sửa với thông tin hiện tại của sản phẩm.
+        3. Admin nhập/chỉnh sửa các thông tin mới.
+        4. Admin bấm nút lưu.
+        5. Hệ thống kiểm tra định dạng dữ liệu mới nhập.
+        6. Nếu dữ liệu hợp lệ, hệ thống cập nhật thông tin mới vào Cơ sở dữ liệu.
+        7. Hệ thống hiển thị thông báo sửa sản phẩm thành công.
+      * Luồng ngoại lệ:
+        + Nếu dữ liệu nhập vào sai định dạng, hệ thống báo lỗi và yêu cầu nhập lại.
    4. Thêm tài khoản nhân viên
       <img src="./images/AC_ThemMoiTaiKhoanNhanVien.png"><br>
       <img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>
-       * Mô tả: Chức năng cho phép Admin cấp tài khoản mới cho nhân viên để truy cập hệ thống.
-       * Tác nhân: Admin.
-       * Luồng sự kiện chính:
-         1. Admin chọn chức năng thêm mới tài khoản nhân viên.
-         2. Hệ thống hiển thị giao diện nhập liệu.
-         3. Admin nhập thông tin tài khoản.
-         4. Admin nhấn nút xác nhận thêm.
-         5. Hệ thống kiểm tra tài khoản có tồn tại hoặc trùng lặp không.
-         6. Nếu thỏa mãn các điều kiện, hệ thống lưu tài khoản mới.
-         7. Hệ thống hiển thị thông báo thêm mới tài khoản thành công.
+      * Mô tả: Chức năng cho phép Admin cấp tài khoản mới cho nhân viên để truy cập hệ thống.
+      * Tác nhân: Admin.
+      * Luồng sự kiện chính:
+        1. Admin chọn chức năng thêm mới tài khoản nhân viên.
+        2. Hệ thống hiển thị giao diện nhập liệu.
+        3. Admin nhập thông tin tài khoản.
+        4. Admin nhấn nút xác nhận thêm.
+        5. Hệ thống kiểm tra tài khoản có tồn tại hoặc trùng lặp không.
+        6. Nếu thỏa mãn các điều kiện, hệ thống lưu tài khoản mới.
+        7. Hệ thống hiển thị thông báo thêm mới tài khoản thành công.
    5. Sơ đồ hiển thị thống kê
       <img src="./images/AC_HienThiThongKe.png"><br>
       * Mô tả: Chức năng cho phép Admin xem các thống kế của website.
-       * Tác nhân: Admin.
-       * Luồng sự kiện chính:
-         1. Admin chọn chức năng xem thống kê.
-         2. Hệ thống hiển thị giao diện thống kê.
-         3. Hệ thống xử lý và tổng hợp dữ liệu.
-         4. Hệ thống hiển thị kết quả thống kê
-   
+      * Tác nhân: Admin.
+      * Luồng sự kiện chính:
+        1. Admin chọn chức năng xem thống kê.
+        2. Hệ thống hiển thị giao diện thống kê.
+        3. Hệ thống xử lý và tổng hợp dữ liệu.
+        4. Hệ thống hiển thị kết quả thống kê
 7. Ma trận thực thể chức năng
 
    - Ma trận thể hiện các mối quan hệ giữa các chức năng và hồ sơ dữ liệu. Ma trận là một
@@ -833,8 +830,8 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
    | Quản lý bán giày       |   |   |   | C |   |
    | Quản lý nhân viên      |   |   | C |   |   |
    | Báo cáo                  | R | R | R | R |   |
-     
 8. Phân tích đặc tả Class Diagram
+   <img src="./image/PTTKHT/CD_QuanLyBanGiay.png">
 
    1. Sơ đồ Class Diagram
    2. Mô tả hệ thống
