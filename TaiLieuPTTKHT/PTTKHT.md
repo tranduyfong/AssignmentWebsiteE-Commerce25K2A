@@ -272,8 +272,8 @@ công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và 
 
 8. Mongoose
 
-* Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
-* Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a### 
+- Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
+- Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a
 
 ### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
 
@@ -495,16 +495,86 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
 
    1. Mô hình Business Use-case
       `<img src="./images/business_uc.png"><br>`
+      `<strong>`Mô tả:`</strong><br>`
+      - Business use case là bản mô tả chi tiết quy trình nghiệp vụ, mục tiêu và các tương tác giữa tác nhân (người dùng/hệ thống) với tổ chức nhằm đạt được kết quả kinh doanh cụ thể, ví dụ: "Xử lý đơn hàng" hoặc "Quản lý kho". Nó giúp xác định yêu cầu chức năng, phạm vi dự án và luồng hành động (chính/ngoại lệ) để tối ưu hóa quy trình hoạt động.
+      - Với biểu đồ về Quản lý Website bán giày thể thao. Biểu đồ có đầy đủ các chức năng cơ bản như các Actor: Khách hàng, Quản lý, Nhân viên. Và các Use Case như Mua, Quản lý, Đăng nhập/ Đăng ký, ...
    2. Mô hình SUB_Quản lý giỏ hàng
       `<img src="./images/sub_quanlygiohang.png"><br>`
+      `<strong>`Mô tả:`</strong><br>`
+      - Biểu đồ Sub Use Case – Quản lý giỏ hàng mô tả các chức năng mà khách hàng có thể thực hiện trong quá trình lựa chọn và quản lý các sản phẩm trước khi tiến hành đặt hàng. Đây là một biểu đồ con trong hệ thống thương mại điện tử, giúp thể hiện rõ cách người dùng tương tác với giỏ hàng.
+      - Tác nhân: `<strong>`Khách hàng `</strong>`: Là người sử dụng hệ thống để lựa chọn, quản lý các sản phẩm mong muốn mua thông qua giỏ hàng.
+      - Các Use Case chính:
+        - Thêm sản phẩm vào giỏ hàng: Use Case này cho phép khách hàng thêm một hoặc nhiều sản phẩm vào giỏ hàng từ danh sách hoặc trang chi tiết sản phẩm.
+          - Khi khách hàng chọn sản phẩm và thực hiện thao tác thêm vào giỏ, hệ thống sẽ:`<br>`
+            * Kiểm tra tình trạng tồn kho của sản phẩm `<br>`
+            * Thêm sản phẩm vào giỏ hàng với số lượng mặc định hoặc số lượng do khách hàng lựa chọn
+            * Cập nhật lại tổng số sản phẩm và tổng giá trị của giỏ hàng
    3. Mô hình SUB_Quản lý đơn hàng
       `<img src="./images/sub_quanlydonhang.png"><br>`
+      `<strong>`Mô tả:`</strong><br>`
+      - Biểu đồ Sub Use Case – Quản lý đơn hàng mô tả các chức năng mà khách hàng có thể thực hiện đối với đơn hàng sau khi đã hoàn tất quá trình mua sắm trên Website. Biểu đồ này giúp thể hiện rõ cách khách hàng theo dõi và quản lý trạng thái đơn hàng của mình trong hệ thống.
+      - Tác nhân: Khách hàng: Là người sử dụng hệ thống để lựa chọn, quản lý các sản phẩm mong muốn mua thông qua giỏ hàng..
+      - Các Use Case chính:
+        - Xem tình trạng đơn hàng: Use Case này cho phép khách hàng theo dõi tình trạng xử lý của các đơn hàng đã đặt.
+          - Khi khách hàng thực hiện chức năng xem tình trạng đơn hàng, hệ thống sẽ:
+            - Hiển thị danh sách các đơn hàng của khách hàng
+            - Cung cấp thông tin chi tiết cho từng đơn hàng như: mã đơn hàng, ngày đặt hàng, tổng tiền và trạng thái hiện tại
+            - Trạng thái đơn hàng có thể bao gồm: Chờ xác nhận, Đang xử lý, Đang giao hàng, Đã hoàn thành hoặc Đã hủy.
+          - Chức năng này giúp khách hàng nắm bắt được tiến trình xử lý đơn hàng một cách minh bạch và kịp thời.
+        - Hủy đơn hàng: Use Case này cho phép khách hàng hủy đơn hàng trong những trường hợp đơn hàng chưa được xử lý hoặc chưa được giao.
+          - Khi khách hàng yêu cầu hủy đơn hàng:
+            - Hệ thống sẽ kiểm tra trạng thái hiện tại của đơn hàng
+            - Nếu đơn hàng đủ điều kiện hủy, hệ thống cập nhật trạng thái đơn hàng sang Đã hủy
+            - Thông báo kết quả hủy đơn hàng cho khách hàng
    4. Mô hình SUB_Quản lý sản phẩm
       `<img src="./images/sub_quanlysanpham.png"><br>`
+      - Biểu đồ Use Case Quản lý sản phẩm mô tả các chức năng chính liên quan đến việc quản lý thông tin sản phẩm trong hệ thống. Biểu đồ này là một biểu đồ con (Sub Use Case), thuộc phạm vi quản lý của hệ thống và tập trung vào các thao tác cơ bản đối với sản phẩm.
+      - Tác nhân: `<strong>`Quản trị viên (Admin):`</strong>` Là người có quyền truy cập và thực hiện các chức năng quản lý sản phẩm trong hệ thống.
+      - Các Use Case chính:
+        - Thêm sản phẩm: Cho phép quản trị viên thêm mới một sản phẩm vào hệ thống. Quản trị viên cần nhập đầy đủ các thông tin cần thiết như tên sản phẩm, giá, mô tả, hình ảnh, số lượng,… Sau khi xác nhận, sản phẩm sẽ được lưu vào cơ sở dữ liệu và hiển thị trên hệ thống.
+        - Xóa sản phẩm:  Cho phép quản trị viên xóa một sản phẩm không còn kinh doanh hoặc không hợp lệ khỏi hệ thống. Khi thực hiện chức năng này, hệ thống sẽ loại bỏ sản phẩm khỏi cơ sở dữ liệu hoặc chuyển sang trạng thái ngừng hoạt động (tùy theo thiết kế).
+        - Sửa thông tin sản phẩm: Cho phép quản trị viên chỉnh sửa các thông tin của sản phẩm đã tồn tại, như cập nhật giá bán, thay đổi mô tả, hình ảnh hoặc số lượng sản phẩm. Sau khi chỉnh sửa, hệ thống sẽ lưu lại các thay đổi mới.
+        - Xem thông tin sản phẩm: Cho phép quản trị viên xem danh sách và chi tiết thông tin của các sản phẩm hiện có trong hệ thống. Chức năng này hỗ trợ việc kiểm tra, theo dõi và quản lý sản phẩm một cách hiệu quả.
    5. Mô hình SUB_Quản lý thông tin nhân viên
       `<img src="./images/sub_quanlythongtinnhanvien.png"><br>`
+      `<strong>`Mô tả:`</strong>`
+      - Biểu đồ Sub Use Case – Quản lý thông tin nhân viên mô tả các chức năng mà Admin có thể thực hiện nhằm quản lý tài khoản và thông tin của nhân viên trong hệ thống. Biểu đồ này đóng vai trò quan trọng trong việc phân quyền, kiểm soát người dùng nội bộ và đảm bảo hệ thống vận hành hiệu quả.
+      - Tác nhân: `<strong>`Quản trị viên (Admin):`</strong>` Là người có quyền truy cập và thực hiện các chức năng quản lý thông tin trong hệ thống.
+      - Các Use Case chính:
+        - Thêm tài khoản nhân viên: Use Case này cho phép Admin tạo mới một tài khoản nhân viên để cấp quyền truy cập vào hệ thống.Khi thực hiện chức năng này, Admin sẽ:
+          - Nhập các thông tin cần thiết của nhân viên như: họ tên, email, tên đăng nhập, mật khẩu, vai trò/quyền hạn
+          - Hệ thống kiểm tra tính hợp lệ của thông tin và sự trùng lặp tài khoản
+          - Lưu thông tin tài khoản nhân viên vào cơ sở dữ liệu
+        - Xóa tài khoản nhân viên: Use Case này cho phép Admin xóa hoặc vô hiệu hóa tài khoản của nhân viên không còn làm việc trong hệ thống.
+          - Hệ thống xác nhận lại hành động để tránh xóa nhầm
+          - Tài khoản nhân viên sẽ bị xóa hoặc chuyển sang trạng thái không hoạt động
+          - Nhân viên đó sẽ không còn quyền truy cập vào hệ thống
+        - Sửa thông tin tài khoản nhân viên: Use Case này cho phép Admin cập nhật thông tin của tài khoản nhân viên đã tồn tại.Admin có thể chỉnh sửa các thông tin như:
+          - Thông tin cá nhân (họ tên, email, số điện thoại)
+          - Quyền hạn hoặc vai trò trong hệ thống
+          - Trạng thái tài khoản
+        - Xem thông tin tài khoản nhân viên: Use Case này cho phép Admin xem danh sách và chi tiết thông tin của các tài khoản nhân viên trong hệ thống.
+          - Thông tin cá nhân nhân viên
+          - Vai trò và quyền hạn
+          - Trạng thái hoạt động của tài khoản
    6. Mô hình SUB_Quản lý thông tin doanh thu
       `<img src="./images/sub_quanlythongtindoanhthu.png"><br>`
+      `<strong>`Mô tả: `</strong>`
+      - Biểu đồ Sub Use Case – Quản lý thông tin doanh thu mô tả các chức năng mà Admin có thể thực hiện nhằm theo dõi, thống kê và đánh giá hiệu quả kinh doanh của hệ thống. Thông qua các chức năng này, Admin có thể nắm bắt tình hình bán hàng và đưa ra các quyết định quản lý phù hợp.
+      - Tác nhân: Admin (Quản trị viên): Là người có quyền truy cập và xem các thông tin liên quan đến doanh thu của hệ thống.
+      - Các Use Case chính:
+        - Xem doanh thu tổng: Use Case này cho phép Admin xem tổng doanh thu của hệ thống trong một khoảng thời gian nhất định (theo ngày, tháng hoặc năm). Hệ thống sẽ:
+          - Tổng hợp dữ liệu từ các đơn hàng đã hoàn thành
+          - Hiển thị tổng doanh thu và các thông tin liên quan
+          - Chức năng này giúp Admin đánh giá tổng quan hiệu quả hoạt động kinh doanh.
+        - Xem số lượng bán ra: Use Case này cho phép Admin theo dõi tổng số lượng sản phẩm đã bán ra trong hệ thống. Khi thực hiện chức năng này, hệ thống sẽ:
+          - Thống kê số lượng sản phẩm được bán theo từng đơn hàng
+          - Hiển thị số lượng bán ra theo từng sản phẩm hoặc toàn hệ thống
+          - Chức năng này giúp Admin đánh giá mức độ tiêu thụ của sản phẩm.
+        - Xem số lượng hoàn trả: Use Case này cho phép Admin theo dõi số lượng sản phẩm đã được hoàn trả từ các đơn hàng. Hệ thống sẽ:
+          - Thống kê các đơn hàng hoặc sản phẩm có trạng thái hoàn trả
+          - Hiển thị số lượng hoàn trả trong từng khoảng thời gian
+          - Chức năng này giúp Admin kiểm soát chất lượng sản phẩm và quy trình bán hàng, đồng thời đánh giá tỷ lệ hoàn trả.
 3. Mô hình hóa Thanh toán
 
    1. Biểu đồ thanh toán trực tiếp (Tiền mặt):
@@ -688,8 +758,30 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
       `<img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>`
    5. Sơ đồ hiển thị thống kê
       `<img src="./images/AC_HienThiThongKe.png"><br>`
+7. Ma trận thực thể chức năng
+
+   - Ma trận thể hiện các mối quan hệ giữa các chức năng và hồ sơ dữ liệu. Ma trận là một
+     công cụ phân tích phạm vi – mô tả tương tác.
+   - Câu trúc của một ma trận:
+     - Mỗi cột ghi tên 1 thực thể dữ liệu
+     - Mỗi dòng ghi tên 1 chức năng.
+     - Mỗi ô ghi chữ R (Read), U (Update), C (Create).
+     - Mỗi dòng/cột không có chữ chỉ ra thực thể dữ liệu/chức năng cô lập.
+
+   | Thực thể                 |   |   |   |   |   |
+   | :------------------------- | - | - | - | - | - |
+   | a. Danh sách khách hàng |   |   |   |   |   |
+   | b. Danh sách giày        |   |   |   |   |   |
+   | c. Danh sách nhân viên  |   |   |   |   |   |
+   | d. Hóa đơn              |   |   |   |   |   |
+   | e. Danh mục hãng         |   |   |   |   |   |
+   | **Chức năng**      | a | b | c | d | e |
+   | Quản lý nhập giày      |   | U |   |   | C |
+   | Quản lý bán giày       |   |   |   | C |   |
+   | Quản lý nhân viên      |   |   | C |   |   |
+   | Báo cáo                  | R | R | R | R |   |
       `<img src="./images/SE_ThemSanPham.png"><br>`
-7. Phân tích đặc tả Class Diagram
+8. Phân tích đặc tả Class Diagram
 
    1. Sơ đồ Class Diagram
    2. Mô tả hệ thống
