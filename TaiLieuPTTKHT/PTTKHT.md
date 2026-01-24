@@ -272,8 +272,8 @@ công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và 
 
 8. Mongoose
 
-- Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
-- Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a
+* Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
+* Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a### 
 
 ### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
 
@@ -494,13 +494,13 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
 2. Mô hình hóa
 
    1. Mô hình Business Use-case
-      `<img src="./images/business_uc.png"><br>`
-      `<strong>`Mô tả:`</strong><br>`
+      <img src="./images/business_uc.png"><br>
+      <strong>Mô tả:</strong><br>
       - Business use case là bản mô tả chi tiết quy trình nghiệp vụ, mục tiêu và các tương tác giữa tác nhân (người dùng/hệ thống) với tổ chức nhằm đạt được kết quả kinh doanh cụ thể, ví dụ: "Xử lý đơn hàng" hoặc "Quản lý kho". Nó giúp xác định yêu cầu chức năng, phạm vi dự án và luồng hành động (chính/ngoại lệ) để tối ưu hóa quy trình hoạt động.
       - Với biểu đồ về Quản lý Website bán giày thể thao. Biểu đồ có đầy đủ các chức năng cơ bản như các Actor: Khách hàng, Quản lý, Nhân viên. Và các Use Case như Mua, Quản lý, Đăng nhập/ Đăng ký, ...
    2. Mô hình SUB_Quản lý giỏ hàng
-      `<img src="./images/sub_quanlygiohang.png"><br>`
-      `<strong>`Mô tả:`</strong><br>`
+      <img src="./images/sub_quanlygiohang.png"><br>
+      <strong>Mô tả:</strong><br>
       - Biểu đồ Sub Use Case – Quản lý giỏ hàng mô tả các chức năng mà khách hàng có thể thực hiện trong quá trình lựa chọn và quản lý các sản phẩm trước khi tiến hành đặt hàng. Đây là một biểu đồ con trong hệ thống thương mại điện tử, giúp thể hiện rõ cách người dùng tương tác với giỏ hàng.
       - Tác nhân: `<strong>`Khách hàng `</strong>`: Là người sử dụng hệ thống để lựa chọn, quản lý các sản phẩm mong muốn mua thông qua giỏ hàng.
       - Các Use Case chính:
@@ -510,8 +510,8 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
             * Thêm sản phẩm vào giỏ hàng với số lượng mặc định hoặc số lượng do khách hàng lựa chọn
             * Cập nhật lại tổng số sản phẩm và tổng giá trị của giỏ hàng
    3. Mô hình SUB_Quản lý đơn hàng
-      `<img src="./images/sub_quanlydonhang.png"><br>`
-      `<strong>`Mô tả:`</strong><br>`
+      <img src="./images/sub_quanlydonhang.png"><br>
+      <strong>Mô tả:</strong><br>
       - Biểu đồ Sub Use Case – Quản lý đơn hàng mô tả các chức năng mà khách hàng có thể thực hiện đối với đơn hàng sau khi đã hoàn tất quá trình mua sắm trên Website. Biểu đồ này giúp thể hiện rõ cách khách hàng theo dõi và quản lý trạng thái đơn hàng của mình trong hệ thống.
       - Tác nhân: Khách hàng: Là người sử dụng hệ thống để lựa chọn, quản lý các sản phẩm mong muốn mua thông qua giỏ hàng..
       - Các Use Case chính:
@@ -527,7 +527,7 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
             - Nếu đơn hàng đủ điều kiện hủy, hệ thống cập nhật trạng thái đơn hàng sang Đã hủy
             - Thông báo kết quả hủy đơn hàng cho khách hàng
    4. Mô hình SUB_Quản lý sản phẩm
-      `<img src="./images/sub_quanlysanpham.png"><br>`
+      <img src="./images/sub_quanlysanpham.png"><br>
       - Biểu đồ Use Case Quản lý sản phẩm mô tả các chức năng chính liên quan đến việc quản lý thông tin sản phẩm trong hệ thống. Biểu đồ này là một biểu đồ con (Sub Use Case), thuộc phạm vi quản lý của hệ thống và tập trung vào các thao tác cơ bản đối với sản phẩm.
       - Tác nhân: `<strong>`Quản trị viên (Admin):`</strong>` Là người có quyền truy cập và thực hiện các chức năng quản lý sản phẩm trong hệ thống.
       - Các Use Case chính:
@@ -536,8 +536,8 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
         - Sửa thông tin sản phẩm: Cho phép quản trị viên chỉnh sửa các thông tin của sản phẩm đã tồn tại, như cập nhật giá bán, thay đổi mô tả, hình ảnh hoặc số lượng sản phẩm. Sau khi chỉnh sửa, hệ thống sẽ lưu lại các thay đổi mới.
         - Xem thông tin sản phẩm: Cho phép quản trị viên xem danh sách và chi tiết thông tin của các sản phẩm hiện có trong hệ thống. Chức năng này hỗ trợ việc kiểm tra, theo dõi và quản lý sản phẩm một cách hiệu quả.
    5. Mô hình SUB_Quản lý thông tin nhân viên
-      `<img src="./images/sub_quanlythongtinnhanvien.png"><br>`
-      `<strong>`Mô tả:`</strong>`
+      <img src="./images/sub_quanlythongtinnhanvien.png"><br>
+      <strong>Mô tả:</strong>
       - Biểu đồ Sub Use Case – Quản lý thông tin nhân viên mô tả các chức năng mà Admin có thể thực hiện nhằm quản lý tài khoản và thông tin của nhân viên trong hệ thống. Biểu đồ này đóng vai trò quan trọng trong việc phân quyền, kiểm soát người dùng nội bộ và đảm bảo hệ thống vận hành hiệu quả.
       - Tác nhân: `<strong>`Quản trị viên (Admin):`</strong>` Là người có quyền truy cập và thực hiện các chức năng quản lý thông tin trong hệ thống.
       - Các Use Case chính:
@@ -558,8 +558,8 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
           - Vai trò và quyền hạn
           - Trạng thái hoạt động của tài khoản
    6. Mô hình SUB_Quản lý thông tin doanh thu
-      `<img src="./images/sub_quanlythongtindoanhthu.png"><br>`
-      `<strong>`Mô tả: `</strong>`
+      <img src="./images/sub_quanlythongtindoanhthu.png"><br>
+      <strong>Mô tả: </strong>
       - Biểu đồ Sub Use Case – Quản lý thông tin doanh thu mô tả các chức năng mà Admin có thể thực hiện nhằm theo dõi, thống kê và đánh giá hiệu quả kinh doanh của hệ thống. Thông qua các chức năng này, Admin có thể nắm bắt tình hình bán hàng và đưa ra các quyết định quản lý phù hợp.
       - Tác nhân: Admin (Quản trị viên): Là người có quyền truy cập và xem các thông tin liên quan đến doanh thu của hệ thống.
       - Các Use Case chính:
@@ -579,9 +579,9 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
 
    1. Biểu đồ thanh toán trực tiếp (Tiền mặt):
       1. Biểu đồ Activity:
-         `<img src="./images/ac_thanhtoantienmat.png"><br>`
+         <img src="./images/ac_thanhtoantienmat.png"><br>
       2. Biểu đồ Sequence:
-         `<img src="./images/se_thanhtoantienmat.png"><br>`
+         <img src="./images/se_thanhtoantienmat.png"><br>
       3. Đặc tả chức năng thanh toán tiền mặt:
          1. Mục đích: Chức năng thanh toán tiền mặt cho phép khách hàng thanh toán đơn hàng trực tiếp bằng tiền mặt khi nhận hàng hoặc tại quầy, đồng thời giúp nhân viên xác nhận và cập nhật trạng thái thanh toán trên hệ thống.
          2. Tác nhân tham gia:
@@ -603,9 +603,9 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
             * Thông tin thanh toán được lưu trữ trên hệ thống.Thông tin thanh toán được lưu trữ trên hệ thống.
    2. Biểu đồ thanh toán online (VNPay):
       1. Biểu đồ Activity:
-         `<img src="./images/ac_thanhtoanvnpay.png"><br>`
+         <img src="./images/ac_thanhtoanvnpay.png"><br>
       2. Biểu đồ Sequence:
-         `<img src="./images/se_thanhtoanvnpay.png"><br>`
+         <img src="./images/se_thanhtoanvnpay.png"><br>
       3. Đặc tả chức năng thanh toán online:
 
          1. Mục đích: Chức năng thanh toán qua VNPAY cho phép khách hàng thanh toán đơn hàng trực tuyến thông qua cổng thanh toán VNPAY một cách nhanh chóng, an toàn và tiện lợi.
@@ -638,9 +638,9 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
 4. Mô hình hóa chức năng Chăm sóc khách hàng (Chat-Reatime):
 
    1. Biểu đồ Activity:
-      `<img src="./images/ac_chamsockhachhang.png"><br>`
+      <img src="./images/ac_chamsockhachhang.png"><br>
    2. Biểu đồ Sequence:
-      `<img src="./images/se_chamsockhachang.png"><br>`
+      <img src="./images/se_chamsockhachang.png"><br>
    3. Đặc tả chức năng chăm sóc khách hàng:
       1. Mục đích: Chức năng Chăm sóc khách hàng cho phép hệ thống tiếp nhận, xử lý và phản hồi các yêu cầu, thắc mắc hoặc khiếu nại của khách hàng nhằm đảm bảo quyền lợi và nâng cao chất lượng dịch vụ.
       2. Tác nhân tham gia:
@@ -664,39 +664,39 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
 5. Mô hình hóa chức năng khách hàng
 
    1. Sơ đồ Chỉnh sửa thông tin cá nhân
-      `<img src="../TaiLieuPTTKHT/images/AC_CSTTCN.png"><br>`
-      `<img src="../TaiLieuPTTKHT/images/SE_CSTTCN.png"><br>`
+      <img src="../TaiLieuPTTKHT/images/AC_CSTTCN.png"><br>
+      <img src="../TaiLieuPTTKHT/images/SE_CSTTCN.png"><br>
       
       - Khi khách hàng đăng nhập thành công và chọn chức năng  “Chỉnh sửa thông tin cá nhân” , hệ thống hiển thị thông tin hiện tại của khách hàng
       - Khi  khách hàng chỉnh sửa thông tin và bấm “Lưu” , hệ thống kiểm tra tính hợp lệ của dữ liệu
       - Nếu dữ liệu hợp lệ, hệ thống cập nhật thông tin vào cơ sở dữ liệu và hiển thị thông báo cập nhật thành công
       - Nếu dữ liệu không hợp lệ, hệ thống hiển thị thông báo lỗi
    2. Sơ đồ Lịch sử mua hàng
-      `<img src="../TaiLieuPTTKHT/images/AC_LSMH.png"><br>`
-      `<img src="../TaiLieuPTTKHT/images/SE_LSMH.png"><br>`
+      <img src="../TaiLieuPTTKHT/images/AC_LSMH.png"><br>
+      <img src="../TaiLieuPTTKHT/images/SE_LSMH.png"><br>
       
       - Khi  khách hàng chọn chức năng “Lịch sử mua hàng” , hệ thống truy vấn danh sách các đơn hàng của khách hàng
       - Hệ thống hiển thị danh sách đơn hàng đã mua
       - Khi  khách hàng chọn một đơn hàng , hệ thống hiển thị chi tiết đơn hàng
    3. Sơ đồ Tìm kiếm sản phẩm
-      `<img src="../TaiLieuPTTKHT/images/AC_TKSP.png"><br>`
-      `<img src="../TaiLieuPTTKHT/images/SE_TKSP.png"><br>`
+      <img src="../TaiLieuPTTKHT/images/AC_TKSP.png"><br>
+      <img src="../TaiLieuPTTKHT/images/SE_TKSP.png"><br>
 
       - Khi khách hàng nhập từ khóa tìm kiếm và bấm  “Tìm kiếm” , hệ thống tiến hành xử lý từ khóa
       - Hệ thống truy vấn dữ liệu sản phẩm phù hợp
       - Kết quả tìm kiếm được hiển thị cho khách hàng
       - Nếu không có sản phẩm phù hợp, hệ thống hiển thị thông báo không tìm thấy sản phẩm
    4. Sơ đồ Tình trạng đơn hàng
-      `<img src="../TaiLieuPTTKHT/images/AC_TTĐH.png"><br>`
-      `<img src="../TaiLieuPTTKHT/images/SE_TTĐH.png"><br>`
+      <img src="../TaiLieuPTTKHT/images/AC_TTĐH.png"><br>
+      <img src="../TaiLieuPTTKHT/images/SE_TTĐH.png"><br>
 
       - Khi  khách hàng truy cập chức năng “Tình trạng đơn hàng” , hệ thống hiển thị  danh sách đơn hàng đã đặt
       - Khi  khách hàng chọn một đơn hàng, hệ thống hiển thị trạng thái xử lý đơn hàng như: chờ xác nhận, đang giao hàng, đã hoàn thành hoặc đã hủy
    5. Sơ đồ đăng nhập/ đăng ký
-      `<img src="./image/PTTKHT/AC_KhachHang_DangNhap.png"><br>`
-      `<img src="./image/PTTKHT/AC_KhachHang_DangKy.png"><br>`
-      `<img src="./image/PTTKHT/SQ_KhachHang_DangNhap.png"><br>`
-      `<img src="./image/PTTKHT/SQ_KhachHang_DangKy.png"><br>`
+      <img src="./image/PTTKHT/AC_KhachHang_DangNhap.png"><br>
+      <img src="./image/PTTKHT/AC_KhachHang_DangKy.png"><br>
+      <img src="./image/PTTKHT/SQ_KhachHang_DangNhap.png"><br>
+      <img src="./image/PTTKHT/SQ_KhachHang_DangKy.png"><br>
 
       A. Luồng đăng nhập
 
@@ -712,18 +712,18 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
       - Nếu hợp lệ, hệ thống tạo tài khoản mới và thông báo thành công
       - Nếu không hợp lệ, hệ thống hiển thị lỗi
    6. Sơ đồ Quên mật khẩu
-      `<img src="./image/PTTKHT/AC_KhachHang_QuenMK.png"><br>`
-      `<img src="./image/PTTKHT/SQ_KhachHang_QuenMK.png"><br>`
+      <img src="./image/PTTKHT/AC_KhachHang_QuenMK.png"><br>
+      <img src="./image/PTTKHT/SQ_KhachHang_QuenMK.png"><br>
 
       - Khi  khách hàng chọn “Quên mật khẩu” , hệ thống hiển thị form nhập email
       - Khi  khách hàng nhập email , hệ thống kiểm tra sự tồn tại của tài khoản
       - Nếu tài khoản tồn tại, hệ thống gửi hướng dẫn đặt lại mật khẩu
       - Nếu không tồn tại, hệ thống hiển thị thông báo lỗi
    7. Sơ đồ Thêm/ Xóa sản phẩm giỏ hàng
-      `<img src="./images/AD_ThemVaoGioHang.png"><br>`
-      `<img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>`
-      `<img src="./images/AD_XoaSanPhamTrongGioHang.png"><br>`
-      ``<img src="./images/XoaSanPhamTrongGioHang.png"><br>``
+      <img src="./images/AD_ThemVaoGioHang.png"><br>
+      <img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>
+      <img src="./images/AD_XoaSanPhamTrongGioHang.png"><br>
+      <img src="./images/XoaSanPhamTrongGioHang.png"><br>
 
       A. Luồng thêm sản phẩm vào giỏ hàng
 
@@ -736,8 +736,8 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
       - Khi  khách hàng bấm “Xóa” một sản phẩm trong giỏ , hệ thống loại bỏ sản phẩm khỏi giỏ hàng
       - Hệ thống cập nhật lại tổng tiền và hiển thị giỏ hàng mới
    8. Sơ đồ mua hàng
-      `<img src="./images/AD_MuaSanPham.png"><br>`
-      `<img src="./images/SD_MuaHang.png"><br>`
+      <img src="./images/AD_MuaSanPham.png"><br>
+      <img src="./images/SD_MuaHang.png"><br>
 
       - Khi  khách hàng bấm “Thanh toán” , hệ thống hiển thị form thông tin giao hàng
       - Khi  khách hàng xác nhận đơn hàng , hệ thống: kiểm tra tồn kho, tạo đơn hàng mới, cập nhật trạng thái đơn hàng
@@ -745,19 +745,72 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
 6. Mô hình hóa chức năng của Admin
 
    1. Sơ đồ Thêm sản phẩm
-      `<img src="./images/AC_ThemSanPham.png"><br>`
-      `<img src="./images/SE_ThemSanPham.png"><br>`
+      <img src="./images/AC_ThemSanPham.png"><br>
+      <img src="./images/SE_ThemSanPham.png"><br>
+      * Mô tả: Chức năng cho phép Admin nhập thông tin và thêm một mẫu giày mới vào hệ thống.
+      * Tác nhân: Admin.
+       * Luồng sự kiên chính:
+         1. Admin chọn chức năng thêm mới sản phẩm trên giao diện quản lý.
+         2. Hệ thống hiển thị giao diện nhập thông tin sản phẩm mới.
+         3. Admin nhập các thông tin sản phẩm mới.
+         4. Admin nhấn nút nút lưu.
+         5. Hệ thống thực hiện kiểm tra dữ liệu.
+         6. Nếu dữ liệu hợp lệ và chưa tồn tại, hệ thống lưu thông tin vào Cơ sở dữ liệu.
+         7. Hệ thống hiển thị thông báo thêm mới sản phẩm thành công.
+       * Luồng ngoại lệ:
+         + Tại bước 5, nếu định dạng dữ liệu không hợp lệ hoặc sản phẩm đã tồn tại: Hệ thống hiển thị thông báo lỗi và yêu cầu Admin nhập lại thông tin.
    2. Sơ đồ xóa sản phẩm
-      `<img src="./images/AC_XoaSanPham.png"><br>`
-      `<img src="./images/SE_XoaSanPham.png"><br>`
+      <img src="./images/AC_XoaSanPham.png"><br>
+      <img src="./images/SE_XoaSanPham.png"><br>
+       * Mô tả: Chức năng cho phép Admin xóa sản phẩm khỏi hệ thống.
+        * Tác nhân: Admin.
+         * Luồng sự kiện chính:
+           1. Admin chọn chức năng xóa sản phẩm trên giao diện quản lý.
+           2. Hệ thống hiển thị giao diện xác nhận xóa.
+           3. Admin xác nhận xóa sản phẩm.
+           4. Hệ thống kiểm tra thông tin sản phẩm.
+           5. Hệ thống xóa sản phẩm khỏi Cơ sở dữ liệu.
+           6. Hệ thống thông báo xóa thành công.
+         * Luồng ngoại lệ:
+           + Nếu sản phẩm không tồn tại hoặc không thể xóa, hệ thống thông báo lỗi. 
    3. Biểu đồ sửa sản phẩm
-      `<img src="./images/AC_SuaSanPham.png"><br>`
-      `<img src="./images/SE_SuaSanPham.png"><br>`
+      <img src="./images/AC_SuaSanPham.png"><br>
+      <img src="./images/SE_SuaSanPham.png"><br>
+       * Mô tả: Chức năng cho phép Admin cập nhật lại thông tin của một sản phẩm đã có.
+       * Tác nhân: Admin.
+       * Luồng sự kiện chính:
+         1. Admin chọn sản phẩm cần sửa và nhấn chức năng sửa sản phẩm.
+         2. Hệ thống hiển thị màn hình sửa với thông tin hiện tại của sản phẩm.
+         3. Admin nhập/chỉnh sửa các thông tin mới.
+         4. Admin bấm nút lưu.
+         5. Hệ thống kiểm tra định dạng dữ liệu mới nhập.
+         6. Nếu dữ liệu hợp lệ, hệ thống cập nhật thông tin mới vào Cơ sở dữ liệu.
+         7. Hệ thống hiển thị thông báo sửa sản phẩm thành công.
+       * Luồng ngoại lệ:
+         + Nếu dữ liệu nhập vào sai định dạng, hệ thống báo lỗi và yêu cầu nhập lại.
    4. Thêm tài khoản nhân viên
-      `<img src="./images/AC_ThemMoiTaiKhoanNhanVien.png"><br>`
-      `<img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>`
+      <img src="./images/AC_ThemMoiTaiKhoanNhanVien.png"><br>
+      <img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>
+       * Mô tả: Chức năng cho phép Admin cấp tài khoản mới cho nhân viên để truy cập hệ thống.
+       * Tác nhân: Admin.
+       * Luồng sự kiện chính:
+         1. Admin chọn chức năng thêm mới tài khoản nhân viên.
+         2. Hệ thống hiển thị giao diện nhập liệu.
+         3. Admin nhập thông tin tài khoản.
+         4. Admin nhấn nút xác nhận thêm.
+         5. Hệ thống kiểm tra tài khoản có tồn tại hoặc trùng lặp không.
+         6. Nếu thỏa mãn các điều kiện, hệ thống lưu tài khoản mới.
+         7. Hệ thống hiển thị thông báo thêm mới tài khoản thành công.
    5. Sơ đồ hiển thị thống kê
-      `<img src="./images/AC_HienThiThongKe.png"><br>`
+      <img src="./images/AC_HienThiThongKe.png"><br>
+      * Mô tả: Chức năng cho phép Admin xem các thống kế của website.
+       * Tác nhân: Admin.
+       * Luồng sự kiện chính:
+         1. Admin chọn chức năng xem thống kê.
+         2. Hệ thống hiển thị giao diện thống kê.
+         3. Hệ thống xử lý và tổng hợp dữ liệu.
+         4. Hệ thống hiển thị kết quả thống kê
+   
 7. Ma trận thực thể chức năng
 
    - Ma trận thể hiện các mối quan hệ giữa các chức năng và hồ sơ dữ liệu. Ma trận là một
@@ -780,7 +833,7 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
    | Quản lý bán giày       |   |   |   | C |   |
    | Quản lý nhân viên      |   |   | C |   |   |
    | Báo cáo                  | R | R | R | R |   |
-      `<img src="./images/SE_ThemSanPham.png"><br>`
+     
 8. Phân tích đặc tả Class Diagram
 
    1. Sơ đồ Class Diagram
