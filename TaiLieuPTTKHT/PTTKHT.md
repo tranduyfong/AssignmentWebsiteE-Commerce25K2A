@@ -582,47 +582,166 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
          `<img src="./images/ac_thanhtoantienmat.png"><br>`
       2. Biểu đồ Sequence:
          `<img src="./images/se_thanhtoantienmat.png"><br>`
+      3. Đặc tả chức năng thanh toán tiền mặt:
+         1. Mục đích: Chức năng thanh toán tiền mặt cho phép khách hàng thanh toán đơn hàng trực tiếp bằng tiền mặt khi nhận hàng hoặc tại quầy, đồng thời giúp nhân viên xác nhận và cập nhật trạng thái thanh toán trên hệ thống.
+         2. Tác nhân tham gia:
+            * Khách hàng
+            * Nhân viên
+            * Hệ thống
+         3. Luồng hoạt động chính:
+            1. Khách hàng lựa chọn hình thức Thanh toán tiền mặt khi đặt hàng.
+            2. Hệ thống ghi nhận hình thức thanh toán tiền mặt cho đơn hàng.
+            3. Nhân viên giao hàng hoặc nhân viên tại quầy nhận tiền mặt từ khách hàng.
+            4. Nhân viên đăng nhập hệ thống và mở thông tin đơn hàng tương ứng.
+            5. Nhân viên xác nhận đã nhận đủ tiền từ khách hàng.
+            6. Hệ thống cập nhật trạng thái đơn hàng sang  Đã thanh toán .
+            7. Hệ thống lưu thông tin thanh toán và thời gian xác nhận.
+            8. Kết thúc quá trình thanh toán tiền mặt.
+         4. Luồng hoạt động thay thế: Nếu khách hàng chưa thanh toán đủ tiền, nhân viên cập nhật trạng thái Chưa thanh toán và thông báo cho khách hàng.
+         5. Kết quả:
+            * Đơn hàng được cập nhật trạng thái thanh toán.
+            * Thông tin thanh toán được lưu trữ trên hệ thống.Thông tin thanh toán được lưu trữ trên hệ thống.
    2. Biểu đồ thanh toán online (VNPay):
       1. Biểu đồ Activity:
          `<img src="./images/ac_thanhtoanvnpay.png"><br>`
       2. Biểu đồ Sequence:
          `<img src="./images/se_thanhtoanvnpay.png"><br>`
+      3. Đặc tả chức năng thanh toán online:
+
+         1. Mục đích: Chức năng thanh toán qua VNPAY cho phép khách hàng thanh toán đơn hàng trực tuyến thông qua cổng thanh toán VNPAY một cách nhanh chóng, an toàn và tiện lợi.
+         2. Tác nhân tham gia:
+
+            * Khách hàng
+            * Hệ thống
+            * Cổng thanh toán VNPAY
+         3. Luồng hoạt động chính:
+
+            1. Khách hàng lựa chọn hình thức Thanh toán qua VNPAY khi đặt hàng.
+            2. Hệ thống tạo yêu cầu thanh toán và chuyển hướng khách hàng đến cổng VNPAY.
+            3. Khách hàng nhập thông tin thanh toán theo yêu cầu của VNPAY.
+            4. VNPAY xử lý giao dịch và gửi kết quả thanh toán về hệ thống.
+            5. Hệ thống nhận kết quả thanh toán từ VNPAY.
+            6. Nếu thanh toán  thành công , hệ thống cập nhật trạng thái đơn hàng sang  Đã thanh toán .
+            7. Hệ thống lưu thông tin giao dịch VNPAY (mã giao dịch, thời gian, số tiền).
+            8. Hệ thống hiển thị thông báo thanh toán thành công cho khách hàng.
+            9. Kết thúc quá trình thanh toán qua VNPAY.
+         4. Luồng hoạt động thay thế:
+
+            Trường hợp thanh toán thất bại
+
+            1. VNPAY trả về trạng thái thanh toán không thành công.
+            2. Hệ thống hiển thị thông báo thất bại và cho phép khách hàng thực hiện thanh toán lại hoặc chọn hình thức thanh toán khác.
+         5. Kết quả:
+
+            1. Đơn hàng được cập nhật trạng thái thanh toán tương ứng.
+            2. Thông tin giao dịch được lưu trữ để phục vụ đối soát.
 4. Mô hình hóa chức năng Chăm sóc khách hàng (Chat-Reatime):
 
    1. Biểu đồ Activity:
       `<img src="./images/ac_chamsockhachhang.png"><br>`
    2. Biểu đồ Sequence:
       `<img src="./images/se_chamsockhachang.png"><br>`
+   3. Đặc tả chức năng chăm sóc khách hàng:
+      1. Mục đích: Chức năng Chăm sóc khách hàng cho phép hệ thống tiếp nhận, xử lý và phản hồi các yêu cầu, thắc mắc hoặc khiếu nại của khách hàng nhằm đảm bảo quyền lợi và nâng cao chất lượng dịch vụ.
+      2. Tác nhân tham gia:
+
+         * Khách hàng
+         * Nhân viên chăm sóc khách hàng
+      3. Mô tả luồng hoạt động chính
+
+         1. Nhân viên bắt đầu thao tác trên hệ thống.
+         2. Nhân viên chọn chức năng Chat trong hệ thống chăm sóc khách hàng.
+         3. Hệ thống hiển thị màn hình chat cho nhân viên.
+         4. Nhân viên lựa chọnđối tượng cần chat (khách hàng hoặc người dùng liên quan).
+         5. Hệ thống hiển thị thông tin tin nhắn và lịch sử trò chuyện giữa nhân viên và đối tượng đã chọn.
+         6. Nhân viên nhập nội dung tin nhắn cần gửi.
+         7. Nhân viên thực hiện thao tác chọn gửi tin nhắn
+         8. Hệ thống gửi tin nhắn đến đối tượng nhận và cập nhật tin nhắn mới vào lịch sử trò chuyện.
+         9. Hệ thống kiểm tra trạng thái cuộc trò chuyện.
+         10. Nếu cuộc trò chuyện  chưa hoàn tất , hệ thống cho phép nhân viên tiếp tục nhập và gửi tin nhắn mới (quay lại bước nhập nội dung tin nhắn).
+         11. Nếu cuộc trò chuyện  đã hoàn tất , hệ thống kết thúc phiên chat.
+         12. Kết thúc luồng hoạt động.
 5. Mô hình hóa chức năng khách hàng
 
    1. Sơ đồ Chỉnh sửa thông tin cá nhân
       `<img src="../TaiLieuPTTKHT/images/AC_CSTTCN.png"><br>`
       `<img src="../TaiLieuPTTKHT/images/SE_CSTTCN.png"><br>`
+      
+      - Khi khách hàng đăng nhập thành công và chọn chức năng  “Chỉnh sửa thông tin cá nhân” , hệ thống hiển thị thông tin hiện tại của khách hàng
+      - Khi  khách hàng chỉnh sửa thông tin và bấm “Lưu” , hệ thống kiểm tra tính hợp lệ của dữ liệu
+      - Nếu dữ liệu hợp lệ, hệ thống cập nhật thông tin vào cơ sở dữ liệu và hiển thị thông báo cập nhật thành công
+      - Nếu dữ liệu không hợp lệ, hệ thống hiển thị thông báo lỗi
    2. Sơ đồ Lịch sử mua hàng
       `<img src="../TaiLieuPTTKHT/images/AC_LSMH.png"><br>`
       `<img src="../TaiLieuPTTKHT/images/SE_LSMH.png"><br>`
+      
+      - Khi  khách hàng chọn chức năng “Lịch sử mua hàng” , hệ thống truy vấn danh sách các đơn hàng của khách hàng
+      - Hệ thống hiển thị danh sách đơn hàng đã mua
+      - Khi  khách hàng chọn một đơn hàng , hệ thống hiển thị chi tiết đơn hàng
    3. Sơ đồ Tìm kiếm sản phẩm
       `<img src="../TaiLieuPTTKHT/images/AC_TKSP.png"><br>`
       `<img src="../TaiLieuPTTKHT/images/SE_TKSP.png"><br>`
+
+      - Khi khách hàng nhập từ khóa tìm kiếm và bấm  “Tìm kiếm” , hệ thống tiến hành xử lý từ khóa
+      - Hệ thống truy vấn dữ liệu sản phẩm phù hợp
+      - Kết quả tìm kiếm được hiển thị cho khách hàng
+      - Nếu không có sản phẩm phù hợp, hệ thống hiển thị thông báo không tìm thấy sản phẩm
    4. Sơ đồ Tình trạng đơn hàng
       `<img src="../TaiLieuPTTKHT/images/AC_TTĐH.png"><br>`
       `<img src="../TaiLieuPTTKHT/images/SE_TTĐH.png"><br>`
+
+      - Khi  khách hàng truy cập chức năng “Tình trạng đơn hàng” , hệ thống hiển thị  danh sách đơn hàng đã đặt
+      - Khi  khách hàng chọn một đơn hàng, hệ thống hiển thị trạng thái xử lý đơn hàng như: chờ xác nhận, đang giao hàng, đã hoàn thành hoặc đã hủy
    5. Sơ đồ đăng nhập/ đăng ký
       `<img src="./image/PTTKHT/AC_KhachHang_DangNhap.png"><br>`
       `<img src="./image/PTTKHT/AC_KhachHang_DangKy.png"><br>`
       `<img src="./image/PTTKHT/SQ_KhachHang_DangNhap.png"><br>`
       `<img src="./image/PTTKHT/SQ_KhachHang_DangKy.png"><br>`
+
+      A. Luồng đăng nhập
+
+      - Khi  khách hàng bấm “Đăng nhập” , hệ thống hiển thị form đăng nhập
+      - Khi  khách hàng nhập thông tin và xác nhận , hệ thống tiến hành xác thực tài khoản
+      - Nếu thông tin đúng, hệ thống tạo phiên đăng nhập và chuyển đến trang chủ
+      - Nếu thông tin sai, hệ thống hiển thị thông báo lỗi đăng nhập
+
+      B. Luồng đăng kí
+
+      - Khi  khách hàng bấm “Đăng ký” , hệ thống hiển thị form đăng ký tài khoản
+      - Khi  khách hàng nhập thông tin và xác nhận , hệ thống kiểm tra dữ liệu và email tồn tại
+      - Nếu hợp lệ, hệ thống tạo tài khoản mới và thông báo thành công
+      - Nếu không hợp lệ, hệ thống hiển thị lỗi
    6. Sơ đồ Quên mật khẩu
       `<img src="./image/PTTKHT/AC_KhachHang_QuenMK.png"><br>`
       `<img src="./image/PTTKHT/SQ_KhachHang_QuenMK.png"><br>`
+
+      - Khi  khách hàng chọn “Quên mật khẩu” , hệ thống hiển thị form nhập email
+      - Khi  khách hàng nhập email , hệ thống kiểm tra sự tồn tại của tài khoản
+      - Nếu tài khoản tồn tại, hệ thống gửi hướng dẫn đặt lại mật khẩu
+      - Nếu không tồn tại, hệ thống hiển thị thông báo lỗi
    7. Sơ đồ Thêm/ Xóa sản phẩm giỏ hàng
       `<img src="./images/AD_ThemVaoGioHang.png"><br>`
       `<img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>`
       `<img src="./images/AD_XoaSanPhamTrongGioHang.png"><br>`
-      `<img src="./images/XoaSanPhamTrongGioHang.png"><br>`
+      ``<img src="./images/XoaSanPhamTrongGioHang.png"><br>``
+
+      A. Luồng thêm sản phẩm vào giỏ hàng
+
+      - Khi  khách hàng chọn sản phẩm và bấm “Thêm vào giỏ hàng” , hệ thống kiểm tra tồn kho
+      - Nếu còn hàng, hệ thống thêm sản phẩm vào giỏ hàng và hiển thị thông báo thành công
+      - Nếu hết hàng, hệ thống thông báo không đủ số lượng
+
+      B. Luồng xóa sản phẩm giỏ hàng
+
+      - Khi  khách hàng bấm “Xóa” một sản phẩm trong giỏ , hệ thống loại bỏ sản phẩm khỏi giỏ hàng
+      - Hệ thống cập nhật lại tổng tiền và hiển thị giỏ hàng mới
    8. Sơ đồ mua hàng
       `<img src="./images/AD_MuaSanPham.png"><br>`
       `<img src="./images/SD_MuaHang.png"><br>`
+
+      - Khi  khách hàng bấm “Thanh toán” , hệ thống hiển thị form thông tin giao hàng
+      - Khi  khách hàng xác nhận đơn hàng , hệ thống: kiểm tra tồn kho, tạo đơn hàng mới, cập nhật trạng thái đơn hàng
+      - Hệ thống hiển thị thông báo đặt hàng thành công và mã đơn hàng
 6. Mô hình hóa chức năng của Admin
 
    1. Sơ đồ Thêm sản phẩm
@@ -661,3 +780,96 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
    | Quản lý bán giày       |   |   |   | C |   |
    | Quản lý nhân viên      |   |   | C |   |   |
    | Báo cáo                  | R | R | R | R |   |
+      `<img src="./images/SE_ThemSanPham.png"><br>`
+8. Phân tích đặc tả Class Diagram
+
+   1. Sơ đồ Class Diagram
+   2. Mô tả hệ thống
+      1. Hệ thống quản lý bán giày thể thao gồm:
+
+         1. Khách hàng mua sản, chỉnh sửa đơn hàng và thanh toán.
+         2. Giỏ hàng lưu các sản phẩm trước khi đặt mua.
+         3. Đơn hàng gồm nhiều dòng chi tiết.
+         4. Nhân viên chăm sóc khách hàng.
+         5. Admin quản lý nhân viên và sản phẩm.
+   3. Đặc tả từng lớp
+      1. KhachHang
+         1. Thuộc tính:
+            1. maKH
+            2. tenKH
+            3. sdt
+            4. email
+            5. diaChi
+         2. Phương thức:
+            1. thanhToan()
+            2. muaHang()
+            3. chinhSuaDH()
+         3. Quan hệ
+            1. 1 KhachHang — 1 GioHang (composition)
+            2. 1 KhachHang — 0..* DonHang (composition)
+      2. GioHang
+         1. Thuộc tính:
+            1. maGH
+            2. dsGioHang
+         2. Phương thức:
+            1. themSP()
+            2. xoaSP()
+         3. Quan hệ:
+            1. thuộc về 1 KhachHang
+      3. DonHang
+         1. Thuộc tính:
+            1. maDH
+            2. tenDH
+            3. soLuongDH
+            4. tongTien
+            5. dsChiTiet
+         2. Phương thức:
+            1. taoDH()
+            2. huyDH()
+         3. Quan hệ
+            1. thuộc 1 KhachHang
+            2. gồm 1..* ChiTietDonHang
+      4. ChiTietDonHang
+         1. Thuộc tính:
+            1. soLuong
+            2. donGia
+            3. thanhTien
+         2. Quan hệ:
+            1. thuộc 1 DonHang
+            2. tham chiếu 1 GiayTheThao
+      5. GiayTheThao
+         1. Thuộc tính:
+            1. maSP
+            2. tenSP
+            3. soLuong
+            4. xuatXu
+            5. giaBan
+         2. Phương thức:
+            1. tangSoLuong()
+            2. giamSoLuong()
+         3. Quan hệ
+            1. xuất hiện trong nhiều ChiTietDonHang
+            2. được Admin quản lý
+      6. NhanVien
+         1. Thuộc tính
+            1. maNV
+            2. tenNV
+            3. sdt
+            4. email
+         2. Phương thức:
+            1. chamSocKH()
+         3. Quan hệ:
+            1. do Admin quản lý
+      7. Admin
+         1. Thuộc tính:
+            1. maAd
+            2. tenAd
+         2. Phương thức:
+            1. hienThiThongKe()
+            2. suaSP()
+            3. themMoiTKNV()
+            4. themSP()
+            5. xoaSP()
+         3. Quan hệ:
+            1. quản lý 1..* NhanVien
+            2. quản lý 1..* GiayTheThao
