@@ -272,24 +272,10 @@ công cụ quản trị mạnh mẽ để kiểm soát kho hàng, doanh thu và 
 
 8. Mongoose
 
-<<<<<<< HEAD
-
 * Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
-* Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
-  =======
-
-- Mongoose là một thư viện JavaScript cho phép định nghĩa các schema với dữ liệu được định kiểu rõ ràng. Khi một schema được định nghĩa, Mongoose cho phép tạo một Model dựa trên một schema cụ thể. Model của Mongoose sau đó được ánh xạ tới một MongoDB document thông qua định nghĩa schema của Model.
-- Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a
+* Link: https://code.tutsplus.com/vi/an-introduction-to-mongoose-for-mongodb-and-nodejs--cms-29527a### 
 
 ### VII. Các yêu cầu chức năng và phi chức năng (Các khái niệm cơ bản về hệ thống, Các đặc điểm của phương pháp phân tích thiết kế có cấu trúc, Quan điểm vòng đời (chu trình sống ) của HTTT, Phương pháp mô hình hóa)
-
->>>>>>> b76ca42a9efd72acabca24f41dbc2464859865cf
->>>>>>>
->>>>>>
->>>>>
->>>>
->>>
->>
 
 **1. Các khái niệm cơ bản**
 
@@ -610,31 +596,82 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
    1. Sơ đồ Chỉnh sửa thông tin cá nhân
       `<img src="../TaiLieuPTTKHT/images/AC_CSTTCN.png"><br>`
       `<img src="../TaiLieuPTTKHT/images/SE_CSTTCN.png"><br>`
+      
+      - Khi khách hàng đăng nhập thành công và chọn chức năng  “Chỉnh sửa thông tin cá nhân” , hệ thống hiển thị thông tin hiện tại của khách hàng
+      - Khi  khách hàng chỉnh sửa thông tin và bấm “Lưu” , hệ thống kiểm tra tính hợp lệ của dữ liệu
+      - Nếu dữ liệu hợp lệ, hệ thống cập nhật thông tin vào cơ sở dữ liệu và hiển thị thông báo cập nhật thành công
+      - Nếu dữ liệu không hợp lệ, hệ thống hiển thị thông báo lỗi
    2. Sơ đồ Lịch sử mua hàng
       `<img src="../TaiLieuPTTKHT/images/AC_LSMH.png"><br>`
       `<img src="../TaiLieuPTTKHT/images/SE_LSMH.png"><br>`
+      
+      - Khi  khách hàng chọn chức năng “Lịch sử mua hàng” , hệ thống truy vấn danh sách các đơn hàng của khách hàng
+      - Hệ thống hiển thị danh sách đơn hàng đã mua
+      - Khi  khách hàng chọn một đơn hàng , hệ thống hiển thị chi tiết đơn hàng
    3. Sơ đồ Tìm kiếm sản phẩm
       `<img src="../TaiLieuPTTKHT/images/AC_TKSP.png"><br>`
       `<img src="../TaiLieuPTTKHT/images/SE_TKSP.png"><br>`
+
+      - Khi khách hàng nhập từ khóa tìm kiếm và bấm  “Tìm kiếm” , hệ thống tiến hành xử lý từ khóa
+      - Hệ thống truy vấn dữ liệu sản phẩm phù hợp
+      - Kết quả tìm kiếm được hiển thị cho khách hàng
+      - Nếu không có sản phẩm phù hợp, hệ thống hiển thị thông báo không tìm thấy sản phẩm
    4. Sơ đồ Tình trạng đơn hàng
       `<img src="../TaiLieuPTTKHT/images/AC_TTĐH.png"><br>`
       `<img src="../TaiLieuPTTKHT/images/SE_TTĐH.png"><br>`
+
+      - Khi  khách hàng truy cập chức năng “Tình trạng đơn hàng” , hệ thống hiển thị  danh sách đơn hàng đã đặt
+      - Khi  khách hàng chọn một đơn hàng, hệ thống hiển thị trạng thái xử lý đơn hàng như: chờ xác nhận, đang giao hàng, đã hoàn thành hoặc đã hủy
    5. Sơ đồ đăng nhập/ đăng ký
       `<img src="./image/PTTKHT/AC_KhachHang_DangNhap.png"><br>`
       `<img src="./image/PTTKHT/AC_KhachHang_DangKy.png"><br>`
       `<img src="./image/PTTKHT/SQ_KhachHang_DangNhap.png"><br>`
       `<img src="./image/PTTKHT/SQ_KhachHang_DangKy.png"><br>`
+
+      A. Luồng đăng nhập
+
+      - Khi  khách hàng bấm “Đăng nhập” , hệ thống hiển thị form đăng nhập
+      - Khi  khách hàng nhập thông tin và xác nhận , hệ thống tiến hành xác thực tài khoản
+      - Nếu thông tin đúng, hệ thống tạo phiên đăng nhập và chuyển đến trang chủ
+      - Nếu thông tin sai, hệ thống hiển thị thông báo lỗi đăng nhập
+
+      B. Luồng đăng kí
+
+      - Khi  khách hàng bấm “Đăng ký” , hệ thống hiển thị form đăng ký tài khoản
+      - Khi  khách hàng nhập thông tin và xác nhận , hệ thống kiểm tra dữ liệu và email tồn tại
+      - Nếu hợp lệ, hệ thống tạo tài khoản mới và thông báo thành công
+      - Nếu không hợp lệ, hệ thống hiển thị lỗi
    6. Sơ đồ Quên mật khẩu
       `<img src="./image/PTTKHT/AC_KhachHang_QuenMK.png"><br>`
       `<img src="./image/PTTKHT/SQ_KhachHang_QuenMK.png"><br>`
+
+      - Khi  khách hàng chọn “Quên mật khẩu” , hệ thống hiển thị form nhập email
+      - Khi  khách hàng nhập email , hệ thống kiểm tra sự tồn tại của tài khoản
+      - Nếu tài khoản tồn tại, hệ thống gửi hướng dẫn đặt lại mật khẩu
+      - Nếu không tồn tại, hệ thống hiển thị thông báo lỗi
    7. Sơ đồ Thêm/ Xóa sản phẩm giỏ hàng
       `<img src="./images/AD_ThemVaoGioHang.png"><br>`
       `<img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>`
       `<img src="./images/AD_XoaSanPhamTrongGioHang.png"><br>`
-      `<img src="./images/XoaSanPhamTrongGioHang.png"><br>`
+      ``<img src="./images/XoaSanPhamTrongGioHang.png"><br>``
+
+      A. Luồng thêm sản phẩm vào giỏ hàng
+
+      - Khi  khách hàng chọn sản phẩm và bấm “Thêm vào giỏ hàng” , hệ thống kiểm tra tồn kho
+      - Nếu còn hàng, hệ thống thêm sản phẩm vào giỏ hàng và hiển thị thông báo thành công
+      - Nếu hết hàng, hệ thống thông báo không đủ số lượng
+
+      B. Luồng xóa sản phẩm giỏ hàng
+
+      - Khi  khách hàng bấm “Xóa” một sản phẩm trong giỏ , hệ thống loại bỏ sản phẩm khỏi giỏ hàng
+      - Hệ thống cập nhật lại tổng tiền và hiển thị giỏ hàng mới
    8. Sơ đồ mua hàng
       `<img src="./images/AD_MuaSanPham.png"><br>`
       `<img src="./images/SD_MuaHang.png"><br>`
+
+      - Khi  khách hàng bấm “Thanh toán” , hệ thống hiển thị form thông tin giao hàng
+      - Khi  khách hàng xác nhận đơn hàng , hệ thống: kiểm tra tồn kho, tạo đơn hàng mới, cập nhật trạng thái đơn hàng
+      - Hệ thống hiển thị thông báo đặt hàng thành công và mã đơn hàng
 6. Mô hình hóa chức năng của Admin
 
    1. Sơ đồ Thêm sản phẩm
@@ -651,3 +688,96 @@ Trong phương pháp phân tích thiết kế hướng đối tượng (OOAD), �
       `<img src="./images/SD_ThemSanPhamVaoGioHang.png"><br>`
    5. Sơ đồ hiển thị thống kê
       `<img src="./images/AC_HienThiThongKe.png"><br>`
+      `<img src="./images/SE_ThemSanPham.png"><br>`
+7. Phân tích đặc tả Class Diagram
+
+   1. Sơ đồ Class Diagram
+   2. Mô tả hệ thống
+      1. Hệ thống quản lý bán giày thể thao gồm:
+
+         1. Khách hàng mua sản, chỉnh sửa đơn hàng và thanh toán.
+         2. Giỏ hàng lưu các sản phẩm trước khi đặt mua.
+         3. Đơn hàng gồm nhiều dòng chi tiết.
+         4. Nhân viên chăm sóc khách hàng.
+         5. Admin quản lý nhân viên và sản phẩm.
+   3. Đặc tả từng lớp
+      1. KhachHang
+         1. Thuộc tính:
+            1. maKH
+            2. tenKH
+            3. sdt
+            4. email
+            5. diaChi
+         2. Phương thức:
+            1. thanhToan()
+            2. muaHang()
+            3. chinhSuaDH()
+         3. Quan hệ
+            1. 1 KhachHang — 1 GioHang (composition)
+            2. 1 KhachHang — 0..* DonHang (composition)
+      2. GioHang
+         1. Thuộc tính:
+            1. maGH
+            2. dsGioHang
+         2. Phương thức:
+            1. themSP()
+            2. xoaSP()
+         3. Quan hệ:
+            1. thuộc về 1 KhachHang
+      3. DonHang
+         1. Thuộc tính:
+            1. maDH
+            2. tenDH
+            3. soLuongDH
+            4. tongTien
+            5. dsChiTiet
+         2. Phương thức:
+            1. taoDH()
+            2. huyDH()
+         3. Quan hệ
+            1. thuộc 1 KhachHang
+            2. gồm 1..* ChiTietDonHang
+      4. ChiTietDonHang
+         1. Thuộc tính:
+            1. soLuong
+            2. donGia
+            3. thanhTien
+         2. Quan hệ:
+            1. thuộc 1 DonHang
+            2. tham chiếu 1 GiayTheThao
+      5. GiayTheThao
+         1. Thuộc tính:
+            1. maSP
+            2. tenSP
+            3. soLuong
+            4. xuatXu
+            5. giaBan
+         2. Phương thức:
+            1. tangSoLuong()
+            2. giamSoLuong()
+         3. Quan hệ
+            1. xuất hiện trong nhiều ChiTietDonHang
+            2. được Admin quản lý
+      6. NhanVien
+         1. Thuộc tính
+            1. maNV
+            2. tenNV
+            3. sdt
+            4. email
+         2. Phương thức:
+            1. chamSocKH()
+         3. Quan hệ:
+            1. do Admin quản lý
+      7. Admin
+         1. Thuộc tính:
+            1. maAd
+            2. tenAd
+         2. Phương thức:
+            1. hienThiThongKe()
+            2. suaSP()
+            3. themMoiTKNV()
+            4. themSP()
+            5. xoaSP()
+         3. Quan hệ:
+            1. quản lý 1..* NhanVien
+            2. quản lý 1..* GiayTheThao
