@@ -1,0 +1,153 @@
+.thanh-tieu-de {
+  
+  width: 100%;           
+  max-width: 1100px;      
+  margin-left: auto;      
+  margin-right: auto;    
+
+  border-bottom: 1px solid #e5e5e5;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.noi-dung-trung-tam {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.logo-thuong-hieu {
+  font-size: 5rem; 
+  font-weight: 900; 
+  font-style: italic;
+  letter-spacing: -0.05em; 
+  cursor: pointer;
+}
+
+.khung-tim-kiem {
+  flex: 1;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+  position: relative;
+}
+
+.o-nhap-lieu {
+  width: 100%;
+  background-color: #333333;
+  color: white;
+  padding: 0.5rem 1rem;
+  outline: none;
+  font-size: 0.875rem; 
+  border: none;
+}
+
+.o-nhap-lieu::placeholder {
+  color: #9ca3af; 
+}
+
+.nut-tim-kiem {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.nut-tim-kiem:hover {
+  color: #d1d5db; 
+}
+
+.nhom-chuc-nang {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; 
+  font-size: 0.875rem; 
+}
+
+.muc-dang-nhap {
+  color: #6b7280; 
+  cursor: pointer;
+}
+
+.muc-dang-nhap:hover {
+  color: black;
+}
+
+.khoi-gio-hang {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.bieu-tuong-gio {
+  position: relative;
+}
+
+.so-luong-badge {
+  position: absolute;
+  top: -0.25rem;
+  right: -0.25rem;
+  background-color: #facc15; 
+  font-size: 10px;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.thong-tin-gio {
+  line-height: 1.25;
+}
+
+.tieu-de-gio {
+  font-weight: bold;
+}
+
+.phu-de-gio {
+  color: #6b7280;
+  font-size: 0.75rem; 
+}
+
+.nut-kiem-tra-don {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #ffcc00;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  border: none;
+}
+
+.nut-kiem-tra-don:hover {
+  opacity: 0.9;
+}
+
+.chu-kiem-tra {
+  font-weight: bold;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.icon-nho {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.icon-lon {
+  width: 2rem;
+  height: 2rem;
+}
