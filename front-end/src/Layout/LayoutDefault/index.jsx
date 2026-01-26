@@ -1,30 +1,45 @@
-import {Layout} from "antd";
-import { Outlet } from "react-router-dom";
-import MenuList from "../../Components/Menu";
-import "./layoutdefault.css"
-const {Content, Footer} = Layout;
+import "./layoutdefault.scss";
+import { NavLink, Outlet } from "react-router-dom";
 function LayoutDefault() {
     return (
         <>
-            <Layout className="layout-default">
-                <header className="header">
-                    <div className="header-logo">
-                        Header
+            <div className="layout-default">
+                <header className="layout-default__header">
+                    <div className="layout-default__logo">BECK</div>
+                    <div className="menu">
+                        <ul>
+                            <li>
+                                <NavLink to="/">Home</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/product">Sản Phẩm</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/introduct">Giới thiệu</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/contact">Liên hệ</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/checkcart">Kiểm tra đơn hàng</NavLink>
+                            </li>
+                        </ul>
                     </div>
-                    <div className="header-nav">
-                        <MenuList/>
+                    <div className="layout-default__account">
+                            <NavLink to="/logout"> Đăng xuất</NavLink>
+                            <NavLink to="/login"> Đăng Nhập</NavLink>
+                            <NavLink to="/register"> Đăng Ký</NavLink>
                     </div>
                 </header>
-            </Layout>
-
-            <Layout className="layout-main">
-                <Content className="content">
-                    <Outlet/>
-                </Content>
-            </Layout>
-
-            <Footer>Footer</Footer>
+                <main className="layout-default__main">
+                    <Outlet />
+                </main>
+                <footer className="layout-default__footer">
+                    copyright @ 205 by 28tech
+                </footer>
+            </div>
         </>
     )
 }
+
 export default LayoutDefault;
