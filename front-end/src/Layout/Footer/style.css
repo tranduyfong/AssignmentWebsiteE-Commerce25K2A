@@ -1,0 +1,43 @@
+.footer {
+  background-color: #000;
+  color: #fff;
+  padding: 40px 80px;
+  margin-top: 50px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+h2 {
+  margin-bottom: 15px;
+  color: #FAB90A;
+}
+
+p {
+  margin: 5px 0;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+i {
+    padding:5px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: none;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  cursor: pointer;
+  border: none;
+}
