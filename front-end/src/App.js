@@ -1,8 +1,11 @@
 import './App.css';
+import ALlRoutes from './Components/AllRoutes';
 
 function App() {
   return (
-    <>react-app</>
+    <>
+      <ALlRoutes/>
+    </>
   );
 }
 

@@ -1,5 +1,5 @@
 import { useRoutes } from "react-router-dom"
-import { routes } from "../../Routes"
+import { routes } from "../../Router";
 function ALlRoutes () {
     const element = useRoutes(routes)
     return (
@@ -8,4 +8,4 @@ function ALlRoutes () {
         </>
     )
 }
-export default ALlRoutes
+export default ALlRoutes;
