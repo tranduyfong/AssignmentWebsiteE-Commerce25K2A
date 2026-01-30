@@ -1,6 +1,6 @@
 {
   "name": "front-end",
-<<<<<<< HEAD
+
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,11 +13,11 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-=======
+
   "private": true,
   "version": "0.0.0",
   "type": "module",
->>>>>>> 5c744882954e4f8750c6a55b66db4b430e6afbd9
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
