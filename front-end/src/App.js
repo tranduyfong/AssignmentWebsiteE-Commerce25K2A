@@ -2,7 +2,11 @@ import Footer from "./Layout/Footer";
 
 function App() {
   return (
-    <>Footer</>
+    <div className="app-wrapper">
+      <main></main>
+      <>Footer</>
+    </div>
+    
   );
 }
 
