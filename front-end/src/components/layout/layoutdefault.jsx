@@ -6,13 +6,13 @@ function LayoutDefault() {
         <>
             <div>
                 <header>
-                    <Header/>
+                    <Header />
                 </header>
                 <main>
-                    <Outlet/>
+                    <Outlet />
                 </main>
                 <footer>
-                    <Footer/>
+                    <Footer />
                 </footer>
             </div>
         </>

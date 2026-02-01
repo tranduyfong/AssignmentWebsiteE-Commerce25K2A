@@ -5,7 +5,7 @@ const Footer = () => {
     const [email, setEmail] = useState("");
 
     const handleSubcribe = () => {
-        if(email.trim() === ""){
+        if (email.trim() === "") {
             alert("Vui lòng nhập emmail!");
         } else {
             alert("Email của bạn đã đăng kí là: " + email);
@@ -15,10 +15,6 @@ const Footer = () => {
 
     return (
         <>
-            <div className="bg-gray-300 h-10 flex justify-center items-center fixed bottom-0 w-screen">
-                <p>Footer</p>
-            </div>
-
             <footer className="footer">
                 <div className="container">
                     <div className="item">
@@ -39,8 +35,8 @@ const Footer = () => {
                     </div>
                     <div className="item">
                         <h3>Đăng ký nhận tin khuyến mãi</h3>
-                        <input type="email" placeholder="Nhập email của bạn tại đây" 
-                        value={email} onChange={(e) => setEmail(e.target.value)}>
+                        <input type="email" placeholder="Nhập email của bạn tại đây"
+                            value={email} onChange={(e) => setEmail(e.target.value)}>
                         </input>
                         <button onClick={handleSubcribe}>Đăng ký</button>
                     </div>
@@ -48,7 +44,7 @@ const Footer = () => {
             </footer>
         </>
 
-        
+
     );
 }
 
