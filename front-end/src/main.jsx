@@ -11,15 +11,20 @@ import HomePage from "./pages/home.jsx";
 import LoginPage from "./pages/loginPage.jsx";
 import ForgetPassword from "./pages/forgetPassword.jsx";
 import RegisterPage from "./pages/registerPage.jsx";
+import Intro from "./pages/intro.jsx";
+import Product from "./pages/products.jsx";
+import Contact from "./pages/contact.jsx";
+import CheckCart from "./pages/checkcart.jsx";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorPage/>,
     children: [
       {
+        path: "/",
         index: true,
         element: <HomePage />
       },
@@ -35,6 +40,21 @@ const router = createBrowserRouter([
         path: "/registerPage",
         element: <RegisterPage />
       },
+        path:"/intro",
+        element: <Intro/>
+      },
+      {
+        path: "/product",
+        element: <Product/>
+      },
+      {
+        path: "contact",
+        element: <Contact/>
+      },
+      {
+        path: "checkcart",
+        element: <CheckCart/>
+      }
     ]
   }
 ]);
