@@ -52,8 +52,21 @@ const LoginPage = () => {
                                 </div>
                             </Form.Item>
 
+                            <Form.Item
+                                wrapperCol={{ span: 24 }}
+                            >
+                                <div className="w-full flex justify-center">
+                                    <Link
+                                        to="/registerPage"
+                                        className="text-blue-500 hover:underline"
+                                    >
+                                        Tạo tài khoản mới
+                                    </Link>
+                                </div>
+                            </Form.Item>
+
                             <Form.Item wrapperCol={{ span: 24 }}>
-                                <div className="flex justify-center">
+                                <div>
                                     <Button type="primary" htmlType="submit">
                                         Đăng nhập
                                     </Button>
