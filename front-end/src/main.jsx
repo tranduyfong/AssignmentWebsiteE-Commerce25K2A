@@ -15,6 +15,8 @@ import Intro from "./pages/intro.jsx";
 import Product from "./pages/products.jsx";
 import Contact from "./pages/contact.jsx";
 import CheckCart from "./pages/checkcart.jsx";
+import ManagerIncome from "./pages/managerIncome.jsx";
+import ViewDetail from "./pages/viewDetail.jsx";
 
 
 const router = createBrowserRouter([
@@ -55,6 +57,14 @@ const router = createBrowserRouter([
       {
         path: "checkcart",
         element: <CheckCart />
+      },
+      {
+        path: "managerIncome",
+        element: <ManagerIncome />
+      },
+      {
+        path: "viewDetail",
+        element: <ViewDetail />
       }
     ]
   }
