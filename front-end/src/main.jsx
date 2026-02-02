@@ -15,6 +15,13 @@ import Intro from "./pages/intro.jsx";
 import Product from "./pages/products.jsx";
 import Contact from "./pages/contact.jsx";
 import CheckCart from "./pages/checkcart.jsx";
+import StatisticalManagement from "./pages/statistical.jsx";
+import AccountManagement from "./pages/account-management.jsx";
+import ProductManagement from "./pages/product-management.jsx";
+import ReceiptManagement from "./pages/receipt-management.jsx";
+import RevenueAndExpenditure from "./pages/revenue-expenditure-mng.jsx";
+import ManagerIncome from "./pages/managerIncome.jsx";
+import ViewDetail from "./pages/viewDetail.jsx";
 
 
 const router = createBrowserRouter([
@@ -49,12 +56,40 @@ const router = createBrowserRouter([
         element: <Product />
       },
       {
-        path: "contact",
+        path: "/contact",
         element: <Contact />
       },
       {
-        path: "checkcart",
+        path: "/checkcart",
         element: <CheckCart />
+      },
+      {
+        path: "/statistical",
+        element: <StatisticalManagement />
+      },
+      {
+        path: "/accountmanagement",
+        element: <AccountManagement />,
+      },
+      {
+        path: "/productmanagement",
+        element: <ProductManagement />
+      },
+      {
+        path: "/receiptmanagement",
+        element: <ReceiptManagement />
+      },
+      {
+        path: "/revenue-expenditure",
+        element: <RevenueAndExpenditure />
+      },
+      {
+        path: "managerIncome",
+        element: <ManagerIncome />
+      },
+      {
+        path: "viewDetail",
+        element: <ViewDetail />
       }
     ]
   }
