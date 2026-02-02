@@ -31,6 +31,7 @@ const OverHead = () => {
           <button
             onClick={xuLyBamTimKiem}
             className="absolute right-0 top-0 h-full px-3 text-white hover:text-gray-300"
+            style={{width: "30%", height: "85%"}}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
