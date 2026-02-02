@@ -15,9 +15,6 @@ function LayoutDefault() {
                 <footer>
                     <Footer />
                 </footer>
-                <div>
-                    <Revenue/>
-                </div>
             </div>
         </>
     )
