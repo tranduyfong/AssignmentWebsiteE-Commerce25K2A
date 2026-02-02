@@ -48,11 +48,11 @@ const InvoiceList = () => {
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
-      
-    
+
+
 
       {!selectedInvoice ? (
-        
+
         <>
           <div className="mb-6">
             <h1 className="text-2xl font-bold text-gray-800">Quản lý Hóa đơn</h1>
@@ -84,13 +84,13 @@ const InvoiceList = () => {
                     <td className="p-4 font-bold text-red-500">{invoice.total}</td>
                     <td className="p-4">
                       <span className={`px-2 py-1 rounded text-xs font-bold 
-                        ${invoice.status === 'Đã thanh toán' ? 'bg-green-100 text-green-700' : 
+                        ${invoice.status === 'Đã thanh toán' ? 'bg-green-100 text-green-700' :
                           invoice.status === 'Chờ xác nhận' ? 'bg-yellow-100 text-yellow-700' : 'bg-blue-100 text-blue-700'}`}>
                         {invoice.status}
                       </span>
                     </td>
                     <td className="p-4 text-center">
-                      <button 
+                      <button
                         onClick={() => setSelectedInvoice(invoice)}
                         className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-xs flex items-center gap-1 mx-auto transition shadow-sm"
                       >
@@ -111,8 +111,8 @@ const InvoiceList = () => {
       ) : (
 
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 max-w-4xl mx-auto pt-50 pb-20">
-          
-          <button 
+
+          <button
             onClick={() => setSelectedInvoice(null)}
             className="mb-6 flex items-center text-gray-500 hover:text-blue-600 transition text-sm font-medium"
           >
@@ -130,7 +130,7 @@ const InvoiceList = () => {
             <div className="text-right">
               <div className="text-sm text-gray-500 mb-1">Trạng thái</div>
               <span className={`px-3 py-1 rounded-full text-sm font-bold border 
-                ${selectedInvoice.status === 'Đã thanh toán' ? 'bg-green-50 text-green-600 border-green-200' : 
+                ${selectedInvoice.status === 'Đã thanh toán' ? 'bg-green-50 text-green-600 border-green-200' :
                   selectedInvoice.status === 'Chờ xác nhận' ? 'bg-yellow-50 text-yellow-600 border-yellow-200' : 'bg-blue-50 text-blue-600 border-blue-200'}`}>
                 {selectedInvoice.status}
               </span>
