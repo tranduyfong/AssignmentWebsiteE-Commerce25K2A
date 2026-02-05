@@ -6,8 +6,8 @@ const ProductSchema = new mongoose.Schema({
     imgSrc: [String],
     sizes: [
         {
-            size: Number,
-            quantity: Number,
+            size: 40,
+            quantity: 30,
         }
     ]
 });
