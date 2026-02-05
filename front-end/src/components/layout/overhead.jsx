@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const OverHead = () => {  
   const [text, setText] = useState("");
@@ -51,7 +52,10 @@ const OverHead = () => {
         </div>
         <div className="flex items-center gap-6 text-sm">
           <div className="text-gray-500 hover:text-black cursor-pointer">
-            <span>Đăng nhập</span> / <span>Đăng ký</span>
+            <Link to = "loginPage">Đăng nhập</Link>
+          </div>
+          <div className="text-gray-500 hover:text-black cursor-pointer">
+            <Link to = "registerPage">Đăng ký</Link>
           </div>
           <div className="flex items-center gap-2 cursor-pointer">
             <div className="relative">
