@@ -20,6 +20,8 @@ import AccountManagement from "./pages/account-management.jsx";
 import ProductManagement from "./pages/product-management.jsx";
 import ReceiptManagement from "./pages/receipt-management.jsx";
 import RevenueAndExpenditure from "./pages/revenue-expenditure-mng.jsx";
+import ManagerIncome from "./pages/managerIncome.jsx";
+import ViewDetail from "./pages/viewDetail.jsx";
 
 
 const router = createBrowserRouter([
@@ -62,24 +64,32 @@ const router = createBrowserRouter([
         element: <CheckCart />
       },
       {
-        path:"/statistical",
-        element: <StatisticalManagement/>
+        path: "/statistical",
+        element: <StatisticalManagement />
       },
       {
-        path:"/accountmanagement",
-        element: <AccountManagement/>,
+        path: "/accountmanagement",
+        element: <AccountManagement />,
       },
       {
         path: "/productmanagement",
-        element: <ProductManagement/>
+        element: <ProductManagement />
       },
       {
         path: "/receiptmanagement",
-        element: <ReceiptManagement/>
+        element: <ReceiptManagement />
       },
       {
-        path:"/revenue-expenditure",
-        element: <RevenueAndExpenditure/>
+        path: "/revenue-expenditure",
+        element: <RevenueAndExpenditure />
+      },
+      {
+        path: "managerIncome",
+        element: <ManagerIncome />
+      },
+      {
+        path: "viewDetail",
+        element: <ViewDetail />
       }
     ]
   }
