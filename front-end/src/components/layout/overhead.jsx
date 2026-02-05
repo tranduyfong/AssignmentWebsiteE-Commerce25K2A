@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const OverHead = () => {  
+const OverHead = () => {
   const [text, setText] = useState("");
 
   const xuLyBamTimKiem = () => {
     alert("Bạn đang tìm: " + text);
-};
-  const EnterTimKiem = (e) => {
-    if(e.key === 'Enter'){
-      xuLyBamTimKiem();
   };
-};
-  
+  const EnterTimKiem = (e) => {
+    if (e.key === 'Enter') {
+      xuLyBamTimKiem();
+    };
+  };
+
   return (
     <div className=" w-full h-18 bg-white py-3 border-b border-gray-100">
       <div className="max-w-250 mx-auto flex items-center justify-between px-5">
@@ -32,7 +32,7 @@ const OverHead = () => {
           <button
             onClick={xuLyBamTimKiem}
             className="absolute right-0 top-0 h-full px-3 text-white hover:text-gray-300"
-            style={{width: "30%", height: "85%"}}
+            style={{ width: "30%", height: "85%" }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -1,28 +1,28 @@
 import { Link, NavLink } from "react-router-dom";
-import { Dropdown, Space} from "antd";
-import { DownOutlined} from '@ant-design/icons';
+import { Dropdown, Space } from "antd";
+import { DownOutlined } from '@ant-design/icons';
 import OverHead from "./overhead"
 const Header = () => {
     const items = [
         {
             key: '/statistical',
-            label: <Link to = "statistical">Thống kê</Link>
+            label: <Link to="statistical">Thống kê</Link>
         },
         {
             key: '/Account-management',
-            label: <Link to = "accountmanagement">Quản lý tài khoản</Link>,
+            label: <Link to="accountmanagement">Quản lý tài khoản</Link>,
         },
         {
             key: '/revenue-and-expenditure-management',
-            label: <Link to = "revenue-expenditure">Quản lý thu chi</Link>,
+            label: <Link to="revenue-expenditure">Quản lý thu chi</Link>,
         },
         {
             key: '/product-management',
-            label: <Link to = "productmanagement">Quản lý sản phẩm</Link>,
+            label: <Link to="productmanagement">Quản lý sản phẩm</Link>,
         },
         {
             key: '/receipt-management',
-            label: <Link to = "receiptmanagement">Quản lý hóa đơn</Link>,
+            label: <Link to="receiptmanagement">Quản lý hóa đơn</Link>,
         },
     ];
     return (
