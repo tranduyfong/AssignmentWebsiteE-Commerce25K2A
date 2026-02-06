@@ -27,7 +27,7 @@ const Header = () => {
     ];
     return (
         <>
-            <div className="fixed w-full">
+            <div className="fixed w-full z-50">
                 <div>
                     <OverHead />
                 </div>
