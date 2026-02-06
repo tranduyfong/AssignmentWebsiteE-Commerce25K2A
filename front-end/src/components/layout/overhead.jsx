@@ -17,7 +17,7 @@ const OverHead = () => {
     <div className=" w-full h-18 bg-white py-3 border-b border-gray-100">
       <div className="max-w-250 mx-auto flex items-center justify-between px-5">
         <div className="text-5xl font-black italic tracking-tighter cursor-pointer">
-          beck.
+          <Link to="/">beck.</Link>
         </div>
         <div className="flex-1 mx-10 relative">
           <input
