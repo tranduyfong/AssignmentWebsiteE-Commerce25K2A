@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const OverHead = () => {
   const [text, setText] = useState("");
@@ -16,7 +17,7 @@ const OverHead = () => {
     <div className=" w-full h-18 bg-white py-3 border-b border-gray-100 relative z-50">
       <div className="max-w-250 mx-auto flex items-center justify-between px-5">
         <div className="text-5xl font-black italic tracking-tighter cursor-pointer">
-          beck.
+          <Link to="/">beck.</Link>
         </div>
         <div className="flex-1 mx-10 relative">
           <input
@@ -30,7 +31,10 @@ const OverHead = () => {
         </div>
         <div className="flex items-center gap-6 text-sm">
           <div className="text-gray-500 hover:text-black cursor-pointer">
-            <span>Đăng nhập</span> / <span>Đăng ký</span>
+            <Link to = "loginPage">Đăng nhập</Link>
+          </div>
+          <div className="text-gray-500 hover:text-black cursor-pointer">
+            <Link to = "registerPage">Đăng ký</Link>
           </div>
           <div className="flex items-center gap-2 cursor-pointer">
             <div className="relative">
