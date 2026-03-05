@@ -8,7 +8,7 @@ const LoginPage = () => {
     };
     return (
         <>
-            <div className='h-screen flex justify-center items-center font-bold'>
+            <div className='h-screen flex justify-center items-center font-bold z-0'>
                 <div className='flex flex-col items-center'>
                     <div className="mb-6 text-2xl font-bold text-center">
                         Đăng nhập tài khoản
