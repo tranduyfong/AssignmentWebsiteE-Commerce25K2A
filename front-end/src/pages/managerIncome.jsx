@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Flex, Space, Table, Tag, DatePicker, Typography } from 'antd';
+import { Card, Flex, Space, Table, Tag, DatePicker, Typography, Image as AntImage } from 'antd';
 import { Link } from 'react-router-dom';
 const { Column } = Table;
 const { RangePicker } = DatePicker;
@@ -8,6 +8,7 @@ const data = [
     {
         id: '1',
         date: '01/01/2025',
+        imgs: 'https://bizweb.dktcdn.net/thumb/medium/100/108/842/products/26013107.jpg?v=1770101958230',
         nameProduct: 'Giày thể thao Adidas',
         type: ['Thu'],
         method: 'Chuyển khoản',
@@ -16,6 +17,7 @@ const data = [
     {
         id: '2',
         date: '02/01/2025',
+        imgs: 'https://bizweb.dktcdn.net/thumb/small/100/108/842/products/1-7570b343-1230-47eb-a6c5-c2cba3a82ebe.jpg?v=1754987431497',
         nameProduct: 'Giày Lacoste Ag-LT23 Ultra xanh',
         type: ['Thu'],
         method: 'Tiền mặt',
@@ -24,6 +26,7 @@ const data = [
     {
         id: '3',
         date: '03/01/2025',
+        imgs: 'https://bizweb.dktcdn.net/thumb/small/100/108/842/products/23040105.jpg?v=1754987717003',
         nameProduct: 'Giày Nike aford',
         type: ['Chi'],
         method: 'Tiền mặt',
@@ -34,7 +37,7 @@ const ManagerIncome = () => {
     return (
         <>
             <Card>
-                <Title>Quản lý Thu - Chi</Title>
+                <Title className='mt-25'>Quản lý Thu - Chi</Title>
 
                 <Space size={12} style={{ marginBottom: 20, display: 'flex' }}>
                     <Flex gap="small" align="center">
@@ -46,6 +49,18 @@ const ManagerIncome = () => {
 
                     <Column title="Id" dataIndex="id" key="id" />
                     <Column title="Ngày" dataIndex="date" key="date" />
+                    <Column
+                        title="Ảnh sản phẩm"
+                        dataIndex="imgs"
+                        key="imgs"
+                        render={(text) => (
+                            <AntImage
+                                width={80}
+                                src={text}
+                                alt="product"
+                            />
+                        )}
+                    />
                     <Column title="Tên sản phẩm" dataIndex="nameProduct" key="nameProduct" />
                     <Column
                         title="Loại"
