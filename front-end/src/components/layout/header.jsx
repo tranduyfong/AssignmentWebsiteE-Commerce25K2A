@@ -27,14 +27,13 @@ const Header = () => {
     ];
     return (
         <>
-            <div className="fixed w-full">
+            <div className="fixed w-full z-999">
                 <div>
                     <OverHead />
                 </div>
 
                 <div className="bg-gray-300 h-10 flex justify-center items-center ">
                     <header className="layout-default__header flex gap-10">
-                        <NavLink className="cursor-pointer" to="/">LOGO</NavLink>
                         <div className="menu flex">
                             <ul className="flex gap-10">
                                 <li>
@@ -54,7 +53,7 @@ const Header = () => {
                                 </li>
                             </ul>
                         </div>
-                        <div>
+                        <div className="cursor-pointer">
                             <Dropdown menu={{ items }}>
                                 <a>
                                     <Space>
