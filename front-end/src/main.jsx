@@ -22,6 +22,12 @@ import ReceiptManagement from "./pages/receipt-management.jsx";
 import RevenueAndExpenditure from "./pages/revenue-expenditure-mng.jsx";
 import ManagerIncome from "./pages/managerIncome.jsx";
 import ViewDetail from "./pages/viewDetail.jsx";
+<<<<<<< HEAD
+=======
+import CartPage from "./pages/cartPage.jsx";
+
+
+>>>>>>> 56ab15affee508a4f0de46188e34e55b89c15216
 const router = createBrowserRouter([
   {
     path: "/",
@@ -89,6 +95,13 @@ const router = createBrowserRouter([
         path: "viewDetail",
         element: <ViewDetail />
       },
+<<<<<<< HEAD
+=======
+      {
+        path: "cartPage",
+        element: <CartPage />
+      }
+>>>>>>> 56ab15affee508a4f0de46188e34e55b89c15216
     ]
   }
 ]);
