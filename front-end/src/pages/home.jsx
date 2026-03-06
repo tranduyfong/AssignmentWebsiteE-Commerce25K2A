@@ -1,21 +1,31 @@
 import { Carousel, Tabs } from "antd";
 import "./css/home.css";
+import AllProducts from "../components/tabs/allProducts";
+import NikeShoe from "../components/tabs/nikeShoe";
+import AdidasShoe from "../components/tabs/adidasShoe";
+import PumaShoe from "../components/tabs/pumaShoe";
+
 const HomePage = () => {
     const items = [
         {
-            key: '1',
-            label: 'Tab 1',
-            children: 'Content of Tab Pane 1',
+            key: '/allProducts',
+            label: 'Tất cả sản phẩm',
+            children: <AllProducts />
         },
         {
-            key: '2',
-            label: 'Tab 2',
-            children: 'Content of Tab Pane 2',
+            key: '/nikeShoe',
+            label: 'Giày Nike',
+            children: <NikeShoe/>,
         },
         {
-            key: '3',
-            label: 'Tab 3',
-            children: 'Content of Tab Pane 3',
+            key: '/adidasShoe',
+            label: 'Giày Adidas',
+            children: <AdidasShoe/>,
+        },
+        {
+            key: 'pumaShoe',
+            label: 'Giày Puma',
+            children: <PumaShoe/>,
         },
     ];
     return (

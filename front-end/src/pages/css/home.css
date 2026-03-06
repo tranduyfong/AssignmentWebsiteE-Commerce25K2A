@@ -48,4 +48,36 @@
 /* section-3  */
 .section-3{
     margin-left: 30px;
+    margin-right: 30px;
+}
+
+/* all-product */
+.all-product .box{
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    overflow: hidden;
+    border-radius: 8px;
+}
+.all-product .box .inner-content{
+    padding: 5px 8px;
+}
+.all-product .box .inner-content .inner-title {
+    font-size: 17px;
+    font-weight: 700;
+
+}
+
+.all-product .box .inner-content .inner-price {
+    font-size: 15px;
+    font-weight: 500;
+    color: red;
+}
+.all-product .box .inner-content .btn-buy {
+    background-color: #FECD4C;
+    margin-bottom: 20px;
+    font-weight: 500;
+
+}
+.all-product .box .inner-content .btn-buy:hover {
+    background-color: #6e6b6b;
+    transition: all 0.5s;
 }

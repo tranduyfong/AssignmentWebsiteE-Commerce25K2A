@@ -22,8 +22,6 @@ import ReceiptManagement from "./pages/receipt-management.jsx";
 import RevenueAndExpenditure from "./pages/revenue-expenditure-mng.jsx";
 import ManagerIncome from "./pages/managerIncome.jsx";
 import ViewDetail from "./pages/viewDetail.jsx";
-
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,7 +31,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         index: true,
-        element: <HomePage />
+        element: <HomePage />,
       },
       {
         path: "/loginPage",
@@ -90,7 +88,7 @@ const router = createBrowserRouter([
       {
         path: "viewDetail",
         element: <ViewDetail />
-      }
+      },
     ]
   }
 ]);
