@@ -1,8 +1,8 @@
-import user from "../models/user";
+import User from "../models/user.js";
 
 const getUserPage = async (req, res) => {
     try {
-        const result = await user.find({});
+        const result = await User.find({});
 
         return res.status(200).json({
             data: result
@@ -18,7 +18,7 @@ const getUserPage = async (req, res) => {
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        const result = await user.findOne({ email });
+        const result = await User.findOne({ email });
         if (!user) {
             return res.status(400).json({
                 message: "Email hoặc mật khẩu không đúng"
