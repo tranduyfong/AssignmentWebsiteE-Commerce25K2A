@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { Dropdown, Space } from "antd";
-import { DownOutlined} from '@ant-design/icons';
+import { DownOutlined, HomeOutlined, InfoCircleOutlined, PhoneOutlined, ShopOutlined, ShoppingCartOutlined} from '@ant-design/icons';
 import "./css/header.css"
 import OverHead from "./overhead"
 const Header = () => {
@@ -33,31 +33,36 @@ const Header = () => {
                     <OverHead />
                 </div>
 
-                <div className=" h-10 flex justify-center items-center pt-7 pb-7 inner-menu">
+                <div className=" flex justify-center items-center inner-menu">
                     <header className="layout-default__header flex gap-10">
                         <div className="menu flex">
-                            <ul className="flex gap-10 text-center">
-                                <li>
+                            <ul className="flex gap-20 text-center">
+                                <li className="menu-icon">
+                                    <HomeOutlined className="icon" />
                                     <NavLink to="/">Trang chủ</NavLink> 
                                 </li>
-                                <li>
+                                <li className="menu-icon">
+                                    <ShopOutlined className="icon" />
                                     <NavLink to="/product">Sản Phẩm</NavLink>
                                 </li>
-                                <li>
+                                <li className="menu-icon">
+                                    <InfoCircleOutlined className="icon" /> 
                                     <NavLink to="/intro">Giới thiệu</NavLink>
                                 </li>
-                                <li>
+                                <li className="menu-icon">
+                                    <PhoneOutlined className="icon" />
                                     <NavLink to="/contact">Liên Hệ</NavLink>
                                 </li>
-                                <li>
+                                <li className="menu-icon">
+                                    <ShoppingCartOutlined className ="icon" />
                                     <NavLink to="/checkcart">Kiểm tra đơn hàng</NavLink>
                                 </li>
                             </ul>
                         </div>
-                        <div className="cursor-pointer">
+                        <div className="cursor-pointer mt-1">
                             <Dropdown menu={{ items }}>
                                 <a>
-                                    <Space>
+                                    <Space className="manage-income">
                                         Quản lý & Thống kê
                                         <DownOutlined />
                                     </Space>

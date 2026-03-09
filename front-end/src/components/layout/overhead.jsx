@@ -14,9 +14,9 @@ const OverHead = () => {
   };
 
   return (
-    <div className="pb-20 w-full h-18 bg-white py-3 border-b border-gray-100  ">
-      <div className="max-w-250 mx-auto flex items-center justify-between px-5 ">
-        <div className=" pb-5 text-7xl font-black italic tracking-tighter cursor-pointer">
+    <div className=" w-full h-18 bg-white py-3 border-b border-gray-100 relative z-50">
+      <div className="max-w-250 mx-auto flex items-center justify-between px-5">
+        <div className="text-5xl font-black italic tracking-tighter cursor-pointer">
           <Link to="/">beck.</Link>
         </div>
         <div className="flex-1 mx-10 relative">

@@ -9,22 +9,22 @@ const HomePage = () => {
     const items = [
         {
             key: '/allProducts',
-            label: 'Tất cả sản phẩm',
+            label: <span className="tab-style">TẤT CẢ CÁC SẢN PHẨM</span>,
             children: <AllProducts />
         },
         {
             key: '/nikeShoe',
-            label: 'Giày Nike',
+            label:<span className="tab-style">GIÀY NIKE</span>,
             children: <NikeShoe/>,
         },
         {
             key: '/adidasShoe',
-            label: 'Giày Adidas',
+            label: <span className="tab-style">GIÀY ADIDAS</span>,
             children: <AdidasShoe/>,
         },
         {
             key: 'pumaShoe',
-            label: 'Giày Puma',
+            label: <span className="tab-style">GIÀY PUMA</span>,
             children: <PumaShoe/>,
         },
     ];

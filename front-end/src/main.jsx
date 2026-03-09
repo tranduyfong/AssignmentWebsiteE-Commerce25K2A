@@ -22,12 +22,9 @@ import ReceiptManagement from "./pages/receipt-management.jsx";
 import RevenueAndExpenditure from "./pages/revenue-expenditure-mng.jsx";
 import ManagerIncome from "./pages/managerIncome.jsx";
 import ViewDetail from "./pages/viewDetail.jsx";
-<<<<<<< HEAD
-=======
 import CartPage from "./pages/cartPage.jsx";
-
-
->>>>>>> 56ab15affee508a4f0de46188e34e55b89c15216
+import PaymentPage from "./pages/payment.jsx";
+import ProductDetail from "./pages/detailProduct.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -88,21 +85,28 @@ const router = createBrowserRouter([
         element: <RevenueAndExpenditure />
       },
       {
-        path: "managerIncome",
+        path: "/managerIncome",
         element: <ManagerIncome />
       },
       {
-        path: "viewDetail",
+        path: "/viewDetail",
         element: <ViewDetail />
       },
-<<<<<<< HEAD
-=======
+
       {
-        path: "cartPage",
+        path: "/cartPage",
         element: <CartPage />
+      },
+      {
+        path: "/detail",
+        element: <ProductDetail />
       }
->>>>>>> 56ab15affee508a4f0de46188e34e55b89c15216
+
     ]
+  },
+  {
+    path: "/payment",
+    element: <PaymentPage />
   }
 ]);
 

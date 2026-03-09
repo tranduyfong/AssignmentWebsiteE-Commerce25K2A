@@ -1,4 +1,19 @@
-import axios from "../services/axios.customize";
+import axios from "./axios.customize";
+
+const getProvince = async () => {
+    const URL_ADDRESS = 'https://provinces.open-api.vn/api/p/';
+    return await axios.get(URL_ADDRESS);
+}
+
+const getDistrict = async (province_id) => {
+    const URL_ADDRESS = `https://provinces.open-api.vn/api/p/${province_id}?depth=2`;
+    return axios.get(URL_ADDRESS);
+}
+
+const getVillage = async (district_id) => {
+    const URL_ADDRESS = `https://provinces.open-api.vn/api/d/${district_id}?depth=2`;
+    return axios.get(URL_ADDRESS);
+}
 
 const createUserAPI = (fullName, email, password, phone) => {
     const URL_BACKEND = '/api/v1/user';
@@ -51,4 +66,4 @@ const deleteUserAPI = (id) => {
     });
 }
 
-export { createUserAPI, fetchAllUserAPI, updateUserAPI, deleteUserAPI };
+export { getProvince, getDistrict, getVillage, createUserAPI, fetchAllUserAPI, updateUserAPI, deleteUserAPI };
