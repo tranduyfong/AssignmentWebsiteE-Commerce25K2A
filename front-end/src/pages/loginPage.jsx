@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Checkbox, Form, Input } from 'antd';
+import { Button, Card, Checkbox, Form, Input, Row, } from 'antd';
 import { Link } from 'react-router-dom';
 const LoginPage = () => {
     const onFinish = (values) => {
@@ -13,67 +13,76 @@ const LoginPage = () => {
                     <div className="mb-6 text-2xl font-bold text-center">
                         Đăng nhập tài khoản
                     </div>
-
-                    <Card >
-                        <Form
-                            name="basic"
-                            labelCol={{ span: 8 }}
-                            wrapperCol={{ span: 16 }}
-                            style={{ maxWidth: 600 }}
-                            initialValues={{ remember: true }}
-                            onFinish={onFinish}
-                        >
-                            <Form.Item
-                                label="Email"
-                                name="email"
-                                rules={[{ required: true, message: 'Nhập email đăng nhập' }]}
-                            >
-                                <Input />
-                            </Form.Item>
-
-                            <Form.Item
-                                label="Mật khẩu"
-                                name="password"
-                                rules={[{ required: true, message: 'Nhập mật khẩu' }]}
-                            >
-                                <Input.Password />
-                            </Form.Item>
-
-                            <Form.Item
-                                wrapperCol={{ span: 24 }}
-                            >
-                                <div className="w-full flex justify-center">
-                                    <Link
-                                        to="/forgetPassword"
-                                        className="text-blue-500 hover:underline"
+                    <Row>
+                        <Col span={12}>
+                            <Card className='bg-gray-50'>
+                                <Form
+                                    name="basic"
+                                    labelCol={{ span: 8 }}
+                                    wrapperCol={{ span: 16 }}
+                                    style={{ maxWidth: 600 }}
+                                    initialValues={{ remember: true }}
+                                    onFinish={onFinish}
+                                >
+                                    <Form.Item
+                                        label="Email"
+                                        name="email"
+                                        rules={[{ required: true, message: 'Nhập email đăng nhập' }]}
                                     >
-                                        Quên mật khẩu?
-                                    </Link>
-                                </div>
-                            </Form.Item>
+                                        <Input />
+                                    </Form.Item>
 
-                            <Form.Item
-                                wrapperCol={{ span: 24 }}
-                            >
-                                <div className="w-full flex justify-center">
-                                    <Link
-                                        to="/registerPage"
-                                        className="text-blue-500 hover:underline"
+                                    <Form.Item
+                                        label="Mật khẩu"
+                                        name="password"
+                                        rules={[{ required: true, message: 'Nhập mật khẩu' }]}
                                     >
-                                        Tạo tài khoản mới
-                                    </Link>
-                                </div>
-                            </Form.Item>
+                                        <Input.Password />
+                                    </Form.Item>
 
-                            <Form.Item wrapperCol={{ span: 24 }}>
-                                <div>
-                                    <Button type="primary" htmlType="submit">
-                                        Đăng nhập
-                                    </Button>
-                                </div>
-                            </Form.Item>
-                        </Form>
-                    </Card>
+                                    <Form.Item
+                                        wrapperCol={{ span: 24 }}
+                                    >
+                                        <div className="w-full flex justify-center">
+                                            <Link
+                                                to="/forgetPassword"
+                                                className="text-blue-500 hover:underline"
+                                            >
+                                                Quên mật khẩu?
+                                            </Link>
+                                        </div>
+                                    </Form.Item>
+
+                                    <Form.Item
+                                        wrapperCol={{ span: 24 }}
+                                    >
+                                        <div className="w-full flex justify-center">
+                                            <Link
+                                                to="/registerPage"
+                                                className="text-blue-500 hover:underline"
+                                            >
+                                                Tạo tài khoản mới
+                                            </Link>
+                                        </div>
+                                    </Form.Item>
+
+                                    <Form.Item wrapperCol={{ span: 24 }}>
+                                        <div>
+                                            <Button type="primary" htmlType="submit">
+                                                Đăng nhập
+                                            </Button>
+                                        </div>
+                                    </Form.Item>
+                                </Form>
+                            </Card>
+                        </Col>
+                        <Col span={12}>
+                            <Card>
+
+                            </Card>
+                        </Col>
+                    </Row>
+
                 </div>
 
 
