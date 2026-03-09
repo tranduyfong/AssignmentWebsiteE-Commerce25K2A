@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
-const ProductDetail = () => {
+const DetailProduct = () => {
   const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState("huong-dan");
+  const [activeTab, setActiveTab] = useState("chi-tiet");
+
+  const tabsRef = useRef(null);
+
+  const handleScrollToSizeGuide = () => {
+    setActiveTab("chon-size");
+
+    if (tabsRef.current) {
+      const y = tabsRef.current.getBoundingClientRect().top + window.scrollY - 150;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
 
   const product = {
     name: "Giày Bóng Đá Adidas Predator 26 Elite Bellingham Trắng Xanh Biển Lưỡi Gà Gập TF",
@@ -21,9 +32,9 @@ const ProductDetail = () => {
   const increaseQty = () => setQuantity(quantity + 1);
 
   return (
-    <div className="bg-white min-h-screen pb-20 font-sans text-gray-800">
+    <div className="w-full bg-white min-h-screen pb-20 pt-36 font-sans text-gray-800">
       <div className="border-b border-gray-200">
-        <div className="container mx-auto px-4 py-3 text-sm text-gray-500">
+        <div className="max-w-7xl w-full mx-auto px-4 py-3 text-sm text-gray-500">
           <span>Trang chủ</span> <span className="mx-2">|</span>
           <span>Bộ Sưu Tập Adidas Predator 26</span>{" "}
           <span className="mx-2">|</span>
@@ -31,7 +42,7 @@ const ProductDetail = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 mt-8">
+      <div className="max-w-7xl w-full mx-auto px-4 mt-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-5 relative bg-[#ffcc00] flex items-center justify-center p-8 rounded">
             <div className="absolute top-4 right-4 bg-black text-white text-xs font-bold px-3 py-1 italic tracking-widest">
@@ -66,19 +77,22 @@ const ProductDetail = () => {
 
             <div className="mb-6">
               <p className="text-sm text-gray-500 mb-2 uppercase">Chọn size:</p>
-              <div className="flex flex-wrap gap-2 mb-2">
+              <div className="flex flex-row! flex-wrap gap-2 mb-2">
                 {product.sizes.map((size) => (
-                  <button
+                  <div
                     key={size}
                     onClick={() => setSelectedSize(size)}
-                    className={`w-10 h-10 border flex items-center justify-center text-sm transition-colors
+                    className={`w-10 h-10 border flex items-center justify-center text-sm transition-colors cursor-pointer shrink-0
                       ${selectedSize === size ? "border-black bg-black text-white font-bold" : "border-gray-300 hover:border-black"}`}
                   >
                     {size}
-                  </button>
+                  </div>
                 ))}
               </div>
-              <span className="inline-block bg-gray-800 text-white text-[10px] px-2 py-1 rounded-full cursor-pointer hover:bg-black">
+              <span 
+                onClick={handleScrollToSizeGuide}
+                className="inline-block bg-[#1c2431] text-white text-[11px] px-3 py-1.5 rounded-full cursor-pointer hover:bg-black transition-colors"
+              >
                 Hướng dẫn chọn size
               </span>
             </div>
@@ -87,28 +101,28 @@ const ProductDetail = () => {
               <p className="text-sm text-gray-500 mb-2 uppercase">
                 Chọn số lượng:
               </p>
-              <div className="flex items-center mb-4">
-                <button
+              <div className="flex flex-row! items-center mb-4">
+                <div
                   onClick={decreaseQty}
-                  className="w-10 h-10 border border-gray-300 bg-gray-50 hover:bg-gray-100 flex items-center justify-center text-lg"
+                  className="w-10 h-10 border border-gray-300 bg-gray-50 hover:bg-gray-100 flex items-center justify-center text-lg cursor-pointer shrink-0"
                 >
                   -
-                </button>
-                <div className="w-16 h-10 border-t border-b border-gray-300 flex items-center justify-center font-medium">
+                </div>
+                <div className="w-16 h-10 border-t border-b border-gray-300 flex items-center justify-center font-medium shrink-0">
                   {quantity}
                 </div>
-                <button
+                <div
                   onClick={increaseQty}
-                  className="w-10 h-10 border border-gray-300 bg-gray-50 hover:bg-gray-100 flex items-center justify-center text-lg"
+                  className="w-10 h-10 border border-gray-300 bg-gray-50 hover:bg-gray-100 flex items-center justify-center text-lg cursor-pointer shrink-0"
                 >
                   +
-                </button>
+                </div>
               </div>
 
-              <button className="w-full bg-[#ffcc00] hover:bg-yellow-500 text-black font-bold uppercase py-4 rounded transition text-lg flex flex-col items-center justify-center leading-none shadow-sm">
+              <div className="w-full bg-[#ffcc00] hover:bg-yellow-500 text-black font-bold uppercase py-4 rounded transition text-lg flex flex-col items-center justify-center leading-none shadow-sm cursor-pointer">
                 <span>Mua tại đây</span>
                 <span className="text-xs mt-1 font-medium">Free Ship</span>
-              </button>
+              </div>
             </div>
 
             <div className="text-xs font-bold uppercase">Xem theo #tags:</div>
@@ -256,7 +270,7 @@ const ProductDetail = () => {
           </div>
         </div>
 
-        <div className="mt-16 border border-gray-200">
+        <div ref={tabsRef} className="mt-16 border border-gray-200">
           <div className="flex flex-wrap bg-[#333333] text-white text-sm font-bold uppercase cursor-pointer">
             <div
               className={`py-3 px-6 flex-1 text-center border-r border-gray-600 transition ${activeTab === "chi-tiet" ? "bg-[#ffcc00] text-black" : "hover:bg-gray-700"}`}
@@ -284,7 +298,7 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          <div className="p-8 text-gray-700 bg-white min-h-[400px]">
+          <div className="p-8 text-gray-700 bg-white min-h-100">
             {activeTab === "chi-tiet" && (
               <div className="animate-fade-in">
                 <h3 className="text-lg font-bold text-green-600 mb-4 uppercase">
@@ -360,10 +374,21 @@ const ProductDetail = () => {
                     đơn hàng
                   </p>
                   <p className="text-sm">
-                    Anh em xem lại thông tin đơn hàng, kiểm tra lại tên sản phẩm, giá từng loại sản phẩm và số lượng. <br />
-                    Anh em kiểm tra lại thông tin của người nhận hàng (SĐT, địa chỉ..)<br />
-                    Sau khi nhận được đơn hàng của anh em, <span className="font-bold text-black italic">beck.</span> thường sẽ gọi điện ngay lập tức nên anh em hãy chú ý điện thoại nhé<br />
-                    <span className="font-bold text-black italic">Trân trọng cảm ơn.</span>
+                    Anh em xem lại thông tin đơn hàng, kiểm tra lại tên sản
+                    phẩm, giá từng loại sản phẩm và số lượng. <br />
+                    Anh em kiểm tra lại thông tin của người nhận hàng (SĐT, địa
+                    chỉ..)
+                    <br />
+                    Sau khi nhận được đơn hàng của anh em,{" "}
+                    <span className="font-bold text-black italic">
+                      beck.
+                    </span>{" "}
+                    thường sẽ gọi điện ngay lập tức nên anh em hãy chú ý điện
+                    thoại nhé
+                    <br />
+                    <span className="font-bold text-black italic">
+                      Trân trọng cảm ơn.
+                    </span>
                   </p>
                 </div>
               </div>
@@ -371,7 +396,7 @@ const ProductDetail = () => {
 
             {activeTab === "chon-size" && (
               <div className="animate-fade-in space-y-4">
-                <h3 className="text-lg font-bold text-white bg-green-600 inline-block px-2 py-1 uppercase mb-2">
+                <h3 className="text-lg font-bold text-white inline-block px-2 py-1 uppercase mb-2">
                   Hướng dẫn chọn size
                 </h3>
                 <p>
@@ -380,18 +405,29 @@ const ProductDetail = () => {
                     95%)
                   </span>
                   <br />
-                  Lấy ngay đôi giày của mỉnh ra xem lại nhé (anh em nào ít đá bóng có thể mượn của đồng đội hoặc anh hàng xóm :D ) <br />
-Nếu đang đi dòng giày vải (Thượng Đình, Thashoco, bata tàu warrior...) thì bạn phải tăng lên 1 size khi chọn <br />
-(Ví dụ: đi Thượng Đình 39 thì chọn size 40) <br />
-Nếu anh em đang đi giày nike, adidas, puma....thì anh em giữ nguyên size khi chọn
+                  Lấy ngay đôi giày của mỉnh ra xem lại nhé (anh em nào ít đá
+                  bóng có thể mượn của đồng đội hoặc anh hàng xóm :D ) <br />
+                  Nếu đang đi dòng giày vải (Thượng Đình, Thashoco, bata tàu
+                  warrior...) thì bạn phải tăng lên 1 size khi chọn <br />
+                  (Ví dụ: đi Thượng Đình 39 thì chọn size 40) <br />
+                  Nếu anh em đang đi giày nike, adidas, puma....thì anh em giữ
+                  nguyên size khi chọn
                 </p>
                 <p>
                   <span className="font-bold italic">
                     Cách 2: Dựa vào bảng chọn size (chính xác 80%)
                   </span>
                   <br />
-                  Khi không có 1 đôi giày bên cạnh để đối chiếu thì anh em có thể lấy thước đo chân rồi so sánh với bảng sau <br />
-Cách chọn này sở dĩ được <span className="font-bold text-black italic">beck.</span> đánh giá chính xác ở mức độ 80% nó phụ thuộc rất nhiều yếu tố như động tác đo của bạn có chuẩn xác tuyệt đối không, thước bạn sử dụng, mắt đọc có thẳng hay không và chân bạn và phom giày có hợp không, Có anh em chân bè, có anh em chân thon.
+                  Khi không có 1 đôi giày bên cạnh để đối chiếu thì anh em có
+                  thể lấy thước đo chân rồi so sánh với bảng sau <br />
+                  Cách chọn này sở dĩ được{" "}
+                  <span className="font-bold text-black italic">
+                    beck.
+                  </span>{" "}
+                  đánh giá chính xác ở mức độ 80% nó phụ thuộc rất nhiều yếu tố
+                  như động tác đo của bạn có chuẩn xác tuyệt đối không, thước
+                  bạn sử dụng, mắt đọc có thẳng hay không và chân bạn và phom
+                  giày có hợp không, Có anh em chân bè, có anh em chân thon.
                 </p>
                 <div className="border border-black inline-block p-4 mt-2">
                   <h4 className="text-center font-bold text-lg mb-4">
@@ -426,9 +462,7 @@ Cách chọn này sở dĩ được <span className="font-bold text-black italic
                         <td className="border border-gray-400">23</td>
                       </tr>
                       <tr>
-                        <td className="border border-gray-400 font-bold">
-                          5
-                        </td>
+                        <td className="border border-gray-400 font-bold">5</td>
                         <td className="border border-gray-400">38</td>
                         <td className="border border-gray-400">23.5</td>
                       </tr>
@@ -440,9 +474,7 @@ Cách chọn này sở dĩ được <span className="font-bold text-black italic
                         <td className="border border-gray-400">24</td>
                       </tr>
                       <tr>
-                        <td className="border border-gray-400 font-bold">
-                          6
-                        </td>
+                        <td className="border border-gray-400 font-bold">6</td>
                         <td className="border border-gray-400">40</td>
                         <td className="border border-gray-400">24.5</td>
                       </tr>
@@ -454,9 +486,7 @@ Cách chọn này sở dĩ được <span className="font-bold text-black italic
                         <td className="border border-gray-400">25</td>
                       </tr>
                       <tr>
-                        <td className="border border-gray-400 font-bold">
-                          7 
-                        </td>
+                        <td className="border border-gray-400 font-bold">7</td>
                         <td className="border border-gray-400">42</td>
                         <td className="border border-gray-400">25.5</td>
                       </tr>
@@ -468,9 +498,7 @@ Cách chọn này sở dĩ được <span className="font-bold text-black italic
                         <td className="border border-gray-400">26</td>
                       </tr>
                       <tr>
-                        <td className="border border-gray-400 font-bold">
-                          8
-                        </td>
+                        <td className="border border-gray-400 font-bold">8</td>
                         <td className="border border-gray-400">44</td>
                         <td className="border border-gray-400">26.5</td>
                       </tr>
@@ -482,9 +510,7 @@ Cách chọn này sở dĩ được <span className="font-bold text-black italic
                         <td className="border border-gray-400">27</td>
                       </tr>
                       <tr>
-                        <td className="border border-gray-400 font-bold">
-                          9
-                        </td>
+                        <td className="border border-gray-400 font-bold">9</td>
                         <td className="border border-gray-400">46</td>
                         <td className="border border-gray-400">27.5</td>
                       </tr>
@@ -493,72 +519,189 @@ Cách chọn này sở dĩ được <span className="font-bold text-black italic
                 </div>
                 <p>
                   <span className="font-bold italic">
-                    Cách 3:  Gọi điện tới số hotline của <span className="font-bold text-black italic">beck.</span> - 0963.51.41.31 để được nhân viên bên mình chọn giúp
+                    Cách 3: Gọi điện tới số hotline của{" "}
+                    <span className="font-bold text-black italic">beck.</span> -
+                    0963.51.41.31 để được nhân viên bên mình chọn giúp
                   </span>
                   <br />
-                  Nếu với 2 cách trên vẫn chưa làm anh em hết băn khoăn thì anh em hãy gọi điện cho BECK SPORT luôn và ngay nhé. <br />
-                  Anh em lưu ý, trong tất cả các cách chọn size trên của BECK SPORT đưa ra đều chỉ mang tính chất hướng dẫn, để ae tham khảo. <br />
-                  Anh em mua giày tại BECK SPORT nếu có rộng chật thì sẽ luôn được đổi size thoải mái cho tới khi vừa thi thôi. Tuy nhiên điều này hoàn toàn xuất phát từ chính sách đặt lợi ích của khách hàng lên đầu của BECK SPORT chứ không phải vì BECK SPORT phải chịu trách nhiệm vì bài hướng dẫn chọn size này nhé.
+                  Nếu với 2 cách trên vẫn chưa làm anh em hết băn khoăn thì anh
+                  em hãy gọi điện cho{" "}
+                  <span className="font-bold text-black italic">
+                    beck.
+                  </span>{" "}
+                  luôn và ngay nhé. <br />
+                  Anh em lưu ý, trong tất cả các cách chọn size trên của BECK
+                  SPORT đưa ra đều chỉ mang tính chất hướng dẫn, để ae tham
+                  khảo. <br />
+                  Anh em mua giày tại{" "}
+                  <span className="font-bold text-black italic">beck.</span> nếu
+                  có rộng chật thì sẽ luôn được đổi size thoải mái cho tới khi
+                  vừa thi thôi. Tuy nhiên điều này hoàn toàn xuất phát từ chính
+                  sách đặt lợi ích của khách hàng lên đầu của{" "}
+                  <span className="font-bold text-black italic">beck.</span> chứ
+                  không phải vì{" "}
+                  <span className="font-bold text-black italic">beck.</span>
+                  phải chịu trách nhiệm vì bài hướng dẫn chọn size này nhé.
                 </p>
               </div>
             )}
 
-            {activeTab === 'hoan-tra' && (
+            {activeTab === "hoan-tra" && (
               <div className="animate-fade-in space-y-4 text-[15px] leading-relaxed text-gray-800">
                 <h3 className="text-lg font-bold text-green-500 uppercase mb-4">
                   CHÍNH SÁCH ĐỔI TRẢ HÀNG
                 </h3>
                 <div>
-                  <p className="font-bold mb-2">1. Đổi hàng theo nhu cầu anh em (đổi trả hàng vì không ưng ý)</p>
-                  <p className="mb-2">Tất cả mặt hàng đã mua không thể được hoàn trả nhưng có thể đổi trả trong vòng 07 ngày kể từ ngày nhận hàng tính theo thời điểm thông báo từ đối tác vận chuyển.</p>
-                  <p className="mb-2">BECK SPORT chỉ chấp nhận đổi hàng cho các sản phẩm thỏa mãn các điều kiện sau:</p>
+                  <p className="font-bold mb-2">
+                    1. Đổi hàng theo nhu cầu anh em (đổi trả hàng vì không ưng
+                    ý)
+                  </p>
+                  <p className="mb-2">
+                    Tất cả mặt hàng đã mua không thể được hoàn trả nhưng có thể
+                    đổi trả trong vòng 07 ngày kể từ ngày nhận hàng tính theo
+                    thời điểm thông báo từ đối tác vận chuyển.
+                  </p>
+                  <p className="mb-2">
+                    <span className="font-bold text-black italic">beck.</span>{" "}
+                    chỉ chấp nhận đổi hàng cho các sản phẩm thỏa mãn các điều
+                    kiện sau:
+                  </p>
                   <div className="space-y-2 mb-2">
-                    <p>- Còn nguyên trạng như khi nhận được (bề mặt không bị nhăn nhúm, đế giày không bị xước, mòn, ...)</p>
-                    <p>- Đầy đủ các chi tiết, phụ kiện được tặng kèm theo đơn hàng (trong trường hợp chỉ đổi mẫu, đổi size thì có thể giữ lại phụ kiện, quà tặng).</p>
-                    <p>- Giày nhất định phải chưa sử dụng kể cả chạy thử, thi đấu thử</p>
+                    <p>
+                      - Còn nguyên trạng như khi nhận được (bề mặt không bị nhăn
+                      nhúm, đế giày không bị xước, mòn, ...)
+                    </p>
+                    <p>
+                      - Đầy đủ các chi tiết, phụ kiện được tặng kèm theo đơn
+                      hàng (trong trường hợp chỉ đổi mẫu, đổi size thì có thể
+                      giữ lại phụ kiện, quà tặng).
+                    </p>
+                    <p>
+                      - Giày nhất định phải chưa sử dụng kể cả chạy thử, thi đấu
+                      thử
+                    </p>
                   </div>
-                  <p>Sau 7 ngày kể từ ngày anh em nhận hàng, BECK SPORT có quyền từ chối hỗ trợ cho những yêu cầu trên của .</p>
+                  <p>
+                    Sau 7 ngày kể từ ngày anh em nhận hàng,{" "}
+                    <span className="font-bold text-black italic">beck.</span>{" "}
+                    có quyền từ chối hỗ trợ cho những yêu cầu trên của .
+                  </p>
                 </div>
 
                 <div className="pt-2">
-                  <p className="font-bold mb-2">2. Đổi trả không vì lý do chủ quan từ anh em (Hàng giao không mới, không nguyên vẹn, sai nội dung hoặc bị thiếu)</p>
-                  <p className="mb-2">BECK SPORT khuyến khích anh em hàng phải kiểm tra tình trạng bên ngoài của gói hàng và sản phẩm trước khi thanh toán để đảm bảo rằng hàng hóa được giao đúng chủng loại, số lượng, màu sắc theo đơn đặt hàng và tình trạng bên ngoài không bị tác động.</p>
-                  <p className="mb-2">(Xin lưu ý những bước kiểm tra sâu hơn như xỏ thử giày, lên chân để đánh giá ... chỉ có thể được chấp nhận sau khi đơn hàng được thanh toán đầy đủ, nghĩa là đã chuyển khoản trước cho cửa hàng toàn bộ hoặc một phần giá trị đơn hàng hoặc đã thanh toán xong với bưu tá ngay tại lúc nhận hàng).</p>
-                  <p className="mb-2">Trong trường hợp anh em đã thanh toán, nhận hàng và sau đó phát hiện hàng hóa không còn mới nguyên vẹn, sai nội dung hoặc thiếu hàng, xin vui lòng chụp ảnh sản phẩm và liên hệ với BECK SPORT để chúng tôi được khắc phục thiếu sót (của shop hoặc đối tác vận chuyển) một cách nhanh nhất có thể.</p>
-                  <p>Tuy nhiên với kinh nghiệm tổ chức bán hàng qua nhiều năm và với tác phong chuyên nghiệp của mình, BECK SPORT tự tin sai sót của chúng tôi là dưới 1% và thái độ tiếp nhận khi có sự cố luôn là hợp tác đặt lợi ích của anh em cùng uy tín của cửa hàng lên đầu..</p>
+                  <p className="font-bold mb-2">
+                    2. Đổi trả không vì lý do chủ quan từ anh em (Hàng giao
+                    không mới, không nguyên vẹn, sai nội dung hoặc bị thiếu)
+                  </p>
+                  <p className="mb-2">
+                    <span className="font-bold text-black italic">beck.</span>{" "}
+                    khuyến khích anh em hàng phải kiểm tra tình trạng bên ngoài
+                    của gói hàng và sản phẩm trước khi thanh toán để đảm bảo
+                    rằng hàng hóa được giao đúng chủng loại, số lượng, màu sắc
+                    theo đơn đặt hàng và tình trạng bên ngoài không bị tác động.
+                  </p>
+                  <p className="mb-2">
+                    (Xin lưu ý những bước kiểm tra sâu hơn như xỏ thử giày, lên
+                    chân để đánh giá ... chỉ có thể được chấp nhận sau khi đơn
+                    hàng được thanh toán đầy đủ, nghĩa là đã chuyển khoản trước
+                    cho cửa hàng toàn bộ hoặc một phần giá trị đơn hàng hoặc đã
+                    thanh toán xong với bưu tá ngay tại lúc nhận hàng).
+                  </p>
+                  <p className="mb-2">
+                    Trong trường hợp anh em đã thanh toán, nhận hàng và sau đó
+                    phát hiện hàng hóa không còn mới nguyên vẹn, sai nội dung
+                    hoặc thiếu hàng, xin vui lòng chụp ảnh sản phẩm và liên hệ
+                    với{" "}
+                    <span className="font-bold text-black italic">beck.</span>{" "}
+                    để chúng tôi được khắc phục thiếu sót (của shop hoặc đối tác
+                    vận chuyển) một cách nhanh nhất có thể.
+                  </p>
+                  <p>
+                    Tuy nhiên với kinh nghiệm tổ chức bán hàng qua nhiều năm và
+                    với tác phong chuyên nghiệp của mình,{" "}
+                    <span className="font-bold text-black italic">beck.</span>{" "}
+                    tự tin sai sót của chúng tôi là dưới 1% và thái độ tiếp nhận
+                    khi có sự cố luôn là hợp tác đặt lợi ích của anh em cùng uy
+                    tín của cửa hàng lên đầu..
+                  </p>
                 </div>
 
                 <div className="pt-2">
-                  <p className="font-bold mb-2">3. Một số lưu ý khi gửi hàng đổi</p>
-                  <p className="mb-2">
-                    - <span className="underline italic">Đổi hoặc bảo hành cái gì thì gửi cái đó</span>, hầu như bỏ qua việc gửi phụ kiện. Cụ thể nếu giày rộng chật chẳng hạn và cần đổi size khác thì chỉ gửi đôi giày về cho shop thôi. Tất / túi rút, hay bất cứ phần quà tặng hay sản phẩm mua thêm nào khác không gửi về kèm.
+                  <p className="font-bold mb-2">
+                    3. Một số lưu ý khi gửi hàng đổi
                   </p>
                   <p className="mb-2">
-                    - <span className="underline italic">Quí khách tự thanh toán chi phí khi gửi hàng</span>, bởi vì nếu quí khách chỉ định shop nhận bưu kiện phải thanh toán chi phí vận chuyển thì shop sẽ luôn phải xác minh đó là bưu kiện nào. Vì một ngày có rất nhiều KH gửi bưu kiện về shop, hầu như các bưu kiện là không cần thanh toán, nếu phát sinh một vài bưu kiện phải thanh toán thì shop phải liên hệ lại KH xem đó là KH nào, vì sao phải thanh toán, như thế sẽ rất mất thời gian cho cả KH, shop và bên chuyển phát.
+                    -{" "}
+                    <span className="underline italic">
+                      Đổi hoặc bảo hành cái gì thì gửi cái đó
+                    </span>
+                    , hầu như bỏ qua việc gửi phụ kiện. Cụ thể nếu giày rộng
+                    chật chẳng hạn và cần đổi size khác thì chỉ gửi đôi giày về
+                    cho shop thôi. Tất / túi rút, hay bất cứ phần quà tặng hay
+                    sản phẩm mua thêm nào khác không gửi về kèm.
                   </p>
-                  <p>Tuy nhiên các bạn yên tâm vì mọi chi phí phát sinh nếu việc đổi trả hàng có nguyên nhân từ phía shop thì shop sẽ chịu hoàn toàn chi phí và cộng dồn, khấu trừ...vào lần gửi lại hàng cho bạn sau đó.</p>
+                  <p className="mb-2">
+                    -{" "}
+                    <span className="underline italic">
+                      Quí khách tự thanh toán chi phí khi gửi hàng
+                    </span>
+                    , bởi vì nếu quí khách chỉ định shop nhận bưu kiện phải
+                    thanh toán chi phí vận chuyển thì shop sẽ luôn phải xác minh
+                    đó là bưu kiện nào. Vì một ngày có rất nhiều KH gửi bưu kiện
+                    về shop, hầu như các bưu kiện là không cần thanh toán, nếu
+                    phát sinh một vài bưu kiện phải thanh toán thì shop phải
+                    liên hệ lại KH xem đó là KH nào, vì sao phải thanh toán, như
+                    thế sẽ rất mất thời gian cho cả KH, shop và bên chuyển phát.
+                  </p>
+                  <p>
+                    Tuy nhiên các bạn yên tâm vì mọi chi phí phát sinh nếu việc
+                    đổi trả hàng có nguyên nhân từ phía shop thì shop sẽ chịu
+                    hoàn toàn chi phí và cộng dồn, khấu trừ...vào lần gửi lại
+                    hàng cho bạn sau đó.
+                  </p>
                 </div>
 
                 <div className="pt-2">
                   <p className="font-bold mb-2">4. Phương thức hoàn tiền</p>
-                  <p className="mb-2">Tùy theo lí do hoàn trả sản phẩm, kết quả đánh giá chất lượng sản phẩm mà anh em gửi lại hoặc qua chụp ảnh , BECK SPORT sẽ có những phương thức hoàn tiền với chi tiết như sau:</p>
+                  <p className="mb-2">
+                    Tùy theo lí do hoàn trả sản phẩm, kết quả đánh giá chất
+                    lượng sản phẩm mà anh em gửi lại hoặc qua chụp ảnh , BECK
+                    SPORT sẽ có những phương thức hoàn tiền với chi tiết như
+                    sau:
+                  </p>
                   <div className="space-y-2 mb-2">
                     <p>- Đổi sản phẩm mới cùng loại</p>
-                    <p>- Chuyển khoản qua ngân hàng theo thông tin của anh em cung cấp</p>
-                    <p>- Riêng đối với các đơn hàng thanh toán qua thẻ tín dụng quốc tế, BECK SPORT sẽ áp dụng hình thức hoàn tiền vào tài khoản thanh toán của chủ thẻ.</p>
+                    <p>
+                      - Chuyển khoản qua ngân hàng theo thông tin của anh em
+                      cung cấp
+                    </p>
+                    <p>
+                      - Riêng đối với các đơn hàng thanh toán qua thẻ tín dụng
+                      quốc tế,{" "}
+                      <span className="font-bold text-black italic">beck.</span>{" "}
+                      sẽ áp dụng hình thức hoàn tiền vào tài khoản thanh toán
+                      của chủ thẻ.
+                    </p>
                     <p>- Hoàn tiền mặt trực tiếp tại cửa hàng</p>
-                    <p>- Hoàn tiền qua nạp thẻ cào điện thoại (viettel, vinaphone, mobile) vào 1 số điện thoại mà anh em chỉ định.</p>
+                    <p>
+                      - Hoàn tiền qua nạp thẻ cào điện thoại (viettel,
+                      vinaphone, mobile) vào 1 số điện thoại mà anh em chỉ định.
+                    </p>
                   </div>
-                  <p>Mọi chi tiết hoặc thắc mắc anh em vui lòng liên hệ với BECK SPORT qua số điện thoại hỗ trợ hoặc để lại lời nhắn tại website.</p>
+                  <p>
+                    Mọi chi tiết hoặc thắc mắc anh em vui lòng liên hệ với BECK
+                    SPORT qua số điện thoại hỗ trợ hoặc để lại lời nhắn tại
+                    website.
+                  </p>
                 </div>
                 <div className="pt-4">
                   <p>------------------------------------</p>
                   <p className="font-bold uppercase text-black mt-2">
-                    CHÚ Ý: TẤT CẢ SẢN PHẨM TRONG CHƯƠNG TRÌNH SALE / XẢ HÀNG / QUÀ TẶNG SẼ KHÔNG ĐƯỢC PHÉP HOÀN TRẢ CŨNG NHƯ ĐỔI TRẢ.
+                    CHÚ Ý: TẤT CẢ SẢN PHẨM TRONG CHƯƠNG TRÌNH SALE / XẢ HÀNG /
+                    QUÀ TẶNG SẼ KHÔNG ĐƯỢC PHÉP HOÀN TRẢ CŨNG NHƯ ĐỔI TRẢ.
                   </p>
                   <p className="italic mt-1">Xin chân thành cảm ơn.</p>
                 </div>
-
               </div>
             )}
           </div>
@@ -568,4 +711,4 @@ Cách chọn này sở dĩ được <span className="font-bold text-black italic
   );
 };
 
-export default ProductDetail;
+export default DetailProduct;
