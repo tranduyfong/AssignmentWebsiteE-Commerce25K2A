@@ -4,6 +4,7 @@ import AllProducts from "../components/tabs/allProducts";
 import NikeShoe from "../components/tabs/nikeShoe";
 import AdidasShoe from "../components/tabs/adidasShoe";
 import PumaShoe from "../components/tabs/pumaShoe";
+import { useState } from "react";
 
 const HomePage = () => {
     const items = [
@@ -15,17 +16,17 @@ const HomePage = () => {
         {
             key: '/nikeShoe',
             label: 'Giày Nike',
-            children: <NikeShoe/>,
+            children: <NikeShoe />,
         },
         {
             key: '/adidasShoe',
             label: 'Giày Adidas',
-            children: <AdidasShoe/>,
+            children: <AdidasShoe />,
         },
         {
             key: 'pumaShoe',
             label: 'Giày Puma',
-            children: <PumaShoe/>,
+            children: <PumaShoe />,
         },
     ];
     return (
