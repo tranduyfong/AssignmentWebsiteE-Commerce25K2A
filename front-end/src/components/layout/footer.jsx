@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./footer.css";
+import "./css/footer.css";
 
 const Footer = () => {
     const [email, setEmail] = useState("");
