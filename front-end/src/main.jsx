@@ -25,6 +25,7 @@ import ViewDetail from "./pages/viewDetail.jsx";
 import CartPage from "./pages/cartPage.jsx";
 import PaymentPage from "./pages/payment.jsx";
 import ProductDetail from "./pages/detailProduct.jsx";
+import SearchPage from "./pages/searchPage.jsx";
 
 
 const router = createBrowserRouter([
@@ -101,6 +102,10 @@ const router = createBrowserRouter([
       {
         path: "/detail",
         element: <ProductDetail />
+      },
+      {
+        path: "/search",
+        element: <SearchPage /> 
       }
     ]
   },

@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 const OverHead = () => {
+  const navigate = useNavigate();
   const [text, setText] = useState("");
 
   const xuLyBamTimKiem = () => {
-    alert("Bạn đang tìm: " + text);
-  };
+    if(!text.trim()) return;
+
+    navigate(`/search?keyword=${text}`);  };
   const EnterTimKiem = (e) => {
     if (e.key === 'Enter') {
       xuLyBamTimKiem();
