@@ -22,6 +22,9 @@ import ReceiptManagement from "./pages/receipt-management.jsx";
 import RevenueAndExpenditure from "./pages/revenue-expenditure-mng.jsx";
 import ManagerIncome from "./pages/managerIncome.jsx";
 import ViewDetail from "./pages/viewDetail.jsx";
+import CartPage from "./pages/cartPage.jsx";
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -89,6 +92,10 @@ const router = createBrowserRouter([
         path: "viewDetail",
         element: <ViewDetail />
       },
+      {
+        path: "cartPage",
+        element: <CartPage />
+      }
     ]
   }
 ]);
