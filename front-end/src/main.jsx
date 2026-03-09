@@ -24,6 +24,7 @@ import ManagerIncome from "./pages/managerIncome.jsx";
 import ViewDetail from "./pages/viewDetail.jsx";
 import CartPage from "./pages/cartPage.jsx";
 import PaymentPage from "./pages/payment.jsx";
+import ProductDetail from "./pages/detailProduct.jsx";
 
 
 const router = createBrowserRouter([
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
       {
         path: "/cartPage",
         element: <CartPage />
+      },
+      {
+        path: "/detail",
+        element: <ProductDetail />
       }
     ]
   },
