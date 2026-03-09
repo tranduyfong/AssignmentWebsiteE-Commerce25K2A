@@ -23,6 +23,7 @@ import RevenueAndExpenditure from "./pages/revenue-expenditure-mng.jsx";
 import ManagerIncome from "./pages/managerIncome.jsx";
 import ViewDetail from "./pages/viewDetail.jsx";
 import CartPage from "./pages/cartPage.jsx";
+import PaymentPage from "./pages/payment.jsx";
 
 
 const router = createBrowserRouter([
@@ -85,18 +86,22 @@ const router = createBrowserRouter([
         element: <RevenueAndExpenditure />
       },
       {
-        path: "managerIncome",
+        path: "/managerIncome",
         element: <ManagerIncome />
       },
       {
-        path: "viewDetail",
+        path: "/viewDetail",
         element: <ViewDetail />
       },
       {
-        path: "cartPage",
+        path: "/cartPage",
         element: <CartPage />
       }
     ]
+  },
+  {
+    path: "/payment",
+    element: <PaymentPage />
   }
 ]);
 
