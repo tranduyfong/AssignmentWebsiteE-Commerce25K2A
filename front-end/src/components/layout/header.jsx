@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { Dropdown, Space } from "antd";
-import { DownOutlined} from '@ant-design/icons';
+import { DownOutlined } from '@ant-design/icons';
 import "./css/header.css"
 import OverHead from "./overhead"
 const Header = () => {
@@ -38,10 +38,10 @@ const Header = () => {
                         <div className="menu flex">
                             <ul className="flex gap-10 text-center">
                                 <li>
-                                    <NavLink to="/">Trang chủ</NavLink> 
+                                    <NavLink to="/">Trang chủ</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/product">Sản Phẩm</NavLink>
+                                    <NavLink to="/products">Sản Phẩm</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to="/intro">Giới thiệu</NavLink>
