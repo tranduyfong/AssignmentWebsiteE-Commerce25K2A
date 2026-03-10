@@ -10,23 +10,23 @@ const HomePage = () => {
     const items = [
         {
             key: '/allProducts',
-            label: 'Tất cả sản phẩm',
+            label: <span className="tab-style">TẤT CẢ CÁC SẢN PHẨM</span>,
             children: <AllProducts />
         },
         {
             key: '/nikeShoe',
-            label: 'Giày Nike',
-            children: <NikeShoe />,
+            label:<span className="tab-style">GIÀY NIKE</span>,
+            children: <NikeShoe/>,
         },
         {
             key: '/adidasShoe',
-            label: 'Giày Adidas',
-            children: <AdidasShoe />,
+            label: <span className="tab-style">GIÀY ADIDAS</span>,
+            children: <AdidasShoe/>,
         },
         {
             key: 'pumaShoe',
-            label: 'Giày Puma',
-            children: <PumaShoe />,
+            label: <span className="tab-style">GIÀY PUMA</span>,
+            children: <PumaShoe/>,
         },
     ];
     return (

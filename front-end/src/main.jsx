@@ -95,6 +95,7 @@ const router = createBrowserRouter([
         path: "/viewDetail",
         element: <ViewDetail />
       },
+
       {
         path: "/cartPage",
         element: <CartPage />
@@ -107,6 +108,7 @@ const router = createBrowserRouter([
         path: "/search",
         element: <SearchPage /> 
       }
+
     ]
   },
   {

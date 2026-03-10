@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 25px;
+    margin: 30px 0;
     gap: 50px;
 
 
@@ -81,3 +81,25 @@
     background-color: #6e6b6b;
     transition: all 0.5s;
 }
+
+
+/* tab  */
+.tab-style {
+  padding: 10px;
+  font-weight: 600;
+}
+.ant-tabs-tab-active .tab-style {
+  background-color: #FEBB0A;
+  color: black;
+  padding: 10px;
+}
+.ant-tabs-ink-bar{
+  display: none;
+}
+.tab-style:hover {
+  background-color: #FEBB0A;
+  color: rgb(39, 38, 38);
+  transition: all 0.3s ease;
+}
+
+/* end-tab  */
