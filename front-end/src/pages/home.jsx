@@ -4,6 +4,7 @@ import AllProducts from "../components/tabs/allProducts";
 import NikeShoe from "../components/tabs/nikeShoe";
 import AdidasShoe from "../components/tabs/adidasShoe";
 import PumaShoe from "../components/tabs/pumaShoe";
+import { useState } from "react";
 
 const HomePage = () => {
     const items = [
