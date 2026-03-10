@@ -1,22 +1,22 @@
-import { useState} from "react";
+import { useState } from "react";
 
 const Revenue = () => {
-    const [date, setDate] = useState("");
+  const [date, setDate] = useState("");
 
-const revenueToday = 1000000;
-const revenueMonth = 30000000;
-const revenueYear = 360000000;
+  const revenueToday = 1000000;
+  const revenueMonth = 30000000;
+  const revenueYear = 360000000;
 
-const handleSelectDate = () => {
-    if(!date) {
-        alert("Vui lòng chọn ngày");
+  const handleSelectDate = () => {
+    if (!date) {
+      alert("Vui lòng chọn ngày");
     } else {
-        alert("Doanh thu ngày " + date + " là: 1500000đ");
+      alert("Doanh thu ngày " + date + " là: 1500000đ");
     }
-};
+  };
 
-return (
-     <div className="p-10">
+  return (
+    <div className="p-10 mt-30">
       <h2 className="text-2xl font-bold mb-10">
         Thống kê doanh thu
       </h2>
@@ -66,7 +66,7 @@ return (
         </div>
       </div>
     </div>
-);
+  );
 }
 
 export default Revenue;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Checkbox, Form, Input, Row, } from 'antd';
+import { Button, Card, Col, Form, Input, Row, } from 'antd';
 import { Link } from 'react-router-dom';
 const LoginPage = () => {
     const onFinish = (values) => {

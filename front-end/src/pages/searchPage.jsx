@@ -7,7 +7,7 @@ const SearchPage = () => {
     const keyword = params.get("keyword") || "";
 
     const product = [
-    {
+        {
             id: '1',
             nameProduct: 'Giày thể thao Ar xanh dương',
             imgs: 'https://bizweb.dktcdn.net/thumb/large/100/108/842/products/26013107.jpg?v=1770101958230',
@@ -51,7 +51,7 @@ const SearchPage = () => {
     );
 
     return (
-        <div className="p-12 bg-white min-h-screen mt-20">
+        <div className="p-12 bg-white min-h-screen mt-30">
             <h1 className="text-2xl font-bold uppercase text-center mb-10">
                 Kết quả tìm kiếm: {keyword}
             </h1>
@@ -59,11 +59,11 @@ const SearchPage = () => {
                 {filteredProducts.length > 0 ? (
                     filteredProducts.map((item) => (
                         <div key={item.id}
-                        className="group bg-white rounded-lg shadow hover:shadow-lg transition-all cursor-pointer overflow-hidden border border-gray-100">
+                            className="group bg-white rounded-lg shadow hover:shadow-lg transition-all cursor-pointer overflow-hidden border border-gray-100">
                             <div className="relative overflow-hidden h-64">
                                 <img src={item.imgs}
-                                alt={item.nameProduct}
-                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
+                                    alt={item.nameProduct}
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                             </div>
 
                             <div className="p-4 text-center">
@@ -74,7 +74,7 @@ const SearchPage = () => {
                                 <div className="font-semibold text-gray-800 uppercase">
                                     Hàng có sẵn
                                 </div>
-                                 <h2 className="text-gray-950 truncate">{item.nameProduct}</h2>
+                                <h2 className="text-gray-950 truncate">{item.nameProduct}</h2>
                             </div>
                         </div>
                     ))

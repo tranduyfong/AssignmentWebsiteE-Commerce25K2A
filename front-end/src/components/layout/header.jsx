@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { Dropdown, Space } from "antd";
-import { DownOutlined, HomeOutlined, InfoCircleOutlined, PhoneOutlined, ShopOutlined, ShoppingCartOutlined} from '@ant-design/icons';
+import { DownOutlined, HomeOutlined, InfoCircleOutlined, PhoneOutlined, ShopOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import "./css/header.css"
 import OverHead from "./overhead"
 const Header = () => {
@@ -39,14 +39,14 @@ const Header = () => {
                             <ul className="flex gap-20 text-center">
                                 <li className="menu-icon">
                                     <HomeOutlined className="icon" />
-                                    <NavLink to="/">Trang chủ</NavLink> 
+                                    <NavLink to="/">Trang chủ</NavLink>
                                 </li>
                                 <li className="menu-icon">
                                     <ShopOutlined className="icon" />
-                                    <NavLink to="/product">Sản Phẩm</NavLink>
+                                    <NavLink to="/products">Sản Phẩm</NavLink>
                                 </li>
                                 <li className="menu-icon">
-                                    <InfoCircleOutlined className="icon" /> 
+                                    <InfoCircleOutlined className="icon" />
                                     <NavLink to="/intro">Giới thiệu</NavLink>
                                 </li>
                                 <li className="menu-icon">
@@ -54,7 +54,7 @@ const Header = () => {
                                     <NavLink to="/contact">Liên Hệ</NavLink>
                                 </li>
                                 <li className="menu-icon">
-                                    <ShoppingCartOutlined className ="icon" />
+                                    <ShoppingCartOutlined className="icon" />
                                     <NavLink to="/checkcart">Kiểm tra đơn hàng</NavLink>
                                 </li>
                             </ul>

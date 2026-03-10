@@ -81,7 +81,7 @@ const data = [
 const Product = () => {
     const [priceRange, setPriceRange] = useState([0, 2000000]);
     return (
-        <div className="mt-35 px-[30px] mb-20">
+        <div className="mt-40 px-[30px] mb-20">
             <div className="flex justify-center items-center uppercase font-bold text-2xl mb-5">
                 Sản phẩm
             </div>

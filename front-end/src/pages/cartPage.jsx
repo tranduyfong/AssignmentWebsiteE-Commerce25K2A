@@ -53,10 +53,8 @@ const CartPage = () => {
     }
     return (
         <>
-
-            <Title>Giỏ hàng</Title>
-
-            <Table dataSource={cartData} rowKey="id" pagination={false} className='mt-20'
+            <Title className='mt-40'>Giỏ hàng</Title>
+            <Table dataSource={cartData} rowKey="id" pagination={false} className='mt-5'
                 footer={() => (
                     <Flex justify="flex-end" align="center" style={{ paddingRight: '20px' }}>
                         <AntText strong style={{ fontSize: '18px' }}>

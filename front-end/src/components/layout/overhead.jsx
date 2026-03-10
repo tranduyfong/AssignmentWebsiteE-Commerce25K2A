@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 
 const OverHead = () => {
@@ -7,9 +7,10 @@ const OverHead = () => {
   const [text, setText] = useState("");
 
   const xuLyBamTimKiem = () => {
-    if(!text.trim()) return;
+    if (!text.trim()) return;
 
-    navigate(`/search?keyword=${text}`);  };
+    navigate(`/search?keyword=${text}`);
+  };
   const EnterTimKiem = (e) => {
     if (e.key === 'Enter') {
       xuLyBamTimKiem();
@@ -34,10 +35,10 @@ const OverHead = () => {
         </div>
         <div className="flex items-center gap-6 text-sm">
           <div className="text-gray-500 hover:text-black cursor-pointer">
-            <Link to = "loginPage">Đăng nhập</Link>
+            <Link to="loginPage">Đăng nhập</Link>
           </div>
           <div className="text-gray-500 hover:text-black cursor-pointer">
-            <Link to = "registerPage">Đăng ký</Link>
+            <Link to="registerPage">Đăng ký</Link>
           </div>
           <div className="flex items-center gap-2 cursor-pointer">
             <div className="relative">
@@ -60,7 +61,7 @@ const OverHead = () => {
               </span>
             </div>
             <div className="leading-tight">
-              <div className="font-bold">GIỎ HÀNG</div>
+              <NavLink to="/cartPage" className="font-bold">GIỎ HÀNG</NavLink>
               <div className="text-gray-500 text-xs">(0) sản phẩm</div>
             </div>
           </div>
