@@ -1,4 +1,4 @@
-import Revenue from "../components/layout/revenue";
+import Revenue from "../../components/layout/revenue";
 
 function StatisticalManagement() {
     return (

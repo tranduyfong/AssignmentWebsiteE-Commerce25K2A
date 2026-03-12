@@ -1,5 +1,5 @@
 import { Form, Input, Select } from 'antd';
-import { getDistrict, getVillage } from '../../Service/api.service';
+import { getDistrict, getVillage } from '../../services/api.service';
 import { useState } from 'react';
 import TextArea from 'antd/es/input/TextArea';
 const onFinish = values => {

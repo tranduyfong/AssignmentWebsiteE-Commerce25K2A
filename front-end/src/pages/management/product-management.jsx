@@ -1,12 +1,12 @@
+import { Button, Flex, Input, Space, Table, Tag } from 'antd';
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { useState } from 'react';
-import UserTable from '../components/user/user.table';
-import CreateUser from '../components/user/user.create';
+import ProductTable from '../../components/product/product.table';
+import LookingForCreateProduct from '../../components/product/product.create.lookingfor';
 
-const AccountManagement = () => {
+const ProductManagement = () => {
 
-    const lookingForClick = () => {
-        alert(`You typed: ${typing}`);
-    }
+    const [typing, setTyping] = useState("");
 
     const data = [
         {
@@ -34,10 +34,10 @@ const AccountManagement = () => {
     return (
         <>
             <div className='mt-28'>
-                <CreateUser />
-                <UserTable dataUser={data} />
+                <LookingForCreateProduct />
+                <ProductTable dataProduct={data} />
             </div>
         </>
     )
 }
-export default AccountManagement;
+export default ProductManagement;

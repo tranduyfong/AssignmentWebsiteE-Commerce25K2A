@@ -8,24 +8,24 @@ import {
 } from 'react-router-dom';
 import ErrorPage from "./pages/errors.jsx";
 import HomePage from "./pages/home.jsx";
-import LoginPage from "./pages/loginPage.jsx";
-import ForgetPassword from "./pages/forgetPassword.jsx";
-import RegisterPage from "./pages/registerPage.jsx";
-import Intro from "./pages/intro.jsx";
+import LoginPage from "./pages/auth-user/loginPage.jsx";
+import ForgetPassword from "./pages/auth-user/forgetPassword.jsx";
+import RegisterPage from "./pages/auth-user/registerPage.jsx";
+import Intro from "./pages/introduct/intro.jsx";
 import Product from "./pages/products.jsx";
 import Contact from "./pages/contact.jsx";
-import CheckCart from "./pages/checkcart.jsx";
-import StatisticalManagement from "./pages/statistical.jsx";
-import AccountManagement from "./pages/account-management.jsx";
-import ProductManagement from "./pages/product-management.jsx";
-import ReceiptManagement from "./pages/receipt-management.jsx";
-import RevenueAndExpenditure from "./pages/revenue-expenditure-mng.jsx";
-import ManagerIncome from "./pages/managerIncome.jsx";
-import ViewDetail from "./pages/viewDetail.jsx";
+import CheckCart from "./pages/management/checkcart.jsx";
+import StatisticalManagement from "./pages/management/statistical.jsx";
+import AccountManagement from "./pages/management/account-management.jsx";
+import ProductManagement from "./pages/management/product-management.jsx";
+import ReceiptManagement from "./pages/management/receipt-management.jsx";
+import RevenueAndExpenditure from "./pages/management/revenue-expenditure-mng.jsx";
+import ManagerIncome from "./pages/management/managerIncome.jsx";
+import ViewDetail from "./pages/management/viewDetail.jsx";
 import CartPage from "./pages/cartPage.jsx";
-import PaymentPage from "./pages/payment.jsx";
+import PaymentPage from "./pages/payment/payment.jsx";
 import ProductDetail from "./pages/detailProduct.jsx";
-import SearchPage from "./pages/searchPage.jsx";
+import SearchPage from "./pages/search/searchPage.jsx";
 
 
 const router = createBrowserRouter([

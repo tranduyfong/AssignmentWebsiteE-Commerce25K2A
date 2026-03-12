@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import PaymentForm from "../components/payment/payment.form";
-import { getProvince } from "../Service/api.service";
-import PaymentDetails from "../components/payment/patment.details";
-import PaymentMethod from "../components/payment/payment.methods";
-import OrderSummary from "../components/payment/payment.list";
+import PaymentForm from "../../components/payment/payment.form";
+import { getProvince } from "../../services/api.service";
+import PaymentDetails from "../../components/payment/patment.details";
+import PaymentMethod from "../../components/payment/payment.methods";
+import OrderSummary from "../../components/payment/payment.list";
 
 const PaymentPage = () => {
     const [provinces, setProvinces] = useState([]);
