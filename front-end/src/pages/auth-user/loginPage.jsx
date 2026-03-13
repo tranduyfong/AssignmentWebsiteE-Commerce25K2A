@@ -14,7 +14,6 @@ const LoginPage = () => {
                         Đăng nhập tài khoản
                     </div>
                     <Row>
-                        <Col span={12}>
                             <Card className='bg-gray-50'>
                                 <Form
                                     name="basic"
@@ -75,12 +74,8 @@ const LoginPage = () => {
                                     </Form.Item>
                                 </Form>
                             </Card>
-                        </Col>
-                        <Col span={12}>
-                            <Card>
-
-                            </Card>
-                        </Col>
+                        
+                        
                     </Row>
 
                 </div>
