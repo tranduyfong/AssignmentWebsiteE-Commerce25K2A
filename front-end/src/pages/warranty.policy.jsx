@@ -1,6 +1,6 @@
 const WarrantyPolicy = () => {
     return (
-        <div className="container" style={{padding:"40px 0"}}>
+        <div className="container py-10">
             <h1>Chính sách bảo hành</h1>
 
             <p>

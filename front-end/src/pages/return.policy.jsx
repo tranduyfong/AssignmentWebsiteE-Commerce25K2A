@@ -1,6 +1,6 @@
 const ReturnPolicy = () => {
     return (
-        <div className="container" style={{padding:"40px 0"}}>
+        <div className="container py-10">
             <h1>Chính sách đổi trả</h1>
 
             <p>

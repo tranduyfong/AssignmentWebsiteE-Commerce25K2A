@@ -1,6 +1,6 @@
 const ShoppingGuide = () => {
     return (
-        <div className="container" style={{padding:"40px 0"}}>
+        <div className="container py-10">
             <h1>Hướng dẫn mua hàng</h1>
 
             <h3>Bước 1: Chọn sản phẩm</h3>
