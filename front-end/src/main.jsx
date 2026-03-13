@@ -26,6 +26,7 @@ import CartPage from "./pages/cartPage.jsx";
 import PaymentPage from "./pages/payment/payment.jsx";
 import ProductDetail from "./pages/detailProduct.jsx";
 import SearchPage from "./pages/search/searchPage.jsx";
+import ViewDetailProducts from "./pages/productDetail.test.jsx";
 
 
 const router = createBrowserRouter([
@@ -57,7 +58,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <Product />
+        element: <Product />,
+      },
+       {
+        path: "/detailMinh",
+        element: <ViewDetailProducts/>,
       },
       {
         path: "/contact",
