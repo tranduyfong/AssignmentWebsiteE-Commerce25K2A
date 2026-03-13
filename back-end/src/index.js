@@ -1,5 +1,5 @@
 const express = require('express');
-const webRouter = require('./routes/web');
+const webRouter = require('./routes/config.route');
 const connection = require('./configs/database');
 require('dotenv').config();
 const app = express();

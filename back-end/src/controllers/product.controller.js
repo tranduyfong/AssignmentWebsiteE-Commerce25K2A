@@ -1,22 +1,17 @@
-const Product = require("../models/product");
+const { handleCreateProduct, handleDeleteProduct, handleUpdateProduct } = require('../services/admin/product.service');
+const { handleGetAllProduct } = require('../services/client/product.service');
 
 const getProductPage = async (req, res) => {
-    const result = await Product.find({});
+    const result = await handleGetAllProduct();
     return res.status(200).json({
         data: result
     });
-}
+};
 
 const createProduct = async (req, res) => {
     try {
-        let { nameProduct, priceProduct, descriptProduct, imgSrc, sizes } = req.body;
-        await Product.create({
-            nameProduct: nameProduct,
-            priceProduct: priceProduct,
-            descriptProduct: descriptProduct,
-            imgSrc: imgSrc,
-            sizes: sizes
-        })
+        let { nameProduct, priceProduct, imgSrc, sizes } = req.body;
+        await handleCreateProduct(nameProduct, priceProduct, imgSrc, sizes);
         return res.status(200).json({
             data: "Thêm thành công sản phẩm"
         });
@@ -30,7 +25,7 @@ const createProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
     try {
         const { idProduct } = req.params;
-        const result = await Product.deleteOne({ _id: idProduct });
+        await handleDeleteProduct(idProduct);
 
         return res.status(200).json({
             data: 'Xóa sản phẩm thành công'
@@ -46,13 +41,9 @@ const deleteProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
     try {
         const { idProduct } = req.params;
-        const { nameProduct, priceProduct, descriptProduct, imgSrc } = req.body;
+        const { nameProduct, priceProduct, imgSrc } = req.body;
 
-        const result = await Product.findByIdAndUpdate(
-            idProduct,
-            { nameProduct, priceProduct, descriptProduct, imgSrc },
-            { new: true, runValidators: true }
-        );
+        const result = await handleUpdateProduct(idProduct, nameProduct, priceProduct, imgSrc);
 
         return res.status(200).json({
             message: "Update success",
@@ -67,4 +58,11 @@ const updateProduct = async (req, res) => {
     }
 };
 
-module.exports = { getProductPage, createProduct, deleteProduct, updateProduct };
+
+
+module.exports = {
+    getProductPage,
+    createProduct,
+    deleteProduct,
+    updateProduct
+}
