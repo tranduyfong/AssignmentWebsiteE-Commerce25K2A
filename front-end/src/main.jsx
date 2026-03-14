@@ -26,8 +26,7 @@ import CartPage from "./pages/cartPage.jsx";
 import PaymentPage from "./pages/payment/payment.jsx";
 import ProductDetail from "./pages/detailProduct.jsx";
 import SearchPage from "./pages/search/searchPage.jsx";
-import ViewDetailProducts from "./pages/productDetail.test.jsx";
-
+import TestDetail from "./pages/testDetail.jsx"
 
 const router = createBrowserRouter([
   {
@@ -61,8 +60,8 @@ const router = createBrowserRouter([
         element: <Product />,
       },
        {
-        path: "/detailMinh",
-        element: <ViewDetailProducts/>,
+        path: "/products/:id",
+        element: <TestDetail/>,
       },
       {
         path: "/contact",
