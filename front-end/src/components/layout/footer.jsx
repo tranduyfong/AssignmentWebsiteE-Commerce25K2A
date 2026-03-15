@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./css/footer.css";
 
 const Footer = () => {
@@ -23,9 +24,15 @@ const Footer = () => {
                     </div>
                     <div className="item">
                         <h3>Hỗ trợ</h3>
-                        <p>Chính sách bảo hành</p>
-                        <p>Chính sách đổi trả</p>
-                        <p>Hướng dẫn mua hàng</p>
+                        <Link to="/warranty-policy">
+                            <p>Chính sách bảo hành</p>
+                        </Link>
+                        <Link to="/return-policy">
+                            <p>Chính sách đổi trả</p>
+                        </Link>
+                        <Link to="/shopping-guide">
+                            <p>Hướng dẫn mua hàng</p>
+                        </Link>
                     </div>
                     <div className="item">
                         <h3>Liên hệ</h3>
