@@ -26,9 +26,13 @@ import CartPage from "./pages/cartPage.jsx";
 import PaymentPage from "./pages/payment/payment.jsx";
 import ProductDetail from "./pages/detailProduct.jsx";
 import SearchPage from "./pages/search/searchPage.jsx";
+<<<<<<< HEAD:front-end/src/pages/main.jsx
 import WarrantyPolicy from "./pages/warranty.policy.jsx";
 import ReturnPolicy from "./pages/return.policy.jsx";
 import ShoppingGuide from "./pages/shopping.guide.jsx";
+=======
+import TestDetail from "./pages/testDetail.jsx"
+>>>>>>> minh-branch:front-end/src/main.jsx
 
 const router = createBrowserRouter([
   {
@@ -59,7 +63,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <Product />
+        element: <Product />,
+      },
+       {
+        path: "/products/:id",
+        element: <TestDetail/>,
       },
       {
         path: "/contact",
