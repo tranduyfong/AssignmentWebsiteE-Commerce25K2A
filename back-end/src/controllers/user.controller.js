@@ -1,46 +1,32 @@
-import User from "../models/user.js";
+const { handleUserCreate, handleGetUser } = require('../services/client/user.service');
 
-const getUserPage = async (req, res) => {
+const getUser = async (req, res) => {
+    const result = await handleGetUser();
+    return res.status(200).json({
+        data: result
+    });
+}
+
+const createUser = async (req, res) => {
+    const { name, email, password, phone } = req.body;
+
     try {
-        const result = await User.find({});
-
-        return res.status(200).json({
-            data: result
+        await handleUserCreate(name, email, password, phone);
+        return res.status(201).json({
+            data: "Thêm tài khoản thành công!"
         });
     } catch (err) {
-        return res.status(500).json({
-            message: "Server error",
+        return res.status(400).json({
             error: err.message
         });
     }
 }
 
-const login = async (req, res) => {
-    try {
-        const { email, password } = req.body;
-        const result = await User.findOne({ email });
-        if (!user) {
-            return res.status(400).json({
-                message: "Email hoặc mật khẩu không đúng"
-            });
-        }
-        // So sánh password trực tiếp, TEST THÔI CHƯA PHẢI THẬT
-        if (password !== user.password) {
-            return res.status(400).json({
-                message: "Email hoặc mật khẩu không đúng"
-            });
-        }
+const getAccount = async (req, res) => {
+    const user = req.user;
+    res.status(200).json({
+        data: { user }
+    });
+}
 
-        return res.status(200).json({
-            message: "Login success",
-            user
-        });
-    } catch (err) {
-        return res.status(500).json({
-            message: "Server error",
-            error: err.message
-        });
-    }
-};
-
-export default getUserPage;
+module.exports = { getUser, createUser, getAccount };
