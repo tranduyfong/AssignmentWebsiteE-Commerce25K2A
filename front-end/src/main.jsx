@@ -29,7 +29,6 @@ import SearchPage from "./pages/search/searchPage.jsx";
 import WarrantyPolicy from "./pages/warranty.policy.jsx";
 import ReturnPolicy from "./pages/return.policy.jsx";
 import ShoppingGuide from "./pages/shopping.guide.jsx";
-import TestDetail from "./pages/testDetail.jsx"
 
 const router = createBrowserRouter([
   {
@@ -61,10 +60,6 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <Product />,
-      },
-      {
-        path: "/products/:id",
-        element: <TestDetail />,
       },
       {
         path: "/contact",
@@ -108,7 +103,7 @@ const router = createBrowserRouter([
         element: <CartPage />
       },
       {
-        path: "/detail",
+        path: "/detail/:id",
         element: <ProductDetail />
       },
       {

@@ -1,10 +1,22 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ProductGallery from "../components/product/productGallery";
 import ProductInfo from "../components/product/productInfo";
 import ProductCommites from "../components/product/productCommites";
 import ProductTab from "../components/product/productTab";
+import { useParams } from "react-router-dom";
+import { getProductById } from "../services/api.service";
 
 const DetailProduct = () => {
+  const { id } = useParams();
+  const [current, setCurrent] = useState([]);
+  useEffect(() => {
+    const getProduct = async () => {
+      const res = await getProductById(id);
+      console.log(res.data);
+      setCurrent(res.data)
+    }
+    getProduct();
+  }, []);
   const product = {
     name: "Giày Bóng Đá Adidas Predator 26 Elite Bellingham Trắng Xanh Biển Lưỡi Gà Gập TF",
     sku: "26022804.39",
@@ -23,7 +35,7 @@ const DetailProduct = () => {
   const increaseQty = () => setQuantity(quantity + 1);
 
   const handleScrollToSizeGuide = () => {
-    setActiveTab("chon-size"); 
+    setActiveTab("chon-size");
     if (tabsRef.current) {
       const y = tabsRef.current.getBoundingClientRect().top + window.scrollY - 150;
       window.scrollTo({ top: y, behavior: "smooth" });
@@ -32,22 +44,22 @@ const DetailProduct = () => {
 
   return (
     <div className="w-full bg-white min-h-screen pb-20 pt-40 font-sans text-gray-800">
-      
+
       <div className="border-b border-gray-200">
         <div className="max-w-7xl w-full mx-auto px-4 py-3 text-sm text-gray-500">
           <span>Trang chủ</span> <span className="mx-2">|</span>
           <span>Bộ Sưu Tập Adidas Predator 26</span> <span className="mx-2">|</span>
-          <span className="text-yellow-600 font-medium">{product.name}</span>
+          <span className="text-yellow-600 font-medium">{current.nameProduct}</span>
         </div>
       </div>
 
       <div className="max-w-7xl w-full mx-auto px-4 mt-8">
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <ProductGallery product={product} />
-          
-          <ProductInfo 
-            product={product}
+          <ProductGallery current={current} />
+
+          <ProductInfo
+            current={current}
             selectedSize={selectedSize}
             setSelectedSize={setSelectedSize}
             quantity={quantity}
@@ -55,14 +67,14 @@ const DetailProduct = () => {
             decreaseQty={decreaseQty}
             onScrollToSizeGuide={handleScrollToSizeGuide}
           />
-          
+
           <ProductCommites />
         </div>
 
-        <ProductTab 
-          activeTab={activeTab} 
-          setActiveTab={setActiveTab} 
-          tabsRef={tabsRef} 
+        <ProductTab
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          tabsRef={tabsRef}
         />
 
       </div>

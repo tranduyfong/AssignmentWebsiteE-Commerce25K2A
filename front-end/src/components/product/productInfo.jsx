@@ -1,37 +1,41 @@
 import React from "react";
 
-const ProductInfo = ({ 
-  product, 
-  selectedSize, 
-  setSelectedSize, 
-  quantity, 
-  increaseQty, 
-  decreaseQty, 
-  onScrollToSizeGuide 
+const ProductInfo = ({
+  current,
+  selectedSize,
+  setSelectedSize,
+  quantity,
+  increaseQty,
+  decreaseQty,
+  onScrollToSizeGuide
 }) => {
+  console.log(current);
   return (
     <div className="lg:col-span-4 flex flex-col">
-      <h1 className="text-2xl font-medium leading-snug mb-2">{product.name}</h1>
-      <p className="text-sm text-gray-500 mb-2 uppercase">Mã sản phẩm: {product.sku}</p>
-      <div className="text-3xl font-bold text-red-600 mb-3">{product.price}</div>
+      <h1 className="text-2xl font-medium leading-snug mb-2">{current.nameProduct}</h1>
+      <p className="text-sm text-gray-500 mb-2 uppercase">Mã sản phẩm: {current._id}</p>
+      <div className="text-3xl font-bold text-red-600 mb-3">{current.priceProduct}</div>
 
       <div className="mb-6">
         <span className="inline-block border border-gray-400 rounded-full px-3 py-1 text-xs font-medium">
-          {product.status}
+          {current.descriptProduct}
         </span>
       </div>
 
       <div className="mb-6">
         <p className="text-sm text-gray-500 mb-2 uppercase">Chọn size:</p>
         <div className="flex flex-row! flex-wrap gap-2 mb-2">
-          {product.sizes.map((size) => (
+          {current?.sizes?.map((item) => (
             <div
-              key={size}
-              onClick={() => setSelectedSize(size)}
+              key={item._id}
+              onClick={() => setSelectedSize(item.size)}
               className={`w-10 h-10 border flex items-center justify-center text-sm transition-colors cursor-pointer shrink-0
-                ${selectedSize === size ? "border-black bg-black text-white font-bold" : "border-gray-300 hover:border-black"}`}
+                ${selectedSize === item.size
+                  ? "border-black bg-black text-white font-bold"
+                  : "border-gray-300 hover:border-black"
+                }`}
             >
-              {size}
+              {item.size}
             </div>
           ))}
         </div>

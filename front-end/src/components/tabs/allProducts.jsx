@@ -1,21 +1,30 @@
 import { Col, Row } from "antd";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import products from "../../data/products";
+import { getAllProducts } from "../../services/api.service";
 const AllProducts = () => {
-  
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const loadProduct = async () => {
+      const res = await getAllProducts();
+      console.log(res.data);
+      setProducts(res.data)
+    }
+    loadProduct();
+  }, []);
   return (
     <>
       <div className="all-product">
         <Row className="mb-10" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
           {products.map(items => (
-            <Col className="gutter-row" span={4} key={items.id}>
+            <Col className="gutter-row" span={4} key={items._id}>
               <div className="box">
-                <img src={items.img} alt={items.title} />
+                <img src={items.imgSrc[0]} alt={items.nameProduct} />
                 <div className="inner-content">
-                  <p className="inner-title">{items.title}</p>
-                  <p className="inner-price">Giá: {items.price}</p>
+                  <p className="inner-title">{items.nameProduct}</p>
+                  <p className="inner-price">Giá: {items.priceProduct}</p>
                   <button className="btn-buy">
-                    <Link to = {`/products/${items.id}`}>
+                    <Link to={`/detail/${items._id}`}>
                       Mua
                     </Link>
                   </button>

@@ -4,4 +4,10 @@ const handleGetAllProduct = async () => {
     return Product.find({})
 }
 
-module.exports = { handleGetAllProduct }
+const handleGetProductById = async (id) => {
+    const result = await Product.findById(id);
+    if (!result) throw new Error("Không tìm thấy sản phẩm !");
+    return result;
+}
+
+module.exports = { handleGetAllProduct, handleGetProductById }
