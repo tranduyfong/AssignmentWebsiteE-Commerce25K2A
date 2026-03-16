@@ -8,10 +8,11 @@ const getProductPage = async (req, res) => {
     });
 };
 
+
 const createProduct = async (req, res) => {
     try {
-        let { nameProduct, priceProduct, imgSrc, sizes } = req.body;
-        await handleCreateProduct(nameProduct, priceProduct, imgSrc, sizes);
+        let { nameProduct, priceProduct, imgSrc, sizes, brand } = req.body;
+        await handleCreateProduct(nameProduct, priceProduct, imgSrc, sizes, brand);
         return res.status(200).json({
             data: "Thêm thành công sản phẩm"
         });
@@ -21,6 +22,7 @@ const createProduct = async (req, res) => {
         })
     }
 }
+
 
 const deleteProduct = async (req, res) => {
     try {
@@ -37,6 +39,7 @@ const deleteProduct = async (req, res) => {
         });
     }
 };
+
 
 const updateProduct = async (req, res) => {
     try {
@@ -58,6 +61,7 @@ const updateProduct = async (req, res) => {
     }
 };
 
+
 const getProductById = async (req, res) => {
     try {
         const { idProduct } = req.params;
@@ -74,6 +78,7 @@ const getProductById = async (req, res) => {
         });
     }
 }
+
 
 module.exports = {
     getProductPage,

@@ -7,7 +7,6 @@ const AllProducts = () => {
   useEffect(() => {
     const loadProduct = async () => {
       const res = await getAllProducts();
-      console.log(res.data);
       setProducts(res.data)
     }
     loadProduct();
