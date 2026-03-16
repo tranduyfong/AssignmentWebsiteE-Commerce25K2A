@@ -25,4 +25,32 @@ const getProductById = async (id) => {
     return axios.get(URL_BACKEND);
 }
 
-export { getProvince, getDistrict, getVillage, getAllProducts, getProductById };
+const createProduct = (nameProduct, priceProduct, imageUrls, sizes) => {
+    const URL_BACKEND = "/products";
+    const data = {
+        nameProduct: nameProduct,
+        priceProduct: priceProduct,
+        imgSrc: imageUrls,
+        sizes: sizes,
+    }
+
+    return axios.post(URL_BACKEND, data);
+}
+
+const deleteProduct = async () => {
+    const URL_BACKEND = `/products/${idProduct}`;
+    return axios.delete(URL_BACKEND);
+}
+
+const updateProduct = (nameProduct, priceProduct, imageUrls, idProduct) => {
+    const URL_BACKEND = `/products/${idProduct}`;
+    const data = {
+        nameProduct: nameProduct,
+        priceProduct: priceProduct,
+        imgSrc: imageUrls
+    }
+
+    return axios.put(URL_BACKEND, data);
+}
+
+export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct };

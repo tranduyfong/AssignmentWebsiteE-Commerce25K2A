@@ -9,6 +9,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
     "antd": "^6.2.2",
+    "antd-img-crop": "^4.30.0",
     "axios": "^1.13.4",
     "dotenv": "^17.2.3",
     "firebase": "^12.10.0",
