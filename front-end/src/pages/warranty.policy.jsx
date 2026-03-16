@@ -1,32 +1,46 @@
 const WarrantyPolicy = () => {
-    return (
-        <div className="container py-10">
-            <h1>Chính sách bảo hành</h1>
+  return (
+    <div className="max-w-5xl mx-auto mt-24 px-6 mt-50">
+      <h1 className="text-4xl font-extrabold italic mb-6">
+        CHÍNH SÁCH BẢO HÀNH
+      </h1>
+      <hr className="border-gray-300 mb-10" />
+      <div className="space-y-4 text-[15px] leading-relaxed">
+        <h1 className="text-xl font-bold">
+          1. CHÍNH SÁCH BẢO HÀNH GIÀY BÓNG ĐÁ
+        </h1>
+        <p>
+          - Giày được bảo hành các lỗi : bong keo, đứt chỉ,...
+        </p>
+        <p>
+          - Thời gian bảo hành: <b>6 tháng</b> 
+          ( Sau 6 tháng, shop vẫn nhận sửa với phí ưu đãi)
+        </p>
+        <h1 className="text-xl font-bold mt-6">
+          2. ĐỊA CHỈ BẢO HÀNH
+        </h1>
+        <p className="font-bold">
+          639 Kim Ngưu, P. Vĩnh Tuy, Q. Hai Bà Trưng, Hà Nội (mặt đường lớn) - 0931. 51. 41. 31
+        </p>
 
-            <p>
-                Tất cả sản phẩm giày thể thao tại BECK đều được kiểm tra kỹ trước khi giao đến khách hàng.
-            </p>
+        <p>
+          - <b>Khách ở gần:</b> Khách mang trực tiếp giày đến các chi nhánh của shop
+        </p>
 
-            <h3>Thời gian bảo hành</h3>
-            <p>
-                Sản phẩm được bảo hành trong vòng <b>30 ngày</b> kể từ ngày nhận hàng đối với lỗi từ nhà sản xuất.
-            </p>
+        <p>
+          - <b>Khách ở xa:</b> Khách gửi qua công ty chuyển phát
+          (bưu điện, viettelpost,...). Shop chịu phí vận chuyển chiều về,
+          khách chịu phí vận chuyển chiều đi, tầm 30-40k.
+        </p>
 
-            <h3>Điều kiện bảo hành</h3>
-            <ul>
-                <li>Sản phẩm bị bung keo, lỗi đường may từ nhà sản xuất</li>
-                <li>Sản phẩm còn trong thời gian bảo hành</li>
-                <li>Còn đầy đủ hộp và phụ kiện đi kèm</li>
-            </ul>
+        <p className="font-semibold mt-6">
+          TRÂN TRỌNG CẢM ƠN
+        </p>
 
-            <h3>Trường hợp không bảo hành</h3>
-            <ul>
-                <li>Giày bị hư do sử dụng sai cách</li>
-                <li>Giày bị rách do va chạm mạnh</li>
-                <li>Giày đã qua sửa chữa từ bên thứ ba</li>
-            </ul>
-        </div>
-    );
+      </div>
+
+    </div>
+  );
 };
 
 export default WarrantyPolicy;
