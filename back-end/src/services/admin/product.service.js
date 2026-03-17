@@ -1,13 +1,14 @@
 const Product = require("../../models/product");
 
-const handleCreateProduct = (nameProduct, priceProduct, imgSrc, sizes) => {
-    if (!nameProduct || !priceProduct || !imgSrc || !sizes) throw new Error("Sản phẩm thiếu thông tin quan trọng !");
+const handleCreateProduct = (nameProduct, priceProduct, imgSrc, sizes, brand) => {
+    if (!nameProduct || !priceProduct || !imgSrc || !sizes || !brand) throw new Error("Sản phẩm thiếu thông tin quan trọng !");
 
     return Product.create({
         nameProduct: nameProduct,
         priceProduct: priceProduct,
         imgSrc: imgSrc,
-        sizes: sizes
+        sizes: sizes,
+        brand: brand
     });
 }
 

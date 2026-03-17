@@ -20,6 +20,10 @@ const getAllProducts = async () => {
     return axios.get(URL_BACKEND);
 }
 
+export const getProductsByBrand = (brand) => {
+  return axios.get(`/products?brand=${brand}`);
+};
+
 const getProductById = async (id) => {
     const URL_BACKEND = `/products/${id}`;
     return axios.get(URL_BACKEND);
