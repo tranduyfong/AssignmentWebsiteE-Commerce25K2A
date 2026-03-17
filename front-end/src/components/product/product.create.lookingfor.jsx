@@ -15,7 +15,7 @@ const LookingForCreateProduct = () => {
     }
     return (
         <>
-            <div className='flex items-center justify-around mt-30'>
+            <div className='flex items-center justify-around'>
                 <p className='p-10 font-bold'>QUẢN LÝ SẢN PHẨM</p>
                 <div className='flex'>
                     <Input className='w-200!' placeholder='Nhập tên sản phẩm...' value={typing} onChange={(event) => { setTyping(event.target.value) }} />
