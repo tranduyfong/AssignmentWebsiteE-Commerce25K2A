@@ -22,14 +22,14 @@ const handleDeleteProduct = async (value) => {
     return result;
 }
 
-const handleUpdateProduct = async (idProduct, nameProduct, priceProduct, imgSrc) => {
+const handleUpdateProduct = async (idProduct, nameProduct, priceProduct, imgSrc, brand, sizes) => {
     if (!idProduct) throw new Error("Không xác định được sản phẩm cần chỉnh sửa !");
 
     if (!nameProduct || priceProduct === undefined || !imgSrc) throw new Error("Sản phẩm thiếu thông tin quan trọng để chỉnh sửa !");
 
     const result = await Product.findByIdAndUpdate(
         idProduct,
-        { nameProduct, priceProduct, imgSrc },
+        { nameProduct, priceProduct, imgSrc, brand, sizes },
         { new: true, runValidators: true }
     );
 
