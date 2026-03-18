@@ -21,7 +21,7 @@ const getAllProducts = async () => {
 }
 
 export const getProductsByBrand = (brand) => {
-  return axios.get(`/products?brand=${brand}`);
+    return axios.get(`/products?brand=${brand}`);
 };
 
 const getProductById = async (id) => {
@@ -29,19 +29,20 @@ const getProductById = async (id) => {
     return axios.get(URL_BACKEND);
 }
 
-const createProduct = (nameProduct, priceProduct, imageUrls, sizes) => {
+const createProduct = (nameProduct, priceProduct, imageUrls, sizes, brand) => {
     const URL_BACKEND = "/products";
     const data = {
         nameProduct: nameProduct,
         priceProduct: priceProduct,
         imgSrc: imageUrls,
         sizes: sizes,
+        brand: brand
     }
 
     return axios.post(URL_BACKEND, data);
 }
 
-const deleteProduct = async () => {
+const deleteProduct = async (idProduct) => {
     const URL_BACKEND = `/products/${idProduct}`;
     return axios.delete(URL_BACKEND);
 }
