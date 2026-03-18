@@ -29,4 +29,4 @@ const getProductById = async (id) => {
     return axios.get(URL_BACKEND);
 }
 
-export { getProvince, getDistrict, getVillage, getAllProducts, getProductById };
+export { getProvince, getDistrict, getVillage, getAllProducts, getProductById,};

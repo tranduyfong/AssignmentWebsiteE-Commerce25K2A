@@ -36,7 +36,6 @@ const PumaShoe = () => {
           ))}
         </Row>
       </div>
-      <h1>Nike</h1>
     </>
   )
 }
