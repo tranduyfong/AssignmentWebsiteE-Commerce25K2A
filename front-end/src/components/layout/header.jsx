@@ -3,7 +3,28 @@ import { Dropdown, Space } from "antd";
 import { DownOutlined, HomeOutlined, InfoCircleOutlined, PhoneOutlined, ShopOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import "./css/header.css"
 import OverHead from "./overhead"
+import { useEffect } from "react";
+import { getMyUser } from "../../services/api.service";
+import { useState } from "react";
 const Header = () => {
+    const [role, setRole] = useState("user");
+    useEffect(() => {
+        const fetchUser = async () => {
+            const token = localStorage.getItem("access_token");
+            if (!token) return;
+            try {
+                const res = await getMyUser();
+
+                if (res?.data) {
+                    setRole(res.data.user.role);
+                }
+            } catch (error) {
+                console.log("Chưa đăng nhập hoặc token lỗi" + error);
+            }
+        };
+        fetchUser();
+    }, []);
+
     const items = [
         {
             key: '/statistical',
@@ -59,16 +80,22 @@ const Header = () => {
                                 </li>
                             </ul>
                         </div>
-                        <div className="cursor-pointer mt-1">
-                            <Dropdown menu={{ items }}>
-                                <a>
-                                    <Space className="manage-income">
-                                        Quản lý & Thống kê
-                                        <DownOutlined />
-                                    </Space>
-                                </a>
-                            </Dropdown>
-                        </div>
+                        {
+                            role == "admin" ? (
+                                <div className="cursor-pointer mt-1">
+                                    <Dropdown menu={{ items }}>
+                                        <a>
+                                            <Space className="manage-income">
+                                                Quản lý & Thống kê
+                                                <DownOutlined />
+                                            </Space>
+                                        </a>
+                                    </Dropdown>
+                                </div>
+                            ) : (
+                                <></>
+                            )
+                        }
                     </header>
                 </div>
             </div>

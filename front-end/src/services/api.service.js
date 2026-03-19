@@ -72,4 +72,15 @@ const getMyUser = async () => {
     return axios.get(URL_BACKEND);
 }
 
-export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser };
+const createUser = async (name, email, phone, password) => {
+    const URL_BACKEND = "/users"
+    const data = {
+        name: name,
+        email: email,
+        password: password,
+        phone: phone
+    }
+    return axios.post(URL_BACKEND, data);
+}
+
+export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser };
