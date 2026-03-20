@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useNavigate } from 'react-router-dom'
 const ProductInfo = ({
   current,
   selectedSize,
@@ -10,6 +10,7 @@ const ProductInfo = ({
   onScrollToSizeGuide
 }) => {
   console.log(current);
+  const navigate = useNavigate();
 
   const handleBuy = () => {
     if (!selectedSize) {
@@ -18,12 +19,7 @@ const ProductInfo = ({
     }
     const totalPrice = Number(current.priceProduct) * quantity;
 
-    alert(
-      `Đã thêm vào giỏ hàng thành công!\n` +
-      `- Size: ${selectedSize}\n` +
-      `- Số lượng: ${quantity}\n` +
-      `- Thành tiền: ${totalPrice.toLocaleString("vi-VN")}đ`
-    );
+    navigate("/payment", { state: { current, selectedSize, quantity, totalPrice } })
   };
 
   const handleAddToCart = () => {
@@ -58,12 +54,6 @@ const ProductInfo = ({
           ) : (
             current.priceProduct
           )}
-        </div>
-
-        <div className="mb-6">
-          <span className="inline-block border border-gray-400 rounded-full px-3 py-1 text-xs font-medium">
-            {current.descriptProduct}
-          </span>
         </div>
         <div className="mb-6">
           <p className="text-sm text-gray-500 mb-2 uppercase">Chọn size:</p>

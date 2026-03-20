@@ -3,10 +3,11 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 
 const { Text, Title } = Typography;
 
-const OrderSummary = () => {
+const OrderSummary = (props) => {
+    const { data } = props;
     return (
         <Card
-            title="Đơn hàng (1 sản phẩm)"
+            title="Đơn hàng của bạn"
             style={{
                 width: 420,
                 borderRadius: 12,
@@ -16,55 +17,35 @@ const OrderSummary = () => {
             <Row gutter={12} align="middle">
                 <Col>
                     <img
-                        src="https://via.placeholder.com/60"
+                        src={data.current?.imgSrc}
                         alt="product"
                         style={{
                             width: 60,
                             height: 60,
                             borderRadius: 8,
-                            objectFit: "cover"
+                            objectFit: "cover",
+                            marginBottom: "10px"
                         }}
                     />
                 </Col>
 
                 <Col flex="auto">
-                    <Text strong>
-                        Giày Bóng Đá Kamito Artista KL PRO Đế Đệm Da Kangaroo TF - Đỏ Vàng
+                    <Text strong style={{ marginBottom: "20px" }}>
+                        {data.current?.nameProduct}
                     </Text>
                     <br />
-                    <Text type="secondary">Size: 40</Text>
+                    <Text type="secondary" style={{ marginBottom: "20px" }}>Size: {data.selectedSize}</Text> <br />
+                    <Text type="secondary" style={{ marginBottom: "20px" }}>Quantity: {data.quantity}</Text>
                 </Col>
-
-                <Col>
-                    <Text strong>1.300.000đ</Text>
-                </Col>
+                <Divider />
+                {/* <Col>
+                    <Text strong>{data.current?.priceProduct} x {data.quantity}</Text>
+                </Col> */}
             </Row>
-
-            <Divider />
-
-            <Row gutter={8}>
-                <Col flex="auto">
-                    <Input placeholder="🎟 Nhập mã giảm giá" />
-                </Col>
-
-                <Col>
-                    <Button
-                        style={{
-                            background: "#f59e0b",
-                            borderColor: "#f59e0b",
-                            color: "#fff"
-                        }}
-                    >
-                        Áp dụng
-                    </Button>
-                </Col>
-            </Row>
-
-            <Divider />
 
             <Row justify="space-between">
                 <Text type="secondary">Tạm tính</Text>
-                <Text>1.300.000đ</Text>
+                <Text>{data.totalPrice}</Text>
             </Row>
 
             <Row justify="space-between" style={{ marginTop: 6 }}>
@@ -80,7 +61,7 @@ const OrderSummary = () => {
                 </Title>
 
                 <Title level={4} style={{ margin: 0, color: "#f59e0b" }}>
-                    1.300.000đ
+                    {data.totalPrice}
                 </Title>
             </Row>
 
