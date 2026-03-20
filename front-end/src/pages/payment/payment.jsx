@@ -4,8 +4,13 @@ import { getProvince } from "../../services/api.service";
 import PaymentDetails from "../../components/payment/patment.details";
 import PaymentMethod from "../../components/payment/payment.methods";
 import OrderSummary from "../../components/payment/payment.list";
+import { useLocation } from "react-router-dom";
 
 const PaymentPage = () => {
+    const location = useLocation();
+    const data = location.state;
+    console.log(data);
+
     const [provinces, setProvinces] = useState([]);
     useEffect(() => {
         fetchProvince();
@@ -27,7 +32,7 @@ const PaymentPage = () => {
                 </div>
                 <PaymentDetails />
             </div>
-            <OrderSummary />
+            <OrderSummary data={data} />
         </div>
     );
 }

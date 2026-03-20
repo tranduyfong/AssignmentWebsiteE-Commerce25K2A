@@ -1,16 +1,19 @@
 import React from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import sneakerImg from './anh.png'
 
 const AboutUs = () => {
+  AOS.init();
   return (
-    <div className="bg-white text-gray-900 font-sans">
-      
-      <div className="relative w-full h-162.5 bg-gray-900 flex flex-col items-center justify-center text-white overflow-hidden">
-        <img 
-          src="https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=2070&auto=format&fit=crop" 
+    <div className="bg-white text-gray-900 font-sans mt-35">
+      <div className="relative w-full h-162.5 bg-gray-900 flex flex-col items-center justify-center text-white overflow-hidden" data-aos="fade-up" data-aos-duration="2500">
+        <img
+          src="https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=2070&auto=format&fit=crop"
           alt="Beck Shoes Banner"
           className="absolute inset-0 w-full h-full object-cover grayscale"
         />
-        
+
         <div className="relative z-20 text-center px-4 animate-fade-in-up">
           <p className="text-sm md:text-base tracking-[0.3em] uppercase mb-4 text-gray-300">Est. 2024</p>
           <h1 className="text-5xl md:text-7xl font-black italic tracking-tighter mb-6">
@@ -30,19 +33,21 @@ const AboutUs = () => {
       </div>
 
       <div className="w-full">
-        
+
         <div className="flex flex-col md:flex-row h-auto md:h-112.5">
           <div className="w-full md:w-1/2 h-100 md:h-full relative">
-             <img 
-               src="https://www.shutterstock.com/image-vector/sneakers-sports-shoes-continuous-one-600nw-2629828535.jpg" 
-               alt="Sneaker Culture" 
-               className="w-full h-full object-cover"
-             />
+            <img
+              src={sneakerImg}
+              alt="Sneaker Culture"
+              className="w-full h-full object-cover"
+              data-aos="fade-right"
+              data-aos-duration="2500"
+            />
           </div>
-          <div className="w-full md:w-1/2 bg-gray-100 flex flex-col justify-center p-12 md:p-24">
-            <h3 className="text-4xl font-black uppercase mb-6 text-black" style={{ color: '#000000' }}>Khởi đầu</h3>
+          <div className="w-full md:w-1/2 bg-gray-100 flex flex-col justify-center p-12 md:p-24" data-aos="fade-left">
+            <h3 className="text-4xl font-black uppercase mb-6 text-black" style={{ color: '#000000' }} data-aos="fade-left" data-aos-duration="1000">Khởi đầu</h3>
             <p className="text-gray-600 text-lg leading-relaxed mb-8">
-              Khởi đầu từ một cửa hàng nhỏ với niềm đam mê lớn dành cho <span className="font-bold text-black">Nike & Adidas</span>. 
+              Khởi đầu từ một cửa hàng nhỏ với niềm đam mê lớn dành cho <span className="font-bold text-black">Nike & Adidas</span>.
               <span className="font-bold text-black italic"> beck.</span> nhận thấy sự thiếu hụt của một nơi cung cấp giày Authentic uy tín giữa thị trường vàng thau lẫn lộn.
               Chúng tôi quyết định tạo ra một sân chơi, nơi "Fake" là từ không tồn tại.
             </p>
@@ -51,29 +56,29 @@ const AboutUs = () => {
 
         <div className="w-full bg-white py-20 px-6 md:px-24">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 items-start">
-            
+
             <div className="w-full md:w-1/3">
-              <h3 className="text-4xl md:text-5xl font-black text-black uppercase leading-tight" style={{ color: '#000000' }}>
-                Hành trình <br/> kiến tạo <br/> phong cách
+              <h3 className="text-4xl md:text-5xl font-black text-black uppercase leading-tight" style={{ color: '#000000' }} data-aos="fade-up" data-aos-duration="2000">
+                Hành trình <br /> kiến tạo <br /> phong cách
               </h3>
             </div>
 
             <div className="w-full md:w-2/3 space-y-8 pt-2">
-              <div className="border-l-3 border-gray-100 hover:border-black transition duration-300 pl-6">
+              <div className="border-l-3 border-gray-100 hover:border-black transition duration-300 pl-6" data-aos="fade-left" data-aos-duration="1000">
                 <span className="font-bold text-black text-xl block mb-1">2024</span>
                 <p className="text-gray-600 text-lg leading-relaxed">
-                   Khởi đầu từ một căn phòng nhỏ với 50 đôi giày Nike Air Jordan đầu tiên. <span className="font-bold text-black italic">beck.</span> ra đời với khát khao mang giày Authentic giá tốt đến tay sinh viên.
+                  Khởi đầu từ một căn phòng nhỏ với 50 đôi giày Nike Air Jordan đầu tiên. <span className="font-bold text-black italic">beck.</span> ra đời với khát khao mang giày Authentic giá tốt đến tay sinh viên.
                 </p>
               </div>
 
-              <div className="border-l-3 border-gray-100 hover:border-black transition duration-300 pl-6">
+              <div className="border-l-3 border-gray-100 hover:border-black transition duration-300 pl-6" data-aos="fade-left" data-aos-duration="1000">
                 <span className="font-bold text-black text-xl block mb-1">2025</span>
                 <p className="text-gray-600 text-lg leading-relaxed">
                   Mở rộng quy mô với Website thương mại điện tử tích hợp công nghệ quản lý tồn kho Real-time. Chúng tôi không chỉ bán giày, chúng tôi bán sự an tâm tuyệt đối.
                 </p>
               </div>
 
-              <div className="border-l-3 border-gray-100 hover:border-black transition duration-300 pl-6">
+              <div className="border-l-3 border-gray-100 hover:border-black transition duration-300 pl-6" data-aos="fade-left" data-aos-duration="1000">
                 <span className="font-bold text-black text-xl block mb-1">Hiện tại</span>
                 <p className="text-gray-600 text-lg leading-relaxed">
                   <span className="font-bold text-black italic">beck.</span> đã trở thành điểm đến tin cậy của cộng đồng Sneakerhead Hà Nội, hướng tới mục tiêu phủ sóng toàn quốc vào năm 2030.
@@ -88,7 +93,7 @@ const AboutUs = () => {
 
       <div className="bg-black text-white py-24 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          
+
           <div className="border-l-4 border-gray-900 hover:border-white transition duration-300 pl-8">
             <h3 className="text-5xl font-black uppercase mb-6 tracking-tighter text-gray-300 " style={{ color: '#ffffff' }}>Tầm nhìn</h3>
             <p className="text-gray-400 text-lg leading-relaxed">
@@ -109,7 +114,7 @@ const AboutUs = () => {
       <div className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold uppercase text-center mb-16 tracking-wide">Why Choose Us?</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
             <div className="group">
               <div className="w-20 h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-black transition duration-300">

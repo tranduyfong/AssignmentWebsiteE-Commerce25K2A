@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import ProductTable from '../../components/product/product.table';
-import LookingForCreateProduct from '../../components/product/product.create.lookingfor';
 import { getAllProducts } from '../../services/api.service';
 import ProductCreate from '../../components/product/product.create';
 
@@ -8,9 +7,9 @@ const ProductManagement = () => {
 
     const [dataProduct, setDataProduct] = useState([]);
     const loadProduct = async () => {
-        const res = await fetchAllProduct();
+        const res = await getAllProducts();
         console.log(res.data)
-        setDataProducts(res.data);
+        setDataProduct(res.data);
     };
 
     useEffect(() => {

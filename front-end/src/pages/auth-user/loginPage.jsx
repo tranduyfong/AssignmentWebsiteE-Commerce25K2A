@@ -1,13 +1,29 @@
 import React from 'react';
-import { Button, Card, Col, Form, Input, Row } from 'antd';
+import { Button, Card, Col, Form, Input, notification, Row } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
+import { loginUser } from '../../services/api.service';
 
 const LoginPage = () => {
     const navigate = useNavigate();
 
-    const onFinish = (values) => {
-        alert("Xin chào " + values.email);
-        console.log(values);
+    const onFinish = async (values) => {
+        const res = await loginUser(values.email, values.password);
+        console.log(res.data);
+
+        if (!res.data) {
+            notification.error({
+                message: "Đăng nhập thất bại!",
+                description: res.message
+            });
+            return;
+        }
+
+        localStorage.setItem("access_token", res.data.access_token);
+
+        notification.success({
+            message: "Đăng nhập thành công"
+        });
+        window.location.href = "/";
     };
 
     return (
