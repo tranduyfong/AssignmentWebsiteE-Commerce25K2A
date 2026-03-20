@@ -1,0 +1,135 @@
+import React from "react";
+import ReactDOM from 'react-dom/client'
+import App from "./App.jsx";
+import '../style.css'
+import {
+  createBrowserRouter,
+  RouterProvider
+} from 'react-router-dom';
+import ErrorPage from "./pages/errors.jsx";
+import HomePage from "./pages/home.jsx";
+import LoginPage from "./pages/auth-user/loginPage.jsx";
+import ForgetPassword from "./pages/auth-user/forgetPassword.jsx";
+import RegisterPage from "./pages/auth-user/registerPage.jsx";
+import Intro from "./pages/introduct/intro.jsx";
+import Product from "./pages/products.jsx";
+import Contact from "./pages/contact.jsx";
+import CheckCart from "./pages/management/checkcart.jsx";
+import StatisticalManagement from "./pages/management/statistical.jsx";
+import AccountManagement from "./pages/management/account-management.jsx";
+import ProductManagement from "./pages/management/product-management.jsx";
+import ReceiptManagement from "./pages/management/receipt-management.jsx";
+import RevenueAndExpenditure from "./pages/management/revenue-expenditure-mng.jsx";
+import ManagerIncome from "./pages/management/managerIncome.jsx";
+import ViewDetail from "./pages/management/viewDetail.jsx";
+import CartPage from "./pages/cartPage.jsx";
+import PaymentPage from "./pages/payment/payment.jsx";
+import ProductDetail from "./pages/detailProduct.jsx";
+import SearchPage from "./pages/search/searchPage.jsx";
+import WarrantyPolicy from "./pages/warranty.policy.jsx";
+import ReturnPolicy from "./pages/return.policy.jsx";
+import ShoppingGuide from "./pages/shopping.guide.jsx";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "/loginPage",
+        element: <LoginPage />
+      },
+      {
+        path: "/forgetPassword",
+        element: <ForgetPassword />
+      },
+      {
+        path: "/registerPage",
+        element: <RegisterPage />
+      },
+      {
+        path: "/intro",
+        element: <Intro />
+      },
+      {
+        path: "/products",
+        element: <Product />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />
+      },
+      {
+        path: "/checkcart",
+        element: <CheckCart />
+      },
+      {
+        path: "/statistical",
+        element: <StatisticalManagement />
+      },
+      {
+        path: "/accountmanagement",
+        element: <AccountManagement />,
+      },
+      {
+        path: "/productmanagement",
+        element: <ProductManagement />
+      },
+      {
+        path: "/receiptmanagement",
+        element: <ReceiptManagement />
+      },
+      {
+        path: "/revenue-expenditure",
+        element: <RevenueAndExpenditure />
+      },
+      {
+        path: "/managerIncome",
+        element: <ManagerIncome />
+      },
+      {
+        path: "/viewDetail",
+        element: <ViewDetail />
+      },
+
+      {
+        path: "/cartPage",
+        element: <CartPage />
+      },
+      {
+        path: "/detail/:id",
+        element: <ProductDetail />
+      },
+      {
+        path: "/search",
+        element: <SearchPage />
+      },
+      {
+        path: "/warranty-policy",
+        element: <WarrantyPolicy />
+      },
+      {
+        path: "/return-policy",
+        element: <ReturnPolicy />
+      },
+      {
+        path: "/shopping-guide",
+        element: <ShoppingGuide />
+      }
+    ]
+  },
+  {
+    path: "/payment",
+    element: <PaymentPage />
+  }
+]);
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <RouterProvider router={router} />
+)

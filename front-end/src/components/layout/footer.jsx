@@ -1,0 +1,58 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import "./css/footer.css";
+
+const Footer = () => {
+    const [email, setEmail] = useState("");
+
+    const handleSubcribe = () => {
+        if (email.trim() === "") {
+            alert("Vui lòng nhập emmail!");
+        } else {
+            alert("Email của bạn đã đăng kí là: " + email);
+            setEmail("");
+        }
+    };
+
+    return (
+        <>
+            <footer className="footer">
+                <div className="container">
+                    <div className="item">
+                        <h3>BECK</h3>
+                        <p>Website bán giày thể thao chính hãng</p>
+                    </div>
+                    <div className="item">
+                        <h3>Hỗ trợ</h3>
+                        <Link to="/warranty-policy">
+                            <p>Chính sách bảo hành</p>
+                        </Link>
+                        <Link to="/return-policy">
+                            <p>Chính sách đổi trả</p>
+                        </Link>
+                        <Link to="/shopping-guide">
+                            <p>Hướng dẫn mua hàng</p>
+                        </Link>
+                    </div>
+                    <div className="item">
+                        <h3>Liên hệ</h3>
+                        <p>Email: support.beck@gmail.com</p>
+                        <p>Hotline/Zalo: 0931. 51. 41. 31</p>
+                        <p>Địa chỉ: 639 Kim Ngưu, P. Vĩnh Tuy, Q. Hai Bà Trưng, Hà Nội (mặt đường lớn)</p>
+                    </div>
+                    <div className="item">
+                        <h3>Đăng ký nhận tin khuyến mãi</h3>
+                        <input type="email" placeholder="Nhập email của bạn tại đây"
+                            value={email} onChange={(e) => setEmail(e.target.value)}>
+                        </input>
+                        <button onClick={handleSubcribe}>Đăng ký</button>
+                    </div>
+                </div>
+            </footer>
+        </>
+
+
+    );
+}
+
+export default Footer;
