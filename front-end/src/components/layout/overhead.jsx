@@ -1,21 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-
+import { getMyUser } from "../../services/api.service";
 
 const OverHead = () => {
   const navigate = useNavigate();
   const [text, setText] = useState("");
+  const [name, setName] = useState(null);
 
   const xuLyBamTimKiem = () => {
     if (!text.trim()) return;
-
     navigate(`/search?keyword=${text}`);
   };
+
   const EnterTimKiem = (e) => {
     if (e.key === 'Enter') {
       xuLyBamTimKiem();
     };
   };
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const token = localStorage.getItem("access_token");
+      if (!token) return;
+      try {
+        const res = await getMyUser();
+
+        if (res?.data) {
+          setName(res.data.user.name);
+        }
+      } catch (error) {
+        console.log("Chưa đăng nhập hoặc token lỗi" + error);
+      }
+    };
+    fetchUser();
+  }, []);
+
+  const logOutUser = () => {
+    localStorage.removeItem("access_token");
+    setName(null);
+    navigate("/");
+  }
 
   return (
     <div className=" w-full h-18 bg-white py-3 border-b border-gray-100 relative z-50">
@@ -34,12 +58,18 @@ const OverHead = () => {
           />
         </div>
         <div className="flex items-center gap-6 text-sm">
-          <div className="text-gray-500 hover:text-black cursor-pointer">
-            <Link to="loginPage">Đăng nhập</Link>
-          </div>
-          <div className="text-gray-500 hover:text-black cursor-pointer">
-            <Link to="registerPage">Đăng ký</Link>
-          </div>
+          {!name ? (
+            <>
+              <div className="text-gray-500 hover:text-black cursor-pointer">
+                <Link to="/loginPage">Đăng nhập</Link>
+              </div>
+            </>
+          ) : (
+            <div className="flex items-center gap-3">
+              <span className="font-semibold">Xin chào {name} !</span>
+              <span className="text-red-500 cursor-pointer" onClick={logOutUser}> Đăng xuất </span>
+            </div>
+          )}
           <div className="flex items-center gap-2 cursor-pointer">
             <div className="relative">
               <svg

@@ -15,7 +15,7 @@ const AllProducts = () => {
     <>
       <div className="all-product">
         <Row className="mb-10" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-          {products.map(items => (
+          {products?.map(items => (
             <Col className="gutter-row" span={4} key={items._id}>
               <div className="box">
                 <img src={items.imgSrc[0]} alt={items.nameProduct} />

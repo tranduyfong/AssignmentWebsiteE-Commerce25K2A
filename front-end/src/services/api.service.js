@@ -21,7 +21,7 @@ const getAllProducts = async () => {
 }
 
 export const getProductsByBrand = (brand) => {
-  return axios.get(`/products?brand=${brand}`);
+    return axios.get(`/products?brand=${brand}`);
 };
 
 const getProductById = async (id) => {
@@ -29,4 +29,58 @@ const getProductById = async (id) => {
     return axios.get(URL_BACKEND);
 }
 
-export { getProvince, getDistrict, getVillage, getAllProducts, getProductById,};
+const createProduct = (nameProduct, priceProduct, imageUrls, sizes, brand) => {
+    const URL_BACKEND = "/products";
+    const data = {
+        nameProduct: nameProduct,
+        priceProduct: priceProduct,
+        imgSrc: imageUrls,
+        sizes: sizes,
+        brand: brand
+    }
+    return axios.post(URL_BACKEND, data);
+}
+
+const deleteProduct = async (idProduct) => {
+    const URL_BACKEND = `/products/${idProduct}`;
+    return axios.delete(URL_BACKEND);
+}
+
+const updateProduct = (nameProduct, priceProduct, imageUrls, idProduct, brand, sizes) => {
+    const URL_BACKEND = `/products/${idProduct}`;
+    const data = {
+        nameProduct: nameProduct,
+        priceProduct: priceProduct,
+        imgSrc: imageUrls,
+        brand: brand,
+        sizes: sizes
+    }
+    return axios.put(URL_BACKEND, data);
+}
+
+const loginUser = async (email, password) => {
+    const URL_BACKEND = "/users/login";
+    const data = {
+        email: email,
+        password: password
+    }
+    return axios.post(URL_BACKEND, data);
+}
+
+const getMyUser = async () => {
+    const URL_BACKEND = "/users/account";
+    return axios.get(URL_BACKEND);
+}
+
+const createUser = async (name, email, phone, password) => {
+    const URL_BACKEND = "/users"
+    const data = {
+        name: name,
+        email: email,
+        password: password,
+        phone: phone
+    }
+    return axios.post(URL_BACKEND, data);
+}
+
+export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser };

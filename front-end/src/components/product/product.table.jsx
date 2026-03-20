@@ -1,67 +1,63 @@
-import { Button, Flex, Input, Space, Table, Tag } from 'antd';
+import { Table } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-
+import { useState } from 'react';
+import DeleteProduct from './product.delete';
+import UpdateProduct from './product.update';
 const ProductTable = (props) => {
-    const { dataProduct } = props;
+    const { dataProduct, loadProduct } = props;
+
+    const [modalDelete, setModalDelete] = useState(false);
+    const [modalUpdate, setModalUpdate] = useState(false);
+
+    const [dataLink, setDataLink] = useState("");
 
     const columns = [
         {
-            title: 'Tên sản phẩm',
-            dataIndex: 'name',
-            key: 'name',
-            render: text => <a>{text}</a>,
+            title: 'Id',
+            dataIndex: '_id',
+            key: '_id',
         },
         {
-            title: 'Ảnh',
-            dataIndex: 'address',
-            key: 'address',
+            title: 'Image',
+            dataIndex: 'imgSrc',
+            render: (_, record) => {
+                return (
+                    <div className='flex gap-2'>
+                        <img src={record.imgSrc[0]} style={{ width: 80 }} />
+                    </div>
+                )
+            }
         },
         {
-            title: 'Giá',
-            key: 'tags',
-            dataIndex: 'tags',
-            render: (_, { tags }) => (
-                <Flex gap="small" align="center" wrap>
-                    {tags.map(tag => {
-                        let color = tag.length > 5 ? 'geekblue' : 'green';
-                        if (tag === 'loser') {
-                            color = 'volcano';
-                        }
-                        return (
-                            <Tag color={color} key={tag}>
-                                {tag.toUpperCase()}
-                            </Tag>
-                        );
-                    })}
-                </Flex>
-            ),
+            title: 'Name',
+            dataIndex: 'nameProduct',
         },
         {
-            title: 'Kích cỡ',
-            dataIndex: 'address',
-            key: 'address',
+            title: 'Price',
+            dataIndex: 'priceProduct',
         },
         {
-            title: 'Miêu tả',
-            dataIndex: 'address',
-            key: 'address',
-        },
-        {
-            title: 'Chức năng',
+            title: 'Action',
             key: 'action',
             render: (_, record) => (
                 <>
-                    <div className='flex gap-5'>
-                        <a><EditOutlined /></a>
-                        <a className='text-red-500!'><DeleteOutlined /></a>
-                    </div>
+                    <a className='mr-5' style={{ color: "red" }}><DeleteOutlined onClick={() => {
+                        setModalDelete(true);
+                        setDataLink(record);
+                    }} /></a>
+                    <a ><EditOutlined onClick={() => {
+                        setModalUpdate(true);
+                        setDataLink(record);
+                    }} /></a>
                 </>
             ),
         },
     ];
     return (
         <>
-            <Table columns={columns} dataSource={dataProduct} />;
+            <Table columns={columns} dataSource={dataProduct} rowKey={"_id"} />
+            <DeleteProduct modalDelete={modalDelete} setModalDelete={setModalDelete} dataLink={dataLink} loadProduct={loadProduct} />
+            <UpdateProduct modalUpdate={modalUpdate} setModalUpdate={setModalUpdate} loadProduct={loadProduct} dataLink={dataLink} setDataLink={setDataLink} />
         </>
     );
 }
