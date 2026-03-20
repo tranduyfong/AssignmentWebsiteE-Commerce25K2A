@@ -1,8 +1,9 @@
 const { handleCreateProduct, handleDeleteProduct, handleUpdateProduct } = require('../services/admin/product.service');
-const { handleGetAllProduct, handleGetProductById } = require('../services/client/product.service');
+const { handleGetAllProduct, handleGetProductById, } = require('../services/client/product.service');
 
 const getProductPage = async (req, res) => {
-    const result = await handleGetAllProduct();
+    const {brand} = req.query;
+    const result = await handleGetAllProduct(brand);
     return res.status(200).json({
         data: result
     });
@@ -79,11 +80,10 @@ const getProductById = async (req, res) => {
     }
 }
 
-
 module.exports = {
     getProductPage,
     createProduct,
     deleteProduct,
     updateProduct,
-    getProductById
+    getProductById,
 }
