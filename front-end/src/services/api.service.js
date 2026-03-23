@@ -83,4 +83,24 @@ const createUser = async (name, email, phone, password) => {
     return axios.post(URL_BACKEND, data);
 }
 
-export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser };
+const getCart = () => {
+    const URL_BACKEND = "/users/cart";
+    return axios.get(URL_BACKEND);
+}
+
+const addToCart = (productId, quantity, size) => {
+    const URL_BACKEND = "/users/cart";
+    const data = {
+        productId: productId,
+        quantity: quantity,
+        size: size
+    }
+    return axios.post(URL_BACKEND, data);
+}
+
+const deleteInCart = async (idCart) => {
+    const URL_BACKEND = `/users/cart/${idCart}`;
+    return axios.delete(URL_BACKEND);
+}
+
+export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser, getCart, addToCart, deleteInCart };

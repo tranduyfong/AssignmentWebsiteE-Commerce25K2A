@@ -22,7 +22,7 @@ import ReceiptManagement from "./pages/management/receipt-management.jsx";
 import RevenueAndExpenditure from "./pages/management/revenue-expenditure-mng.jsx";
 import ManagerIncome from "./pages/management/managerIncome.jsx";
 import ViewDetail from "./pages/management/viewDetail.jsx";
-import CartPage from "./pages/cartPage.jsx";
+import CartPage from "./pages/cart.jsx";
 import PaymentPage from "./pages/payment/payment.jsx";
 import ProductDetail from "./pages/detailProduct.jsx";
 import SearchPage from "./pages/search/searchPage.jsx";

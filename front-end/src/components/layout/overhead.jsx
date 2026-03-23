@@ -24,7 +24,6 @@ const OverHead = () => {
       if (!token) return;
       try {
         const res = await getMyUser();
-
         if (res?.data) {
           setName(res.data.user.name);
         }
