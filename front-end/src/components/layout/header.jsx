@@ -1,12 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
+import { useRef } from "react";
 import { Dropdown, Space } from "antd";
 import { DownOutlined, HomeOutlined, InfoCircleOutlined, PhoneOutlined, ShopOutlined, ShoppingCartOutlined } from '@ant-design/icons';
-import "./css/header.css"
+import "./css/header.css";
+import useHideOnScroll from "../../hooks/useHideOnScroll";
 import OverHead from "./overhead"
 import { useEffect } from "react";
 import { getMyUser } from "../../services/api.service";
 import { useState } from "react";
 const Header = () => {
+    const headerRef = useRef(null);
+    useHideOnScroll(headerRef)
     const [role, setRole] = useState("user");
     useEffect(() => {
         const fetchUser = async () => {
@@ -49,7 +53,7 @@ const Header = () => {
     ];
     return (
         <>
-            <div className="fixed w-full top-0 z-999">
+            <div ref={headerRef} className="fixed w-full top-0 z-999 header">
                 <div>
                     <OverHead />
                 </div>
@@ -58,26 +62,40 @@ const Header = () => {
                     <header className="layout-default__header flex gap-10">
                         <div className="menu flex">
                             <ul className="flex gap-20 text-center">
-                                <li className="menu-icon">
-                                    <HomeOutlined className="icon" />
-                                    <NavLink to="/">Trang chủ</NavLink>
-                                </li>
-                                <li className="menu-icon">
-                                    <ShopOutlined className="icon" />
-                                    <NavLink to="/products">Sản Phẩm</NavLink>
-                                </li>
-                                <li className="menu-icon">
-                                    <InfoCircleOutlined className="icon" />
-                                    <NavLink to="/intro">Giới thiệu</NavLink>
-                                </li>
-                                <li className="menu-icon">
-                                    <PhoneOutlined className="icon" />
-                                    <NavLink to="/contact">Liên Hệ</NavLink>
-                                </li>
-                                <li className="menu-icon">
-                                    <ShoppingCartOutlined className="icon" />
-                                    <NavLink to="/checkcart">Kiểm tra đơn hàng</NavLink>
-                                </li>
+                                <NavLink to="/">
+                                    <li className="menu-icon">
+                                        <HomeOutlined className="icon" />
+                                        <span >Trang chủ</span>
+                                    </li>
+                                </NavLink>
+
+                                <NavLink to="/products">
+                                    <li className="menu-icon">
+                                        <ShopOutlined className="icon" />
+                                        <span >Sản Phẩm</span>
+                                    </li>
+                                </NavLink>
+
+                                <NavLink to="/intro">
+                                    <li className="menu-icon">
+                                        <InfoCircleOutlined className="icon" />
+                                        <span>Giới thiệu</span>
+                                    </li>
+                                </NavLink>
+
+                                <NavLink to="/contact">
+                                    <li className="menu-icon">
+                                        <PhoneOutlined className="icon" />
+                                        <span >Liên Hệ</span>
+                                    </li>
+                                </NavLink>
+
+                                <NavLink to="/checkcart">
+                                    <li className="menu-icon">
+                                        <ShoppingCartOutlined className="icon" />
+                                        <span>Kiểm tra đơn hàng</span>
+                                    </li>
+                                </NavLink>
                             </ul>
                         </div>
                         {
@@ -101,6 +119,7 @@ const Header = () => {
             </div>
         </>
     );
+
 }
 
 export default Header;
