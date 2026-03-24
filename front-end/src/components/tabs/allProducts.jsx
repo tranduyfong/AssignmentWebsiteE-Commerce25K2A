@@ -11,6 +11,8 @@ const AllProducts = () => {
     }
     loadProduct();
   }, []);
+  console.log(products);
+
   return (
     <>
       <div className="all-product">
