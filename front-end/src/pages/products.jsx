@@ -9,6 +9,8 @@ const Product = () => {
     const [products, setProducts] = useState([]);
     const [filterProducts, setFilterProducts] = useState([]);
     const [priceRange, setPriceRange] = useState([0, 2000000]);
+    const [selectedBrands, setSelectedBrands] = useState([]);
+    const [selectedSizes, setSelectedSizes] = useState([]);
 
     useEffect(() => {
         const loadProduct = async () => {
@@ -23,13 +25,30 @@ const Product = () => {
 
 
     const handleFilter = () => {
-        const result = products.filter(item =>
-            item.priceProduct >= priceRange[0] &&
-            item.priceProduct <= priceRange[1]
-        );
+        const result = products.filter(item => {
+
+            const matchPrice =
+                item.priceProduct >= priceRange[0] &&
+                item.priceProduct <= priceRange[1];
+
+            const matchBrand =
+                selectedBrands.length === 0 ||
+                selectedBrands.some(brand =>
+                    item.nameProduct.toLowerCase().includes(brand.toLowerCase())
+                );
+
+            const matchSize =
+                selectedSizes.length === 0 ||
+                item.sizes?.some(s =>
+                    selectedSizes.includes(s.size)
+                );
+
+            return matchPrice && matchBrand && matchSize;
+        });
+
         setFilterProducts(result);
     };
-
+    console.log(products);
     return (
         <div className="mt-40 px-[30px] mb-20">
             <div className="flex justify-center items-center uppercase font-bold text-2xl mb-5">
@@ -41,28 +60,26 @@ const Product = () => {
                         <div className="font-bold text-lg mb-4 border-b pb-2">BỘ LỌC</div>
                         <Collapse defaultActiveKey={['1', '2', '3', '4']} ghost expandIconPosition="end">
                             <Panel header={<span className="font-semibold">Thương hiệu</span>} key="1">
-                                <Space direction="vertical" className="w-full">
-                                    <Checkbox>Nike</Checkbox>
-                                    <Checkbox>Adidas</Checkbox>
-                                    <Checkbox>Puma</Checkbox>
-                                </Space>
+                                <Checkbox.Group
+                                    options={["Nike", "Adidas", "Puma"]}
+                                    onChange={(checkedValues) => setSelectedBrands(checkedValues)}
+                                />
                             </Panel>
-
-                            <Panel header={<span className="font-semibold">Màu sắc</span>} key="2">
-                                <div className="grid grid-cols-2 gap-2">
-                                    <Checkbox>Vàng</Checkbox>
-                                    <Checkbox>Hồng</Checkbox>
-                                    <Checkbox>Trắng</Checkbox>
-                                    <Checkbox>Đen</Checkbox>
-                                    <Checkbox>Xanh lá</Checkbox>
-                                    <Checkbox>Cam</Checkbox>
-                                </div>
-                            </Panel>
-
                             <Panel header={<span className="font-semibold">Kích thước</span>} key="3">
                                 <div className="flex flex-wrap gap-2">
                                     {[38, 39, 40, 41, 42, 43, 44].map(size => (
-                                        <div key={size} className="border px-2 py-1 text-xs cursor-pointer ">
+                                        <div
+                                            key={size}
+                                            onClick={() => {
+                                                if (selectedSizes.includes(size)) {
+                                                    setSelectedSizes(selectedSizes.filter(s => s !== size));
+                                                } else {
+                                                    setSelectedSizes([...selectedSizes, size]);
+                                                }
+                                            }}
+                                            className={`border px-2 py-1 text-xs cursor-pointer 
+                                            ${selectedSizes.includes(size) ? "bg-black text-white" : ""}`}
+                                        >
                                             {size}
                                         </div>
                                     ))}
