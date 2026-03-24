@@ -8,10 +8,10 @@ const getUser = async (req, res) => {
 }
 
 const createUser = async (req, res) => {
-    const { name, email, password, phone } = req.body;
+    const { name, email, phone, password } = req.body;
 
     try {
-        await handleUserCreate(name, email, password, phone);
+        await handleUserCreate(name, email, phone, password);
         return res.status(201).json({
             data: "Thêm tài khoản thành công!"
         });

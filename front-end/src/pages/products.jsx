@@ -39,60 +39,33 @@ const Product = () => {
                 <Col xs={24} md={6} lg={5}>
                     <div className="bg-white p-5 rounded-lg border border-gray-200 sticky top-5">
                         <div className="font-bold text-lg mb-4 border-b pb-2">BỘ LỌC</div>
-
                         <Collapse defaultActiveKey={['1', '2', '3', '4']} ghost expandIconPosition="end">
                             <Panel header={<span className="font-semibold">Thương hiệu</span>} key="1">
-
                                 <Space direction="vertical" className="w-full">
-
                                     <Checkbox>Nike</Checkbox>
-
                                     <Checkbox>Adidas</Checkbox>
-
                                     <Checkbox>Puma</Checkbox>
-
                                 </Space>
-
                             </Panel>
-
-
 
                             <Panel header={<span className="font-semibold">Màu sắc</span>} key="2">
-
                                 <div className="grid grid-cols-2 gap-2">
-
                                     <Checkbox>Vàng</Checkbox>
-
                                     <Checkbox>Hồng</Checkbox>
-
                                     <Checkbox>Trắng</Checkbox>
-
                                     <Checkbox>Đen</Checkbox>
-
                                     <Checkbox>Xanh lá</Checkbox>
-
                                     <Checkbox>Cam</Checkbox>
-
                                 </div>
-
                             </Panel>
 
-
-
                             <Panel header={<span className="font-semibold">Kích thước</span>} key="3">
-
                                 <div className="flex flex-wrap gap-2">
-
                                     {[38, 39, 40, 41, 42, 43, 44].map(size => (
-
                                         <div key={size} className="border px-2 py-1 text-xs cursor-pointer ">
-
                                             {size}
-
                                         </div>
-
                                     ))}
-
                                 </div>
 
                             </Panel>
