@@ -10,11 +10,35 @@ const ProductInfo = ({
   onScrollToSizeGuide
 }) => {
   console.log(current);
+
+  const handleBuy = () => {
+    if (!selectedSize) {
+      alert("Bạn chưa chọn size");
+      return;
+    }
+    const totalPrice = Number(current.priceProduct) * quantity;
+    
+    alert(
+      `Đã thêm vào giỏ hàng thành công!\n` +
+      `- Size: ${selectedSize}\n` +
+      `- Số lượng: ${quantity}\n` +
+      `- Thành tiền: ${totalPrice.toLocaleString("vi-VN")}đ`
+    );
+  };
   return (
     <div className="lg:col-span-4 flex flex-col">
       <h1 className="text-2xl font-medium leading-snug mb-2">{current.nameProduct}</h1>
       <p className="text-sm text-gray-500 mb-2 uppercase">Mã sản phẩm: {current._id}</p>
-      <div className="text-3xl font-bold text-red-600 mb-3">{current.priceProduct}</div>
+      <div className="text-3xl font-bold text-red-600 mb-3">
+        {!isNaN(Number(current.priceProduct)) ? (
+          <>
+            {Number(current.priceProduct).toLocaleString("vi-VN")}
+            <span className="underline ml-1">đ</span>
+          </>
+        ) : (
+          current.priceProduct
+        )}
+      </div>
 
       <div className="mb-6">
         <span className="inline-block border border-gray-400 rounded-full px-3 py-1 text-xs font-medium">
@@ -55,7 +79,7 @@ const ProductInfo = ({
           <div onClick={increaseQty} className="w-10 h-10 border border-gray-300 bg-gray-50 hover:bg-gray-100 flex items-center justify-center text-lg cursor-pointer shrink-0">+</div>
         </div>
 
-        <div className="w-full bg-[#ffcc00] hover:bg-yellow-500 text-black font-bold uppercase py-4 rounded transition text-lg flex flex-col items-center justify-center leading-none shadow-sm cursor-pointer">
+        <div onClick={handleBuy} className="w-full bg-[#ffcc00] hover:bg-yellow-500 text-black font-bold uppercase py-4 rounded transition text-lg flex flex-col items-center justify-center leading-none shadow-sm cursor-pointer">
           <span>Mua tại đây</span>
           <span className="text-xs mt-1 font-medium">Free Ship</span>
         </div>
