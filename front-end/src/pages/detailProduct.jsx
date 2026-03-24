@@ -17,22 +17,28 @@ const DetailProduct = () => {
     }
     getProduct();
   }, []);
-  const product = {
-    name: "Giày Bóng Đá Adidas Predator 26 Elite Bellingham Trắng Xanh Biển Lưỡi Gà Gập TF",
-    sku: "26022804.39",
-    price: "740.000đ",
-    sizes: [39, 40, 41, 42, 43, 44, 45],
-    status: "HÀNG CÓ SẴN",
-    imageUrl: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=2070&auto=format&fit=crop",
-  };
 
   const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState("chi-tiet");
   const tabsRef = useRef(null);
 
+  const selectedSizeData = current?.sizes?.find(
+    (item) => item.size === selectedSize
+  );
   const decreaseQty = () => { if (quantity > 1) setQuantity(quantity - 1); };
-  const increaseQty = () => setQuantity(quantity + 1);
+  const increaseQty = () => {
+    if (!selectedSizeData) return;
+    if (quantity >= selectedSizeData.quantity) {
+      alert("Đã đạt số lượng tối đa trong kho");
+      return;
+    }
+    setQuantity(quantity + 1);
+  };
+
+  useEffect(() => {
+    setQuantity(1);
+  }, [selectedSize]);
 
   const handleScrollToSizeGuide = () => {
     setActiveTab("chon-size");

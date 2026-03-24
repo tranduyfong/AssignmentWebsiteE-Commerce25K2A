@@ -54,7 +54,7 @@ const HomePage = () => {
                     <div className="box">
                         <div className="inner-box">
                             <div className="icon">
-                                <i class="fa-regular fa-calendar-check"></i>
+                                <i className="fa-regular fa-calendar-check"></i>
                             </div>
                             <div className="content">
                                 <p className="inner-title">
@@ -67,8 +67,7 @@ const HomePage = () => {
                         </div>
                         <div className="inner-box">
                             <div className="icon">
-
-                                <i class="fa-solid fa-truck-fast"></i>
+                                <i className="fa-solid fa-truck-fast"></i>
                             </div>
                             <div className="content">
                                 <p className="inner-title">
@@ -81,7 +80,7 @@ const HomePage = () => {
                         </div>
                         <div className="inner-box">
                             <div className="icon">
-                                <i class="fa-solid fa-money-bill"></i>
+                                <i className="fa-solid fa-money-bill"></i>
                             </div>
                             <div className="content">
                                 <p className="inner-title">
@@ -94,7 +93,7 @@ const HomePage = () => {
                         </div>
                         <div className="inner-box">
                             <div className="icon">
-                                <i class="fa-solid fa-shoe-prints"></i>
+                                <i className="fa-solid fa-shoe-prints"></i>
                             </div>
                             <div className="content">
                                 <p className="inner-title">
