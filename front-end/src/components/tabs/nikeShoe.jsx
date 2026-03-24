@@ -21,7 +21,9 @@ const NikeShoe = () => {
           {product.map(items => (
             <Col className="gutter-row" span={4} key={items._id}>
               <div className="box">
-                <img src={items.imgSrc[0]} alt={items.nameProduct} />
+                  <div class="img-wrapper">
+                    <img src={items.imgSrc[0]} alt={items.nameProduct} />
+                  </div>
                 <div className="inner-content">
                   <p className="inner-title">{items.nameProduct}</p>
                   <p className="inner-price">Giá: {items.priceProduct}</p>

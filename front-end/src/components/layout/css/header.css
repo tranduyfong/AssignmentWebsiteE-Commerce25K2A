@@ -1,3 +1,19 @@
+/* end-products */
+
+/* scroll-header  */
+.header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.header.hide{
+  transform: translateY(-100%);
+}
+/* end-srcoll header  */
+
+
 .inner-menu {
   background-color: #FEBB0A;
   
@@ -22,3 +38,5 @@
   color: #FEBB0A;
   transition: all 0.3s ease;
 }
+
+
