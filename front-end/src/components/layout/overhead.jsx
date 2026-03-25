@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { getMyUser } from "../../services/api.service";
-
+import { SearchOutlined } from '@ant-design/icons';
 const OverHead = () => {
   const navigate = useNavigate();
   const [text, setText] = useState("");
@@ -51,11 +51,13 @@ const OverHead = () => {
           <input
             type="text"
             placeholder="Nhập thông tin tìm kiếm"
-            className="w-full bg-[#333333] text-white py-2 px-4 outline-none text-sm placeholder-gray-400"
+            className="w-full bg-[#333333] text-white py-2 px-4 pr-10 outline-none text-sm placeholder-gray-400"
             value={text}
             onChange={(p) => setText(p.target.value)}
             onKeyDown={EnterTimKiem}
           />
+
+          <SearchOutlined onClick={xuLyBamTimKiem} style={{ color: "white" }} className="absolute right-6 top-7 -translate-y-1/2 text-white cursor-pointer" />
         </div>
         <div className="flex items-center gap-6 text-sm">
           {!name ? (
