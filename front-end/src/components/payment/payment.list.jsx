@@ -1,14 +1,32 @@
 import { Card, Row, Col, Button, Divider, Typography, Image } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 const { Text, Title } = Typography;
 
 const OrderSummary = (props) => {
-    const { data } = props;
+    const navigate = useNavigate();
+    const { data, form, handleSubmit, paymentMethod } = props;
 
-    // BƯỚC QUAN TRỌNG: Chuyển đổi dữ liệu về cùng một dạng mảng
-    // Nếu là Object (Mua ngay) -> Bỏ vào mảng []. Nếu đã là mảng (Giỏ hàng) -> Giữ nguyên.
+    // Chuyển đổi State truyền vào là mảng đối với sản phẩm mua ngay
     const productList = Array.isArray(data?.product) ? data.product : [data?.product];
+
+    const handleOrder = async () => {
+        try {
+            const values = await form.validateFields();
+
+            const finalData = {
+                customerInfo: values,
+                products: productList,
+                totalPrice: data.totalPrice,
+                paymentMethod: paymentMethod
+            };
+
+            handleSubmit(finalData);
+        } catch (error) {
+            console.log("Validate failed:", error);
+        }
+    };
 
     return (
         <Card
@@ -21,11 +39,10 @@ const OrderSummary = (props) => {
         >
             <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
                 {productList.map((item, index) => {
-                    // Trích xuất dữ liệu dựa trên 2 trường hợp
                     const productInfo = item?.current || item?.productId;
                     const displaySize = item?.selectedSize || item?.size;
                     const displayQuantity = item?.quantity;
-                    const displayImg = productInfo?.imgSrc?.[0]; // Lấy ảnh đầu tiên
+                    const displayImg = productInfo?.imgSrc?.[0];
 
                     return (
                         <div key={index}>
@@ -59,6 +76,7 @@ const OrderSummary = (props) => {
                                     </Text>
                                 </Col>
                             </Row>
+
                             {/* Kẻ đường ngang nếu có nhiều sản phẩm */}
                             {productList.length > 1 && index !== productList.length - 1 && <Divider style={{ margin: '12px 0' }} />}
                         </div>
@@ -92,13 +110,14 @@ const OrderSummary = (props) => {
             <Divider />
 
             <Row justify="space-between" align="middle">
-                <Button type="link" icon={<ArrowLeftOutlined />} style={{ padding: 0 }}>
+                <Button type="link" icon={<ArrowLeftOutlined />} style={{ padding: 0 }} onClick={() => navigate(-1)}>
                     Quay về
                 </Button>
                 <Button
                     type="primary"
                     size="large"
                     style={{ background: "#f59e0b", borderColor: "#f59e0b", borderRadius: 8 }}
+                    onClick={handleOrder}
                 >
                     ĐẶT HÀNG
                 </Button>

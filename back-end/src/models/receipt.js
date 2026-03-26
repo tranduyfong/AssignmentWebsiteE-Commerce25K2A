@@ -5,6 +5,11 @@ const ReceiptSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
+        required: false
+    },
+
+    orderCode: {
+        type: String,
         required: true
     },
 
@@ -12,31 +17,32 @@ const ReceiptSchema = new mongoose.Schema({
         {
             productId: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "Product"
+                ref: "Product",
+                required: true
             },
+
             nameProduct: String,
-            price: Number,
             imgSrc: String,
 
-            size: Number,
-            quantity: Number,
+            priceAtTime: {
+                type: Number,
+                required: true
+            },
 
-            totalPrice: Number
+            size: Number,
+            quantity: Number
         }
     ],
 
-    totalAmount: Number,
+    totalAmount: {
+        type: Number,
+        required: true
+    },
 
     paymentMethod: {
         type: String,
         enum: ["COD", "VNPAY"],
         default: "COD"
-    },
-
-    paymentStatus: {
-        type: String,
-        enum: ["pending", "paid", "failed"],
-        default: "pending"
     },
 
     orderStatus: {
@@ -49,9 +55,8 @@ const ReceiptSchema = new mongoose.Schema({
         fullName: String,
         phone: String,
         address: String,
-        city: String,
-        district: String,
-        ward: String
     }
 
 }, { timestamps: true });
+
+module.exports = mongoose.model("Receipt", ReceiptSchema);
