@@ -110,4 +110,9 @@ const buyProduct = async (data) => {
     return axios.post(URL_BACKEND, data);
 }
 
-export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser, getCart, addToCart, deleteInCart, buyProduct };
+const getMyReceipt = async () => {
+    const URL_BACKEND = "/receipt/my";
+    return axios.get(URL_BACKEND);
+}
+
+export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser, getCart, addToCart, deleteInCart, buyProduct, getMyReceipt };

@@ -23,8 +23,6 @@ const createReceipt = async (req, res) => {
 
 const getReceipt = async (req, res) => {
     try {
-        const userId = req.query.userId || null;
-
         const data = await fetchReceipts();
 
         return res.status(200).json({
@@ -44,4 +42,28 @@ const getReceipt = async (req, res) => {
     }
 };
 
-module.exports = { createReceipt, getReceipt };
+const getMyReceipt = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const data = await fetchReceipts(userId);
+
+        return res.status(200).json({
+            success: true,
+            message: "Lấy danh sách đơn hàng thành công!",
+            data: data
+        });
+
+    } catch (error) {
+        console.error(">>> Lỗi tại getReceipt Controller:", error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Đã xảy ra lỗi từ phía máy chủ",
+            error: error.message
+        });
+    }
+}
+
+
+
+module.exports = { createReceipt, getReceipt, getMyReceipt };

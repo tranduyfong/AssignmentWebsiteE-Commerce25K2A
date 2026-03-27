@@ -18,7 +18,7 @@ const CartPage = () => {
         <div className='mt-40 w-2/3 m-auto text-gray-500'>
             <div className='flex'>
                 <Link to="/">Trang chủ | </Link>
-                <Link className='ml-1 text-amber-400 font-bold'>Giỏ hàng</Link>
+                <Link className='ml-1 text-amber-400 font-semibold'>Giỏ hàng</Link>
             </div>
             <Divider className='mt-3!' />
             <p className='font-bold text-black'>GIỎ HÀNG</p>

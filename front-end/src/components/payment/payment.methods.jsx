@@ -13,7 +13,7 @@ const PaymentMethod = ({ paymentMethod, setPaymentMethod }) => {
                 <div className="border rounded-lg overflow-hidden">
                     <label className="flex items-center justify-between p-4 border-b cursor-pointer">
                         <Radio value="VNPAY">
-                            Thanh toán ngay với VNPAY QR
+                            Thanh toán ngay với VNPAY
                         </Radio>
                         <img
                             src="https://yt3.googleusercontent.com/JM1m2wng0JQUgSg9ZSEvz7G4Rwo7pYb4QBYip4PAhvGRyf1D_YTbL2DdDjOy0qOXssJPdz2r7Q=s900-c-k-c0x00ffffff-no-rj"

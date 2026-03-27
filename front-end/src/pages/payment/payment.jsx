@@ -102,25 +102,50 @@ const PaymentPage = () => {
             shippingAddress: {
                 fullName: customer.name,
                 phone: customer.numberphone,
-                address: customer.more || ""
-                    + customer.ward.label + " - "
-                    + customer.district.label + " - "
-                    + customer.province.label
+                address: `${customer.more ? customer.more + ", " : ""}
+                ${customer.ward.label} 
+                - ${customer.district.label} 
+                - ${customer.province.label}`
             }
         }
 
-        console.log(receiptPayload);
-        const res = await buyProduct(receiptPayload);
-        if (res) {
-            notification.success({
-                message: "Mua hàng thành công!",
-                description: "Cảm ơn bạn đã mua hàng!"
-            });
+        if (paymentMethod === "COD") {
+            // Tiến hành kiểm tra tồn kho thực và trừ số lượng trong kho
+            try {
+                const res = await buyProduct(receiptPayload);
+                console.log("Kết quả từ Backend:", res);
+
+                if (res && res.success === true) {
+                    notification.success({
+                        message: "Mua hàng thành công!",
+                        description: "Cảm ơn bạn đã mua hàng!"
+                    });
+                    window.location.href = "/checkcart";
+                }
+                else if (res && res.success === false) {
+                    notification.error({
+                        message: "Mua hàng thất bại",
+                        description: res.message
+                    });
+                }
+                else {
+                    notification.error({
+                        message: "Mua hàng thất bại",
+                        description: "Không thể xác định trạng thái đơn hàng."
+                    });
+                }
+
+            } catch (err) {
+                const errorMessage = err.response?.data?.message || err.message || "Lỗi kết nối đến máy chủ!";
+
+                notification.error({
+                    message: "Lỗi hệ thống",
+                    description: errorMessage
+                });
+            }
         } else {
-            notification.error({
-                message: "Mua hàng thất bại",
-                description: error
-            })
+            console.log(receiptPayload);
+
         }
 
     };

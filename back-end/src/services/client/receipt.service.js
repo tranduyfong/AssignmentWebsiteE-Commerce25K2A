@@ -25,11 +25,34 @@ const handleCheckExistQuantity = async (data) => {
     }
 }
 
-const handleBuyProducts = async (data) => {
-    console.log(data);
+const handleUpdateStock = async (products) => {
+    // Lặp qua từng sản phẩm khách vừa mua
+    for (const item of products) {
+        await Product.updateOne(
+            {
+                _id: item.productId,
+                "sizes.size": item.size
+            },
+            {
+                $inc: {
+                    // Toán tử $inc dùng để tăng/giảm số lượng
+                    // Dấu $ đại diện cho cái size đã tìm thấy ở điều kiện trên
+                    "sizes.$.quantity": -item.quantity
+                }
+            }
+        );
+    }
+};
 
+const handleBuyProducts = async (data) => {
+    // Check có đủ dư số lượng hay không
     await handleCheckExistQuantity(data?.products);
-    return Receipt.create(data);
+    const newReceipt = await Receipt.create(data);
+
+    // Trừ tồn kho
+    await handleUpdateStock(data?.products);
+
+    return newReceipt;
 }
 
-module.exports = { handleCheckExistQuantity, handleBuyProducts };
+module.exports = { handleCheckExistQuantity, handleBuyProducts, handleUpdateStock };

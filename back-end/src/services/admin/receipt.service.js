@@ -7,8 +7,7 @@ const fetchReceipts = async (userId = null) => {
 
         // 2. Query vào Database
         const receipts = await Receipt.find(query)
-            .sort({ createdAt: -1 }) // Sắp xếp đơn hàng mới nhất lên đầu tiên
-        // Optional: Bạn có thể dùng .populate() nếu muốn lấy chi tiết tên, ảnh sản phẩm từ collection Product
+            .sort({ createdAt: -1 })
         // .populate('products.productId', 'nameProduct imgSrc priceProduct'); 
 
         return receipts;

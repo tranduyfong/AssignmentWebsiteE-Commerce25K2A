@@ -37,7 +37,7 @@ const OrderSummary = (props) => {
                 boxShadow: "0 4px 12px rgba(0,0,0,0.05)"
             }}
         >
-            <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
+            <div style={{ maxHeight: '400px', overflowY: 'auto', overflowX: "hidden" }}>
                 {productList.map((item, index) => {
                     const productInfo = item?.current || item?.productId;
                     const displaySize = item?.selectedSize || item?.size;
