@@ -115,4 +115,19 @@ const getMyReceipt = async () => {
     return axios.get(URL_BACKEND);
 }
 
-export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser, getCart, addToCart, deleteInCart, buyProduct, getMyReceipt };
+const getVnpayUrl = async (code, amount) => {
+    const URL_BACKEND = "/vnpay";
+    const data = {
+        orderCode: code,
+        amount: amount
+    }
+
+    return axios.post(URL_BACKEND, data);
+}
+
+const verifyVnpay = async (data) => {
+    const URL_BACKEND = `/vnpay?${data}`;
+    return axios.get(URL_BACKEND);
+}
+
+export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser, getCart, addToCart, deleteInCart, buyProduct, getMyReceipt, getVnpayUrl, verifyVnpay };

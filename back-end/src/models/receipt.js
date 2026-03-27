@@ -45,6 +45,12 @@ const ReceiptSchema = new mongoose.Schema({
         default: "COD"
     },
 
+    paymentStatus: {
+        type: String,
+        enum: ['Pending', 'Paid', 'Failed'],
+        default: 'Pending'
+    },
+
     orderStatus: {
         type: String,
         enum: ["processing", "shipping", "completed", "cancelled"],

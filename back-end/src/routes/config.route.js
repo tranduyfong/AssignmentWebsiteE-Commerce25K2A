@@ -6,5 +6,6 @@ router.use("/users", require("./user.route"));
 router.use("/mail", require("./mail.route"));
 router.use("/address", require("./address.route"));
 router.use("/receipt", require("./receipt.route"));
+router.use("/vnpay", require("./vnpay.route"));
 
 module.exports = router;

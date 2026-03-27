@@ -31,6 +31,7 @@ import WarrantyPolicy from "./pages/warranty.policy.jsx";
 import ReturnPolicy from "./pages/return.policy.jsx";
 import ShoppingGuide from "./pages/shopping.guide.jsx";
 import { requireAuthLoader } from "../utils/auth.js";
+import VnpayReturn from "./components/vnpay/return.vnpay.jsx";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,7 @@ const router = createBrowserRouter([
           { path: "/managerIncome", element: <ManagerIncome /> },
           { path: "/viewDetail", element: <ViewDetail /> },
           { path: "/cartPage", element: <CartPage /> },
+          { path: "/vnpay-return", element: <VnpayReturn />, }
         ]
       }
     ]

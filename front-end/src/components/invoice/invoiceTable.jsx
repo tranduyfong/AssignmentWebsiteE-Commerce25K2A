@@ -1,6 +1,7 @@
 import React from "react";
 
 const InvoiceTable = ({ invoices, onSelect }) => {
+
   return (
     <div className="max-w-7xl mx-auto">
       <div className="mb-6">
@@ -21,6 +22,7 @@ const InvoiceTable = ({ invoices, onSelect }) => {
               <th className="p-4 border-b">Ngày đặt</th>
               <th className="p-4 border-b">Tổng tiền</th>
               <th className="p-4 border-b">Trạng thái</th>
+              <th className="p-4 border-b">Thanh toán</th>
               <th className="p-4 border-b text-center">Hành động</th>
             </tr>
           </thead>
@@ -38,6 +40,12 @@ const InvoiceTable = ({ invoices, onSelect }) => {
                     ${invoice.status === "Đã thanh toán" ? "bg-green-100 text-green-700" :
                       invoice.status === "Chờ xác nhận" ? "bg-yellow-100 text-yellow-700" : "bg-blue-100 text-blue-700"}`}>
                     {invoice.status}
+                  </span>
+                </td>
+                <td className="p-4">
+                  <span className={`px-2 py-1 rounded text-xs font-bold 
+                    ${invoice.paymentStatus === "Đã thanh toán" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+                    {invoice.paymentStatus || "Chưa thanh toán"}
                   </span>
                 </td>
                 <td className="p-4 flex justify-center items-center">

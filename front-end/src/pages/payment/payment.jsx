@@ -4,7 +4,7 @@ import PaymentDetails from "../../components/payment/patment.details";
 import PaymentMethod from "../../components/payment/payment.methods";
 import OrderSummary from "../../components/payment/payment.list";
 import { useLocation } from "react-router-dom";
-import { getProvince, getDistrict, getVillage, getMyUser, buyProduct } from '../../services/api.service';
+import { getProvince, getDistrict, getVillage, getMyUser, buyProduct, getVnpayUrl } from '../../services/api.service';
 import { Form, notification } from "antd";
 
 const PaymentPage = () => {
@@ -109,45 +109,42 @@ const PaymentPage = () => {
             }
         }
 
-        if (paymentMethod === "COD") {
-            // Tiến hành kiểm tra tồn kho thực và trừ số lượng trong kho
-            try {
-                const res = await buyProduct(receiptPayload);
-                console.log("Kết quả từ Backend:", res);
+        try {
+            const res = await buyProduct(receiptPayload);
 
-                if (res && res.success === true) {
+            if (res && res.success === true) {
+                if (paymentMethod === "COD") {
                     notification.success({
                         message: "Mua hàng thành công!",
                         description: "Cảm ơn bạn đã mua hàng!"
                     });
                     window.location.href = "/checkcart";
                 }
-                else if (res && res.success === false) {
-                    notification.error({
-                        message: "Mua hàng thất bại",
-                        description: res.message
-                    });
-                }
-                else {
-                    notification.error({
-                        message: "Mua hàng thất bại",
-                        description: "Không thể xác định trạng thái đơn hàng."
-                    });
-                }
+                else if (paymentMethod === "VNPAY") {
+                    const vnpayRes = await getVnpayUrl(receiptPayload.orderCode, receiptPayload.totalAmount);
 
-            } catch (err) {
-                const errorMessage = err.response?.data?.message || err.message || "Lỗi kết nối đến máy chủ!";
-
+                    if (vnpayRes && vnpayRes.paymentUrl) {
+                        // Chuyển hướng sang VNPay
+                        window.location.href = vnpayRes.paymentUrl;
+                    } else {
+                        notification.error({ message: "Lỗi kết nối đến VNPay!" });
+                    }
+                }
+            }
+            else {
                 notification.error({
-                    message: "Lỗi hệ thống",
-                    description: errorMessage
+                    message: "Mua hàng thất bại",
+                    description: res?.message || "Không thể tạo đơn hàng."
                 });
             }
-        } else {
-            console.log(receiptPayload);
 
+        } catch (err) {
+            const errorMessage = err.response?.data?.message || err.message || "Lỗi kết nối đến máy chủ!";
+            notification.error({
+                message: "Lỗi hệ thống",
+                description: errorMessage
+            });
         }
-
     };
 
     return (

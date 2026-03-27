@@ -34,6 +34,8 @@ const InvoiceList = () => {
 
           status: getStatusText(item.orderStatus),
 
+          paymentStatus: item.paymentStatus === "Paid" ? "Đã thanh toán" : "Chưa thanh toán",
+
           paymentMethod: item.paymentMethod,
 
           items: item.products.map(prod => ({
