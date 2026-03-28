@@ -14,7 +14,6 @@ const AllProducts = () => {
   const formatPrice = (price) => {
     return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
   };
-  console.log(products);
 
   return (
     <>

@@ -91,7 +91,7 @@
 
 .all-product .box .inner-content .btn-buy {
     background-color: #FECD4C;
-    margin-bottom: 20px;
+    margin:0;
     font-weight: 500;
     color: #000;
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Col, Row, Checkbox, Slider, Space, Collapse, Divider } from 'antd';
 import { Link } from 'react-router-dom';
 import { getAllProducts } from "../services/api.service";
-
+import "./css/home.css";
 const { Panel } = Collapse;
 const Product = () => {
     const [products, setProducts] = useState([]);
@@ -22,6 +22,9 @@ const Product = () => {
         loadProduct();
     }, []);
 
+    const formatPrice = (price) => {
+        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+    };
 
     const handleFilter = () => {
         const result = products.filter(item => {
@@ -47,7 +50,6 @@ const Product = () => {
 
         setFilterProducts(result);
     };
-    console.log(products);
     return (
         <>
             <div className='mt-40 w-2/3 m-auto text-gray-500'>
@@ -57,7 +59,7 @@ const Product = () => {
                 </div>
                 <Divider className='mt-3!' />
             </div>
-            <div className="px-[30px] mb-20">
+            <div className="px-[30px] mb-20 ">
                 <div className="flex justify-center items-center uppercase font-bold text-2xl mb-5">
                     Sản phẩm
                 </div>
@@ -117,44 +119,67 @@ const Product = () => {
                         </div>
                     </Col>
 
-                    <Col xs={24} md={18} lg={19}>
+                    <Col xs={24} md={18} lg={19} className='all-product'>
                         <Row gutter={[16, 30]}>
-                            {filterProducts?.map((item) => (
-                                <Col key={item._id} xs={24} sm={12} md={12} lg={6}>
-                                    <div className="h-full flex flex-col bg-white shadow-md hover:shadow-2xl duration-300 rounded-lg border border-gray-100 group">
-                                        <div className="aspect-square overflow-hidden rounded-t-lg">
-                                            <img
-                                                src={item.imgSrc && item.imgSrc[0]}
-                                                alt={item.nameProduct}
-                                                className="w-full h-full object-cover group-hover:scale-110 duration-500"
-                                            />
-                                        </div>
-
-                                        <div className="p-3 flex flex-col flex-grow">
-                                            <div className="text-[15px] font-bold text-gray-800 line-clamp-2 h-10 mb-2 leading-tight">
-                                                {item.nameProduct}
+                            {filterProducts?.map((items) => (
+                                <Col className="gutter-row mb-5" span={4} key={items._id}>
+                                    <Link to={`/detail/${items._id}`}>
+                                        <div className="box w-full">
+                                            <div class="img-wrapper">
+                                                <img src={items.imgSrc[0]} alt={items.nameProduct} />
                                             </div>
-                                            <div className="mt-auto">
-                                                <div className="text-[16px] font-bold text-red-600 mb-3">
-                                                    {item.priceProduct?.toLocaleString()}đ
+                                            <div className="flex flex-col text-center grow bg-white w-full inner-content">
+                                                <p className="font-semibold text-black " style={{ fontSize: "17px" }}>
+                                                    Mã SP: {items._id.slice(-8).toUpperCase()}
+                                                </p>
+                                                <p className="font-bold text-red-600">
+                                                    {formatPrice(items.priceProduct)}
+                                                </p>
+                                                <p className="font-bold text-black mb-2 uppercase" style={{ fontSize: "17px" }}>
+                                                    {items.sizes?.some(s => s.quantity > 0) ? (
+                                                        <p className="font-bold mb-2 uppercase" style={{ fontSize: "17px" }}>
+                                                            Hàng có sẵn
+                                                        </p>
+                                                    ) : (
+                                                        <p className="font-bold text-gray-500 mb-2 uppercase" style={{ fontSize: "17px" }}>
+                                                            Hết hàng
+                                                        </p>
+                                                    )}
+                                                </p>
+                                                <div className="flex flex-wrap justify-center gap-2 mb-2" style={{ fontSize: "15px" }}>
+                                                    {items.sizes && items.sizes.length > 0 ? (
+                                                        items.sizes.map((s, index) => (
+                                                            <span
+                                                                key={s._id || index}
+                                                                className={`font-bold ${s.quantity > 0
+                                                                    ? "text-black" // Còn hàng: Màu đen
+                                                                    : "text-gray-300 line-through cursor-not-allowed" // Hết hàng: Màu xám nhạt và gạch ngang
+                                                                    }`}
+                                                            >
+                                                                {s.size}
+                                                            </span>
+                                                        ))
+                                                    ) : (
+                                                        // Fallback: Nếu dữ liệu lỗi hoặc chưa có mảng sizes, hiển thị mặc định
+                                                        <span className="font-bold text-black">38 39 40 41 42 43 44</span>
+                                                    )}
                                                 </div>
-                                                <Link to={`/detail/${item._id}`}>
-                                                    <button className="w-full py-2 bg-[#FECD4C] hover:bg-gray-800 hover:text-white font-bold transition-all duration-300 rounded uppercase text-[11px]">
+                                                <p className="text-sm text-black font-light line-clamp-2 mt-auto hover:font-semibold" style={{ fontSize: "15px" }}>
+                                                    {items.nameProduct}
+                                                </p>
+                                                <Link to={`/detail/${items._id}`} className='w-full block'>
+                                                    <button className="w-full py-2 bg-[#FECD4C] hover:bg-gray-800 hover:text-white font-bold transition-all duration-300 rounded uppercase text-[11px] text-black btn-buy">
                                                         Mua
                                                     </button>
                                                 </Link>
                                             </div>
-                                            <Link to={`/detail/${item._id}`}>
-                                                <button className="w-full py-2 bg-[#FECD4C] hover:bg-gray-800 hover:text-white font-bold transition-all duration-300 rounded uppercase text-[11px] text-black">
-                                                    Mua
-                                                </button>
-                                            </Link>
                                         </div>
-                                    </div>
+                                    </Link>
                                 </Col>
                             ))}
                         </Row>
                     </Col>
+
                 </Row>
             </div>
         </>
