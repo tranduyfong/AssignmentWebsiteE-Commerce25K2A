@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { getAllProducts } from "../services/api.service";
 
 const { Panel } = Collapse;
-
 const Product = () => {
     const [products, setProducts] = useState([]);
     const [filterProducts, setFilterProducts] = useState([]);
@@ -145,6 +144,11 @@ const Product = () => {
                                                     </button>
                                                 </Link>
                                             </div>
+                                            <Link to={`/detail/${item._id}`}>
+                                                <button className="w-full py-2 bg-[#FECD4C] hover:bg-gray-800 hover:text-white font-bold transition-all duration-300 rounded uppercase text-[11px] text-black">
+                                                    Mua
+                                                </button>
+                                            </Link>
                                         </div>
                                     </div>
                                 </Col>
