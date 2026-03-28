@@ -1,11 +1,22 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { getCart, getMyUser } from "../../services/api.service";
 import { getMyUser } from "../../services/api.service";
 import { SearchOutlined } from '@ant-design/icons';
 const OverHead = () => {
   const navigate = useNavigate();
   const [text, setText] = useState("");
   const [name, setName] = useState(null);
+  const [cartData, setCartData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const res = await getCart();
+    setCartData(res.data);
+  }
 
   const xuLyBamTimKiem = () => {
     if (!text.trim()) return;
@@ -88,12 +99,12 @@ const OverHead = () => {
                 />
               </svg>
               <span className="absolute -top-1 -right-1 bg-yellow-400 text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
-                0
+                {cartData?.length || 0}
               </span>
             </div>
             <div className="leading-tight">
               <NavLink to="/cartPage" className="font-bold">GIỎ HÀNG</NavLink>
-              <div className="text-gray-500 text-xs">(0) sản phẩm</div>
+              <div className="text-gray-500 text-xs">({cartData?.length || 0}) sản phẩm</div>
             </div>
           </div>
 

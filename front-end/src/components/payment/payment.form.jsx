@@ -1,41 +1,17 @@
 import { Form, Input, Select } from 'antd';
-import { getDistrict, getVillage } from '../../services/api.service';
-import { useState } from 'react';
 import TextArea from 'antd/es/input/TextArea';
-const onFinish = values => {
-    console.log('Success:', values);
-};
-const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
-};
+
 const PaymentForm = (props) => {
-    const { provinces } = props;
-    const [districts, setDistricts] = useState([]);
-    const [village, setVillages] = useState([]);
-
-    const handleProvinceChange = async (value) => {
-        const res = await getDistrict(value);
-        if (res) {
-            setDistricts(res.districts);
-            setVillages([]);
-        }
-    };
-
-    const handleDistrictChange = async (value) => {
-        const res = await getVillage(value);
-        if (res) {
-            setVillages(res.wards);
-        }
-    };
+    const { form, provinces, districts, village, handleProvinceChange, handleDistrictChange, onFinish } = props;
 
     return (
         <div className="p-2 w-full">
             <div>
                 <p className="font-bold">Thông tin nhận hàng</p>
                 <Form
+                    form={form}
                     size='large'
                     onFinish={onFinish}
-                    onFinishFailed={onFinishFailed}
                 >
                     <Form.Item
                         name="email"
@@ -68,6 +44,7 @@ const PaymentForm = (props) => {
                         rules={[{ required: true, message: 'Vui lòng chọn tỉnh!' }]}
                     >
                         <Select
+                            labelInValue
                             placeholder="Chọn tỉnh thành"
                             onChange={handleProvinceChange}
                             showSearch
@@ -84,6 +61,7 @@ const PaymentForm = (props) => {
                         rules={[{ required: true, message: 'Vui lòng chọn quận!' }]}
                     >
                         <Select
+                            labelInValue
                             placeholder="Chọn quận huyện"
                             onChange={handleDistrictChange}
                             showSearch
@@ -100,6 +78,7 @@ const PaymentForm = (props) => {
                         rules={[{ required: true, message: 'Vui lòng chọn phường!' }]}
                     >
                         <Select
+                            labelInValue
                             placeholder="Chọn phường xã"
                             showSearch
                         >

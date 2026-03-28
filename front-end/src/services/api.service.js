@@ -1,17 +1,17 @@
 import axios from "./axios.customize";
 
 const getProvince = async () => {
-    const URL_ADDRESS = 'https://provinces.open-api.vn/api/p/';
-    return await axios.get(URL_ADDRESS);
+    const URL_BACKEND = '/address/provinces';
+    return await axios.get(URL_BACKEND);
 }
 
 const getDistrict = async (province_id) => {
-    const URL_ADDRESS = `https://provinces.open-api.vn/api/p/${province_id}?depth=2`;
+    const URL_ADDRESS = `/address/districts/${province_id}`;
     return axios.get(URL_ADDRESS);
 }
 
 const getVillage = async (district_id) => {
-    const URL_ADDRESS = `https://provinces.open-api.vn/api/d/${district_id}?depth=2`;
+    const URL_ADDRESS = `/address/villages/${district_id}`;
     return axios.get(URL_ADDRESS);
 }
 
@@ -103,4 +103,31 @@ const deleteInCart = async (idCart) => {
     return axios.delete(URL_BACKEND);
 }
 
-export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser, getCart, addToCart, deleteInCart };
+const buyProduct = async (data) => {
+    const URL_BACKEND = "/receipt";
+    console.log(data);
+
+    return axios.post(URL_BACKEND, data);
+}
+
+const getMyReceipt = async () => {
+    const URL_BACKEND = "/receipt/my";
+    return axios.get(URL_BACKEND);
+}
+
+const getVnpayUrl = async (code, amount) => {
+    const URL_BACKEND = "/vnpay";
+    const data = {
+        orderCode: code,
+        amount: amount
+    }
+
+    return axios.post(URL_BACKEND, data);
+}
+
+const verifyVnpay = async (data) => {
+    const URL_BACKEND = `/vnpay?${data}`;
+    return axios.get(URL_BACKEND);
+}
+
+export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser, getCart, addToCart, deleteInCart, buyProduct, getMyReceipt, getVnpayUrl, verifyVnpay };

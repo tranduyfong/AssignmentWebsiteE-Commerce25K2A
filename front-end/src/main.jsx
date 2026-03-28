@@ -1,4 +1,5 @@
 import React from "react";
+import { ConfigProvider } from 'antd';
 import ReactDOM from 'react-dom/client'
 import App from "./App.jsx";
 import '../style.css'
@@ -29,6 +30,8 @@ import SearchPage from "./pages/search/searchPage.jsx";
 import WarrantyPolicy from "./pages/warranty.policy.jsx";
 import ReturnPolicy from "./pages/return.policy.jsx";
 import ShoppingGuide from "./pages/shopping.guide.jsx";
+import { requireAuthLoader } from "../utils/auth.js";
+import VnpayReturn from "./components/vnpay/return.vnpay.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,100 +39,51 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
+      { path: "/", index: true, element: <HomePage />, },
+      { path: "/loginPage", element: <LoginPage /> },
+      { path: "/forgetPassword", element: <ForgetPassword /> },
+      { path: "/registerPage", element: <RegisterPage /> },
+      { path: "/intro", element: <Intro /> },
+      { path: "/products", element: <Product />, },
+      { path: "/contact", element: <Contact /> },
+      { path: "/detail/:id", element: <ProductDetail /> },
+      { path: "/search", element: <SearchPage /> },
+      { path: "/warranty-policy", element: <WarrantyPolicy /> },
+      { path: "/return-policy", element: <ReturnPolicy /> },
+      { path: "/shopping-guide", element: <ShoppingGuide /> },
       {
         path: "/",
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: "/loginPage",
-        element: <LoginPage />
-      },
-      {
-        path: "/forgetPassword",
-        element: <ForgetPassword />
-      },
-      {
-        path: "/registerPage",
-        element: <RegisterPage />
-      },
-      {
-        path: "/intro",
-        element: <Intro />
-      },
-      {
-        path: "/products",
-        element: <Product />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />
-      },
-      {
-        path: "/checkcart",
-        element: <CheckCart />
-      },
-      {
-        path: "/statistical",
-        element: <StatisticalManagement />
-      },
-      {
-        path: "/accountmanagement",
-        element: <AccountManagement />,
-      },
-      {
-        path: "/productmanagement",
-        element: <ProductManagement />
-      },
-      {
-        path: "/receiptmanagement",
-        element: <ReceiptManagement />
-      },
-      {
-        path: "/revenue-expenditure",
-        element: <RevenueAndExpenditure />
-      },
-      {
-        path: "/managerIncome",
-        element: <ManagerIncome />
-      },
-      {
-        path: "/viewDetail",
-        element: <ViewDetail />
-      },
-
-      {
-        path: "/cartPage",
-        element: <CartPage />
-      },
-      {
-        path: "/detail/:id",
-        element: <ProductDetail />
-      },
-      {
-        path: "/search",
-        element: <SearchPage />
-      },
-      {
-        path: "/warranty-policy",
-        element: <WarrantyPolicy />
-      },
-      {
-        path: "/return-policy",
-        element: <ReturnPolicy />
-      },
-      {
-        path: "/shopping-guide",
-        element: <ShoppingGuide />
+        loader: requireAuthLoader,
+        children: [
+          { path: "/checkcart", element: <CheckCart /> },
+          { path: "/statistical", element: <StatisticalManagement /> },
+          { path: "/accountmanagement", element: <AccountManagement />, },
+          { path: "/productmanagement", element: <ProductManagement /> },
+          { path: "/receiptmanagement", element: <ReceiptManagement /> },
+          { path: "/revenue-expenditure", element: <RevenueAndExpenditure /> },
+          { path: "/managerIncome", element: <ManagerIncome /> },
+          { path: "/viewDetail", element: <ViewDetail /> },
+          { path: "/cartPage", element: <CartPage /> },
+          { path: "/vnpay-return", element: <VnpayReturn />, }
+        ]
       }
     ]
   },
   {
     path: "/payment",
-    element: <PaymentPage />
+    element: <PaymentPage />,
+    loader: requireAuthLoader
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+  <ConfigProvider
+    theme={{
+      token: {
+        fontFamily: "'Quicksand', sans-serif",
+      },
+    }}
+  >
+    <RouterProvider router={router} />
+  </ConfigProvider>
 )
