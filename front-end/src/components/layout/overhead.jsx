@@ -67,7 +67,7 @@ const OverHead = () => {
     },
     { type: 'divider' },
 
-    ...(role === "admin" ? [
+    ...(role !== "user" ? [
       { key: 'admin', label: <Link to="/admin">Quản lý & Thống kê</Link> }
     ] : []),
 

@@ -25,6 +25,7 @@ import ReturnPolicy from "./pages/return.policy.jsx";
 import ShoppingGuide from "./pages/shopping.guide.jsx";
 import { requireAuthLoader } from "../utils/auth.js";
 import VnpayReturn from "./components/vnpay/return.vnpay.jsx";
+import AdminChat from "./pages/admin/chat.admin.jsx";
 
 const router = createBrowserRouter([
   {
@@ -50,7 +51,8 @@ const router = createBrowserRouter([
         children: [
           { path: "/checkcart", element: <CheckCart /> },
           { path: "/cartPage", element: <CartPage /> },
-          { path: "/vnpay-return", element: <VnpayReturn />, }
+          { path: "/vnpay-return", element: <VnpayReturn />, },
+          { path: "/admin", element: <AdminChat /> }
         ]
       }
     ]

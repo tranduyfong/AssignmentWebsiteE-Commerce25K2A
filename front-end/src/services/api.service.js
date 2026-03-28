@@ -203,4 +203,23 @@ const mailBuyProduct = (payload) => {
     return axios.post(URL_BACKEND, data);
 }
 
-export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser, getCart, addToCart, deleteInCart, buyProduct, getMyReceipt, getVnpayUrl, verifyVnpay, mailBuyProduct };
+const getChatHistory = async (roomId) => {
+    try {
+        const res = await axios.get(`/chat/history/${roomId}`);
+        return res.data;
+    } catch (error) {
+        console.error("Lỗi khi lấy lịch sử chat:", error);
+        return { success: false, data: [] };
+    }
+};
+
+const getChatRooms = async () => {
+    try {
+        const res = await axios.get(`/chat/rooms`);
+        return res.data;
+    } catch (error) {
+        return { success: false, data: [] };
+    }
+};
+
+export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser, getCart, addToCart, deleteInCart, buyProduct, getMyReceipt, getVnpayUrl, verifyVnpay, mailBuyProduct, getChatHistory, getChatRooms };
