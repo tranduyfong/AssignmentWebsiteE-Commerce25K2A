@@ -10,7 +10,7 @@ const createPaymentUrl = async (req, res) => {
         const ipAddr = '127.0.0.1';
 
         const urlString = vnpayInstance.buildPaymentUrl({
-            vnp_Amount: amount / 100,
+            vnp_Amount: amount,
             vnp_IpAddr: ipAddr,
             vnp_TxnRef: orderCode,
             vnp_OrderInfo: `Thanh toan thanh cong don hang ${orderCode}`,

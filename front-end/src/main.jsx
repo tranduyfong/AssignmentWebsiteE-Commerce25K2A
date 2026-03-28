@@ -16,13 +16,6 @@ import Intro from "./pages/introduct/intro.jsx";
 import Product from "./pages/products.jsx";
 import Contact from "./pages/contact.jsx";
 import CheckCart from "./pages/management/checkcart.jsx";
-import StatisticalManagement from "./pages/management/statistical.jsx";
-import AccountManagement from "./pages/management/account-management.jsx";
-import ProductManagement from "./pages/management/product-management.jsx";
-import ReceiptManagement from "./pages/management/receipt-management.jsx";
-import RevenueAndExpenditure from "./pages/management/revenue-expenditure-mng.jsx";
-import ManagerIncome from "./pages/management/managerIncome.jsx";
-import ViewDetail from "./pages/management/viewDetail.jsx";
 import CartPage from "./pages/cart.jsx";
 import PaymentPage from "./pages/payment/payment.jsx";
 import ProductDetail from "./pages/detailProduct.jsx";
@@ -56,13 +49,6 @@ const router = createBrowserRouter([
         loader: requireAuthLoader,
         children: [
           { path: "/checkcart", element: <CheckCart /> },
-          { path: "/statistical", element: <StatisticalManagement /> },
-          { path: "/accountmanagement", element: <AccountManagement />, },
-          { path: "/productmanagement", element: <ProductManagement /> },
-          { path: "/receiptmanagement", element: <ReceiptManagement /> },
-          { path: "/revenue-expenditure", element: <RevenueAndExpenditure /> },
-          { path: "/managerIncome", element: <ManagerIncome /> },
-          { path: "/viewDetail", element: <ViewDetail /> },
           { path: "/cartPage", element: <CartPage /> },
           { path: "/vnpay-return", element: <VnpayReturn />, }
         ]

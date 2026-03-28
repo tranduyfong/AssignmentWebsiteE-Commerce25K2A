@@ -10,8 +10,8 @@ const PaymentMethod = ({ paymentMethod, setPaymentMethod }) => {
                 value={paymentMethod}
                 onChange={(e) => setPaymentMethod(e.target.value)}
             >
-                <div className="border rounded-lg overflow-hidden">
-                    <label className="flex items-center justify-between p-4 border-b cursor-pointer">
+                <div className="border border-gray-300 rounded-lg overflow-hidden">
+                    <label className="flex items-center justify-between p-4 border-b border-gray-300 cursor-pointer">
                         <Radio value="VNPAY">
                             Thanh toán ngay với VNPAY
                         </Radio>
@@ -21,7 +21,7 @@ const PaymentMethod = ({ paymentMethod, setPaymentMethod }) => {
                         />
                     </label>
 
-                    <label className="flex items-center justify-between p-4 border-b cursor-pointer">
+                    <label className="flex items-center justify-between p-4 cursor-pointer">
                         <Radio value="COD">
                             Thanh toán khi giao hàng COD tại nhà
                         </Radio>

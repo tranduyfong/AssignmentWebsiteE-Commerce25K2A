@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { Result, Button, Spin } from "antd";
-import { verifyVnpay } from "../../services/api.service";
+import { mailBuyProduct, verifyVnpay } from "../../services/api.service";
 
 const VnpayReturn = () => {
     const [searchParams] = useSearchParams();
@@ -18,6 +18,13 @@ const VnpayReturn = () => {
 
                 if (res && res.success) {
                     setStatus("success");
+                    const pendingEmailString = localStorage.getItem("pendingEmailData");
+
+                    if (pendingEmailString) {
+                        const emailData = JSON.parse(pendingEmailString);
+                        mailBuyProduct(emailData).catch(err => console.log("Lỗi gửi mail:", err));
+                        localStorage.removeItem("pendingEmailData");
+                    }
                 } else {
                     setStatus("error");
                 }
