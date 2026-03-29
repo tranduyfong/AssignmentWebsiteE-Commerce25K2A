@@ -1,11 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import io from "socket.io-client";
 import { getChatHistory } from "../../services/api.service";
-// Import vài icon đẹp từ Ant Design
 import { MessageOutlined, CloseOutlined } from '@ant-design/icons';
 
 const ChatWidget = ({ userId }) => {
-    // STATE MỚI: Dùng để ẩn/hiện khung chat
     const [isOpen, setIsOpen] = useState(false);
 
     const [currentMessage, setCurrentMessage] = useState("");
@@ -25,8 +23,9 @@ const ChatWidget = ({ userId }) => {
         }
     }, [messageList, isOpen]);
 
+
     useEffect(() => {
-        if (!userId) return;
+        if (!userId || !isOpen) return;
 
         socketRef.current = io.connect("http://localhost:3000");
         socketRef.current.emit("join_room", userId);
@@ -41,9 +40,6 @@ const ChatWidget = ({ userId }) => {
 
         const handleReceiveMsg = (data) => {
             setMessageList((list) => [...list, data]);
-
-            // Tùy chọn: Nếu đang tắt khung chat mà có tin nhắn tới thì tự động bật lên
-            // setIsOpen(true); 
         };
         socketRef.current.on("receive_message", handleReceiveMsg);
 
@@ -53,7 +49,7 @@ const ChatWidget = ({ userId }) => {
                 socketRef.current.disconnect();
             }
         };
-    }, [userId]);
+    }, [userId, isOpen]);
 
     const sendMessage = async () => {
         if (currentMessage.trim() !== "" && userId && socketRef.current) {
@@ -70,7 +66,7 @@ const ChatWidget = ({ userId }) => {
 
     return (
         // Wrapper cố định ở góc dưới phải
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end" style={{ fontSize: "15px" }}>
 
             {/* 1. KHUNG CHAT (Chỉ hiện khi isOpen === true) */}
             <div
@@ -78,7 +74,7 @@ const ChatWidget = ({ userId }) => {
             >
                 {/* Header với nút tắt */}
                 <div className="bg-[#f59e0b] text-white p-3 font-bold shadow-sm flex justify-between items-center z-10">
-                    <span>Chat với Admin</span>
+                    <span>Chat với Nhân viên hỗ trợ</span>
                     {/* Nút thu nhỏ (X) */}
                     <button
                         onClick={() => setIsOpen(false)}
@@ -106,17 +102,17 @@ const ChatWidget = ({ userId }) => {
                 </div>
 
                 {/* Ô nhập tin nhắn */}
-                <div className="p-3 bg-white border-t border-gray-100">
-                    <div className="flex items-center gap-2 bg-gray-50 border border-gray-300 rounded-full px-3 py-1 focus-within:border-[#f59e0b] focus-within:bg-white transition shadow-inner">
+                <div className="p-1 bg-white border-t border-gray-100">
+                    <div className="flex items-center bg-gray-50 border border-gray-300 rounded-full px-1 py-1 focus-within:border-[#f59e0b] focus-within:bg-white transition shadow-inner">
                         <input
                             type="text"
-                            className="flex-1 bg-transparent outline-none text-sm py-1"
+                            className="bg-transparent outline-none text-sm py-1"
                             placeholder="Nhập tin nhắn..."
                             value={currentMessage}
                             onChange={(e) => setCurrentMessage(e.target.value)}
                             onKeyPress={(e) => { e.key === "Enter" && sendMessage(); }}
                         />
-                        <button onClick={sendMessage} className="text-[#f59e0b] font-bold hover:text-amber-600 px-2 transition">
+                        <button onClick={sendMessage} className="text-[#f59e0b] font-bold hover:text-amber-600 transition w-1/3 m-0!">
                             Gửi
                         </button>
                     </div>
