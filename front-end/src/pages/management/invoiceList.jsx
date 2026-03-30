@@ -1,30 +1,72 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InvoiceTable from "../../components/invoice/invoiceTable";
 import InvoiceDetail from "../../components/invoice/invoiceDetail";
+import { getMyReceipt } from '../../services/api.service';
+import { message, Spin } from 'antd';
 
 const InvoiceList = () => {
-  const fakeInvoices = [
-    {
-      id: "HD001", customerName: "Nguyễn Văn A", phoneNumber: "09881xxxxx", adress: "Hà Nội, Việt Nam",
-      date: "30/01/2026", total: "2.500.000 VNĐ", status: "Đã thanh toán", paymentMethod: "COD",
-      items: [{ name: "Giày Nike Air Force 1", quantity: 1, price: "2.500.000 VNĐ" }],
-    },
-    {
-      id: "HD002", customerName: "Trần Thị B", phoneNumber: "09776xxxxx", adress: "Hồ Chí Minh, Việt Nam",
-      date: "15/01/2026", total: "5.200.000 VNĐ", status: "Chờ xác nhận", paymentMethod: "COD",
-      items: [
-        { name: "Adidas Ultra Boost", quantity: 1, price: "3.200.000 VNĐ" },
-        { name: "Puma Suede Classic", quantity: 1, price: "2.000.000 VNĐ" },
-      ],
-    },
-    {
-      id: "HD003", customerName: "Lê Hoàng C", phoneNumber: "09661xxxxx", adress: "Đà Nẵng, Việt Nam",
-      date: "02/02/2026", total: "1.800.000 VNĐ", status: "Đang giao hàng", paymentMethod: "COD",
-      items: [{ name: "Biti's Hunter X", quantity: 2, price: "900.000 VNĐ" }],
-    },
-  ];
-
+  const [invoices, setInvoices] = useState([]);
   const [selectedInvoice, setSelectedInvoice] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchInvoices();
+  }, []);
+
+  const fetchInvoices = async () => {
+    try {
+      setLoading(true);
+      const res = await getMyReceipt();
+
+      if (res && res.success) {
+        console.log(res);
+
+        const formattedData = res.data.map(item => ({
+          id: item.orderCode,
+          customerName: item.shippingAddress?.fullName || "Khách ẩn danh",
+          phoneNumber: item.shippingAddress?.phone || "N/A",
+
+          address: item.shippingAddress?.address,
+
+          date: new Date(item.createdAt).toLocaleDateString('vi-VN'),
+
+          total: new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.totalAmount),
+
+          status: getStatusText(item.orderStatus),
+
+          paymentStatus: item.paymentStatus === "Paid" ? "Đã thanh toán" : "Chưa thanh toán",
+
+          paymentMethod: item.paymentMethod,
+
+          items: item.products.map(prod => ({
+            name: prod.nameProduct,
+            quantity: prod.quantity,
+            price: new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(prod.priceAtTime),
+            imgSrc: prod.imgSrc
+          }))
+        }));
+
+        setInvoices(formattedData);
+      } else {
+        message.error("Không thể tải danh sách đơn hàng.");
+      }
+    } catch (error) {
+      message.error("Lỗi kết nối đến máy chủ.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Hàm phụ: Dịch orderStatus (processing, completed...) ra tiếng Việt
+  const getStatusText = (status) => {
+    switch (status) {
+      case 'processing': return "Chờ xác nhận";
+      case 'shipping': return "Đang giao hàng";
+      case 'completed': return "Đã thanh toán";
+      case 'cancelled': return "Đã hủy";
+      default: return "Chờ xác nhận";
+    }
+  };
 
   const handleSelectInvoice = (invoice) => {
     setSelectedInvoice(invoice);
@@ -36,10 +78,14 @@ const InvoiceList = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
+  if (loading) {
+    return <div className="flex justify-center items-center h-screen"><Spin size="large" /></div>;
+  }
+
   return (
-    <div className="w-full bg-gray-50 min-h-screen pt-45 pb-30 px-6">
+    <div className="w-full min-h-screen">
       {!selectedInvoice ? (
-        <InvoiceTable invoices={fakeInvoices} onSelect={handleSelectInvoice} />
+        <InvoiceTable invoices={invoices} onSelect={handleSelectInvoice} />
       ) : (
         <InvoiceDetail invoice={selectedInvoice} onBack={handleBackToList} />
       )}

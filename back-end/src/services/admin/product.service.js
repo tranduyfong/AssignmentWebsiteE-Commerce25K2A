@@ -1,13 +1,14 @@
 const Product = require("../../models/product");
 
-const handleCreateProduct = (nameProduct, priceProduct, imgSrc, sizes) => {
-    if (!nameProduct || !priceProduct || !imgSrc || !sizes) throw new Error("Sản phẩm thiếu thông tin quan trọng !");
+const handleCreateProduct = (nameProduct, priceProduct, imgSrc, sizes, brand) => {
+    if (!nameProduct || !priceProduct || !imgSrc || !sizes || !brand) throw new Error("Sản phẩm thiếu thông tin quan trọng !");
 
     return Product.create({
         nameProduct: nameProduct,
         priceProduct: priceProduct,
         imgSrc: imgSrc,
-        sizes: sizes
+        sizes: sizes,
+        brand: brand
     });
 }
 
@@ -21,14 +22,14 @@ const handleDeleteProduct = async (value) => {
     return result;
 }
 
-const handleUpdateProduct = async (idProduct, nameProduct, priceProduct, imgSrc) => {
+const handleUpdateProduct = async (idProduct, nameProduct, priceProduct, imgSrc, brand, sizes) => {
     if (!idProduct) throw new Error("Không xác định được sản phẩm cần chỉnh sửa !");
 
     if (!nameProduct || priceProduct === undefined || !imgSrc) throw new Error("Sản phẩm thiếu thông tin quan trọng để chỉnh sửa !");
 
     const result = await Product.findByIdAndUpdate(
         idProduct,
-        { nameProduct, priceProduct, imgSrc },
+        { nameProduct, priceProduct, imgSrc, brand, sizes },
         { new: true, runValidators: true }
     );
 
