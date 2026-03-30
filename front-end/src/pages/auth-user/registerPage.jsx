@@ -1,13 +1,25 @@
 import React from 'react';
-import { Button, Card, Form, Input } from 'antd';
+import { Button, Card, Form, Input, notification } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { createUser } from '../../services/api.service';
 
 const RegisterPage = () => {
     const navigate = useNavigate();
 
-    const onFinish = (values) => {
-        alert("Tạo tài khoản thành công");
-        console.log(values);
+    const onFinish = async (values) => {
+        const res = await createUser(values.name, values.email, values.phone, values.password);
+        if (!res.data) {
+            notification.error({
+                message: "Đăng ký thất bại!",
+                description: res.message
+            });
+            return;
+        } else {
+            notification.success({
+                message: "Đăng ký thành công!",
+                description: res.message
+            });
+        }
         navigate('/loginPage');
     };
 
@@ -30,7 +42,17 @@ const RegisterPage = () => {
                             name="name"
                             rules={[{ required: true, message: 'Vui lòng nhập họ và tên' }]}
                         >
-                            <Input placeholder="Họ và tên" size="large" />
+                            <Input placeholder="Ví dụ: Nguyễn Văn A" size="large" />
+                        </Form.Item>
+
+                        <Form.Item
+                            label="Số điện thoại"
+                            name="phone"
+                            rules={[
+                                { required: true, message: 'Vui lòng nhập số điện thoại' },
+                            ]}
+                        >
+                            <Input placeholder="Ví dụ: 0987654321" size="large" />
                         </Form.Item>
 
                         <Form.Item
@@ -41,7 +63,7 @@ const RegisterPage = () => {
                                 { type: 'email', message: 'Email không hợp lệ' }
                             ]}
                         >
-                            <Input placeholder="abc@gmail.com" size="large" />
+                            <Input placeholder="Ví dụ: abc@gmail.com" size="large" />
                         </Form.Item>
 
                         <Form.Item

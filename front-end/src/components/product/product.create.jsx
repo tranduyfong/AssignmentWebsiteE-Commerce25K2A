@@ -1,8 +1,9 @@
-import { Button, Input, notification, Modal, Upload, Form } from "antd";
+import { Button, Input, notification, Modal, Upload, Form, Radio } from "antd";
 import { useState } from "react";
 import { createProduct } from "../../services/api.service";
 import ImgCrop from 'antd-img-crop';
 import { uploadImage } from "../../services/firebase.services";
+import LookingForCreateProduct from "./product.create.lookingfor";
 
 const ProductCreate = (props) => {
     const { loadProduct } = props;
@@ -12,6 +13,7 @@ const ProductCreate = (props) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [fileList, setFileList] = useState([]);
     const [confirmLoading, setConfirmLoading] = useState(false);
+    const [brand, setBrand] = useState("");
     const [sizes, setSizes] = useState([
         { size: "", quantity: "" }
     ]);
@@ -75,11 +77,18 @@ const ProductCreate = (props) => {
                 return;
             }
 
+            if (!brand) {
+                notification.error({
+                    description: "Vui lòng chọn brand!"
+                });
+                return;
+            }
+
             const uploadedUrls = await Promise.all(
                 fileList.map(file => uploadImage(file.originFileObj))
             );
 
-            const res = await createProduct(nameProduct, priceProduct, uploadedUrls, sizes);
+            const res = await createProduct(nameProduct, priceProduct, uploadedUrls, sizes, brand);
             console.log(res);
 
             notification.success({
@@ -92,7 +101,7 @@ const ProductCreate = (props) => {
         } catch (err) {
             notification.error({
                 message: "Upload failed",
-                description: err
+                description: err.message
             });
         } finally {
             setConfirmLoading(false)
@@ -103,15 +112,17 @@ const ProductCreate = (props) => {
         setIsModalOpen(false);
         setNameProduct("");
         setPriceProduct("");
+        setBrand("")
         setSizes([{ size: "", quantity: "" }])
         setFileList([]);
     }
 
     return (
         <>
-            <div style={{ display: "flex", justifyContent: "space-between" }} className="mt-40">
+            <div style={{ display: "flex", justifyContent: "space-between" }} className="mt-40 pl-10 pr-10">
                 <h3 className="font-bold text-2xl">Table Product</h3>
-                <Button type="primary" onClick={() => setIsModalOpen(true)}>Create Product</Button>
+                <LookingForCreateProduct />
+                <Button type="primary" onClick={() => setIsModalOpen(true)} className="w-30!">Create Product</Button>
             </div>
             <Modal
                 title="Create User"
@@ -169,7 +180,19 @@ const ProductCreate = (props) => {
                                 </div>
                             ))}
                         </div>
-
+                        <div className="flex gap-10">
+                            <span>Brand</span>
+                            <Radio.Group
+                                value={brand}
+                                onChange={(e) => setBrand(e.target.value)}
+                                optionType="button"
+                                buttonStyle="solid"
+                            >
+                                <Radio.Button value="nike">Nike</Radio.Button>
+                                <Radio.Button value="adidas">Adidas</Radio.Button>
+                                <Radio.Button value="puma">Puma</Radio.Button>
+                            </Radio.Group>
+                        </div>
                         <div>
                             <span>Them anh</span>
                             <ImgCrop rotationSlider>
