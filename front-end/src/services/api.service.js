@@ -1,17 +1,18 @@
+import tableMessageProduct from "../../utils/mail.product";
 import axios from "./axios.customize";
 
 const getProvince = async () => {
-    const URL_ADDRESS = 'https://provinces.open-api.vn/api/p/';
-    return await axios.get(URL_ADDRESS);
+    const URL_BACKEND = '/address/provinces';
+    return await axios.get(URL_BACKEND);
 }
 
 const getDistrict = async (province_id) => {
-    const URL_ADDRESS = `https://provinces.open-api.vn/api/p/${province_id}?depth=2`;
+    const URL_ADDRESS = `/address/districts/${province_id}`;
     return axios.get(URL_ADDRESS);
 }
 
 const getVillage = async (district_id) => {
-    const URL_ADDRESS = `https://provinces.open-api.vn/api/d/${district_id}?depth=2`;
+    const URL_ADDRESS = `/address/villages/${district_id}`;
     return axios.get(URL_ADDRESS);
 }
 
@@ -83,4 +84,73 @@ const createUser = async (name, email, phone, password) => {
     return axios.post(URL_BACKEND, data);
 }
 
-export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser };
+const getCart = () => {
+    const URL_BACKEND = "/users/cart";
+    return axios.get(URL_BACKEND);
+}
+
+const addToCart = (productId, quantity, size) => {
+    const URL_BACKEND = "/users/cart";
+    const data = {
+        productId: productId,
+        quantity: quantity,
+        size: size
+    }
+    return axios.post(URL_BACKEND, data);
+}
+
+const deleteInCart = async (idCart) => {
+    const URL_BACKEND = `/users/cart/${idCart}`;
+    return axios.delete(URL_BACKEND);
+}
+
+const buyProduct = async (data) => {
+    const URL_BACKEND = "/receipt";
+    console.log(data);
+
+    return axios.post(URL_BACKEND, data);
+}
+
+const getMyReceipt = async () => {
+    const URL_BACKEND = "/receipt/my";
+    return axios.get(URL_BACKEND);
+}
+
+const getVnpayUrl = async (code, amount) => {
+    const URL_BACKEND = "/vnpay";
+    const data = {
+        orderCode: code,
+        amount: amount
+    }
+
+    return axios.post(URL_BACKEND, data);
+}
+
+const verifyVnpay = async (data) => {
+    const URL_BACKEND = `/vnpay?${data}`;
+    return axios.get(URL_BACKEND);
+}
+
+const mailBuyProduct = (payload) => {
+    const URL_BACKEND = "/mail/send";
+
+    const htmlContent = tableMessageProduct(payload);
+
+    const data = {
+        to: payload.email,
+        subject: `[Soccer Beck] Xác nhận đơn hàng #${payload.orderCode}`,
+        content: htmlContent
+    };
+
+    return axios.post(URL_BACKEND, data);
+}
+
+const getChatHistory = async (roomId) => {
+    return axios.get(`/chat/history/${roomId}`);
+};
+
+const getChatRooms = async () => {
+    return axios.get(`/chat/rooms`);
+};
+
+export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser, getCart, addToCart, deleteInCart, buyProduct, getMyReceipt, getVnpayUrl, verifyVnpay, mailBuyProduct, getChatHistory, getChatRooms };

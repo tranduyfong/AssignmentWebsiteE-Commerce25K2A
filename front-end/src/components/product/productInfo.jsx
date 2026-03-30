@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom'
+import { addToCart } from "../../services/api.service";
+import { notification } from "antd";
 const ProductInfo = ({
   current,
   selectedSize,
@@ -18,8 +20,9 @@ const ProductInfo = ({
       return;
     }
     const totalPrice = Number(current.priceProduct) * quantity;
+    const dataSet = { current, selectedSize, quantity }
 
-    navigate("/payment", { state: { current, selectedSize, quantity, totalPrice } })
+    navigate("/payment", { state: { product: dataSet, totalPrice: totalPrice } })
   };
 
   const handleAddToCart = () => {
@@ -27,14 +30,12 @@ const ProductInfo = ({
       alert("Bạn chưa chọn size");
       return;
     }
-    const totalPrice = Number(current.priceProduct) * quantity;
 
-    alert(
-      `Đã thêm vào giỏ hàng thành công!\n` +
-      `- Size: ${selectedSize}\n` +
-      `- Số lượng: ${quantity}\n` +
-      `- Thành tiền: ${totalPrice.toLocaleString("vi-VN")}đ`
-    );
+    addToCart(current._id, quantity, selectedSize);
+    notification.success({
+      message: "Thêm sản phẩm vào giỏ hàng",
+      description: "Thêm sản phẩm vào giỏ hàng thành công!"
+    })
   };
 
   const selectedSizeData = current?.sizes?.find(
