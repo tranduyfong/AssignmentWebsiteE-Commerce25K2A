@@ -1,3 +1,4 @@
+import tableMessageProduct from "../../utils/mail.product";
 import axios from "./axios.customize";
 
 const getProvince = async () => {
@@ -130,4 +131,26 @@ const verifyVnpay = async (data) => {
     return axios.get(URL_BACKEND);
 }
 
-export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser, getCart, addToCart, deleteInCart, buyProduct, getMyReceipt, getVnpayUrl, verifyVnpay };
+const mailBuyProduct = (payload) => {
+    const URL_BACKEND = "/mail/send";
+
+    const htmlContent = tableMessageProduct(payload);
+
+    const data = {
+        to: payload.email,
+        subject: `[Soccer Beck] Xác nhận đơn hàng #${payload.orderCode}`,
+        content: htmlContent
+    };
+
+    return axios.post(URL_BACKEND, data);
+}
+
+const getChatHistory = async (roomId) => {
+    return axios.get(`/chat/history/${roomId}`);
+};
+
+const getChatRooms = async () => {
+    return axios.get(`/chat/rooms`);
+};
+
+export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser, getCart, addToCart, deleteInCart, buyProduct, getMyReceipt, getVnpayUrl, verifyVnpay, mailBuyProduct, getChatHistory, getChatRooms };

@@ -1,17 +1,14 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useRef } from "react";
-import { Dropdown, Space } from "antd";
-import { DownOutlined, HomeOutlined, InfoCircleOutlined, PhoneOutlined, ShopOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+import { HomeOutlined, InfoCircleOutlined, PhoneOutlined, ShopOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import "./css/header.css";
 import useHideOnScroll from "../../hooks/useHideOnScroll";
 import OverHead from "./overhead"
 import { useEffect } from "react";
 import { getMyUser } from "../../services/api.service";
-import { useState } from "react";
 const Header = () => {
     const headerRef = useRef(null);
     useHideOnScroll(headerRef)
-    const [role, setRole] = useState("user");
     useEffect(() => {
         const fetchUser = async () => {
             const token = localStorage.getItem("access_token");
@@ -29,28 +26,6 @@ const Header = () => {
         fetchUser();
     }, []);
 
-    const items = [
-        {
-            key: '/statistical',
-            label: <Link to="statistical">Thống kê</Link>
-        },
-        {
-            key: '/Account-management',
-            label: <Link to="accountmanagement">Quản lý tài khoản</Link>,
-        },
-        {
-            key: '/revenue-and-expenditure-management',
-            label: <Link to="revenue-expenditure">Quản lý thu chi</Link>,
-        },
-        {
-            key: '/product-management',
-            label: <Link to="productmanagement">Quản lý sản phẩm</Link>,
-        },
-        {
-            key: '/receipt-management',
-            label: <Link to="receiptmanagement">Quản lý hóa đơn</Link>,
-        },
-    ];
     return (
         <>
             <div ref={headerRef} className="fixed w-full top-0 z-999 header">
@@ -98,22 +73,6 @@ const Header = () => {
                                 </NavLink>
                             </ul>
                         </div>
-                        {
-                            role == "admin" ? (
-                                <div className="cursor-pointer mt-1">
-                                    <Dropdown menu={{ items }}>
-                                        <a>
-                                            <Space className="manage-income">
-                                                Quản lý & Thống kê
-                                                <DownOutlined />
-                                            </Space>
-                                        </a>
-                                    </Dropdown>
-                                </div>
-                            ) : (
-                                <></>
-                            )
-                        }
                     </header>
                 </div>
             </div>
