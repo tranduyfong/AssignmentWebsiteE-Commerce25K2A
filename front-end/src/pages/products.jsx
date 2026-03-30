@@ -94,8 +94,6 @@ const Product = () => {
 
                             </Panel>
 
-
-
                             <Panel header={<span className="font-semibold">Kích thước</span>} key="3">
                                 <div className="flex flex-wrap gap-2">
                                     {[38, 39, 40, 41, 42, 43, 44].map(size => (
