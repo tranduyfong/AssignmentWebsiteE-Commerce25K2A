@@ -13,20 +13,27 @@ const Product = () => {
 
     useEffect(() => {
         const loadProduct = async () => {
-            const res = await getAllProducts();
-            console.log(res.data);
-            setProducts(res.data)
+            try {
+                const res = await getAllProducts();
+                const actualData = res?.data ? res.data : (Array.isArray(res) ? res : []);
+
+                setProducts(actualData);
+                setFilterProducts(actualData);
+            } catch (error) {
+                console.error("Lỗi fetch API:", error);
+                setFilterProducts([]);
+            }
         }
         loadProduct();
     }, []);
-
 
     const handleFilter = () => {
         const result = products.filter(item => {
             const matchPrice = item.priceProduct >= priceRange[0] && item.priceProduct <= priceRange[1];
 
+            const itemSizes = item.sizes || [];
             const matchSize = selectSize.length === 0 ||
-                (item.sizeProduct && item.sizeProduct.some(s => selectSize.includes(s)));
+                itemSizes.some(s => selectSize.includes(Number(s)));
 
             return matchPrice && matchSize;
         });
@@ -128,31 +135,38 @@ const Product = () => {
                         </button>
                     </div>
                 </Col>
-
                 <Col xs={24} md={18} lg={19}>
                     <Row gutter={[16, 30]}>
-                        {filterProducts?.map((item) => (
-                            <div className="all-product">
-                                <Row className="mb-10" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                                    {products?.map(items => (
-                                        <Col className="gutter-row" span={4} key={items._id}>
-                                            <div className="box">
-                                                <img src={items.imgSrc[0]} alt={items.nameProduct} />
-                                                <div className="inner-content">
-                                                    <p className="inner-title">{items.nameProduct}</p>
-                                                    <p className="inner-price">Giá: {items.priceProduct}</p>
-                                                    <button className="btn-buy">
-                                                        <Link to={`/detail/${items._id}`}>
-                                                            Mua
-                                                        </Link>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </Col>
-                                    ))}
-                                </Row>
+                        {Array.isArray(filterProducts) && filterProducts.length > 0 ? (
+                            filterProducts.map((item) => (
+                                <Col xs={12} sm={8} md={6} key={item._id}>
+                                    <div className="all-product">
+                                        <Row className="mb-10" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                                            {products?.map(items => (
+                                                <Col className="gutter-row" span={4} key={items._id}>
+                                                    <div className="box">
+                                                        <img src={items.imgSrc[0]} alt={items.nameProduct} />
+                                                        <div className="inner-content">
+                                                            <p className="inner-title">{items.nameProduct}</p>
+                                                            <p className="inner-price">Giá: {items.priceProduct}</p>
+                                                            <button className="btn-buy">
+                                                                <Link to={`/detail/${items._id}`}>
+                                                                    Mua
+                                                                </Link>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </Col>
+                                            ))}
+                                        </Row>
+                                    </div>
+                                </Col>
+                            ))
+                        ) : (
+                            <div className="w-full text-center py-10">
+                                Không có sản phẩm nào để hiển thị.
                             </div>
-                        ))}
+                        )}
                     </Row>
                 </Col>
             </Row>
