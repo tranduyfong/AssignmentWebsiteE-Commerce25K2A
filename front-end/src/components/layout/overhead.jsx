@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { getCart, getMyUser } from "../../services/api.service";
-import { getMyUser } from "../../services/api.service";
 import { SearchOutlined } from '@ant-design/icons';
 const OverHead = () => {
   const navigate = useNavigate();
