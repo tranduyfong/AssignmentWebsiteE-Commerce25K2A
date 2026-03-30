@@ -11,9 +11,8 @@ const AdminChat = () => {
 
     const messagesEndRef = useRef(null);
     const socketRef = useRef(null);
-    const currentRoomRef = useRef(null); // 🔥 FIX QUAN TRỌNG
+    const currentRoomRef = useRef(null);
 
-    // ✅ Load danh sách phòng khi vào trang
     useEffect(() => {
         const fetchRooms = async () => {
             const res = await getChatRooms();
@@ -24,25 +23,21 @@ const AdminChat = () => {
         fetchRooms();
     }, []);
 
-    // ✅ Khởi tạo socket + listener
     useEffect(() => {
         socketRef.current = io.connect("http://localhost:3000");
 
-        // Khi reconnect → join lại room
         socketRef.current.on("connect", () => {
             if (currentRoomRef.current) {
                 socketRef.current.emit("join_room", currentRoomRef.current);
             }
         });
 
-        // Nhận tin nhắn
         const handleReceiveMsg = (data) => {
             if (data.roomId === currentRoomRef.current) {
                 setMessages((prev) => [...prev, data]);
             }
         };
 
-        // Update danh sách phòng
         const handleUpdateList = (data) => {
             setChatRooms((prevRooms) => {
                 const roomExists = prevRooms.find(r => r.roomId === data.roomId);
@@ -68,15 +63,13 @@ const AdminChat = () => {
         };
     }, []);
 
-    // ✅ Auto scroll xuống cuối
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
 
-    // ✅ Khi admin chọn room
     const joinRoom = async (roomId) => {
         setCurrentRoom(roomId);
-        currentRoomRef.current = roomId; // 🔥 FIX
+        currentRoomRef.current = roomId;
 
         socketRef.current.emit("join_room", roomId);
 
@@ -88,7 +81,6 @@ const AdminChat = () => {
         }
     };
 
-    // ✅ Gửi tin nhắn
     const sendMessage = async () => {
         if (text.trim() !== "" && currentRoom && socketRef.current) {
             const messageData = {
@@ -106,7 +98,6 @@ const AdminChat = () => {
         <div className="flex h-[calc(100vh-100px)] bg-gray-100 p-6 mt-40">
             <div className="flex w-full max-w-6xl mx-auto bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
 
-                {/* SIDEBAR */}
                 <div className="w-1/3 border-r border-gray-200 bg-gray-50 flex flex-col">
                     <div className="p-4 bg-white border-b font-bold text-lg">
                         Tin nhắn chờ ({chatRooms.length})
@@ -120,7 +111,7 @@ const AdminChat = () => {
                         ) : (
                             chatRooms.map((room) => (
                                 <div
-                                    key={room.roomId} // ✅ FIX key
+                                    key={room.roomId}
                                     onClick={() => joinRoom(room.roomId)}
                                     className={`flex items-center gap-3 p-3 mb-2 rounded-lg cursor-pointer transition 
                                         ${currentRoom === room.roomId
@@ -146,11 +137,9 @@ const AdminChat = () => {
                     </div>
                 </div>
 
-                {/* CHAT BOX */}
                 <div className="w-2/3 flex flex-col bg-white">
                     {currentRoom ? (
                         <>
-                            {/* HEADER */}
                             <div className="p-4 border-b flex items-center gap-3">
                                 <div className="w-10 h-10 bg-[#f59e0b] rounded-full flex items-center justify-center">
                                     <UserOutlined className="text-white text-lg" />
@@ -163,7 +152,6 @@ const AdminChat = () => {
                                 </div>
                             </div>
 
-                            {/* MESSAGES */}
                             <div className="flex-1 p-6 overflow-y-auto bg-gray-50 flex flex-col gap-4">
                                 {messages.map((msg, index) => (
                                     <div
@@ -192,7 +180,6 @@ const AdminChat = () => {
                                 <div ref={messagesEndRef} />
                             </div>
 
-                            {/* INPUT */}
                             <div className="p-4 border-t">
                                 <div className="flex items-center gap-2 bg-gray-50 border rounded-full px-4 py-2">
                                     <input

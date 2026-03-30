@@ -16,7 +16,6 @@ const ChatWidget = ({ userId }) => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
-    // Chỉ cuộn xuống khi khung chat đang mở và có tin nhắn mới
     useEffect(() => {
         if (isOpen) {
             scrollToBottom();
@@ -65,17 +64,13 @@ const ChatWidget = ({ userId }) => {
     };
 
     return (
-        // Wrapper cố định ở góc dưới phải
         <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end" style={{ fontSize: "15px" }}>
 
-            {/* 1. KHUNG CHAT (Chỉ hiện khi isOpen === true) */}
             <div
                 className={`transition-all duration-300 ease-in-out origin-bottom-right ${isOpen ? 'opacity-100 scale-100 mb-4' : 'opacity-0 scale-0 h-0 w-0 mb-0'} w-80 bg-white border border-gray-200 rounded-xl shadow-2xl overflow-hidden flex flex-col`}
             >
-                {/* Header với nút tắt */}
                 <div className="bg-[#f59e0b] text-white p-3 font-bold shadow-sm flex justify-between items-center z-10">
                     <span>Chat với Nhân viên hỗ trợ</span>
-                    {/* Nút thu nhỏ (X) */}
                     <button
                         onClick={() => setIsOpen(false)}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-amber-600 transition"
@@ -84,7 +79,6 @@ const ChatWidget = ({ userId }) => {
                     </button>
                 </div>
 
-                {/* Hiển thị tin nhắn */}
                 <div className="h-72 p-4 overflow-y-auto bg-gray-50 flex flex-col gap-3">
                     {messageList.length === 0 ? (
                         <p className="text-center text-gray-400 text-sm mt-10">Hãy gửi tin nhắn để bắt đầu!</p>
@@ -101,7 +95,6 @@ const ChatWidget = ({ userId }) => {
                     <div ref={messagesEndRef} />
                 </div>
 
-                {/* Ô nhập tin nhắn */}
                 <div className="p-1 bg-white border-t border-gray-100">
                     <div className="flex items-center bg-gray-50 border border-gray-300 rounded-full px-1 py-1 focus-within:border-[#f59e0b] focus-within:bg-white transition shadow-inner">
                         <input
@@ -119,12 +112,10 @@ const ChatWidget = ({ userId }) => {
                 </div>
             </div>
 
-            {/* 2. NÚT BONG BÓNG (Nổi bọt) */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className={`w-14 h-14 rounded-full flex items-center justify-center shadow-xl transition-all duration-300 hover:scale-110 ${isOpen ? 'bg-gray-100 text-gray-500 hover:bg-gray-200' : 'bg-[#f59e0b] text-white hover:bg-amber-600'}`}
             >
-                {/* Đổi icon tùy theo trạng thái mở/đóng */}
                 {isOpen ? <CloseOutlined className="text-xl" /> : <MessageOutlined className="text-2xl" />}
             </button>
         </div>
