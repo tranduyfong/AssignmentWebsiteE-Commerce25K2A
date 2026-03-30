@@ -9,27 +9,37 @@ const Product = () => {
     const [products, setProducts] = useState([]);
     const [filterProducts, setFilterProducts] = useState([]);
     const [priceRange, setPriceRange] = useState([0, 2000000]);
+    const [selectSize, setSelectSize] = useState([]);
 
     useEffect(() => {
         const loadProduct = async () => {
             const res = await getAllProducts();
-            if (res && res.data) {
-                setProducts(res.data);
-                setFilterProducts(res.data);
-            }
-        };
+            console.log(res.data);
+            setProducts(res.data)
+        }
         loadProduct();
     }, []);
 
 
     const handleFilter = () => {
-        const result = products.filter(item =>
-            item.priceProduct >= priceRange[0] &&
-            item.priceProduct <= priceRange[1]
-        );
+        const result = products.filter(item => {
+            const matchPrice = item.priceProduct >= priceRange[0] && item.priceProduct <= priceRange[1];
+
+            const matchSize = selectSize.length === 0 ||
+                (item.sizeProduct && item.sizeProduct.some(s => selectSize.includes(s)));
+
+            return matchPrice && matchSize;
+        });
         setFilterProducts(result);
     };
 
+    const toggleSize = (size) => {
+        if (selectSize.includes(size)) {
+            setSelectSize(selectSize.filter(s => s !== size));
+        } else {
+            setSelectSize([...selectSize, size]);
+        }
+    };
     return (
         <div className="mt-40 px-[30px] mb-20">
             <div className="flex justify-center items-center uppercase font-bold text-2xl mb-5">
@@ -80,27 +90,26 @@ const Product = () => {
 
 
                             <Panel header={<span className="font-semibold">Kích thước</span>} key="3">
-
                                 <div className="flex flex-wrap gap-2">
-
                                     {[38, 39, 40, 41, 42, 43, 44].map(size => (
-
-                                        <div key={size} className="border px-2 py-1 text-xs cursor-pointer ">
-
+                                        <div
+                                            key={size}
+                                            onClick={() => toggleSize(size)}
+                                            className={`border px-3 py-1 text-xs cursor-pointer transition-all ${selectSize.includes(size)
+                                                ? "border-black bg-black text-white"
+                                                : "border-gray-300 hover:border-black"
+                                                }`}
+                                        >
                                             {size}
-
                                         </div>
-
                                     ))}
-
                                 </div>
-
                             </Panel>
                             <Panel header={<span className="font-semibold">Khoảng giá (đ)</span>} key="4">
                                 <Slider
                                     range
-                                    step={50000}
-                                    max={3000000}
+                                    step={500000}
+                                    max={10000000}
                                     value={priceRange}
                                     onChange={(val) => setPriceRange(val)}
                                 />
@@ -123,33 +132,26 @@ const Product = () => {
                 <Col xs={24} md={18} lg={19}>
                     <Row gutter={[16, 30]}>
                         {filterProducts?.map((item) => (
-                            <Col key={item._id} xs={24} sm={12} md={12} lg={6}>
-                                <div className="h-full flex flex-col bg-white shadow-md hover:shadow-2xl duration-300 rounded-lg border border-gray-100 group">
-                                    <div className="aspect-square overflow-hidden rounded-t-lg">
-                                        <img
-                                            src={item.imgSrc && item.imgSrc[0]}
-                                            alt={item.nameProduct}
-                                            className="w-full h-full object-cover group-hover:scale-110 duration-500"
-                                        />
-                                    </div>
-
-                                    <div className="p-3 flex flex-col flex-grow">
-                                        <div className="text-[15px] font-bold text-gray-800 line-clamp-2 h-10 mb-2 leading-tight">
-                                            {item.nameProduct}
-                                        </div>
-                                        <div className="mt-auto">
-                                            <div className="text-[16px] font-bold text-red-600 mb-3">
-                                                {item.priceProduct?.toLocaleString()}đ
+                            <div className="all-product">
+                                <Row className="mb-10" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                                    {products?.map(items => (
+                                        <Col className="gutter-row" span={4} key={items._id}>
+                                            <div className="box">
+                                                <img src={items.imgSrc[0]} alt={items.nameProduct} />
+                                                <div className="inner-content">
+                                                    <p className="inner-title">{items.nameProduct}</p>
+                                                    <p className="inner-price">Giá: {items.priceProduct}</p>
+                                                    <button className="btn-buy">
+                                                        <Link to={`/detail/${items._id}`}>
+                                                            Mua
+                                                        </Link>
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <Link to={`/detail/${item._id}`}>
-                                                <button className="w-full py-2 bg-[#FECD4C] hover:bg-gray-800 hover:text-white font-bold transition-all duration-300 rounded uppercase text-[11px]">
-                                                    Mua
-                                                </button>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Col>
+                                        </Col>
+                                    ))}
+                                </Row>
+                            </div>
                         ))}
                     </Row>
                 </Col>
