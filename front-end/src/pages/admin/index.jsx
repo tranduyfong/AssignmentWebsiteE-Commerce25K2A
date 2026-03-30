@@ -1,9 +1,10 @@
 import { Outlet, NavLink } from "react-router-dom";
-import { LayoutDashboard, Package, Users, ShoppingCart, LogOut, } from "lucide-react";
+import { LayoutDashboard, Package, Users, ShoppingCart, LogOut, MessageCircle, } from "lucide-react";
 
 const AdminLayout = () => {
   const menuItems = [
     { path: "/admin", name: "Dashboard", icon: <LayoutDashboard size={20} /> },
+    { path: "/admin/chat", name: "Chăm sóc khách hàng", icon: <MessageCircle /> },
     { path: "/admin/products", name: "Quản lý sản phẩm", icon: <Package size={20} /> },
     { path: "/admin/users", name: "Quản lý user", icon: <Users size={20} /> },
     { path: "/admin/orders", name: "Đơn hàng", icon: <ShoppingCart size={20} /> },
@@ -11,7 +12,7 @@ const AdminLayout = () => {
 
   return (
     <div className="min-h-screen flex bg-gray-50 font-sans text-gray-900">
-      
+
       {/* SIDEBAR */}
       <aside className="w-72 bg-white border-r border-gray-200 flex flex-col sticky top-0 h-screen">
         <div className="p-6 flex items-center gap-3">
@@ -27,10 +28,9 @@ const AdminLayout = () => {
               key={item.path}
               to={item.path}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
-                  isActive 
-                    ? "bg-indigo-50 text-indigo-700 font-semibold" 
-                    : "text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+                `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${isActive
+                  ? "bg-indigo-50 text-indigo-700 font-semibold"
+                  : "text-gray-500 hover:bg-gray-100 hover:text-gray-900"
                 }`
               }
             >
@@ -50,7 +50,7 @@ const AdminLayout = () => {
 
       {/* MAIN AREA */}
       <div className="flex-1 flex flex-col">
-        
+
         {/* HEADER */}
         <header className="h-20 bg-white/80 backdrop-blur-md border-b border-gray-200 flex items-center justify-between px-8 sticky top-0 z-10">
           <h2 className="text-xl font-semibold text-gray-800">Hệ thống quản trị</h2>
@@ -59,7 +59,7 @@ const AdminLayout = () => {
         {/* CONTENT AREA */}
         <main className="p-8 max-w-7xl mx-auto w-full">
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-             <Outlet />
+            <Outlet />
           </div>
         </main>
       </div>
