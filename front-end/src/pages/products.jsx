@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Col, Row, Checkbox, Slider, Space, Collapse, Divider } from 'antd';
+import { Col, Row, Checkbox, Slider, Space, Collapse, Divider, Skeleton } from 'antd';
 import { Link } from 'react-router-dom';
 import { getAllProducts } from "../services/api.service";
 import "./css/home.css";
@@ -10,9 +10,12 @@ const Product = () => {
     const [priceRange, setPriceRange] = useState([0, 2000000]);
     const [selectedBrands, setSelectedBrands] = useState([]);
     const [selectedSizes, setSelectedSizes] = useState([]);
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         const loadProduct = async () => {
+            setLoading(true);
             try {
                 const res = await getAllProducts();
                 const actualData = res?.data ? res.data : (Array.isArray(res) ? res : []);
@@ -22,6 +25,8 @@ const Product = () => {
             } catch (error) {
                 console.error("Lỗi fetch API:", error);
                 setFilterProducts([]);
+            } finally {
+                setLoading(false);
             }
         }
         loadProduct();
@@ -59,7 +64,7 @@ const Product = () => {
         <>
             <div className="mt-30 px-[30px] mb-20 ">
                 <div className="flex justify-center items-center uppercase font-bold text-2xl mb-5">
-                    Sản phẩm
+                    TÌM ĐƯỢC {filterProducts.length} SẢN PHẨM
                 </div>
                 <Row gutter={[24, 24]}>
                     <Col xs={24} md={6} lg={5}>
@@ -118,63 +123,74 @@ const Product = () => {
                     </Col>
 
                     <Col xs={24} md={18} lg={19} className='all-product'>
-                        <Row gutter={[16, 30]}>
-                            {filterProducts?.map((items) => (
-                                <Col className="gutter-row mb-5" span={4} key={items._id}>
-                                    <Link to={`/detail/${items._id}`}>
-                                        <div className="box w-full">
-                                            <div class="img-wrapper">
-                                                <img src={items.imgSrc[0]} alt={items.nameProduct} />
-                                            </div>
-                                            <div className="flex flex-col text-center grow bg-white w-full inner-content">
-                                                <p className="font-semibold text-black " style={{ fontSize: "17px" }}>
-                                                    Mã SP: {items._id.slice(-8).toUpperCase()}
-                                                </p>
-                                                <p className="font-bold text-red-600">
-                                                    {formatPrice(items.priceProduct)}
-                                                </p>
-                                                <p className="font-bold text-black mb-2 uppercase" style={{ fontSize: "17px" }}>
-                                                    {items.sizes?.some(s => s.quantity > 0) ? (
-                                                        <p className="font-bold mb-2 uppercase" style={{ fontSize: "17px" }}>
-                                                            Hàng có sẵn
-                                                        </p>
-                                                    ) : (
-                                                        <p className="font-bold text-gray-500 mb-2 uppercase" style={{ fontSize: "17px" }}>
-                                                            Hết hàng
-                                                        </p>
-                                                    )}
-                                                </p>
-                                                <div className="flex flex-wrap justify-center gap-2 mb-2" style={{ fontSize: "15px" }}>
-                                                    {items.sizes && items.sizes.length > 0 ? (
-                                                        items.sizes.map((s, index) => (
-                                                            <span
-                                                                key={s._id || index}
-                                                                className={`font-bold ${s.quantity > 0
-                                                                    ? "text-black" // Còn hàng: Màu đen
-                                                                    : "text-gray-300 line-through cursor-not-allowed" // Hết hàng: Màu xám nhạt và gạch ngang
-                                                                    }`}
-                                                            >
-                                                                {s.size}
-                                                            </span>
-                                                        ))
-                                                    ) : (
-                                                        // Fallback: Nếu dữ liệu lỗi hoặc chưa có mảng sizes, hiển thị mặc định
-                                                        <span className="font-bold text-black">38 39 40 41 42 43 44</span>
-                                                    )}
-                                                </div>
-                                                <p className="text-sm text-black font-light line-clamp-2 mt-auto hover:font-semibold" style={{ fontSize: "15px" }}>
-                                                    {items.nameProduct}
-                                                </p>
-                                                <Link to={`/detail/${items._id}`} className='w-full block'>
-                                                    <button className="w-full py-2 bg-[#FECD4C] hover:bg-gray-800 hover:text-white font-bold transition-all duration-300 rounded uppercase text-[11px] text-black btn-buy">
-                                                        Mua
-                                                    </button>
-                                                </Link>
-                                            </div>
+                        <Row className="mb-10" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                            {/* HIỆU ỨNG CHỜ: Hiển thị 6 khung Skeleton nếu đang loading */}
+                            {loading ? (
+                                Array.from({ length: 6 }).map((_, idx) => (
+                                    <Col className="gutter-row mb-5" span={4} key={idx}>
+                                        <div className="box p-3 border rounded-lg bg-white h-full">
+                                            <Skeleton.Image active className="w-full! h-40! mb-4" />
+                                            <Skeleton active paragraph={{ rows: 3 }} title={false} />
                                         </div>
-                                    </Link>
-                                </Col>
-                            ))}
+                                    </Col>
+                                ))
+                            ) : (
+                                filterProducts?.map(items => (
+                                    <Col className="gutter-row mb-5" span={4} key={items._id}>
+                                        <Link to={`/detail/${items._id}`}>
+                                            <div className="box h-full flex flex-col">
+                                                <div className="img-wrapper w-full aspect-square bg-gray-100 relative overflow-hidden">
+                                                    <img
+                                                        src={items.imgSrc[0]}
+                                                        alt={items.nameProduct}
+                                                        className="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-300"
+                                                        loading="lazy"
+                                                    />
+                                                </div>
+
+                                                <div className="flex flex-col items-center text-center grow bg-white p-2">
+                                                    <p className="font-semibold text-black" style={{ fontSize: "17px" }}>
+                                                        Mã SP: {items._id.slice(-8).toUpperCase()}
+                                                    </p>
+                                                    <p className="font-bold text-red-600">
+                                                        {formatPrice(items.priceProduct)}
+                                                    </p>
+
+                                                    <div className="font-bold mb-2 uppercase" style={{ fontSize: "17px" }}>
+                                                        {items.sizes?.some(s => s.quantity > 0) ? (
+                                                            <span className="text-black">Hàng có sẵn</span>
+                                                        ) : (
+                                                            <span className="text-gray-500">Hết hàng</span>
+                                                        )}
+                                                    </div>
+
+                                                    <div className="flex flex-wrap justify-center gap-2 mb-2" style={{ fontSize: "15px" }}>
+                                                        {items.sizes && items.sizes.length > 0 ? (
+                                                            items.sizes.map((s, index) => (
+                                                                <span
+                                                                    key={s._id || index}
+                                                                    className={`font-bold ${s.quantity > 0
+                                                                        ? "text-black"
+                                                                        : "text-gray-300 line-through cursor-not-allowed"
+                                                                        }`}
+                                                                >
+                                                                    {s.size}
+                                                                </span>
+                                                            ))
+                                                        ) : (
+                                                            <span className="font-bold text-black">38 39 40 41 42 43 44</span>
+                                                        )}
+                                                    </div>
+
+                                                    <p className="text-sm text-black font-light line-clamp-2 mt-auto hover:font-semibold" style={{ fontSize: "15px" }}>
+                                                        {items.nameProduct}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </Col>
+                                ))
+                            )}
                         </Row>
                     </Col>
 

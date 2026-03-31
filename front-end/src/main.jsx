@@ -23,7 +23,7 @@ import SearchPage from "./pages/search/searchPage.jsx";
 import WarrantyPolicy from "./pages/warranty.policy.jsx";
 import ReturnPolicy from "./pages/return.policy.jsx";
 import ShoppingGuide from "./pages/shopping.guide.jsx";
-import { requireAuthLoader } from "../utils/auth.js";
+import { requireAdminLoader, requireAuthLoader } from "../utils/auth.js";
 import VnpayReturn from "./components/vnpay/return.vnpay.jsx";
 import AdminLayout from "./pages/admin/index.jsx";
 import AdminChat from "./pages/admin/chat.admin.jsx";
@@ -63,6 +63,7 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <AdminLayout />,
+    loader: requireAdminLoader,
     children: [
       { path: "/admin", element: <AdminDashBoard /> },
       { path: "/admin/chat", element: <AdminChat /> },

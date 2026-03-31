@@ -1,7 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 import io from "socket.io-client";
 import { UserOutlined, SendOutlined } from '@ant-design/icons';
+import { Layout, List, Avatar, Input, Button, Typography, Empty, Badge } from "antd";
 import { getChatHistory, getChatRooms } from "../../services/api.service";
+
+const { Sider, Content } = Layout;
+const { Text } = Typography;
 
 const AdminChat = () => {
     const [chatRooms, setChatRooms] = useState([]);
@@ -41,7 +45,6 @@ const AdminChat = () => {
         const handleUpdateList = (data) => {
             setChatRooms((prevRooms) => {
                 const roomExists = prevRooms.find(r => r.roomId === data.roomId);
-
                 if (roomExists) {
                     const filtered = prevRooms.filter(r => r.roomId !== data.roomId);
                     return [{ roomId: data.roomId, lastMessage: data.text }, ...filtered];
@@ -93,122 +96,126 @@ const AdminChat = () => {
             setText("");
         }
     };
-
     return (
-        <div className="flex h-screen bg-gray-100 p-6">
-            <div className="flex w-screen max-w-6xl bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
-
-                <div className="w-1/3 border-r border-gray-200 bg-gray-50 flex flex-col">
-                    <div className="p-4 bg-white border-b font-bold text-lg">
+        <div style={{ padding: '24px', height: '80vh', backgroundColor: '#f5f5f5' }}>
+            <Layout
+                style={{
+                    maxWidth: '1200px',
+                    height: '100%',
+                    margin: '0 auto',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                    border: '1px solid #f0f0f0',
+                    boxShadow: '0 1px 2px rgba(0,0,0,0.05)'
+                }}
+            >
+                <Sider width={320} theme="light" style={{ borderRight: '1px solid #f0f0f0', display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ padding: '16px', borderBottom: '1px solid #f0f0f0', fontWeight: 'bold', fontSize: '16px' }}>
                         Tin nhắn chờ ({chatRooms.length})
                     </div>
 
-                    <div className="overflow-y-auto flex-1 p-2">
-                        {chatRooms.length === 0 ? (
-                            <p className="text-center text-gray-400 mt-10 text-sm">
-                                Chưa có tin nhắn nào
-                            </p>
-                        ) : (
-                            chatRooms.map((room) => (
-                                <div
-                                    key={room.roomId}
+                    <div style={{ flex: 1, overflowY: 'auto' }}>
+                        <List
+                            itemLayout="horizontal"
+                            dataSource={chatRooms}
+                            locale={{ emptyText: <Empty description="Chưa có tin nhắn nào" image={Empty.PRESENTED_IMAGE_SIMPLE} /> }}
+                            renderItem={(room) => (
+                                <List.Item
                                     onClick={() => joinRoom(room.roomId)}
-                                    className={`flex items-center gap-3 p-3 mb-2 rounded-lg cursor-pointer transition 
-                                        ${currentRoom === room.roomId
-                                            ? 'bg-blue-100 border-blue-300'
-                                            : 'bg-white hover:bg-gray-100'
-                                        }`}
+                                    style={{
+                                        padding: '12px 16px',
+                                        cursor: 'pointer',
+                                        backgroundColor: currentRoom === room.roomId ? '#e6f4ff' : 'transparent',
+                                        borderBottom: '1px solid #f0f0f0',
+                                        transition: 'background-color 0.2s'
+                                    }}
                                 >
-                                    <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-                                        <UserOutlined className="text-white text-lg" />
-                                    </div>
-
-                                    <div className="flex-1 min-w-0">
-                                        <p className="font-bold text-sm truncate">
-                                            Khách #{room.roomId.slice(-6)}
-                                        </p>
-                                        <p className="text-xs text-gray-500 truncate">
-                                            {room.lastMessage}
-                                        </p>
-                                    </div>
-                                </div>
-                            ))
-                        )}
+                                    <List.Item.Meta
+                                        avatar={<Avatar size="large" icon={<UserOutlined />} />}
+                                        title={<Text strong>Khách #{room.roomId.slice(-6)}</Text>}
+                                        description={<Text type="secondary" ellipsis>{room.lastMessage}</Text>}
+                                    />
+                                </List.Item>
+                            )}
+                        />
                     </div>
-                </div>
+                </Sider>
 
-                <div className="w-2/3 flex flex-col bg-white">
+                {/* KHU VỰC CHAT CHÍNH */}
+                <Content style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#fff' }}>
                     {currentRoom ? (
                         <>
-                            <div className="p-4 border-b flex items-center gap-3">
-                                <div className="w-10 h-10 bg-[#f59e0b] rounded-full flex items-center justify-center">
-                                    <UserOutlined className="text-white text-lg" />
-                                </div>
+                            {/* Header phòng chat */}
+                            <div style={{ padding: '16px', borderBottom: '1px solid #f0f0f0', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                <Badge dot status="success" offset={[-4, 30]}>
+                                    <Avatar size="large" style={{ backgroundColor: '#f59e0b' }} icon={<UserOutlined />} />
+                                </Badge>
                                 <div>
-                                    <p className="font-bold">
-                                        Khách #{currentRoom.slice(-6)}
-                                    </p>
-                                    <p className="text-xs text-green-500">● Đang hoạt động</p>
+                                    <div style={{ fontWeight: 'bold' }}>Khách #{currentRoom.slice(-6)}</div>
+                                    <div style={{ fontSize: '12px', color: '#52c41a' }}>Đang hoạt động</div>
                                 </div>
                             </div>
 
-                            <div className="flex-1 p-6 overflow-y-auto bg-gray-50 flex flex-col gap-4">
+                            {/* Danh sách tin nhắn */}
+                            <div style={{ flex: 1, padding: '24px', overflowY: 'auto', backgroundColor: '#fafafa' }}>
                                 {messages.map((msg, index) => (
                                     <div
                                         key={index}
-                                        className={`flex flex-col max-w-[70%] 
-                                            ${msg.senderType === "admin"
-                                                ? "self-end items-end"
-                                                : "self-start items-start"
-                                            }`}
+                                        style={{
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            alignItems: msg.senderType === "admin" ? "flex-end" : "flex-start",
+                                            marginBottom: '16px'
+                                        }}
                                     >
                                         <div
-                                            className={`px-4 py-2 rounded-2xl text-sm 
-                                                ${msg.senderType === "admin"
-                                                    ? "bg-blue-600 text-white"
-                                                    : "bg-white border"
-                                                }`}
+                                            style={{
+                                                maxWidth: '70%',
+                                                padding: '10px 16px',
+                                                borderRadius: '16px',
+                                                backgroundColor: msg.senderType === "admin" ? "#1677ff" : "#fff",
+                                                color: msg.senderType === "admin" ? "#fff" : "#000",
+                                                border: msg.senderType === "admin" ? "none" : "1px solid #d9d9d9",
+                                                wordWrap: 'break-word'
+                                            }}
                                         >
                                             {msg.text}
                                         </div>
-
-                                        <span className="text-[10px] text-gray-400 mt-1">
+                                        <Text style={{ fontSize: '11px', marginTop: '4px' }} type="secondary">
                                             {msg.senderType === "admin" ? "Bạn" : "Khách hàng"}
-                                        </span>
+                                        </Text>
                                     </div>
                                 ))}
                                 <div ref={messagesEndRef} />
                             </div>
 
-                            <div className="p-4 border-t">
-                                <div className="flex items-center gap-2 bg-gray-50 border rounded-full px-4 py-2">
-                                    <input
-                                        type="text"
-                                        className="flex-1 bg-transparent outline-none text-sm"
-                                        placeholder="Nhập tin nhắn..."
-                                        value={text}
-                                        onChange={(e) => setText(e.target.value)}
-                                        onKeyDown={(e) => {
-                                            if (e.key === "Enter") sendMessage();
-                                        }}
-                                    />
-                                    <button
-                                        onClick={sendMessage}
-                                        className="w-8 h-8 flex items-center justify-center bg-blue-600 text-white rounded-full"
-                                    >
-                                        <SendOutlined />
-                                    </button>
-                                </div>
+                            {/* Input gửi tin nhắn */}
+                            <div style={{ padding: '16px', borderTop: '1px solid #f0f0f0', backgroundColor: '#fff' }}>
+                                <Input
+                                    size="large"
+                                    placeholder="Nhập tin nhắn..."
+                                    value={text}
+                                    onChange={(e) => setText(e.target.value)}
+                                    onPressEnter={sendMessage}
+                                    style={{ borderRadius: '24px' }}
+                                    suffix={
+                                        <Button
+                                            type="primary"
+                                            shape="circle"
+                                            icon={<SendOutlined />}
+                                            onClick={sendMessage}
+                                        />
+                                    }
+                                />
                             </div>
                         </>
                     ) : (
-                        <div className="flex-1 flex items-center justify-center text-gray-400">
-                            Chọn khách để chat
+                        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Empty description="Chọn khách để chat" image={Empty.PRESENTED_IMAGE_SIMPLE} />
                         </div>
                     )}
-                </div>
-
-            </div>
+                </Content>
+            </Layout>
         </div>
     );
 };

@@ -49,12 +49,11 @@ const DetailProduct = () => {
   };
 
   return (
-    <div className="w-full bg-white min-h-screen pb-20 pt-40 font-sans text-gray-800">
+    <div className="w-full bg-white min-h-screen pb-20 mt-30 font-sans text-gray-800">
 
       <div className="border-b border-gray-200">
         <div className="max-w-7xl w-full mx-auto px-4 py-3 text-sm text-gray-500">
           <span>Trang chủ</span> <span className="mx-2">|</span>
-          <span>Bộ Sưu Tập Adidas Predator 26</span> <span className="mx-2">|</span>
           <span className="text-yellow-600 font-medium">{current.nameProduct}</span>
         </div>
       </div>

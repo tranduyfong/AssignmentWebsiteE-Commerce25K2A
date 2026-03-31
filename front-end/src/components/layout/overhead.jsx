@@ -82,11 +82,11 @@ const OverHead = () => {
         </div>
         <div className="flex-1 flex items-center justify-center px-4 ml-15">
           <nav className="flex items-center gap-10 text-[14px] text-gray-800 font-semibold" style={{ fontSize: "17px" }}>
-            <Link to="/" className="hover:text-black transition-colors">TRANG CHỦ</Link>
-            <Link to="/products" className="hover:text-black transition-colors">SẢN PHẨM</Link>
-            <Link to="/intro" className="hover:text-black transition-colors">GIỚI THIỆU</Link>
-            <Link to="/contact" className="hover:text-black transition-colors">LIÊN HỆ</Link>
-            <Link to="/checkcart" className="hover:text-black transition-colors">KIỂM TRA ĐƠN HÀNG</Link>
+            <Link to="/" className="hover:text-[#febb0a] duration-300 transition-colors">TRANG CHỦ</Link>
+            <Link to="/products" className="hover:text-[#febb0a] duration-300 transition-colors">SẢN PHẨM</Link>
+            <Link to="/intro" className="hover:text-[#febb0a] duration-300 transition-colors">GIỚI THIỆU</Link>
+            <Link to="/contact" className="hover:text-[#febb0a] duration-300 transition-colors">LIÊN HỆ</Link>
+            <Link to="/checkcart" className="hover:text-[#febb0a] duration-300 transition-colors">KIỂM TRA ĐƠN HÀNG</Link>
           </nav>
         </div>
 

@@ -114,7 +114,7 @@ const AdminDashboard = () => {
       <div className="flex justify-between items-center mb-6">
         <Title level={3} style={{ margin: 0 }}>Doanh thu bán hàng</Title>
         <div className="flex gap-3">
-          <RangePicker format="DD/MM/YYYY" onChange={(dates) => setDateRange(dates)} />
+          <RangePicker format="DD/MM/YYYY" onChange={(dates) => setDateRange(dates)} placeholder={["Từ ngày", "Đến ngày"]} />
         </div>
       </div>
 
