@@ -12,7 +12,7 @@ const DeleteProduct = (props) => {
             if (res.data) {
                 if (dataLink.imgSrc?.length) {
                     deleteManyImage(dataLink.imgSrc)
-                        .catch(err => console.log("Delete image error:", err));
+                        .catch(err => console.log("Lỗi xóa ảnh sản phẩm:", err));
                 }
 
                 notification.success({
@@ -39,8 +39,10 @@ const DeleteProduct = (props) => {
     return (
         <>
             <Modal
-                title="Title"
+                title="Xóa sản phẩm"
                 onOk={handleOk}
+                okText="Xóa"
+                cancelText="Hủy bỏ"
                 open={modalDelete}
                 onCancel={handleCancel}
             >

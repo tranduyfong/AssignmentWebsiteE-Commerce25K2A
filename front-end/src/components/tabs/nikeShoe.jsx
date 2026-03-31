@@ -72,8 +72,8 @@ const NikeShoe = () => {
               </Link>
             </Col>
           ))}
-        </Row>
-      </div>
+        </Row >
+      </div >
     </>
   )
 }

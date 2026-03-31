@@ -72,6 +72,11 @@ const AllProducts = () => {
           ))}
         </Row>
       </div>
+      <div>
+        <Link to={"/products"} className="view-all-products">
+          Xem tất cả sản phẩm
+        </Link>
+      </div>
     </>
   )
 }

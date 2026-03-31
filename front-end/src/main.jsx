@@ -28,6 +28,8 @@ import VnpayReturn from "./components/vnpay/return.vnpay.jsx";
 import AdminLayout from "./pages/admin/index.jsx";
 import AdminChat from "./pages/admin/chat.admin.jsx";
 import OrderManagement from "./pages/admin/orderManagement.jsx";
+import AdminDashBoard from "./pages/admin/dashBoard.admin.jsx";
+import ProductAdmin from "./pages/admin/product.admin.jsx";
 
 const router = createBrowserRouter([
   {
@@ -62,8 +64,10 @@ const router = createBrowserRouter([
     path: "/admin",
     element: <AdminLayout />,
     children: [
+      { path: "/admin", element: <AdminDashBoard /> },
       { path: "/admin/chat", element: <AdminChat /> },
       { path: "/admin/orders", element: <OrderManagement /> },
+      { path: "/admin/products", element: <ProductAdmin /> }
     ]
   },
   {

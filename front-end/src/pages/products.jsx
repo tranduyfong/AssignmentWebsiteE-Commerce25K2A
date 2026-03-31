@@ -13,12 +13,17 @@ const Product = () => {
 
     useEffect(() => {
         const loadProduct = async () => {
-            const res = await getAllProducts();
-            if (res && res.data) {
-                setProducts(res.data);
-                setFilterProducts(res.data);
+            try {
+                const res = await getAllProducts();
+                const actualData = res?.data ? res.data : (Array.isArray(res) ? res : []);
+
+                setProducts(actualData);
+                setFilterProducts(actualData);
+            } catch (error) {
+                console.error("Lỗi fetch API:", error);
+                setFilterProducts([]);
             }
-        };
+        }
         loadProduct();
     }, []);
 
@@ -52,14 +57,7 @@ const Product = () => {
     };
     return (
         <>
-            <div className='mt-40 w-2/3 m-auto text-gray-500'>
-                <div className='flex'>
-                    <Link to="/">Trang chủ | </Link>
-                    <Link className='ml-1 text-amber-400 font-semibold'>Sản phẩm</Link>
-                </div>
-                <Divider className='mt-3!' />
-            </div>
-            <div className="px-[30px] mb-20 ">
+            <div className="mt-30 px-[30px] mb-20 ">
                 <div className="flex justify-center items-center uppercase font-bold text-2xl mb-5">
                     Sản phẩm
                 </div>
