@@ -13,12 +13,12 @@ const ProductTable = (props) => {
 
     const columns = [
         {
-            title: 'Id',
+            title: 'Mã sản phẩm',
             dataIndex: '_id',
             key: '_id',
         },
         {
-            title: 'Image',
+            title: 'Hình ảnh',
             dataIndex: 'imgSrc',
             render: (_, record) => {
                 return (
@@ -29,15 +29,15 @@ const ProductTable = (props) => {
             }
         },
         {
-            title: 'Name',
+            title: 'Tên sản phẩm',
             dataIndex: 'nameProduct',
         },
         {
-            title: 'Price',
+            title: 'Giá',
             dataIndex: 'priceProduct',
         },
         {
-            title: 'Action',
+            title: 'Chức năng',
             key: 'action',
             render: (_, record) => (
                 <>

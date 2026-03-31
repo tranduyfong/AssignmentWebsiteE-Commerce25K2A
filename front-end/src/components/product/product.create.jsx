@@ -6,7 +6,7 @@ import { uploadImage } from "../../services/firebase.services";
 import LookingForCreateProduct from "./product.create.lookingfor";
 
 const ProductCreate = (props) => {
-    const { loadProduct } = props;
+    const { values, setValues, loadProduct } = props;
 
     const [nameProduct, setNameProduct] = useState("");
     const [priceProduct, setPriceProduct] = useState("");
@@ -56,9 +56,27 @@ const ProductCreate = (props) => {
 
     // Submit after press OK
     const handleSubmitButton = async () => {
-        console.log([nameProduct, priceProduct, sizes])
         try {
             setConfirmLoading(true);
+
+            if (!nameProduct.trim()) {
+                notification.error({
+                    description: "Vui lòng nhập tên sản phẩm!"
+                });
+                return;
+            }
+            if (!priceProduct || isNaN(priceProduct)) {
+                notification.error({
+                    description: "Giá sản phẩm không hợp lệ!"
+                });
+                return;
+            }
+            if (fileList.length === 0) {
+                notification.error({
+                    description: "Vui lòng upload ít nhất 1 ảnh!"
+                });
+                return;
+            }
 
             const sizeList = sizes.map(s => s.size.trim().toLowerCase());
             const quantityList = sizes.map(q => q.quantity.trim().toLowerCase());
@@ -92,7 +110,7 @@ const ProductCreate = (props) => {
             console.log(res);
 
             notification.success({
-                message: "Create success"
+                message: "Thêm mới sản phẩm thành công!"
             });
 
             resetAndCloseModal();
@@ -100,7 +118,7 @@ const ProductCreate = (props) => {
 
         } catch (err) {
             notification.error({
-                message: "Upload failed",
+                message: "Lỗi thêm mới sản phẩm!",
                 description: err.message
             });
         } finally {
@@ -119,34 +137,34 @@ const ProductCreate = (props) => {
 
     return (
         <>
-            <div style={{ display: "flex", justifyContent: "space-between" }} className="mt-40 pl-10 pr-10">
-                <h3 className="font-bold text-2xl">Table Product</h3>
-                <LookingForCreateProduct />
-                <Button type="primary" onClick={() => setIsModalOpen(true)} className="w-30!">Create Product</Button>
+            <div style={{ display: "flex", justifyContent: "space-between" }} className="mb-5">
+                <LookingForCreateProduct values={values} setValues={setValues} />
+                <Button type="primary" onClick={() => setIsModalOpen(true)} className="w-35">Thêm sản phẩm mới</Button>
             </div>
             <Modal
-                title="Create User"
+                title="Thêm sản phẩm mới"
                 closable={{ 'aria-label': 'Custom Close Button' }}
                 open={isModalOpen}
                 onOk={() => handleSubmitButton()}
                 onCancel={() => resetAndCloseModal()}
                 maskClosable={false}
                 confirmLoading={confirmLoading}
-                okText={"CREATE"}
+                okText={"Thêm"}
+                cancelText="Hủy bỏ"
             >
                 <Form className="user-form" style={{ margin: "20px 0" }}>
                     <div style={{ display: "flex", gap: "15px", flexDirection: "column" }}>
                         <div>
-                            <span>Name</span>
-                            <Input value={nameProduct} onChange={(event) => setNameProduct(event.target.value)} />
+                            <span>Tên sản phẩm</span>
+                            <Input value={nameProduct} onChange={(event) => setNameProduct(event.target.value)} placeholder="Nhập tên sản phẩm..." />
                         </div>
                         <div>
-                            <span>Price</span>
-                            <Input value={priceProduct} onChange={(event) => { setPriceProduct(event.target.value) }} />
+                            <span>Giá</span>
+                            <Input value={priceProduct} onChange={(event) => { setPriceProduct(event.target.value) }} placeholder="Nhập giá sản phẩm..." />
                         </div>
                         <div>
                             <div className="flex justify-between mb-2">
-                                <span>Size & Quantity</span>
+                                <span>Kích cỡ & Số lượng</span>
                                 <Button type="primary" className="h-6!" onClick={handleAddSize}>
                                     Thêm size
                                 </Button>
@@ -156,7 +174,7 @@ const ProductCreate = (props) => {
                                 <div key={index} className="size flex gap-2 mb-2">
                                     <Input
                                         style={{ width: '30%' }}
-                                        placeholder="Type size"
+                                        placeholder="Nhập size"
                                         value={item.size}
                                         onChange={(e) =>
                                             handleChangeSize(index, "size", e.target.value)
@@ -165,7 +183,7 @@ const ProductCreate = (props) => {
 
                                     <Input
                                         style={{ width: '50%' }}
-                                        placeholder="Type quantity"
+                                        placeholder="Nhập số lượng"
                                         value={item.quantity}
                                         onChange={(e) =>
                                             handleChangeSize(index, "quantity", e.target.value)
@@ -181,7 +199,7 @@ const ProductCreate = (props) => {
                             ))}
                         </div>
                         <div className="flex gap-10">
-                            <span>Brand</span>
+                            <span>Thương hiệu</span>
                             <Radio.Group
                                 value={brand}
                                 onChange={(e) => setBrand(e.target.value)}
@@ -194,7 +212,7 @@ const ProductCreate = (props) => {
                             </Radio.Group>
                         </div>
                         <div>
-                            <span>Them anh</span>
+                            <span>Upload ảnh</span>
                             <ImgCrop rotationSlider>
                                 <Upload
                                     listType="picture-card"
@@ -203,7 +221,7 @@ const ProductCreate = (props) => {
                                     onPreview={onPreview}
                                     beforeUpload={() => false}
                                 >
-                                    {fileList.length < 5 && '+ Upload'}
+                                    {fileList.length < 5 && '+ Tải ảnh'}
                                 </Upload>
                             </ImgCrop>
                         </div>
