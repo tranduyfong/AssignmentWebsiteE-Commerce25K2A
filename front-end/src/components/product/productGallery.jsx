@@ -11,8 +11,7 @@ const ProductGallery = ({ current }) => {
 
   return (
     <div className="lg:col-span-5 bg-white p-6 rounded-2xl shadow-md">
-      <div className="flex justify-between items-center mb-4">
-      </div>
+      <div className="flex justify-between items-center mb-4"></div>
       <div className="w-full flex justify-center items-center bg-gray-50 rounded-xl p-6">
         <img
           src={selectedImage}
@@ -28,9 +27,10 @@ const ProductGallery = ({ current }) => {
             alt="thumb"
             onClick={() => setSelectedImage(img)}
             className={`w-16 h-16 object-cover cursor-pointer rounded-lg border 
-              ${selectedImage === img
-                ? "border-black scale-105"
-                : "border-gray-200"
+              ${
+                selectedImage === img
+                  ? "border-black scale-105"
+                  : "border-gray-200"
               }
               hover:scale-105 hover:border-black transition`}
           />
