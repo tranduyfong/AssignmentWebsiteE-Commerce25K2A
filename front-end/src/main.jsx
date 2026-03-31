@@ -27,6 +27,7 @@ import { requireAuthLoader } from "../utils/auth.js";
 import VnpayReturn from "./components/vnpay/return.vnpay.jsx";
 import AdminLayout from "./pages/admin/index.jsx";
 import AdminChat from "./pages/admin/chat.admin.jsx";
+import AdminUsers from "./pages/admin/users.admin.jsx";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,14 @@ const router = createBrowserRouter([
     children: [
       { path: "/admin/chat", element: <AdminChat /> },
     ]
+  },
+  {
+  path: "/admin",
+  element: <AdminLayout />,
+  children: [
+    { path: "chat", element: <AdminChat /> },
+    { path: "users", element: <AdminUsers /> }
+  ]
   },
   {
     path: "/payment",
