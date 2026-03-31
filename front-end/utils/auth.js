@@ -30,7 +30,7 @@ const requireAdminLoader = () => {
         console.log(decoded);
 
         if (decoded.role === "user") {
-            notification.error({ message: "Bạn không phải Admin!" });
+            notification.error({ message: "Bạn không phải Admin hay Nhân viên!" });
             return redirect("/");
         }
     } catch (error) {

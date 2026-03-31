@@ -73,12 +73,12 @@ const router = createBrowserRouter([
     ]
   },
   {
-  path: "/admin",
-  element: <AdminLayout />,
-  children: [
-    { path: "chat", element: <AdminChat /> },
-    { path: "users", element: <AdminUsers /> }
-  ]
+    path: "/admin",
+    element: <AdminLayout />,
+    children: [
+      { path: "chat", element: <AdminChat /> },
+      { path: "users", element: <AdminUsers /> }
+    ]
   },
   {
     path: "/payment",

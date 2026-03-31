@@ -158,4 +158,9 @@ const getAllReceipts = async () => {
     return axios.get(URL_BACKEND);
 }
 
-export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser, getCart, addToCart, deleteInCart, buyProduct, getMyReceipt, getVnpayUrl, verifyVnpay, mailBuyProduct, getChatHistory, getChatRooms, getAllReceipts };
+const updateCartQuantity = async (idCart, quantity) => {
+    const URL_BACKEND = `/users/cart/${idCart}`;
+    return axios.put(URL_BACKEND, { quantity });
+};
+
+export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser, getCart, addToCart, deleteInCart, buyProduct, getMyReceipt, getVnpayUrl, verifyVnpay, mailBuyProduct, getChatHistory, getChatRooms, getAllReceipts, updateCartQuantity };

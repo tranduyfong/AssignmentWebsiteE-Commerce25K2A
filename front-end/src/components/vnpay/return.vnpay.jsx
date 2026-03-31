@@ -52,7 +52,7 @@ const VnpayReturn = () => {
                     title="Thanh toán đơn hàng thành công!"
                     subTitle="Cảm ơn bạn đã mua sắm tại Soccer Beck. Chúng tôi sẽ sớm giao hàng cho bạn."
                     extra={[
-                        <div className="flex mr-10!">
+                        <div className="flex justify-around">
                             <Button type="primary" key="order" onClick={() => navigate('/checkcart')}>
                                 Xem đơn hàng
                             </Button>

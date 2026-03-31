@@ -14,10 +14,10 @@ const sendMailTest = async (req, res) => {
             <p>${content}</p>
             `
         });
-        res.json({ message: 'Send mail success ✅' });
+        res.json({ message: 'Gửi mail thành công!' });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Send mail failed ❌' });
+        res.status(500).json({ message: 'Gửi mail thất bại!' });
     }
 }
 

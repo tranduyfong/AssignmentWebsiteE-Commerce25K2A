@@ -78,23 +78,37 @@ const handleDeleteCart = async (idUser, idCart) => {
 }
 
 const handleUpdateUser = async (id, data) => {
-  const user = await User.findByIdAndUpdate(
-    id,
-    {
-      name: data.name,
-      email: data.email,
-      phone: data.phone,
-      role: data.role
-    },
-    { new: true }
-  );
+    const user = await User.findByIdAndUpdate(
+        id,
+        {
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            role: data.role
+        },
+        { new: true }
+    );
 
-  return user;
+    return user;
 };
 
 const handleDeleteUser = async (id) => {
-  const result = await User.findByIdAndDelete(id);
-  return result;
+    const result = await User.findByIdAndDelete(id);
+    return result;
 };
 
-module.exports = { handleUserCreate, handleGetUser, getCartData, addToCartData, handleDeleteCart, handleUpdateUser, handleDeleteUser };
+const handleUpdateCartQuantity = async (idUser, idCart, newQuantity) => {
+    const result = await User.findOneAndUpdate(
+        { _id: idUser, "cart._id": idCart },
+        {
+            $set: { "cart.$.quantity": newQuantity }
+        },
+        { new: true }
+    );
+
+    if (!result) throw new Error("Không tìm thấy sản phẩm trong giỏ hàng!");
+
+    return result;
+}
+
+module.exports = { handleUserCreate, handleGetUser, getCartData, addToCartData, handleDeleteCart, handleUpdateUser, handleDeleteUser, handleUpdateCartQuantity };
