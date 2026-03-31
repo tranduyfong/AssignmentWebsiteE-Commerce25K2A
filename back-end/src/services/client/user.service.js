@@ -77,4 +77,24 @@ const handleDeleteCart = async (idUser, idCart) => {
     return result;
 }
 
-module.exports = { handleUserCreate, handleGetUser, getCartData, addToCartData, handleDeleteCart };
+const handleUpdateUser = async (id, data) => {
+  const user = await User.findByIdAndUpdate(
+    id,
+    {
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      role: data.role
+    },
+    { new: true }
+  );
+
+  return user;
+};
+
+const handleDeleteUser = async (id) => {
+  const result = await User.findByIdAndDelete(id);
+  return result;
+};
+
+module.exports = { handleUserCreate, handleGetUser, getCartData, addToCartData, handleDeleteCart, handleUpdateUser, handleDeleteUser };

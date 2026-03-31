@@ -12,6 +12,7 @@
     "antd": "^6.2.2",
     "antd-img-crop": "^4.30.0",
     "aos": "^2.3.4",
+    "axios-mock-adapter": "^2.1.0",
     "axios": "^1.14.0",
     "dayjs": "^1.11.20",
     "dotenv": "^17.2.3",

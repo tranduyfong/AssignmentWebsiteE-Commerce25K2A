@@ -1,4 +1,4 @@
-const { handleUserCreate, handleGetUser, getCartData, addToCartData, handleDeleteCart } = require('../services/client/user.service');
+const { handleUserCreate, handleGetUser, getCartData, addToCartData, handleDeleteCart, handleUpdateUser, handleDeleteUser } = require('../services/client/user.service');
 
 const getUser = async (req, res) => {
     const result = await handleGetUser();
@@ -74,4 +74,42 @@ const deleteInCart = async (req, res) => {
     }
 }
 
-module.exports = { getUser, createUser, getAccount, getCartByUserId, addToCart, deleteInCart };
+const updateUser = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const result = await handleUpdateUser(id, req.body);
+
+    return res.status(200).json({
+      message: "Cập nhật user thành công",
+      data: result
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      message: "Lỗi cập nhật user",
+      error: error.message
+    });
+  }
+};
+
+
+const deleteUser = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    await handleDeleteUser(id);
+
+    return res.status(200).json({
+      message: "Xóa user thành công"
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      message: "Lỗi xóa user",
+      error: error.message
+    });
+  }
+};
+
+module.exports = { getUser, createUser, getAccount, getCartByUserId, addToCart, deleteInCart, updateUser, deleteUser };

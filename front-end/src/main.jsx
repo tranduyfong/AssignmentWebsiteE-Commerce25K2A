@@ -27,6 +27,7 @@ import { requireAdminLoader, requireAuthLoader } from "../utils/auth.js";
 import VnpayReturn from "./components/vnpay/return.vnpay.jsx";
 import AdminLayout from "./pages/admin/index.jsx";
 import AdminChat from "./pages/admin/chat.admin.jsx";
+import AdminUsers from "./pages/admin/users.admin.jsx";
 import OrderManagement from "./pages/admin/orderManagement.jsx";
 import AdminDashBoard from "./pages/admin/dashBoard.admin.jsx";
 import ProductAdmin from "./pages/admin/product.admin.jsx";
@@ -70,6 +71,14 @@ const router = createBrowserRouter([
       { path: "/admin/orders", element: <OrderManagement /> },
       { path: "/admin/products", element: <ProductAdmin /> }
     ]
+  },
+  {
+  path: "/admin",
+  element: <AdminLayout />,
+  children: [
+    { path: "chat", element: <AdminChat /> },
+    { path: "users", element: <AdminUsers /> }
+  ]
   },
   {
     path: "/payment",
