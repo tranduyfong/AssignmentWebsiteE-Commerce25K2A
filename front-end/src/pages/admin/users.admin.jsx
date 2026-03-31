@@ -19,19 +19,17 @@ const AdminUsers = () => {
 
     const token = localStorage.getItem("access_token");
 
-    const res = await axios.get("http://localhost:3000/api/user", {
+    const res = await axios.get("http://localhost:3000/users", {
       headers: {
         Authorization: `Bearer ${token}`
       }
     });
 
-    setUsers(res.data);
+    setUsers(res.data.data || []);   
 
   } catch (err) {
-
     console.log(err);
     message.error("Không có quyền truy cập");
-
   } finally {
     setLoading(false);
   }
@@ -51,37 +49,64 @@ const AdminUsers = () => {
     setEditingUser(record);
     form.setFieldsValue({
       ...record,
-      pass: "" 
+      password: "" 
     });
     setIsModalOpen(true);
   };
 
   const handleDelete = async (id) => {
-    try {
-      await axios.delete(`/api/admin/users/${id}`);
-      message.success("Xóa tài khoản thành công");
-      fetchUsers();
-    } catch (err) {
-      message.error("Xóa thất bại, vui lòng kiểm tra lại server");
-    }
-  };
+  try {
+    const token = localStorage.getItem("access_token");
+
+    await axios.delete(`http://localhost:3000/users/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    message.success("Xóa tài khoản thành công");
+    fetchUsers();
+  } catch (err) {
+    console.error(err);
+    message.error(err.response?.data?.message || "Xóa thất bại");
+  }
+};
 
   const handleSubmit = async (values) => {
-    try {
-      if (editingUser) {
-        await axios.put(`/api/admin/users/${editingUser._id}`, values);
-        message.success("Cập nhật thông tin thành công");
-      } else {
-        await axios.post("/api/admin/users", values);
-        message.success("Thêm tài khoản mới thành công");
-      }
-      setIsModalOpen(false);
-      fetchUsers();
-    } catch (err) {
-      console.error("Lỗi submit:", err);
-      message.error(err.response?.data?.message || "Lỗi thao tác API");
+  try {
+    const token = localStorage.getItem("access_token");
+
+    if (editingUser) {
+      await axios.put(
+        `http://localhost:3000/users/${editingUser._id}`,
+        values,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+      message.success("Cập nhật thông tin thành công");
+    } else {
+      await axios.post(
+        "http://localhost:3000/users",
+        values,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+      message.success("Thêm tài khoản mới thành công");
     }
-  };
+
+    setIsModalOpen(false);
+    fetchUsers();
+  } catch (err) {
+    console.error(err);
+    message.error(err.response?.data?.message || "Lỗi thao tác API");
+  }
+};
 
   const columns = [
     {
@@ -218,7 +243,7 @@ const AdminUsers = () => {
           </Form.Item>
 
           <Form.Item
-            name="pass"
+            name="password"
             label="Mật khẩu"
             rules={[{ required: !editingUser, message: "Vui lòng nhập mật khẩu!" }]}
           >
