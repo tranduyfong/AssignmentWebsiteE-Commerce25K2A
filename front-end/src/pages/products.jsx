@@ -13,12 +13,17 @@ const Product = () => {
 
     useEffect(() => {
         const loadProduct = async () => {
-            const res = await getAllProducts();
-            if (res && res.data) {
-                setProducts(res.data);
-                setFilterProducts(res.data);
+            try {
+                const res = await getAllProducts();
+                const actualData = res?.data ? res.data : (Array.isArray(res) ? res : []);
+
+                setProducts(actualData);
+                setFilterProducts(actualData);
+            } catch (error) {
+                console.error("Lỗi fetch API:", error);
+                setFilterProducts([]);
             }
-        };
+        }
         loadProduct();
     }, []);
 
