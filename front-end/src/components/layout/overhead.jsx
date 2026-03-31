@@ -60,17 +60,14 @@ const OverHead = () => {
     { key: 'login', label: <Link to="/loginPage">Đăng nhập</Link> },
     { key: 'register', label: <Link to="/registerPage">Đăng ký</Link> }
   ] : [
-
     {
       key: 'hello',
       label: <span className="text-gray-500 cursor-default pointer-events-none">Xin chào, <b className="text-black">{name}</b></span>
     },
     { type: 'divider' },
-
     ...(role !== "user" ? [
       { key: 'admin', label: <Link to="/admin">Quản lý & Thống kê</Link> }
     ] : []),
-
     {
       key: 'logout',
       label: <div onClick={logOutUser} className="text-red-500 hover:text-red-600 font-bold w-full">Đăng xuất</div>
@@ -78,62 +75,51 @@ const OverHead = () => {
   ];
 
   return (
-    <div className="w-full h-18 bg-white py-3 border-b border-gray-100 relative z-50">
-      <div className="max-w-250 mx-auto flex items-center justify-between px-5">
-
-        <div className="text-5xl font-black italic tracking-tighter cursor-pointer">
+    <div className="w-full bg-white py-3 border-b border-gray-100 relative z-50 rounded-t-xl">
+      <div className="w-full flex items-center px-6 md:px-10 justify-around">
+        <div className="text-3xl md:text-4xl font-black italic tracking-tighter cursor-pointer shrink-0">
           <Link to="/">beck.</Link>
         </div>
-
-        <div className="flex-1 mx-10 relative">
-          <input
-            type="text"
-            placeholder="Nhập thông tin tìm kiếm"
-            className="w-full bg-[#333333] text-white py-2 px-4 pr-10 outline-none text-sm placeholder-gray-400"
-            value={text}
-            onChange={(p) => setText(p.target.value)}
-            onKeyDown={EnterTimKiem}
-          />
-          <SearchOutlined
-            onClick={xuLyBamTimKiem}
-            style={{ color: "white" }}
-            className="absolute right-6 top-1/2 -translate-y-1/2 text-white cursor-pointer"
-          />
+        <div className="flex-1 flex items-center justify-center px-4 ml-15">
+          <nav className="flex items-center gap-10 text-[14px] text-gray-800 font-semibold" style={{ fontSize: "17px" }}>
+            <Link to="/" className="hover:text-black transition-colors">TRANG CHỦ</Link>
+            <Link to="/products" className="hover:text-black transition-colors">SẢN PHẨM</Link>
+            <Link to="/intro" className="hover:text-black transition-colors">GIỚI THIỆU</Link>
+            <Link to="/contact" className="hover:text-black transition-colors">LIÊN HỆ</Link>
+            <Link to="/checkcart" className="hover:text-black transition-colors">KIỂM TRA ĐƠN HÀNG</Link>
+          </nav>
         </div>
 
-        <div className="flex items-center gap-6 text-sm">
-          <div className="flex items-center gap-2 cursor-pointer">
-            <div className="relative">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-              </svg>
-              <span className="absolute -top-1 -right-1 bg-yellow-400 text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
-                {cartData?.length || 0}
-              </span>
-            </div>
-            <div className="leading-tight">
-              <NavLink to="/cartPage" className="font-bold">GIỎ HÀNG</NavLink>
-              <div className="text-gray-500 text-xs">({cartData?.length || 0}) sản phẩm</div>
-            </div>
+        <div className="flex items-center gap-5 shrink-0">
+          <div className="relative w-48 md:w-60 mt-4">
+            <input
+              type="text"
+              placeholder="Tìm kiếm..."
+              className="w-full bg-gray-100 text-gray-800 py-2 px-4 pr-10 rounded-full outline-none text-sm placeholder-gray-500 transition-all"
+              value={text}
+              onChange={(p) => setText(p.target.value)}
+              onKeyDown={EnterTimKiem}
+            />
+            <SearchOutlined
+              onClick={xuLyBamTimKiem}
+              className="absolute right-3 top-1/2 -translate-y-3/4 text-gray-500 cursor-pointer hover:text-black text-lg transition-colors"
+            />
           </div>
-
-          <div className="flex items-center gap-2 bg-[#ffcc00] px-3 py-2 cursor-pointer hover:opacity-90">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+          <NavLink to="/cartPage" className="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7 text-gray-700">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
             </svg>
-            <div className="font-bold text-[10px] uppercase">
-              <Link to="/checkcart">Kiểm tra <br /> đơn hàng</Link>
-            </div>
-          </div>
-
+            <span className="absolute -top-1 -right-2 bg-[#ffcc00] text-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-sm">
+              {cartData?.length || 0}
+            </span>
+          </NavLink>
           <Dropdown menu={{ items: userMenuItems }} placement="bottomRight" arrow>
-            <div className="flex items-center justify-center p-2 ml-2 rounded-full cursor-pointer hover:bg-gray-100 transition duration-300">
+            <div className="flex items-center justify-center p-2 rounded-full cursor-pointer hover:bg-gray-100 transition duration-300">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7 text-gray-700">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
               </svg>
             </div>
           </Dropdown>
-
         </div>
       </div>
     </div>

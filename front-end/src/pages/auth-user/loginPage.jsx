@@ -27,7 +27,7 @@ const LoginPage = () => {
     };
 
     return (
-        <div className='min-h-screen flex flex-col justify-center items-center bg-gray-100 p-4 mt-10'>
+        <div className='min-h-screen flex flex-col justify-center items-center bg-gray-100 p-4'>
             <div className="mb-8 text-3xl font-bold text-gray-800">
                 Đăng nhập
             </div>
