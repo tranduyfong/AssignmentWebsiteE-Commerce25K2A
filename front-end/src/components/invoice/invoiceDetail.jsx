@@ -1,89 +1,125 @@
 import React from "react";
+import { Card, Button, Typography, Tag, Row, Col, Descriptions, Table, Image, Divider } from "antd";
+import { ArrowLeftOutlined } from "@ant-design/icons";
+
+const { Title, Text } = Typography;
 
 const InvoiceDetail = ({ invoice, onBack }) => {
+  let statusColor = "processing";
+  if (invoice.status === "Đã thanh toán") statusColor = "success";
+  if (invoice.status === "Chờ xác nhận") statusColor = "warning";
+
+  const columns = [
+    {
+      title: "Sản phẩm",
+      dataIndex: "name",
+      key: "name",
+      render: (text) => <Text strong>{text}</Text>,
+    },
+    {
+      title: "Ảnh sản phẩm",
+      dataIndex: "imgSrc",
+      key: "imgSrc",
+      render: (src) => (
+        <Image
+          width={70}
+          src={src}
+          alt="Ảnh sản phẩm"
+          style={{ borderRadius: "6px", border: "1px solid #f0f0f0" }}
+          preview={false}
+        />
+      ),
+    },
+    {
+      title: "Số lượng",
+      dataIndex: "quantity",
+      key: "quantity",
+      align: "center",
+      render: (qty) => <Text type="secondary">x{qty}</Text>,
+    },
+    {
+      title: "Thành tiền",
+      dataIndex: "price",
+      key: "price",
+      align: "right",
+      render: (price) => <Text strong>{price}</Text>,
+    },
+  ];
+
   return (
-    <div className="w-full px-4">
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 max-w-4xl mx-auto">
-        <button
+    <div style={{ maxWidth: "896px", margin: "0 auto", padding: "16px" }}>
+      <Card bordered={false} style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.1)", borderRadius: "12px" }}>
+        <Button
+          type="text"
+          icon={<ArrowLeftOutlined />}
           onClick={onBack}
-          className="mb-6 flex items-center text-gray-500 hover:text-blue-600 transition text-sm font-medium w-fit"
+          style={{ marginBottom: "24px", color: "#6b7280", padding: 0 }}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 mr-1">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-          </svg>
           Quay lại danh sách
-        </button>
+        </Button>
 
-        <div className="flex justify-between items-start border-b pb-8 mb-8">
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "24px" }}>
           <div>
-            <h2 className="text-3xl font-bold text-gray-800">HÓA ĐƠN</h2>
-            <p className="text-gray-500 mt-1">Mã đơn: #{invoice.id}</p>
+            <Title level={2} style={{ margin: 0, fontWeight: 700, color: "#1f2937" }}>
+              HÓA ĐƠN
+            </Title>
+            <Text type="secondary" style={{ fontSize: "15px" }}>Mã đơn: #{invoice.id}</Text>
           </div>
-          <div className="text-right">
-            <div className="text-sm text-gray-500 mb-1">Trạng thái</div>
-            <span className={`px-3 py-1 rounded-full text-sm font-bold border 
-              ${invoice.status === "Đã thanh toán" ? "bg-green-50 text-green-600 border-green-200" :
-                invoice.status === "Chờ xác nhận" ? "bg-yellow-50 text-yellow-600 border-yellow-200" : "bg-blue-50 text-blue-600 border-blue-200"}`}>
+          <div style={{ textAlign: "right" }}>
+            <div style={{ fontSize: "12px", color: "#8c8c8c", marginBottom: "4px" }}>Trạng thái</div>
+            <Tag color={statusColor} style={{ margin: 0, fontSize: "14px", padding: "4px 12px", borderRadius: "16px" }}>
               {invoice.status}
-            </span>
+            </Tag>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-12 mb-8">
-          <div className="text-left">
-            <h3 className="text-gray-500 text-xs font-bold uppercase mb-2">Thông tin khách hàng</h3>
-            <p className="text-lg font-bold text-gray-800">Họ và tên: {invoice.customerName}</p>
-            <p className="text-gray-600 text-sm mt-1">SĐT: {invoice.phoneNumber}</p>
-            <p className="text-gray-600 text-sm">Địa chỉ: {invoice.address}</p>
-          </div>
-          <div className="text-right">
-            <h3 className="text-gray-500 text-xs font-bold uppercase mb-2">Chi tiết đơn hàng</h3>
-            <p className="text-gray-600 text-sm">Ngày đặt: <span className="font-medium text-black">{invoice.date}</span></p>
-            <p className="text-gray-600 text-sm mt-1">Phương thức: <span className="font-medium text-black">{invoice.paymentMethod}</span></p>
-          </div>
-        </div>
+        <Divider style={{ margin: "12px 0 24px 0" }} />
 
-        <div className="mb-8">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="bg-gray-50 text-gray-600 text-sm border-y border-gray-200">
-                <th className="py-3 pl-4">Sản phẩm</th>
-                <th className="py-3 pl-4">Ảnh sản phẩm</th>
-                <th className="py-3 text-center">Số lượng</th>
-                <th className="py-3 text-right pr-4">Thành tiền</th>
-              </tr>
-            </thead>
-            <tbody>
-              {invoice.items.map((item, idx) => (
-                <tr key={idx} className="border-b border-gray-100">
-                  <td className="py-4 pl-4 font-medium text-gray-800">{item.name}</td>
-                  <td className="py-4 pl-4 font-medium text-gray-800"><img src={item.imgSrc} alt="Ảnh sản phẩm" width={"70px"} /></td>
-                  <td className="py-4 text-center text-gray-600">x{item.quantity}</td>
-                  <td className="py-4 text-right pr-4 font-bold text-gray-800">{item.price}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <Row gutter={[48, 24]} style={{ marginBottom: "32px" }}>
+          <Col xs={24} md={12}>
+            <Descriptions title={<Text type="secondary" style={{ fontSize: "12px" }}>THÔNG TIN KHÁCH HÀNG</Text>} column={1} size="small">
+              <Descriptions.Item label="Họ và tên"><Text strong>{invoice.customerName}</Text></Descriptions.Item>
+              <Descriptions.Item label="SĐT">{invoice.phoneNumber}</Descriptions.Item>
+              <Descriptions.Item label="Địa chỉ">{invoice.address}</Descriptions.Item>
+            </Descriptions>
+          </Col>
+          <Col xs={24} md={12}>
+            <Descriptions title={<Text type="secondary" style={{ fontSize: "12px" }}>CHI TIẾT ĐƠN HÀNG</Text>} column={1} size="small">
+              <Descriptions.Item label="Ngày đặt"><Text strong>{invoice.date}</Text></Descriptions.Item>
+              <Descriptions.Item label="Phương thức"><Text strong>{invoice.paymentMethod}</Text></Descriptions.Item>
+            </Descriptions>
+          </Col>
+        </Row>
 
-        <div className="flex justify-end border-t pt-4">
-          <div className="w-64">
-            <div className="flex justify-between mb-2">
-              <span className="text-gray-500 text-sm">Tạm tính:</span>
-              <span className="font-medium">{invoice.total}</span>
-            </div>
-            <div className="flex justify-between mb-2">
-              <span className="text-gray-500 text-sm">Phí vận chuyển:</span>
-              <span className="font-medium">0 đ</span>
-            </div>
-            <div className="flex justify-between border-t border-dashed border-gray-300 pt-2 mt-2">
-              <span className="text-lg font-bold text-gray-800">Tổng cộng:</span>
-              <span className="text-2xl font-bold text-blue-600">{invoice.total}</span>
-            </div>
+        <Table
+          columns={columns}
+          dataSource={invoice.items}
+          rowKey={(record, index) => record.name + index}
+          pagination={false}
+          bordered={false}
+          style={{ marginBottom: "32px" }}
+        />
+
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <div style={{ width: "300px" }}>
+            <Row justify="space-between" style={{ marginBottom: "8px" }}>
+              <Col><Text type="secondary">Tạm tính:</Text></Col>
+              <Col><Text strong>{invoice.total}</Text></Col>
+            </Row>
+            <Row justify="space-between" style={{ marginBottom: "8px" }}>
+              <Col><Text type="secondary">Phí vận chuyển:</Text></Col>
+              <Col><Text strong>0 đ</Text></Col>
+            </Row>
+
+            <Divider style={{ margin: "12px 0" }} dashed />
+
+            <Row justify="space-between" align="middle">
+              <Col><Text strong style={{ fontSize: "16px" }}>Tổng cộng:</Text></Col>
+              <Col><Text strong style={{ fontSize: "24px", color: "#1677ff" }}>{invoice.total}</Text></Col>
+            </Row>
           </div>
         </div>
-
-      </div>
+      </Card>
     </div>
   );
 };

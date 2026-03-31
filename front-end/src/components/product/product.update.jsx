@@ -79,6 +79,25 @@ const UpdateProduct = (props) => {
     const handleOk = async () => {
         try {
             setConfirmLoading(true);
+
+            if (!nameProduct.trim()) {
+                notification.error({
+                    description: "Vui lòng nhập tên sản phẩm!"
+                });
+                return;
+            }
+            if (!priceProduct || isNaN(priceProduct)) {
+                notification.error({
+                    description: "Giá sản phẩm không hợp lệ!"
+                });
+                return;
+            }
+            if (fileList.length === 0) {
+                notification.error({
+                    description: "Vui lòng upload ít nhất 1 ảnh!"
+                });
+                return;
+            }
             const uploadedUrls = await Promise.all(
                 fileList.map(async file => {
                     if (file.originFileObj) {
@@ -92,7 +111,7 @@ const UpdateProduct = (props) => {
             console.log(res);
 
             notification.success({
-                message: "Update success"
+                message: "Chỉnh sửa thành công!"
             });
 
             resetAndCloseModal();
@@ -100,7 +119,7 @@ const UpdateProduct = (props) => {
 
         } catch (err) {
             notification.error({
-                message: "Update failed",
+                message: "Chỉnh sửa thất bại!",
                 description: err
             });
         } finally {
@@ -108,31 +127,32 @@ const UpdateProduct = (props) => {
         }
     };
     const handleCancel = () => {
-        console.log('Clicked cancel button');
         setModalUpdate(false);
     };
     return (
         <>
             <Modal
-                title="UPDATE"
+                title="Chỉnh sửa sản phẩm"
                 open={modalUpdate}
                 onOk={handleOk}
                 confirmLoading={confirmLoading}
                 onCancel={handleCancel}
+                okText="Chỉnh sửa"
+                cancelText="Hủy bỏ"
             >
                 <div className="user-form" style={{ margin: "20px 0" }}>
                     <div style={{ display: "flex", gap: "15px", flexDirection: "column" }}>
                         <div>
-                            <span>Name</span>
+                            <span>Tên sản phẩm</span>
                             <Input value={nameProduct} onChange={(event) => setNameProduct(event.target.value)} />
                         </div>
                         <div>
-                            <span>Price</span>
+                            <span>Giá</span>
                             <Input value={priceProduct} onChange={(event) => { setPriceProduct(event.target.value) }} />
                         </div>
                         <div>
                             <div className="flex justify-between mb-2">
-                                <span>Size & Quantity</span>
+                                <span>Kích cỡ & Số lượng</span>
                                 <Button type="primary" className="h-6!" onClick={handleAddSize}>
                                     Thêm size
                                 </Button>
@@ -167,7 +187,7 @@ const UpdateProduct = (props) => {
                             ))}
                         </div>
                         <div className="flex gap-10">
-                            <span>Brand</span>
+                            <span>Thương hiệu</span>
                             <Radio.Group
                                 value={brand}
                                 onChange={(e) => setBrand(e.target.value)}
@@ -180,7 +200,7 @@ const UpdateProduct = (props) => {
                             </Radio.Group>
                         </div>
                         <div>
-                            <span>Them anh</span>
+                            <span>Upload ảnh</span>
                             <ImgCrop rotationSlider>
                                 <Upload
                                     listType="picture-card"
@@ -189,7 +209,7 @@ const UpdateProduct = (props) => {
                                     onPreview={onPreview}
                                     beforeUpload={() => false}
                                 >
-                                    {fileList.length < 5 && '+ Upload'}
+                                    {fileList.length < 5 && '+ Tải ảnh'}
                                 </Upload>
                             </ImgCrop>
                         </div>

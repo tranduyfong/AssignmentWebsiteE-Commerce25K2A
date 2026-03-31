@@ -124,4 +124,18 @@
     transition: all 0.3s ease;
 }
 
+.view-all-products {
+    display: block;
+    margin: 0 auto;
+    background-color: #FEBB0A;
+    color: #000;
+    padding: 10px;
+    border-radius: 6px;
+    width: fit-content;
+}
+.view-all-products:hover {
+    background-color: #2e2d2cf6;
+    color: #FEBB0A;
+    transition: all 0.3s ease;
+}
 /* end-tab  */

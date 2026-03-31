@@ -1,6 +1,5 @@
 const { hashPassword } = require('../../utils/password')
 const User = require("../../models/user");
-const { getProductById } = require('../../controllers/product.controller');
 require('dotenv').config();
 
 const handleUserCreate = async (name, email, phone, password) => {

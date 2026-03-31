@@ -1,68 +1,97 @@
 import React from "react";
+import { Table, Typography, Tag, Button } from "antd";
+import { EyeOutlined } from "@ant-design/icons";
+
+const { Title, Text } = Typography;
 
 const InvoiceTable = ({ invoices, onSelect }) => {
+  const columns = [
+    {
+      title: "Mã HĐ",
+      dataIndex: "id",
+      key: "id",
+      render: (text) => <Text style={{ color: '#1677ff', fontWeight: 500 }}>{text}</Text>,
+    },
+    {
+      title: "Khách hàng",
+      dataIndex: "customerName",
+      key: "customerName",
+    },
+    {
+      title: "SĐT",
+      dataIndex: "phoneNumber",
+      key: "phoneNumber",
+    },
+    {
+      title: "Địa chỉ",
+      dataIndex: "address",
+      key: "address",
+    },
+    {
+      title: "Ngày đặt",
+      dataIndex: "date",
+      key: "date",
+    },
+    {
+      title: "Tổng tiền",
+      dataIndex: "total",
+      key: "total",
+      render: (text) => <Text style={{ color: '#ff4d4f', fontWeight: 'bold' }}>{text}</Text>,
+    },
+    {
+      title: "Trạng thái",
+      dataIndex: "status",
+      key: "status",
+      render: (status) => {
+        let color = "processing";
+        if (status === "Đã thanh toán") color = "success";
+        if (status === "Chờ xác nhận") color = "warning";
+
+        return <Tag color={color}>{status}</Tag>;
+      },
+    },
+    {
+      title: "Thanh toán",
+      dataIndex: "paymentStatus",
+      key: "paymentStatus",
+      render: (paymentStatus) => {
+        const statusText = paymentStatus || "Chưa thanh toán";
+        const color = statusText === "Đã thanh toán" ? "success" : "error";
+
+        return <Tag color={color}>{statusText}</Tag>;
+      },
+    },
+    {
+      title: "Hành động",
+      key: "action",
+      align: "center",
+      render: (_, record) => (
+        <Button
+          type="primary"
+          icon={<EyeOutlined />}
+          onClick={() => onSelect(record)}
+          size="middle"
+        />
+      ),
+    },
+  ];
 
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">Kiểm tra đơn hàng</h1>
-        <p className="text-sm text-gray-500">
-          Danh sách đơn hàng của bạn
-        </p>
+    <div style={{ margin: '0 auto', padding: '50px' }}>
+      <div style={{ marginBottom: '24px' }}>
+        <Title level={3} style={{ margin: 0, color: '#1f2937' }}>Kiểm tra đơn hàng</Title>
+        <Text type="secondary">Danh sách đơn hàng của bạn</Text>
       </div>
 
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-        <table className="w-full text-left border-collapse">
-          <thead className="bg-gray-100 text-gray-700 uppercase text-xs font-bold">
-            <tr>
-              <th className="p-4 border-b">Mã HĐ</th>
-              <th className="p-4 border-b">Khách hàng</th>
-              <th className="p-4 border-b">SĐT</th>
-              <th className="p-4 border-b">Địa chỉ</th>
-              <th className="p-4 border-b">Ngày đặt</th>
-              <th className="p-4 border-b">Tổng tiền</th>
-              <th className="p-4 border-b">Trạng thái</th>
-              <th className="p-4 border-b">Thanh toán</th>
-              <th className="p-4 border-b text-center">Hành động</th>
-            </tr>
-          </thead>
-          <tbody className="text-sm text-gray-700">
-            {invoices.map((invoice, index) => (
-              <tr key={index} className="hover:bg-gray-50 transition border-b last:border-none">
-                <td className="p-4 font-medium text-blue-600">{invoice.id}</td>
-                <td className="p-4">{invoice.customerName}</td>
-                <td className="p-4">{invoice.phoneNumber}</td>
-                <td className="p-4">{invoice.address}</td>
-                <td className="p-4">{invoice.date}</td>
-                <td className="p-4 font-bold text-red-500">{invoice.total}</td>
-                <td className="p-4">
-                  <span className={`px-2 py-1 rounded text-xs font-bold 
-                    ${invoice.status === "Đã thanh toán" ? "bg-green-100 text-green-700" :
-                      invoice.status === "Chờ xác nhận" ? "bg-yellow-100 text-yellow-700" : "bg-blue-100 text-blue-700"}`}>
-                    {invoice.status}
-                  </span>
-                </td>
-                <td className="p-4">
-                  <span className={`px-2 py-1 rounded text-xs font-bold 
-                    ${invoice.paymentStatus === "Đã thanh toán" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
-                    {invoice.paymentStatus || "Chưa thanh toán"}
-                  </span>
-                </td>
-                <td className="p-4 flex justify-center items-center">
-                  <button
-                    onClick={() => onSelect(invoice)}
-                    className="flex justify-center items-center bg-blue-500 hover:bg-blue-600 text-white rounded transition shadow-sm"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div style={{ backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
+        <Table
+          columns={columns}
+          dataSource={invoices}
+          rowKey={(record, index) => record.id || index.toString()}
+          pagination={{ pageSize: 10 }}
+          scroll={{ x: 'max-content' }}
+          bordered={false}
+        />
       </div>
     </div>
   );
