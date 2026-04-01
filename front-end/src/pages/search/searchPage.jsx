@@ -1,6 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getAllProducts } from "../../services/api.service";
 import { useEffect, useState } from "react";
+import { Col, Row, Skeleton } from "antd";
 
 const SearchPage = () => {
     const location = useLocation();
@@ -8,12 +9,19 @@ const SearchPage = () => {
     const keyword = params.get("keyword") || "";
 
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         const loadProduct = async () => {
-            const res = await getAllProducts();
-            if (res && res.data) {
+            setLoading(true);
+            try {
+                const res = await getAllProducts();
                 setProducts(res.data);
+            } catch (error) {
+                console.error("Lỗi khi load sản phẩm", error);
+            } finally {
+                setLoading(false);
             }
         };
         loadProduct();
@@ -39,45 +47,76 @@ const SearchPage = () => {
                 Kết quả tìm kiếm: {keyword}
             </h1>
 
-            <div className="grid grid-cols-4 gap-6">
-                {filteredProducts.length > 0 ? (
-                    filteredProducts.map((item) => (
-                        <div
-                            key={item._id}
-                            className="group bg-white rounded-lg shadow hover:shadow-lg transition-all cursor-pointer overflow-hidden border border-gray-100"
-                        >
-                            <div className="relative overflow-hidden h-64">
-                                <img
-                                    src={item.imgSrc?.[0]}
-                                    alt={item.nameProduct}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                />
-                            </div>
-
-                            <div className="p-4 text-center">
-                                <div className="font-semibold text-gray-800">
-                                    Mã sản phẩm: {item._id}
+            <div className="all-product">
+                <Row className="mb-10" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                    {/* HIỆU ỨNG CHỜ: Hiển thị 6 khung Skeleton nếu đang loading */}
+                    {loading ? (
+                        Array.from({ length: 6 }).map((_, idx) => (
+                            <Col className="gutter-row mb-5" span={4} key={idx}>
+                                <div className="box p-3 border rounded-lg bg-white h-full">
+                                    <Skeleton.Image active className="w-full! h-40! mb-4" />
+                                    <Skeleton active paragraph={{ rows: 3 }} title={false} />
                                 </div>
+                            </Col>
+                        ))
+                    ) : (
+                        filteredProducts?.map(items => (
+                            <Col className="gutter-row mb-5" span={4} key={items._id}>
+                                <Link to={`/detail/${items._id}`}>
+                                    <div className="box h-full flex flex-col">
+                                        <div className="img-wrapper w-full aspect-square bg-gray-100 relative overflow-hidden">
+                                            <img
+                                                src={items.imgSrc[0]}
+                                                alt={items.nameProduct}
+                                                className="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-300"
+                                                loading="lazy"
+                                            />
+                                        </div>
 
-                                <p className="text-red-500 font-bold mt-2">
-                                    {formatPrice(item.priceProduct)}
-                                </p>
+                                        <div className="flex flex-col items-center text-center grow bg-white p-2">
+                                            <p className="font-semibold text-black" style={{ fontSize: "17px" }}>
+                                                Mã SP: {items._id.slice(-8).toUpperCase()}
+                                            </p>
+                                            <p className="font-bold text-red-600">
+                                                {formatPrice(items.priceProduct)}
+                                            </p>
 
-                                <div className="font-semibold text-gray-800 uppercase">
-                                    Hàng có sẵn
-                                </div>
+                                            <div className="font-bold mb-2 uppercase" style={{ fontSize: "17px" }}>
+                                                {items.sizes?.some(s => s.quantity > 0) ? (
+                                                    <span className="text-black">Hàng có sẵn</span>
+                                                ) : (
+                                                    <span className="text-gray-500">Hết hàng</span>
+                                                )}
+                                            </div>
 
-                                <h2 className="text-gray-950 line-clamp-2">
-                                    {item.nameProduct}
-                                </h2>
-                            </div>
-                        </div>
-                    ))
-                ) : (
-                    <div className="col-span-4 text-center text-gray-500 text-lg">
-                        Không tìm thấy sản phẩm
-                    </div>
-                )}
+                                            <div className="flex flex-wrap justify-center gap-2 mb-2" style={{ fontSize: "15px" }}>
+                                                {items.sizes && items.sizes.length > 0 ? (
+                                                    items.sizes.map((s, index) => (
+                                                        <span
+                                                            key={s._id || index}
+                                                            className={`font-bold ${s.quantity > 0
+                                                                ? "text-black"
+                                                                : "text-gray-300 line-through cursor-not-allowed"
+                                                                }`}
+                                                        >
+                                                            {s.size}
+                                                        </span>
+                                                    ))
+                                                ) : (
+                                                    <span className="font-bold text-black">38 39 40 41 42 43 44</span>
+                                                )}
+                                            </div>
+
+                                            <p className="text-sm text-black font-light line-clamp-2 mt-auto hover:font-semibold" style={{ fontSize: "15px" }}>
+                                                {items.nameProduct}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </Link>
+                            </Col>
+                        ))
+                    )}
+                </Row>
             </div>
         </div>
     );

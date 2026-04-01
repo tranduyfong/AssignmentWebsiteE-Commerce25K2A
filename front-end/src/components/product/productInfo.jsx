@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from 'react-router-dom'
 import { addToCart } from "../../services/api.service";
 import { notification } from "antd";
+
 const ProductInfo = ({
   current,
   selectedSize,
@@ -11,7 +12,6 @@ const ProductInfo = ({
   decreaseQty,
   onScrollToSizeGuide
 }) => {
-  console.log(current);
   const navigate = useNavigate();
 
   const handleBuy = () => {
@@ -25,27 +25,49 @@ const ProductInfo = ({
     navigate("/payment", { state: { product: dataSet, totalPrice: totalPrice } })
   };
 
-  const handleAddToCart = () => {
-    if (!selectedSize) {
-      alert("Bạn chưa chọn size");
+  const handleAddToCart = async () => {
+    const token = localStorage.getItem("access_token");
+    if (!token) {
+      notification.warning({
+        message: "Yêu cầu đăng nhập",
+        description: "Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!"
+      });
       return;
     }
 
-    addToCart(current._id, quantity, selectedSize);
-    notification.success({
-      message: "Thêm sản phẩm vào giỏ hàng",
-      description: "Thêm sản phẩm vào giỏ hàng thành công!"
-    })
+    if (!selectedSize) {
+      notification.warning({ message: "Thiếu thông tin", description: "Bạn chưa chọn size giày!" });
+      return;
+    }
+
+    try {
+      await addToCart(current._id, quantity, selectedSize);
+
+      notification.success({
+        message: "Thành công",
+        description: "Đã thêm sản phẩm vào giỏ hàng!"
+      });
+    } catch (error) {
+      console.log("Lỗi thêm giỏ hàng:", error);
+      notification.error({
+        message: "Lỗi hệ thống",
+        description: error.response?.data?.message || "Có lỗi xảy ra, vui lòng thử lại sau."
+      });
+    }
   };
 
   const selectedSizeData = current?.sizes?.find(
     (item) => item.size === selectedSize
   );
+
+  const isAllOutOfStock = current?.sizes?.every((item) => item.quantity === 0) || current?.sizes?.length === 0;
+
   return (
     <>
       <div className="lg:col-span-4 flex flex-col">
         <h1 className="text-2xl font-medium leading-snug mb-2">{current.nameProduct}</h1>
         <p className="text-sm text-gray-500 mb-2 uppercase">Mã sản phẩm: {current._id}</p>
+
         <div className="text-3xl font-bold text-red-600 mb-3">
           {!isNaN(Number(current.priceProduct)) ? (
             <>
@@ -56,6 +78,7 @@ const ProductInfo = ({
             current.priceProduct
           )}
         </div>
+
         <div className="mb-6">
           <p className="text-sm text-gray-500 mb-2 uppercase">Chọn size:</p>
           <div className="flex flex-wrap gap-2 mb-2">
@@ -70,7 +93,7 @@ const ProductInfo = ({
                     }}
                     className={`w-10 h-10 border flex items-center justify-center text-sm transition-colors shrink-0
                       ${isOutOfStock
-                        ? "bg-gray-200 text-gray-400 border-gray-200 cursor-not-allowed"
+                        ? "bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed line-through"
                         : selectedSize === item.size
                           ? "border-black bg-black text-white font-bold cursor-pointer"
                           : "border-gray-300 hover:border-black cursor-pointer"
@@ -90,30 +113,39 @@ const ProductInfo = ({
           )}
           <span
             onClick={onScrollToSizeGuide}
-            className="inline-block bg-[#1c2431] text-white text-[11px] px-3 py-1.5 rounded-full cursor-pointer hover:bg-black transition-colors"
+            className="inline-block bg-[#1c2431] text-white text-[11px] px-3 py-1.5 rounded-full cursor-pointer hover:bg-black transition-colors mt-2"
           >
             Hướng dẫn chọn size
           </span>
         </div>
 
-        <div className="mb-8">
-          <p className="text-sm text-gray-500 mb-2 uppercase">Chọn số lượng:</p>
-          <div className="flex flex-row! items-center mb-4">
-            <div onClick={decreaseQty} className="w-10 h-10 border border-gray-300 bg-gray-50 hover:bg-gray-100 flex items-center justify-center text-lg cursor-pointer shrink-0">-</div>
-            <div className="w-16 h-10 border-t border-b border-gray-300 flex items-center justify-center font-medium shrink-0">{quantity}</div>
-            <div onClick={increaseQty} className="w-10 h-10 border border-gray-300 bg-gray-50 hover:bg-gray-100 flex items-center justify-center text-lg cursor-pointer shrink-0">+</div>
+        {isAllOutOfStock ? (
+          <div className="mb-8 mt-4">
+            <div className="w-full bg-gray-200 text-gray-500 font-bold uppercase py-4 rounded text-xl flex items-center justify-center cursor-not-allowed select-none">
+              Sản phẩm đã hết hàng
+            </div>
           </div>
+        ) : (
+          <div className="mb-8">
+            <p className="text-sm text-gray-500 mb-2 uppercase">Chọn số lượng:</p>
+            <div className="flex flex-row! items-center mb-4">
+              <div onClick={decreaseQty} className="w-10 h-10 border border-gray-300 bg-gray-50 hover:bg-gray-100 flex items-center justify-center text-lg cursor-pointer shrink-0">-</div>
+              <div className="w-16 h-10 border-t border-b border-gray-300 flex items-center justify-center font-medium shrink-0">{quantity}</div>
+              <div onClick={increaseQty} className="w-10 h-10 border border-gray-300 bg-gray-50 hover:bg-gray-100 flex items-center justify-center text-lg cursor-pointer shrink-0">+</div>
+            </div>
 
-          <div className="flex gap-3">
-            <div onClick={handleBuy} className="w-full bg-[#ffcc00] hover:bg-yellow-500 text-black font-bold uppercase py-4 rounded transition text-lg flex flex-col items-center justify-center leading-none shadow-sm cursor-pointer">
-              <span>Mua ngay</span>
-              <span className="text-xs mt-1 font-medium">Free Ship</span>
-            </div>
-            <div onClick={handleAddToCart} className="w-[30%] bg-[#ffcc00] hover:bg-yellow-500 text-white rounded transition text-2xl flex items-center justify-center cursor-pointer">
-              <i class="fa-solid fa-cart-arrow-down"></i>
+            <div className="flex gap-3">
+              <div onClick={handleBuy} className="w-full bg-[#ffcc00] hover:bg-yellow-500 text-black font-bold uppercase py-4 rounded transition text-lg flex flex-col items-center justify-center leading-none shadow-sm cursor-pointer">
+                <span>Mua ngay</span>
+                <span className="text-xs mt-1 font-medium">Free Ship</span>
+              </div>
+              <div onClick={handleAddToCart} className="w-[30%] bg-[#ffcc00] hover:bg-yellow-500 text-white rounded transition text-2xl flex items-center justify-center cursor-pointer">
+                <i className="fa-solid fa-cart-arrow-down"></i>
+              </div>
             </div>
           </div>
-        </div>
+        )}
+
       </div>
     </>
   );

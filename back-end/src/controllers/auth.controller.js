@@ -37,10 +37,10 @@ const authControllers = {
                 email: email
             });
 
-            if (!user) throw new Error('User name is not found');
+            if (!user) throw new Error('Không tìm thấy tài khoản');
 
             const isMatch = await comparePassword(password, user.password);
-            if (!isMatch) throw new Error('Invalid password');
+            if (!isMatch) throw new Error('Tài khoản hoặc mật khẩu không chính xác');
 
             const access_token = authControllers.generateAccessToken(user);
             const refresh_token = authControllers.generateRefreshToken(user);

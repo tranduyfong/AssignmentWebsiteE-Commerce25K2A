@@ -1,7 +1,7 @@
 import React from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import sneakerImg from './anh.png'
+import sneakerImg from './images/anh.png'
 
 const AboutUs = () => {
   AOS.init();

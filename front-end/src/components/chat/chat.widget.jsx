@@ -1,11 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 import io from "socket.io-client";
 import { getChatHistory } from "../../services/api.service";
-import { MessageOutlined, CloseOutlined } from '@ant-design/icons';
+import { MessageOutlined, CloseOutlined, SendOutlined } from '@ant-design/icons';
+import { Button, Input, Typography, Empty } from "antd";
+
+const { Text } = Typography;
 
 const ChatWidget = ({ userId }) => {
     const [isOpen, setIsOpen] = useState(false);
-
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
 
@@ -21,7 +23,6 @@ const ChatWidget = ({ userId }) => {
             scrollToBottom();
         }
     }, [messageList, isOpen]);
-
 
     useEffect(() => {
         if (!userId || !isOpen) return;
@@ -63,61 +64,120 @@ const ChatWidget = ({ userId }) => {
         }
     };
 
+    const token = localStorage.getItem("access_token");;
+    if (!userId || !token) return null;
+
     return (
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end" style={{ fontSize: "15px" }}>
+        <div style={{ position: 'fixed', bottom: '24px', right: '24px', zIndex: 50, display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
 
             <div
-                className={`transition-all duration-300 ease-in-out origin-bottom-right ${isOpen ? 'opacity-100 scale-100 mb-4' : 'opacity-0 scale-0 h-0 w-0 mb-0'} w-80 bg-white border border-gray-200 rounded-xl shadow-2xl overflow-hidden flex flex-col`}
+                style={{
+                    width: '320px',
+                    backgroundColor: '#fff',
+                    borderRadius: '12px',
+                    boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    transformOrigin: 'bottom right',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transform: isOpen ? 'scale(1)' : 'scale(0)',
+                    opacity: isOpen ? 1 : 0,
+                    height: isOpen ? '420px' : '0px',
+                    marginBottom: isOpen ? '16px' : '0px',
+                    visibility: isOpen ? 'visible' : 'hidden',
+                    overflow: 'hidden'
+                }}
             >
-                <div className="bg-[#f59e0b] text-white p-3 font-bold shadow-sm flex justify-between items-center z-10">
-                    <span>Chat với Nhân viên hỗ trợ</span>
-                    <button
+                <div style={{ backgroundColor: '#f59e0b', padding: '12px 16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 1px 2px rgba(0,0,0,0.05)', zIndex: 10 }}>
+                    <Text strong style={{ color: '#fff', fontSize: '15px' }}>Chat với Nhân viên hỗ trợ</Text>
+                    <Button
+                        type="text"
+                        shape="circle"
+                        icon={<CloseOutlined />}
                         onClick={() => setIsOpen(false)}
-                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-amber-600 transition"
-                    >
-                        <CloseOutlined className="text-sm" />
-                    </button>
+                        style={{ color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    />
                 </div>
 
-                <div className="h-72 p-4 overflow-y-auto bg-gray-50 flex flex-col gap-3">
+                <div style={{ flex: 1, padding: '16px', overflowY: 'auto', backgroundColor: '#f9fafb', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     {messageList.length === 0 ? (
-                        <p className="text-center text-gray-400 text-sm mt-10">Hãy gửi tin nhắn để bắt đầu!</p>
+                        <div style={{ margin: 'auto' }}>
+                            <Empty description="Hãy gửi tin nhắn để bắt đầu!" image={Empty.PRESENTED_IMAGE_SIMPLE} />
+                        </div>
                     ) : (
                         messageList.map((msg, index) => (
-                            <div key={index} className={`flex flex-col max-w-[80%] ${msg.senderType === "user" ? "self-end items-end" : "self-start items-start"}`}>
-                                <div className={`px-3 py-2 rounded-xl text-sm shadow-sm ${msg.senderType === "user" ? "bg-[#ffcc00] text-gray-900 rounded-br-sm" : "bg-white border border-gray-200 text-gray-800 rounded-bl-sm"}`}>
+                            <div
+                                key={index}
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    maxWidth: '85%',
+                                    alignSelf: msg.senderType === "user" ? "flex-end" : "flex-start",
+                                    alignItems: msg.senderType === "user" ? "flex-end" : "flex-start"
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        padding: '8px 12px',
+                                        fontSize: '14px',
+                                        boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
+                                        backgroundColor: msg.senderType === "user" ? "#ffcc00" : "#fff",
+                                        color: msg.senderType === "user" ? "#1f2937" : "#1f2937",
+                                        border: msg.senderType === "user" ? "none" : "1px solid #e5e7eb",
+                                        borderRadius: '12px',
+                                        borderBottomRightRadius: msg.senderType === "user" ? '2px' : '12px',
+                                        borderBottomLeftRadius: msg.senderType === "user" ? '12px' : '2px',
+                                        wordWrap: 'break-word'
+                                    }}
+                                >
                                     {msg.text}
                                 </div>
-                                <span className="text-[10px] text-gray-400 mt-1">{msg.senderType === "user" ? "Bạn" : "CSKH Soccer Beck"}</span>
+                                <Text style={{ fontSize: '10px', marginTop: '4px' }} type="secondary">
+                                    {msg.senderType === "user" ? "Bạn" : "CSKH Soccer Beck"}
+                                </Text>
                             </div>
                         ))
                     )}
                     <div ref={messagesEndRef} />
                 </div>
 
-                <div className="p-1 bg-white border-t border-gray-100">
-                    <div className="flex items-center bg-gray-50 border border-gray-300 rounded-full px-1 py-1 focus-within:border-[#f59e0b] focus-within:bg-white transition shadow-inner">
-                        <input
-                            type="text"
-                            className="bg-transparent outline-none text-sm py-1"
-                            placeholder="Nhập tin nhắn..."
-                            value={currentMessage}
-                            onChange={(e) => setCurrentMessage(e.target.value)}
-                            onKeyPress={(e) => { e.key === "Enter" && sendMessage(); }}
-                        />
-                        <button onClick={sendMessage} className="text-[#f59e0b] font-bold hover:text-amber-600 transition w-1/3 m-0!">
-                            Gửi
-                        </button>
-                    </div>
+                <div style={{ padding: '12px', backgroundColor: '#fff', borderTop: '1px solid #f3f4f6' }}>
+                    <Input
+                        placeholder="Nhập tin nhắn..."
+                        value={currentMessage}
+                        onChange={(e) => setCurrentMessage(e.target.value)}
+                        onPressEnter={sendMessage}
+                        style={{ borderRadius: '24px' }}
+                        suffix={
+                            <Button
+                                type="text"
+                                style={{ color: '#f59e0b', fontWeight: 'bold' }}
+                                onClick={sendMessage}
+                            >
+                                Gửi
+                            </Button>
+                        }
+                    />
                 </div>
             </div>
 
-            <button
+            <Button
+                shape="circle"
                 onClick={() => setIsOpen(!isOpen)}
-                className={`w-14 h-14 rounded-full flex items-center justify-center shadow-xl transition-all duration-300 hover:scale-110 ${isOpen ? 'bg-gray-100 text-gray-500 hover:bg-gray-200' : 'bg-[#f59e0b] text-white hover:bg-amber-600'}`}
-            >
-                {isOpen ? <CloseOutlined className="text-xl" /> : <MessageOutlined className="text-2xl" />}
-            </button>
+                icon={isOpen ? <CloseOutlined style={{ fontSize: '20px' }} /> : <MessageOutlined style={{ fontSize: '24px' }} />}
+                style={{
+                    width: '56px',
+                    height: '56px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: isOpen ? '#f3f4f6' : '#f59e0b',
+                    color: isOpen ? '#6b7280' : '#fff',
+                    border: 'none',
+                    boxShadow: isOpen ? '0 4px 6px rgba(0,0,0,0.1)' : '0 10px 15px -3px rgba(245, 158, 11, 0.4), 0 4px 6px -2px rgba(245, 158, 11, 0.2)',
+                    transition: 'all 0.3s'
+                }}
+            />
         </div>
     );
 };

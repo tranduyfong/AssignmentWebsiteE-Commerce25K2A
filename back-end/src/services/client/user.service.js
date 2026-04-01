@@ -1,6 +1,5 @@
 const { hashPassword } = require('../../utils/password')
 const User = require("../../models/user");
-const { getProductById } = require('../../controllers/product.controller');
 require('dotenv').config();
 
 const handleUserCreate = async (name, email, phone, password) => {
@@ -78,4 +77,38 @@ const handleDeleteCart = async (idUser, idCart) => {
     return result;
 }
 
-module.exports = { handleUserCreate, handleGetUser, getCartData, addToCartData, handleDeleteCart };
+const handleUpdateUser = async (id, data) => {
+    const user = await User.findByIdAndUpdate(
+        id,
+        {
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            role: data.role
+        },
+        { new: true }
+    );
+
+    return user;
+};
+
+const handleDeleteUser = async (id) => {
+    const result = await User.findByIdAndDelete(id);
+    return result;
+};
+
+const handleUpdateCartQuantity = async (idUser, idCart, newQuantity) => {
+    const result = await User.findOneAndUpdate(
+        { _id: idUser, "cart._id": idCart },
+        {
+            $set: { "cart.$.quantity": newQuantity }
+        },
+        { new: true }
+    );
+
+    if (!result) throw new Error("Không tìm thấy sản phẩm trong giỏ hàng!");
+
+    return result;
+}
+
+module.exports = { handleUserCreate, handleGetUser, getCartData, addToCartData, handleDeleteCart, handleUpdateUser, handleDeleteUser, handleUpdateCartQuantity };

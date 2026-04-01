@@ -4,8 +4,21 @@ import AllProducts from "../components/tabs/allProducts";
 import NikeShoe from "../components/tabs/nikeShoe";
 import AdidasShoe from "../components/tabs/adidasShoe";
 import PumaShoe from "../components/tabs/pumaShoe";
+import PartnerBrands from "./introduct/card.home";
+import AboutSection from "./introduct/banner.section";
+import FeatureSection from "./introduct/feature.section";
+import { useRef } from "react";
 
 const HomePage = () => {
+    const aboutSectionRef = useRef(null);
+
+    const scrollToSection = () => {
+        aboutSectionRef.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    };
+
     const items = [
         {
             key: '/allProducts',
@@ -14,106 +27,44 @@ const HomePage = () => {
         },
         {
             key: '/nikeShoe',
-            label:<span className="tab-style">GIÀY NIKE</span>,
-            children: <NikeShoe/>,
+            label: <span className="tab-style">GIÀY NIKE</span>,
+            children: <NikeShoe />,
         },
         {
             key: '/adidasShoe',
             label: <span className="tab-style">GIÀY ADIDAS</span>,
-            children: <AdidasShoe/>,
+            children: <AdidasShoe />,
         },
         {
             key: 'pumaShoe',
             label: <span className="tab-style">GIÀY PUMA</span>,
-            children: <PumaShoe/>,
+            children: <PumaShoe />,
         },
     ];
     return (
         <>
             <div className="content-home">
-                {/* section-1 */}
-                <div>
-                    <Carousel arrows infinite={false} autoplay className="banner">
+                <div className="mt-20">
+                    <Carousel arrows infinite={true} autoplay className="banner">
                         <div className="slider-item">
-                            <img src="https://bizweb.dktcdn.net/100/108/842/themes/775959/assets/slide-img3.jpg?1770012943148" alt="banner" />
+                            <img src="https://antiensport.vn/files/styles/slideshow/public/slideshow/1920x550-Banner-MafateX.jpg?itok=ff5s-BTz" alt="banner" />
                         </div>
                         <div className="slider-item">
-                            <img src="https://bizweb.dktcdn.net/100/108/842/collections/bata.jpg?v=1606474705697" alt="banner" />
+                            <img src="https://antiensport.vn/files/styles/slideshow/public/slideshow/1920x550-Banner-OUTLET-SHOPPING-Sale-40PT.jpg?itok=NGohQ634" alt="banner" />
                         </div>
                         <div className="slider-item">
-                            <img src="https://bizweb.dktcdn.net/100/108/842/collections/3soc.jpg?v=1606474668930" alt="banner" />
+                            <img src="https://antiensport.vn/files/styles/slideshow/public/slideshow/1920x550-Banner-Asic-Sale-off.jpg?itok=D1WEQxR8" alt="banner" />
                         </div>
                     </Carousel>
                 </div>
 
-                {/* end-section-1 */}
+                <PartnerBrands />
+                <AboutSection scrollToSection={scrollToSection} />
+                <FeatureSection />
 
-                {/* section-2 */}
-
-                <div className="section-2">
-                    <div className="box">
-                        <div className="inner-box">
-                            <div className="icon">
-                                <i className="fa-regular fa-calendar-check"></i>
-                            </div>
-                            <div className="content">
-                                <p className="inner-title">
-                                    Không sợ hết hàng
-                                </p>
-                                <span className="inner-desc">
-                                    Do chẳng cần đợi nhân viên chốt đơn
-                                </span>
-                            </div>
-                        </div>
-                        <div className="inner-box">
-                            <div className="icon">
-                                <i className="fa-solid fa-truck-fast"></i>
-                            </div>
-                            <div className="content">
-                                <p className="inner-title">
-                                    Giao hàng toàn quốc
-                                </p>
-                                <span className="inner-desc">
-                                    Gửi hàng đi luôn trong ngày
-                                </span>
-                            </div>
-                        </div>
-                        <div className="inner-box">
-                            <div className="icon">
-                                <i className="fa-solid fa-money-bill"></i>
-                            </div>
-                            <div className="content">
-                                <p className="inner-title">
-                                    Thanh toán linh hoạt
-                                </p>
-                                <span className="inner-desc">
-                                    Tiền mặt/CK/ví điện tử/thẻ
-                                </span>
-                            </div>
-                        </div>
-                        <div className="inner-box">
-                            <div className="icon">
-                                <i className="fa-solid fa-shoe-prints"></i>
-                            </div>
-                            <div className="content">
-                                <p className="inner-title">
-                                    Đổi size thoải mái
-                                </p>
-                                <span className="inner-desc">
-                                    Đến khi anh em hài lòng
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* end-section-2 */}
-
-                {/* section-3 */}
-                <div className="section-3">
+                <div className="section-3" ref={aboutSectionRef}>
                     <Tabs className="tab" defaultActiveKey="1" items={items} />
                 </div>
-                {/* end-section-3  */}
             </div>
         </>
     );

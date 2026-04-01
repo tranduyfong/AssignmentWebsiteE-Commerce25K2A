@@ -43,14 +43,10 @@ function LayoutDefault() {
   return (
     <div>
       <Header />
-
       <main className="outlet-main">
         <Outlet />
       </main>
-
       <Footer />
-
-      {/* ✅ LUÔN render ChatWidget khi có userId */}
       {userId && <ChatWidget userId={userId} />}
     </div>
   );

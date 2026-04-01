@@ -153,4 +153,14 @@ const getChatRooms = async () => {
     return axios.get(`/chat/rooms`);
 };
 
-export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser, getCart, addToCart, deleteInCart, buyProduct, getMyReceipt, getVnpayUrl, verifyVnpay, mailBuyProduct, getChatHistory, getChatRooms };
+const getAllReceipts = async () => {
+    const URL_BACKEND = "/receipt";
+    return axios.get(URL_BACKEND);
+}
+
+const updateCartQuantity = async (idCart, quantity) => {
+    const URL_BACKEND = `/users/cart/${idCart}`;
+    return axios.put(URL_BACKEND, { quantity });
+};
+
+export { getProvince, getDistrict, getVillage, getAllProducts, getProductById, deleteProduct, createProduct, updateProduct, loginUser, getMyUser, createUser, getCart, addToCart, deleteInCart, buyProduct, getMyReceipt, getVnpayUrl, verifyVnpay, mailBuyProduct, getChatHistory, getChatRooms, getAllReceipts, updateCartQuantity };

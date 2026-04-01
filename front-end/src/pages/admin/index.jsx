@@ -10,6 +10,11 @@ const AdminLayout = () => {
     { path: "/admin/orders", name: "Đơn hàng", icon: <ShoppingCart size={20} /> },
   ];
 
+  const logOutDashBoard = () => {
+    localStorage.removeItem("access_token");
+    window.location.href = "/";
+  }
+
   return (
     <div className="min-h-screen flex bg-gray-50 font-sans text-gray-900">
 
@@ -43,7 +48,7 @@ const AdminLayout = () => {
         <div className="p-4 border-t border-gray-100">
           <button className="flex items-center gap-3 w-full px-4 py-3 text-red-500 hover:bg-red-50 rounded-lg transition-colors">
             <LogOut size={20} />
-            <span className="font-medium">Đăng xuất</span>
+            <span className="font-medium" onClick={logOutDashBoard}>Đăng xuất</span>
           </button>
         </div>
       </aside>
