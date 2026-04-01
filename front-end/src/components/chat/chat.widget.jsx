@@ -64,6 +64,9 @@ const ChatWidget = ({ userId }) => {
         }
     };
 
+    const token = localStorage.getItem("access_token");;
+    if (!userId || !token) return null;
+
     return (
         <div style={{ position: 'fixed', bottom: '24px', right: '24px', zIndex: 50, display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
 

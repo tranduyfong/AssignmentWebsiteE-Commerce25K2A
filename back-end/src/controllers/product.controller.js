@@ -2,7 +2,7 @@ const { handleCreateProduct, handleDeleteProduct, handleUpdateProduct } = requir
 const { handleGetAllProduct, handleGetProductById, } = require('../services/client/product.service');
 
 const getProductPage = async (req, res) => {
-    const {brand} = req.query;
+    const { brand } = req.query;
     const result = await handleGetAllProduct(brand);
     return res.status(200).json({
         data: result
@@ -50,7 +50,7 @@ const updateProduct = async (req, res) => {
         const result = await handleUpdateProduct(idProduct, nameProduct, priceProduct, imgSrc, brand, sizes);
 
         return res.status(200).json({
-            message: "Update success",
+            message: "Cập nhật thành công!",
             data: result
         });
 
@@ -69,7 +69,7 @@ const getProductById = async (req, res) => {
 
         const result = await handleGetProductById(idProduct);
         return res.status(200).json({
-            message: "Get success",
+            message: "Lấy thông tin thành công",
             data: result
         });
     } catch (error) {
